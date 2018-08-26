@@ -287,8 +287,9 @@ namespace NotepadRs4.ViewModels
         }
 
 
-        public async void DropText(DragEventArgs e)
+        public async Task<bool> DropText(DragEventArgs e)
         {
+            bool success = false;
             if (e.DataView.Contains(StandardDataFormats.Text))
             {
                 string tempText = await e.DataView.GetTextAsync();
@@ -296,10 +297,13 @@ namespace NotepadRs4.ViewModels
                 // Create a temporary datamodel to swap out so the ViewModel can track the change
                 TextDataModel textDataModel = new TextDataModel();
                 textDataModel.DocumentTitle = _data.DocumentTitle;
-                textDataModel.Text = (_data.Text += tempText);
+                textDataModel.Text = (_data.Text + '\n' + '\n' + tempText);
 
-                Data = textDataModel;                
+                Data = textDataModel;
+                success = true;
             }
+
+            return success;
         }
 
 

@@ -22,9 +22,12 @@ namespace NotepadRs4.Views
         }
 
         // TODO: Check if this can be done soly by the ViewModel
-        private void txtContent_Drop(object sender, Windows.UI.Xaml.DragEventArgs e)
+        private async void txtContent_Drop(object sender, Windows.UI.Xaml.DragEventArgs e)
         {
-            ViewModel.DropText(e);
+            await ViewModel.DropText(e);
+            // Set the cursor at the end of the added text
+            txtContent.Select(txtContent.Text.Length, 0);
+
         }
         // TODO: Check if this can be done soly by the ViewModel
         private void txtContent_DragOver(object sender, Windows.UI.Xaml.DragEventArgs e)

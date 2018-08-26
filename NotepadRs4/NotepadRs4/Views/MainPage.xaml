@@ -242,6 +242,7 @@
                               Command="{x:Bind ViewModel.SaveFileAsCommand}"/>
                 <AppBarButton x:Name="cbtnPrint"
                               Label="Print"
+                              Visibility="Collapsed"
                               Command="{x:Bind ViewModel.PrintCommand}">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE2F6;"/>
@@ -298,6 +299,7 @@
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                  InputScope="Default" 
                  AcceptsReturn="True" 
+                 TextWrapping="Wrap"
                  AllowDrop="True"
                  CanDrag="True"
                  Style="{StaticResource TextBoxStyleTransparent}"
