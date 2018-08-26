@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Source>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</Source>
+    <SmallTileSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</SmallTileSource>
+    <MediumTileSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</MediumTileSource>
+    <WideTileSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</WideTileSource>
+    <LargeTileSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</LargeTileSource>
+    <AppIconSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</AppIconSource>
+    <SplashScreenSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</SplashScreenSource>
+    <PackageLogoSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</PackageLogoSource>
+    <AppxPackageIsForStore>True</AppxPackageIsForStore>
+    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
+    <PackageOptionalProjectsInIdeBuilds>True</PackageOptionalProjectsInIdeBuilds>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>true</UseEmulator>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>true</UseEmulator>
+  </PropertyGroup>
+</Project>
