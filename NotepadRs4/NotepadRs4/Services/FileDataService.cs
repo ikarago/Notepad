@@ -95,7 +95,7 @@ namespace NotepadRs4.Services
         // Load
         public static async Task<TextDataModel> Load()
         {
-            TextDataModel data = new TextDataModel();
+            TextDataModel data = null;
 
             FileOpenPicker picker = new FileOpenPicker();
             picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
@@ -108,6 +108,8 @@ namespace NotepadRs4.Services
             {
                 try
                 {
+                    data = new TextDataModel();
+
                     // Textdata
                     data.Text = await FileIO.ReadTextAsync(file);
                     data.DocumentTitle = file.DisplayName + file.FileType;
@@ -125,7 +127,6 @@ namespace NotepadRs4.Services
                     Debug.WriteLine("Loading failed");
                 }
             }         
-
 
             return data;
         }

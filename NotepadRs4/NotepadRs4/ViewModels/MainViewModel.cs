@@ -275,12 +275,11 @@ namespace NotepadRs4.ViewModels
             if (data != null)
             {
                 Data = data;
+                RefreshTitlebarTitle();
             }
             else
             {
-                Data = new TextDataModel();
-                Data.DocumentTitle = "Loading Failed";
-                RefreshTitlebarTitle();
+                // Do nothing
             }
 
             return true;
