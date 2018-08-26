@@ -26,6 +26,14 @@ namespace NotepadRs4.ViewModels
             set { SetProperty(ref _data, value); }
         }
 
+        // Previous Data is kept temporarily for comparing the unaltered data with the current state.
+        private TextDataModel _previousData;
+        public TextDataModel PreviousData
+        {
+            get { return _previousData; }
+            set { SetProperty(ref _previousData, value); }
+        }
+
         private StorageFile _file;
         public StorageFile File
         {
@@ -166,16 +174,7 @@ namespace NotepadRs4.ViewModels
             // #TODO: Ask the user to save the current file if there is one open
             if (_data.Text != "")
             {
-                ContentDialog dialog = new ContentDialog();
-                dialog.Content = "Would you like to save your work?";
-                dialog.Title = "You have unsaved work";
-                dialog.PrimaryButtonText = "Save";
-                dialog.SecondaryButtonText = "Don't save";
-                dialog.CloseButtonText = "Cancel";
-                dialog.DefaultButton = ContentDialogButton.Primary;
-                dialog.Background = Application.Current.Resources["SystemControlAcrylicElementMediumHighBrush"] as AcrylicBrush;
-
-                var answer = await dialog.ShowAsync();
+                var answer = await SaveBeforeClosing();
 
                 if (answer == ContentDialogResult.Primary)
                 {
@@ -226,6 +225,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // Save
+        // TODO: Build this correctly and make sure changes are saved without additional file dialogs
         public async Task<bool> SaveFile()
         {
             if (File == null)
@@ -257,6 +257,7 @@ namespace NotepadRs4.ViewModels
                 data.DocumentTitle = File.DisplayName + File.FileType;
                 // Write the changes back to the Data property since it doesn't register single changed items otherwise
                 Data = data;
+                PreviousData = data;
                 RefreshTitlebarTitle();
 
                 return true;
@@ -268,21 +269,89 @@ namespace NotepadRs4.ViewModels
         }
 
         // Load
+        // TODO: Check against previous versions if there have been any changes
         public async Task<bool> LoadFile()
         {
+            // #TODO: Temporary turned dialog off for simplicity of the code while adding a proper base for this
+
+            //if (_data.Text != "")
+            //{
+            //    var answer = await SaveBeforeClosing();
+            //    if (answer == ContentDialogResult.Primary)
+            //    {
+            //        // Save & then open a new file
+            //        Debug.WriteLine("Load File: Save & open load file");
+            //        // TODO: Change between Save and SaveAs methods when it has been saved before
+
+            //        bool saveSuccessful = await SaveFileAs();
+            //        if (saveSuccessful == true)
+            //        {
+            //            TextDataModel data = await FileDataService.Load();
+            //            if (data != null)
+            //            {
+            //                Data = data;
+            //                RefreshTitlebarTitle();
+            //                return true;
+            //            }
+            //            else
+            //            {
+            //                // Do nothing
+            //                Debug.WriteLine("Load File: Loading cancelled");
+            //                return false;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Debug.WriteLine("Load File: Saving Failed");
+            //            return false;
+            //            // TODO: Give a message back that saving has failed
+            //        }
+
+
+            //    }
+            //    if (answer == ContentDialogResult.Secondary)
+            //    {
+            //        // Discard changes and open a new file
+            //        Debug.WriteLine("Load File: Discard changes");
+
+            //        TextDataModel data = await FileDataService.Load();
+            //        if (data != null)
+            //        {
+            //            Data = data;
+            //            RefreshTitlebarTitle();
+            //            return true;
+            //        }
+            //        else
+            //        {
+            //            // Do nothing
+            //            Debug.WriteLine("Load File: Loading cancelled");
+            //            return false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        // Close the dialog and do nothing
+            //        Debug.WriteLine("Load File: Dialog cancelled");
+            //        return false;
+            //    }
+            //}
+            //return false;
+
+
             // TODO: Ask if the user wants to save their work before loading another file
             TextDataModel data = await FileDataService.Load();
             if (data != null)
             {
                 Data = data;
+                PreviousData = data;
                 RefreshTitlebarTitle();
+                return true;
             }
             else
             {
-                // Do nothing
+                Debug.WriteLine("Load File: Dialog cancelled");
+                return false;
             }
-
-            return true;
         }
 
 
@@ -320,6 +389,23 @@ namespace NotepadRs4.ViewModels
         private void RefreshTitlebarTitle()
         {
             ApplicationView.GetForCurrentView().Title = Data.DocumentTitle;
+        }
+
+        // Save before closing dialog
+        private async Task<ContentDialogResult> SaveBeforeClosing()
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.Content = "Would you like to save your work?";
+            dialog.Title = "You have unsaved work";
+            dialog.PrimaryButtonText = "Save";
+            dialog.SecondaryButtonText = "Don't save";
+            dialog.CloseButtonText = "Cancel";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            dialog.Background = Application.Current.Resources["SystemControlAcrylicElementMediumHighBrush"] as AcrylicBrush;
+
+            var answer = await dialog.ShowAsync();
+
+            return answer;
         }
     }
 }
