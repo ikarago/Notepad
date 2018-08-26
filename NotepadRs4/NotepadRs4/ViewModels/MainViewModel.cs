@@ -6,6 +6,7 @@ using System.Windows.Input;
 using NotepadRs4.Helpers;
 using NotepadRs4.Models;
 using NotepadRs4.Services;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
@@ -285,8 +286,26 @@ namespace NotepadRs4.ViewModels
             return true;
         }
 
+
+        public async void DropText(DragEventArgs e)
+        {
+            if (e.DataView.Contains(StandardDataFormats.Text))
+            {
+                string tempText = await e.DataView.GetTextAsync();
+
+                // Create a temporary datamodel to swap out so the ViewModel can track the change
+                TextDataModel textDataModel = new TextDataModel();
+                textDataModel.DocumentTitle = _data.DocumentTitle;
+                textDataModel.Text = (_data.Text += tempText);
+
+                Data = textDataModel;                
+            }
+        }
+
+
+
         // Go to Settings Page
-        public void GoToSettings()
+        private void GoToSettings()
         {
             NavigationService.Navigate(typeof(Views.SettingsPage));
         }

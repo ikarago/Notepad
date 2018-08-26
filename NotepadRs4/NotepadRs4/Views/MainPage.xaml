@@ -298,9 +298,13 @@
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                  InputScope="Default" 
                  AcceptsReturn="True" 
+                 AllowDrop="True"
+                 CanDrag="True"
                  Style="{StaticResource TextBoxStyleTransparent}"
                  IsSpellCheckEnabled="False"
-                 Text="{x:Bind ViewModel.Data.Text, Mode=TwoWay}"/>
+                 Text="{x:Bind ViewModel.Data.Text, Mode=TwoWay}"
+                 Drop="txtContent_Drop"
+                 DragOver="txtContent_DragOver"/>
 
 
     </Grid>
