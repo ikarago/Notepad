@@ -72,7 +72,10 @@ namespace NotepadRs4.Services
                 {
                     await defaultHandler.HandleAsync(activationArgs);
                 }
+
+                // Set custom stuff
                 SetTitlebar();
+                SetMinimalWindowSize();
 
                 // Ensure the current window is active
                 Window.Current.Activate();
@@ -127,15 +130,15 @@ namespace NotepadRs4.Services
             ApplicationViewTitleBar titlebar = ApplicationView.GetForCurrentView().TitleBar;
             titlebar.ButtonBackgroundColor = Colors.Transparent;
             titlebar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            //var lol = Application.Current.Resources["SystemControlAcrylicWindowBrush"] as AcrylicBrush;
-            //titlebar.BackgroundColor = lol.FallbackColor;
-            //titlebar.ButtonForegroundColor = Colors.White;
-            //titlebar.ForegroundColor = Colors.White;
 
             // Extend the normal window to the Titlebar for the blur to reach there too
             CoreApplicationViewTitleBar coreTitlebar = CoreApplication.GetCurrentView().TitleBar;
             coreTitlebar.ExtendViewIntoTitleBar = true;
+        }
 
+        private void SetMinimalWindowSize()
+        {
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Windows.Foundation.Size(320, 300));
         }
     }
 }

@@ -249,6 +249,14 @@
                     </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarSeparator />
+                <!-- New idea: Toggle to keep Notepad on Top -->
+                <!--<AppBarToggleButton x:Name="ctbtnAlwaysOnTop"
+                                    Label="Always on top"
+                                    Visibility="Visible">
+                    <AppBarToggleButton.Icon>
+                        <FontIcon Glyph="&#xF26E;" />
+                    </AppBarToggleButton.Icon>
+                </AppBarToggleButton>-->
                 <AppBarButton x:Name="cbtnFontOptions"
                               Icon="Font"
                               Label="Font options"
