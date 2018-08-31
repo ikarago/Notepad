@@ -100,7 +100,9 @@ namespace NotepadRs4.Services
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()
         {
+            yield return Singleton<FileAssociationService>.Instance;
             yield return Singleton<SuspendAndResumeService>.Instance;
+            yield break;
         }
 
         private bool IsInteractive(object args)

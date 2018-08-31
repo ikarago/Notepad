@@ -13,6 +13,7 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 namespace NotepadRs4.ViewModels
 {
@@ -55,6 +56,17 @@ namespace NotepadRs4.ViewModels
                 TextDataModel data = new TextDataModel();
                 data.DocumentTitle = "Untitled";
                 Data = data;
+                RefreshTitlebarTitle();
+            }
+        }
+
+        public async void InitializeByFileActivation(StorageFile file)
+        {
+            TextDataModel data = await FileDataService.LoadWithoutPrompt(file);
+            if (data != null)
+            {
+                Data = data;
+                PreviousData = data;
                 RefreshTitlebarTitle();
             }
         }

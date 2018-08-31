@@ -40,6 +40,11 @@ namespace NotepadRs4
             await ActivationService.ActivateAsync(args);
         }
 
+        protected override async void OnFileActivated(FileActivatedEventArgs args)
+        {
+            await ActivationService.ActivateAsync(args);
+        }
+
         private ActivationService CreateActivationService()
         {
             return new ActivationService(this, typeof(Views.MainPage));

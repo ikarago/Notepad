@@ -130,5 +130,37 @@ namespace NotepadRs4.Services
 
             return data;
         }
+
+        // Load without prompt (for when loading from Explorer)
+        public static async Task<TextDataModel> LoadWithoutPrompt(StorageFile file)
+        {
+            TextDataModel data = null;
+
+            if (file != null)
+            {
+                try
+                {
+                    data = new TextDataModel();
+
+                    // Textdata
+                    data.Text = await FileIO.ReadTextAsync(file);
+                    data.DocumentTitle = file.DisplayName + file.FileType;
+
+                    // Get Fast Access token
+                    string faToken = Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
+                    // TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
+                    // TODO: Store this token somewhere
+
+
+                    Debug.WriteLine("File " + file.Name + " has been loaded");
+                }
+                catch
+                {
+                    Debug.WriteLine("Loading failed");
+                }
+            }
+
+            return data;
+        }
     }
 }

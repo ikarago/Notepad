@@ -1,7 +1,7 @@
 ﻿using System;
 
 using NotepadRs4.ViewModels;
-
+using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -18,7 +18,16 @@ namespace NotepadRs4.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ViewModel.Initialize();
+            if (e.Parameter is StorageFile)
+            {
+                StorageFile file = e.Parameter as StorageFile;
+                ViewModel.InitializeByFileActivation(file);
+            }
+            else
+            {
+                ViewModel.Initialize();
+            }
+
         }
 
         // TODO: Check if this can be done soly by the ViewModel
