@@ -58,10 +58,12 @@
             Margin="0,12">
             <TextBlock
                 x:Uid="Settings_Personalization"
+                FontWeight="Bold"
                 Style="{StaticResource SubtitleTextBlockStyle}" />
             <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
                 <TextBlock
                     x:Uid="Settings_Theme"
+                    FontWeight="SemiBold"
                     Style="{StaticResource BodyTextStyle}" />
 
                 <StackPanel Margin="{StaticResource EightTopMargin}">
@@ -97,6 +99,7 @@
 
             <TextBlock
                 x:Uid="Settings_About"
+                FontWeight="Bold"
                 Style="{StaticResource SubtitleTextBlockStyle}" />
 
             <StackPanel Margin="{StaticResource EightTopMargin}">
