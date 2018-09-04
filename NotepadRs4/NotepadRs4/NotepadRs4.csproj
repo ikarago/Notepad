@@ -228,6 +228,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Assets\Icons\WhatsNewDark.png" />
+    <Content Include="Assets\Icons\WhatsNewLight.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />

@@ -190,7 +190,7 @@
     <comment>What's new prompt message body</comment>
   </data>
   <data name="AfterUpdate_Title.Text" xml:space="preserve">
-    <value>What's new in this version</value>
+    <value>What's new?</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="About_Title.Text" xml:space="preserve">

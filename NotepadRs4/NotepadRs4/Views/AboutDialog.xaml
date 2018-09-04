@@ -58,35 +58,35 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+                
+            <!-- App logo -->
             <Image Grid.Column="0"
                    Source="/Assets/Square44x44Logo.targetsize-48.png" 
                    Height="38"
                    Width="38"
                    VerticalAlignment="Center"/>
-            
+
             <StackPanel Grid.Column="1"
                         Margin="24,0,12,0">
-                <!-- #TODO: make this dynamic -->
+                <!-- App Title -->
+                <!-- #TODO: Make this more dynamic -->
                 <TextBlock Text="Notepad"
                            Style="{ThemeResource SubtitleTextBlockStyle}"
                            FontWeight="Bold"/>
-                <TextBlock
-                    Text="{x:Bind ViewModel.VersionNumber, Mode=OneWay}" />
+                <!-- Version number -->
+                <TextBlock Text="{x:Bind ViewModel.VersionNumber, Mode=OneWay}" 
+                           Style="{ThemeResource CaptionTextBlockStyle}"/>
+                <!-- About Description -->
                 <TextBlock Text="text"
-                    x:Uid="Settings_AboutDescription"
-                       TextWrapping="Wrap"
-                    Margin="{StaticResource EightTopMargin}" />
-
+                           x:Uid="Settings_AboutDescription"
+                           TextWrapping="Wrap"
+                           Margin="{StaticResource EightTopMargin}" />
+                <!-- Privacy Policy -->
                 <HyperlinkButton
                     x:Uid="Settings_PrivacyTermsLink"
                     Margin="{StaticResource EightTopMargin}"
                     NavigateUri="https://ikarago.tumblr.com/privacy-policy"/>
             </StackPanel>
-
-
         </Grid>
-
-
     </Grid>
 </ContentDialog>

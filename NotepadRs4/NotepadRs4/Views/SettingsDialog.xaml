@@ -9,7 +9,7 @@
     xmlns:xaml="using:Windows.UI.Xaml"
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlAcrylicElementBrush}"
-    BorderBrush="{ThemeResource SystemControlBackgroundTransparentRevealBorderBrush}"
+    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
     RequestedTheme="{x:Bind ViewModel.ElementTheme, Mode=OneWay}">
     <ContentDialog.Resources>
         <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
