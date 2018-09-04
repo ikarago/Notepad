@@ -267,7 +267,7 @@
                               Command="{x:Bind ViewModel.SettingsCommand}"/>
                 <AppBarButton x:Name="cbtnAbout"
                               Label="About"
-                              Visibility="Collapsed">
+                              Command="{x:Bind ViewModel.AboutCommand}">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE946;"/>
                     </AppBarButton.Icon>

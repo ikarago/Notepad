@@ -6,6 +6,7 @@ using System.Windows.Input;
 using NotepadRs4.Helpers;
 using NotepadRs4.Models;
 using NotepadRs4.Services;
+using NotepadRs4.Views;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.UI.Popups;
@@ -170,10 +171,27 @@ namespace NotepadRs4.ViewModels
                     _settingsCommand = new RelayCommand(
                         async () =>
                         {
-                            GoToSettings();
+                            ShowSettingsDialog();
                         });
                 }
                 return _settingsCommand;
+            }
+        }
+
+        private ICommand _aboutCommand;
+        public ICommand AboutCommand
+        {
+            get
+            {
+                if (_aboutCommand == null)
+                {
+                    _aboutCommand = new RelayCommand(
+                        async () =>
+                        {
+                            ShowAboutDialog();
+                        });
+                }
+                return _aboutCommand;
             }
         }
 
@@ -392,6 +410,20 @@ namespace NotepadRs4.ViewModels
         private void GoToSettings()
         {
             NavigationService.Navigate(typeof(Views.SettingsPage));
+        }
+
+        // Show Settings-dialog
+        private async void ShowSettingsDialog()
+        {
+            var dialog = new SettingsDialog();
+            await dialog.ShowAsync();
+        }
+
+        // Show About-dialog
+        private async void ShowAboutDialog()
+        {
+            var dialog = new AboutDialog();
+            await dialog.ShowAsync();
         }
 
 

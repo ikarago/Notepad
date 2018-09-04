@@ -7,7 +7,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace NotepadRs4.Views
 {
-    // TODO WTS: Change the URL for your privacy policy in the Resource File, currently set to https://YourPrivacyUrlGoesHere
     public sealed partial class SettingsPage : Page
     {
         public SettingsViewModel ViewModel { get; } = new SettingsViewModel();
@@ -17,7 +16,7 @@ namespace NotepadRs4.Views
             InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel.Initialize();
         }

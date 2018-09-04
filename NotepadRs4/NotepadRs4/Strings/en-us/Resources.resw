@@ -193,4 +193,8 @@
     <value>What's new in this version</value>
     <comment>What's new prompt message title</comment>
   </data>
+  <data name="About_Title.Text" xml:space="preserve">
+    <value>About</value>
+    <comment>Page title for AboutDialog</comment>
+  </data>
 </root>

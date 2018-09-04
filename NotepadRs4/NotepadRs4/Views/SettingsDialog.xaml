@@ -1,0 +1,107 @@
+﻿<ContentDialog
+    x:Class="NotepadRs4.Views.SettingsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NotepadRs4.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helper="using:NotepadRs4.Helpers"
+    xmlns:xaml="using:Windows.UI.Xaml"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemControlAcrylicElementBrush}"
+    BorderBrush="{ThemeResource SystemControlBackgroundTransparentRevealBorderBrush}"
+    RequestedTheme="{x:Bind ViewModel.ElementTheme, Mode=OneWay}">
+    <ContentDialog.Resources>
+        <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
+    </ContentDialog.Resources>
+    
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title with back button -->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Visibility="Visible"
+                    Padding="0,0,0,6"
+                    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                    BorderThickness="0,0,0,1">
+            <Button Style="{ThemeResource NavigationBackButtonNormalStyle}"
+                    Command="{x:Bind CloseDialogCommand}"/>
+            <TextBlock x:Uid="Settings_Title"
+                       Text="Settings"
+                       Margin="12,0"
+                       VerticalAlignment="Center"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       FontWeight="Bold"/>
+        </StackPanel>
+        
+        
+        <!-- Title and close button -->
+        <RelativePanel Grid.Row="0"
+                       HorizontalAlignment="Stretch"
+                       Visibility="Collapsed"
+                       Padding="0,0,0,6"
+                       BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                       BorderThickness="0,0,0,1">
+            <TextBlock Text="Settings"
+                       FontWeight="Bold"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"/>
+            <Button Content="&#xE106;"
+                    Background="Transparent"
+                    FontFamily="Segoe MDL2 Assets"
+                    Height="40"
+                    Width="40"
+                    RelativePanel.AlignRightWithPanel="True"
+                    Command="{x:Bind CloseDialogCommand}"/>
+        </RelativePanel>
+        
+        <!-- Content -->
+        <StackPanel Grid.Row="1"
+                    Padding="0,12,0,0">
+            <TextBlock Text="Personaization"
+                x:Uid="Settings_Personalization"
+                FontWeight="Bold"
+                Style="{StaticResource SubtitleTextBlockStyle}" />
+            <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
+                <TextBlock Text="Theme"
+                    x:Uid="Settings_Theme"
+                    FontWeight="SemiBold"
+                    Style="{StaticResource BodyTextStyle}" />
+
+                <StackPanel Margin="{StaticResource EightTopMargin}">
+                    <RadioButton 
+                        x:Uid="Settings_Theme_Light"
+                        GroupName="AppTheme"
+                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
+                        Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                        <RadioButton.CommandParameter>
+                            <xaml:ElementTheme>Light</xaml:ElementTheme>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        x:Uid="Settings_Theme_Dark"
+                        GroupName="AppTheme"
+                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
+                        Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                        <RadioButton.CommandParameter>
+                            <xaml:ElementTheme>Dark</xaml:ElementTheme>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        x:Uid="Settings_Theme_Default"
+                        GroupName="AppTheme"
+                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
+                        Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                        <RadioButton.CommandParameter>
+                            <xaml:ElementTheme>Default</xaml:ElementTheme>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

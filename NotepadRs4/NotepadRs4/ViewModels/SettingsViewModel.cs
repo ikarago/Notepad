@@ -6,6 +6,7 @@ using NotepadRs4.Services;
 
 using Windows.ApplicationModel;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace NotepadRs4.ViewModels
 {
@@ -64,9 +65,6 @@ namespace NotepadRs4.ViewModels
             }
         }
 
-
-
-
         public SettingsViewModel()
         {
         }
@@ -94,5 +92,14 @@ namespace NotepadRs4.ViewModels
                 NavigationService.GoBack();
             }
         }
+
+        /*
+        private void CloseDialog(ContentDialog dialog)
+        {
+            if (dialog != null)
+            {
+                dialog.Hide();
+            }
+        } */
     }
 }

@@ -56,18 +56,18 @@
             Grid.Row="2"
             x:Name="ContentArea"
             Margin="0,12">
-            <TextBlock
+            <TextBlock Text="Personaization"
                 x:Uid="Settings_Personalization"
                 FontWeight="Bold"
                 Style="{StaticResource SubtitleTextBlockStyle}" />
             <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
-                <TextBlock
+                <TextBlock Text="Theme"
                     x:Uid="Settings_Theme"
                     FontWeight="SemiBold"
                     Style="{StaticResource BodyTextStyle}" />
 
                 <StackPanel Margin="{StaticResource EightTopMargin}">
-                    <RadioButton
+                    <RadioButton 
                         x:Uid="Settings_Theme_Light"
                         GroupName="AppTheme"
                         IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
@@ -97,7 +97,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <TextBlock
+            <TextBlock Text="About"
                 x:Uid="Settings_About"
                 FontWeight="Bold"
                 Style="{StaticResource SubtitleTextBlockStyle}" />
@@ -105,7 +105,7 @@
             <StackPanel Margin="{StaticResource EightTopMargin}">
                 <TextBlock
                     Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" />
-                <TextBlock
+                <TextBlock Text="text"
                     x:Uid="Settings_AboutDescription"
                     Margin="{StaticResource EightTopMargin}" />
 
