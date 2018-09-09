@@ -62,7 +62,7 @@
         <!-- Content -->
         <StackPanel Grid.Row="1"
                     Padding="0,12,0,0">
-            <TextBlock Text="Personaization"
+            <TextBlock Text="Personalization"
                 x:Uid="Settings_Personalization"
                 FontWeight="Bold"
                 Style="{StaticResource SubtitleTextBlockStyle}" />

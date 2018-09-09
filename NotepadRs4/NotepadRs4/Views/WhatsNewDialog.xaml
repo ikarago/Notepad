@@ -21,6 +21,7 @@
                     Padding="0,0,0,8"
                     BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                     BorderThickness="0,0,0,1">
+            <!-- #TODO: Change to white icon when Light-mode is used -->
             <Image Source="/Assets/Icons/WhatsNewDark.png" Width="32" Height="32" Margin="8"/>
 
             <TextBlock Text="&#xE781;"
@@ -66,15 +67,4 @@
             </TextBlock>
         </StackPanel>
     </Grid>
-    
-    
-    <!--<ScrollViewer>
-        <StackPanel>
-            <TextBlock x:Uid="AfterUpdate_Body" TextWrapping="WrapWholeWords">
-                <Run>Something cool has happened.</Run><LineBreak/>
-                <Run>Like cool new stability and performance fixes.</Run><LineBreak/>
-                <Run>Maybe a new feature as well, who knows?</Run><LineBreak/>
-            </TextBlock>
-        </StackPanel>
-    </ScrollViewer>-->
 </ContentDialog>

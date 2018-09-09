@@ -186,7 +186,7 @@
     <comment>View disposed</comment>
   </data>
   <data name="AfterUpdate_Body.Text" xml:space="preserve">
-    <value>This is the initial version for on the store. It's pretty barebones for now, but it does the trick. Happy editing!</value>
+    <value>We've updated the looks of the Settings-page and About-page. Happy editing!</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="AfterUpdate_Title.Text" xml:space="preserve">
