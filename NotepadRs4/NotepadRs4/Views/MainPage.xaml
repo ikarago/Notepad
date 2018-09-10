@@ -202,12 +202,12 @@
         </Grid>
 
         <!-- Commandbar -->
-        <controls:OpenDownCommandBar x:Name="cmbar"
+        <CommandBar x:Name="cmbar"
                                      Grid.Row="1"
                                      Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                                      Style="{ThemeResource CommandBarRevealStyle}" 
                                      ClosedDisplayMode="Compact">
-            <controls:OpenDownCommandBar.PrimaryCommands>
+            <CommandBar.PrimaryCommands>
                 <AppBarButton x:Name="cbtnNewFile"
                               Icon="Add"
                               Label="New"
@@ -234,8 +234,8 @@
                               Icon="Find"
                               Label="Find and Replace"
                               Visibility="Collapsed"/>
-            </controls:OpenDownCommandBar.PrimaryCommands>
-            <controls:OpenDownCommandBar.SecondaryCommands>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
                 <AppBarButton x:Name="cbtnSaveAsFile"
                               Icon="SaveLocal"
                               Label="Save As..."
@@ -272,8 +272,8 @@
                         <FontIcon Glyph="&#xE946;"/>
                     </AppBarButton.Icon>
                 </AppBarButton>
-            </controls:OpenDownCommandBar.SecondaryCommands>
-        </controls:OpenDownCommandBar>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
 
         <!-- Search 'n replace bar -->
         <StackPanel x:Name="gridSearch"
