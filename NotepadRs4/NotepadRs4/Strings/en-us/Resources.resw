@@ -197,4 +197,8 @@
     <value>About</value>
     <comment>Page title for AboutDialog</comment>
   </data>
+  <data name="Settings_TextWrapping.Text" xml:space="preserve">
+    <value>Text Wrapping</value>
+    <comment>Text Wrapping title for Settings</comment>
+  </data>
 </root>

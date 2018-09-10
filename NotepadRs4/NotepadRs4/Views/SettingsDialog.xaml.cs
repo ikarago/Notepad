@@ -20,7 +20,7 @@ namespace NotepadRs4.Views
 {
     public sealed partial class SettingsDialog : ContentDialog
     {
-        public SettingsViewModel ViewModel { get; } = new SettingsViewModel();
+        public SettingsViewModel ViewModel { get; } = Singleton<SettingsViewModel>.Instance;
 
         public SettingsDialog()
         {

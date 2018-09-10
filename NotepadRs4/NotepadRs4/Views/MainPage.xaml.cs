@@ -1,5 +1,5 @@
 ﻿using System;
-
+using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
@@ -10,6 +10,7 @@ namespace NotepadRs4.Views
     public sealed partial class MainPage : Page
     {
         public MainViewModel ViewModel { get; } = new MainViewModel();
+        public SettingsViewModel SettingViewModel { get; } = Singleton<SettingsViewModel>.Instance;
 
         public MainPage()
         {

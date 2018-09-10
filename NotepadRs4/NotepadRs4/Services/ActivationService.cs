@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using NotepadRs4.Activation;
 using NotepadRs4.Helpers;
-
+using NotepadRs4.ViewModels;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
@@ -88,6 +88,7 @@ namespace NotepadRs4.Services
         private async Task InitializeAsync()
         {
             await ThemeSelectorService.InitializeAsync();
+            await Singleton<SettingsViewModel>.Instance.EnsureInstanceInitializedAsync();
             await Task.CompletedTask;
         }
 

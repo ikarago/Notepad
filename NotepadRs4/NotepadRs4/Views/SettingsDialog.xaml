@@ -13,6 +13,7 @@
     RequestedTheme="{x:Bind ViewModel.ElementTheme, Mode=OneWay}">
     <ContentDialog.Resources>
         <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
+        <helper:BoolToTextWrappingConverter x:Key="BoolToTextWrappingConverter" />
     </ContentDialog.Resources>
     
     <Grid Margin="0">
@@ -62,10 +63,20 @@
         <!-- Content -->
         <StackPanel Grid.Row="1"
                     Padding="0,12,0,0">
+            <!-- Personalization -->
             <TextBlock Text="Personalization"
                 x:Uid="Settings_Personalization"
                 FontWeight="Bold"
                 Style="{StaticResource SubtitleTextBlockStyle}" />
+            <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
+                <TextBlock x:Uid="Settings_TextWrapping"
+                           Text="Text Wrapping"
+                           FontWeight="SemiBold"
+                           Style="{ThemeResource BodyTextStyle}"/>
+                <ToggleSwitch IsOn="{x:Bind ViewModel.TextWrapping, Mode=TwoWay, Converter={StaticResource BoolToTextWrappingConverter}, ConverterParameter=Reverse}" />
+            </StackPanel>
+            
+            <!-- Theme -->
             <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
                 <TextBlock Text="Theme"
                     x:Uid="Settings_Theme"

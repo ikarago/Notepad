@@ -298,6 +298,7 @@
         </StackPanel>
 
         <!-- Textbox -->
+        <!-- #TODO: Create a convertor to enable wrapping -->
         <TextBox x:Name="txtContent"
                  Grid.Row="3"
                  BorderThickness="0"
@@ -307,7 +308,7 @@
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                  InputScope="Default" 
                  AcceptsReturn="True" 
-                 TextWrapping="Wrap"
+                 TextWrapping="{x:Bind SettingViewModel.TextWrapping, Mode=OneWay}"
                  AllowDrop="True"
                  CanDrag="True"
                  Style="{StaticResource TextBoxStyleTransparent}"
