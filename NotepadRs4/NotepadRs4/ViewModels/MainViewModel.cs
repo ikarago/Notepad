@@ -202,6 +202,7 @@ namespace NotepadRs4.ViewModels
         public async void NewFile()
         {
             // #TODO: Ask the user to save the current file if there is one open
+            // #BUG: ContentDialog is bugged on Mobile and will crash the app in it's current implementation
             if (_data.Text != "")
             {
                 var answer = await SaveBeforeClosing();

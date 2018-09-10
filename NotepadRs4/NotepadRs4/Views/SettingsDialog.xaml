@@ -7,10 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helper="using:NotepadRs4.Helpers"
     xmlns:xaml="using:Windows.UI.Xaml"
-    mc:Ignorable="d"
-    Background="{ThemeResource SystemControlAcrylicElementBrush}"
-    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-    RequestedTheme="{x:Bind ViewModel.ElementTheme, Mode=OneWay}">
+    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 5)"
+    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+    
+    contract5NotPresent:Background="{ThemeResource SystemControlBackgroundAltHighBrush}"
+    contract5NotPresent:BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}"
+    contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}"
+    contract5Present:BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+    
+    RequestedTheme="{x:Bind ViewModel.ElementTheme, Mode=OneWay}"
+    
+    mc:Ignorable="d">
     <ContentDialog.Resources>
         <helper:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="ElementTheme" />
         <helper:BoolToTextWrappingConverter x:Key="BoolToTextWrappingConverter" />
