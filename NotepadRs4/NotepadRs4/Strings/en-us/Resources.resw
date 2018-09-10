@@ -149,21 +149,21 @@
     <value>Light</value>
     <comment>Light theme text for Settings</comment>
   </data>
-  <data name="Settings_About.Text" xml:space="preserve">
+  <data name="About_About.Text" xml:space="preserve">
     <value>About this application</value>
-    <comment>About this application title for Settings</comment>
+    <comment>About this application title for About</comment>
   </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">
+  <data name="About_AboutDescription.Text" xml:space="preserve">
     <value>Modern Notepad, created and programmed by Ikarago, 2018</value>
-    <comment>About this application description for Settings</comment>
+    <comment>About this application description for About</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
+  <data name="About_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
-    <comment>Privacy Statement link content for Settings</comment>
+    <comment>Privacy Statement link content for About</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
+  <data name="About_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://ikarago.tumblr.com/privacy-policy</value>
-    <comment>Here is your Privacy Statement url for Settings</comment>
+    <comment>Privacy Statement url for About</comment>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
@@ -186,7 +186,7 @@
     <comment>View disposed</comment>
   </data>
   <data name="AfterUpdate_Body.Text" xml:space="preserve">
-    <value>We've updated the looks of the Settings-page and About-page. Happy editing!</value>
+    <value>We've added the option to control the Text Wrapping of your document view. We've also made quite a few improvements under the hood. Happy editing!</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="AfterUpdate_Title.Text" xml:space="preserve">
@@ -200,5 +200,13 @@
   <data name="Settings_TextWrapping.Text" xml:space="preserve">
     <value>Text Wrapping</value>
     <comment>Text Wrapping title for Settings</comment>
+  </data>
+  <data name="About_GitHubLink.Content" xml:space="preserve">
+    <value>GitHub project</value>
+    <comment>GitHub project link content for About</comment>
+  </data>
+  <data name="About_GitHubLink.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ikarago/Notepad</value>
+    <comment>Link to the GitHub project for About</comment>
   </data>
 </root>

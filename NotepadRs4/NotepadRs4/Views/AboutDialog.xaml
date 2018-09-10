@@ -65,6 +65,7 @@
             </Grid.ColumnDefinitions>
                 
             <!-- App logo -->
+            <!-- #TODO: Make this dynamic with the Light/Dark themes -->
             <Image Grid.Column="0"
                    Source="/Assets/Square44x44Logo.targetsize-48.png" 
                    Height="38"
@@ -82,14 +83,21 @@
                 <TextBlock Text="{x:Bind ViewModel.VersionNumber, Mode=OneWay}" 
                            Style="{ThemeResource CaptionTextBlockStyle}"/>
                 <!-- About Description -->
-                <TextBlock Text="text"
-                           x:Uid="Settings_AboutDescription"
+                <TextBlock Text="Modern Notepad, created and programmed by Ikarago, 2018"
+                           x:Uid="About_AboutDescription"
                            TextWrapping="Wrap"
                            Margin="{StaticResource EightTopMargin}" />
                 <!-- Privacy Policy -->
                 <HyperlinkButton
-                    x:Uid="Settings_PrivacyTermsLink"
+                    x:Uid="About_PrivacyTermsLink"
                     Margin="{StaticResource EightTopMargin}"
+                    Content="Privacy Policy"
+                    NavigateUri="https://ikarago.tumblr.com/privacy-policy"/>
+                <!-- GitHub Project -->
+                <HyperlinkButton
+                    x:Uid="About_GitHubLink"
+                    Margin="{StaticResource EightTopMargin}"
+                    Content="GitHub project"
                     NavigateUri="https://ikarago.tumblr.com/privacy-policy"/>
             </StackPanel>
         </Grid>
