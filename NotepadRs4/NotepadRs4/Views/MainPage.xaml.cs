@@ -29,6 +29,9 @@ namespace NotepadRs4.Views
                 ViewModel.Initialize();
             }
 
+#if DEBUG
+            cbtnPlayground.Visibility = Windows.UI.Xaml.Visibility.Visible;
+#endif
         }
 
         // TODO: Check if this can be done soly by the ViewModel

@@ -118,6 +118,15 @@
                               Icon="Font"
                               Label="Font options"
                               Visibility="Collapsed"/>
+                <AppBarButton x:Name="cbtnPlayground"
+                              Label="Debug"
+                              Visibility="Collapsed"
+                              Command="{x:Bind ViewModel.PlaygroundCommand}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE15E;"/>
+                    </AppBarButton.Icon>
+                </AppBarButton>
+
                 <AppBarButton x:Name="cbtnSettings"
                               Icon="Setting"
                               Label="Settings"

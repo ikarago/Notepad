@@ -17,7 +17,14 @@
     </Page.Resources>
     
     <Grid>
-        <ContentDialog Canvas.ZIndex="100" 
+        <Button x:Name="btnNavigateBack"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Style="{ThemeResource NavigationBackButtonNormalStyle}"
+                Click="btnNavigateBack_Click"/>
+
+
+        <ContentDialog x:Name="testDialog"
                        Content="Test Content you never seem to care about.
                        How about you click on a button or something?"
                        Title="Title Test"
@@ -26,8 +33,12 @@
                        CloseButtonText="ButtonClose"
                        DefaultButton="Primary"
                        Tag="&#xE105;"
-                       BorderThickness="0,0,0,1"
-                       
-                       Style="{StaticResource FluentDialogWithIcon}"/>
+                       BorderThickness="0,0,0,1"/>
+
+        <Button x:Name="btnTest"
+                Content="Press me"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Click="btnTest_Click" />
     </Grid>
 </Page>

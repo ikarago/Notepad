@@ -161,6 +161,23 @@ namespace NotepadRs4.ViewModels
             }
         }
 
+        private ICommand _playgroundCommand;
+        public ICommand PlaygroundCommand
+        {
+            get
+            {
+                if (_playgroundCommand == null)
+                {
+                    _playgroundCommand = new RelayCommand(
+                        async () =>
+                        {
+                            GoToPlayground();
+                        });
+                }
+                return _playgroundCommand;
+            }
+        }
+
         private ICommand _settingsCommand;
         public ICommand SettingsCommand
         {
@@ -407,10 +424,10 @@ namespace NotepadRs4.ViewModels
 
 
 
-        // Go to Settings Page
-        private void GoToSettings()
+        // Go to Playground Page
+        private void GoToPlayground()
         {
-            NavigationService.Navigate(typeof(Views.SettingsPage));
+            NavigationService.Navigate(typeof(Views.XamlPlayground));
         }
 
         // Show Settings-dialog
@@ -439,14 +456,17 @@ namespace NotepadRs4.ViewModels
         // Save before closing dialog
         private async Task<ContentDialogResult> SaveBeforeClosing()
         {
-            ContentDialog dialog = new ContentDialog();
-            dialog.Content = "Would you like to save your work?";
-            dialog.Title = "You have unsaved work";
-            dialog.PrimaryButtonText = "Save";
-            dialog.SecondaryButtonText = "Don't save";
-            dialog.CloseButtonText = "Cancel";
-            dialog.DefaultButton = ContentDialogButton.Primary;
-            dialog.Background = Application.Current.Resources["SystemControlAcrylicElementMediumHighBrush"] as AcrylicBrush;
+            ContentDialog dialog = new ContentDialog()
+            {
+                Content = "Would you like to save your work?",
+                Title = "You have unsaved work",
+                Tag = "&#xE11B;",
+                PrimaryButtonText = "Save",
+                SecondaryButtonText = "Don't save",
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
+                //Style = (Style)Application.Current.Resources["FluentDialogWithIcon2"]
+            };
 
             var answer = await dialog.ShowAsync();
 

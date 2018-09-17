@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotepadRs4.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,18 +14,34 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace NotepadRs4.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// A dumping ground for various testing purposes
     /// </summary>
     public sealed partial class XamlPlayground : Page
     {
         public XamlPlayground()
         {
             this.InitializeComponent();
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+           base.OnNavigatedTo(e);
+        }
+
+        private async void btnTest_Click(object sender, RoutedEventArgs e)
+        {
+            await testDialog.ShowAsync();
+        }
+
+        private void btnNavigateBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack == true)
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }
