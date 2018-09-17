@@ -31,6 +31,7 @@
 
         <!-- Title with back button -->
         <StackPanel Grid.Row="0"
+                    Canvas.ZIndex="10"
                     Orientation="Horizontal"
                     Visibility="Visible"
                     Padding="0,0,0,6"
@@ -69,7 +70,9 @@
         
         <!-- Content -->
         <StackPanel Grid.Row="1"
-                    Padding="0,12,0,0">
+                    Canvas.ZIndex="10"
+                    Padding="0,12,0,0"
+                    ScrollViewer.VerticalScrollMode="Auto">
             <!-- Personalization -->
             <TextBlock Text="Personalization"
                 x:Uid="Settings_Personalization"
@@ -121,5 +124,13 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
+
+        <FontIcon Grid.Row="1"
+                  Canvas.ZIndex="5"
+                  Glyph="&#xE115;"
+                  FontSize="72"
+                  Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Bottom"/>
     </Grid>
 </ContentDialog>

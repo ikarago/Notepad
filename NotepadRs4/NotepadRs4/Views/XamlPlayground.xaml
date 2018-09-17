@@ -18,7 +18,8 @@
     
     <Grid>
         <ContentDialog Canvas.ZIndex="100" 
-                       Content="Test Content"
+                       Content="Test Content you never seem to care about.
+                       How about you click on a button or something?"
                        Title="Title Test"
                        PrimaryButtonText="Button1"
                        SecondaryButtonText="Button2"
@@ -27,6 +28,6 @@
                        Tag="&#xE105;"
                        BorderThickness="0,0,0,1"
                        
-                       Style="{StaticResource FluentDialog}"/>
+                       Style="{StaticResource FluentDialogWithIcon}"/>
     </Grid>
 </Page>

@@ -101,5 +101,14 @@
                     NavigateUri="https://ikarago.tumblr.com/privacy-policy"/>
             </StackPanel>
         </Grid>
+
+        <FontIcon Grid.Row="1"
+                  Canvas.ZIndex="5"
+                  Visibility="Collapsed"
+                  Glyph="&#xE946;"
+                  FontSize="72"
+                  Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Bottom"/>
     </Grid>
 </ContentDialog>
