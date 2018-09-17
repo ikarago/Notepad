@@ -165,6 +165,9 @@
     <Compile Include="Views\WhatsNewDialog.xaml.cs">
       <DependentUpon>WhatsNewDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\XamlPlayground.xaml.cs">
+      <DependentUpon>XamlPlayground.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -173,6 +176,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Styles\ContentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -220,6 +227,10 @@
     <Page Include="Views\WhatsNewDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\XamlPlayground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
