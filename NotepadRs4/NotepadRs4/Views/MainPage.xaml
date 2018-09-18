@@ -20,6 +20,7 @@
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition />
+                <RepositionThemeTransition />
             </TransitionCollection>
         </Grid.ChildrenTransitions>
         <Grid.RowDefinitions>
@@ -77,11 +78,13 @@
                               Icon="Save"
                               Label="Save"
                               Command="{x:Bind ViewModel.SaveFileAsCommand}"/>
-                <AppBarSeparator Visibility="Collapsed"/>
+                <AppBarSeparator x:Name="cbtnSeperator"
+                                 Visibility="Collapsed"/>
                 <AppBarButton x:Name="cbtnFind"
                               Icon="Find"
                               Label="Find and Replace"
-                              Visibility="Collapsed"/>
+                              Visibility="Collapsed"
+                              Command="{x:Bind FindCommand}"/>
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Name="cbtnSaveAsFile"
@@ -133,27 +136,105 @@
         </CommandBar>
 
         <!-- Search 'n replace bar -->
-        <StackPanel x:Name="gridSearch"
-                    Grid.Row="2"
-                    contract5NotPresent:Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                    contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-                    Height="128"
-                    Visibility="Collapsed"
-                    Orientation="Horizontal">
-            <StackPanel.Transitions>
+        <Grid x:Name="gridFind"
+              Grid.Row="2"
+              contract5NotPresent:Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+              contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+              Height="48"
+              Visibility="Collapsed">
+            <!-- Animation libraries -->
+            <Grid.Transitions>
                 <TransitionCollection>
-                    <PopupThemeTransition />
+                    <PaneThemeTransition />
                 </TransitionCollection>
-            </StackPanel.Transitions>
-            <TextBlock Text="Search"
-                       Margin="12,0"
-                       VerticalAlignment="Center"/>
-            <TextBox PlaceholderText="Search for..."
-                     VerticalAlignment="Center"
-                     Width="148"/>
-            <AppBarSeparator VerticalAlignment="Center"/>
+            </Grid.Transitions>
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <RepositionThemeTransition />
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
 
-        </StackPanel>
+            <!-- Grid definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition x:Name="gridFindBarReplaceRow" 
+                               Height="0"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <!-- Icon -->
+            <Button x:Name="btnFindSettings"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Content="&#xE11A;"
+                    FontFamily="Segoe MDL2 Assets"
+                    Background="Transparent"
+                    Visibility="Collapsed"
+                    Width="40"
+                    Height="40"/>
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"
+                       Grid.RowSpan="2"                
+                       Text="&#xE11A;"
+                       FontFamily="Segoe MDL2 Assets"
+                       Margin="12,0"
+                       Width="24"
+                       TextAlignment="Center"
+                       Visibility="Visible"
+                       VerticalAlignment="Center"/>
+            <!-- Find -->
+            <AutoSuggestBox Grid.Row="0"
+                            Grid.Column="1"                
+                            PlaceholderText="Find..."
+                            QueryIcon="Find"
+                            VerticalAlignment="Center"/>
+            <!-- Replace -->
+            <AutoSuggestBox Grid.Row="1"
+                            Grid.Column="1"                
+                            PlaceholderText="Replace..."
+                            VerticalAlignment="Center"
+                            BorderThickness="0,0,0,1"/>
+            <!-- Previous -->
+            <Button x:Name="btnFindPrevious"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Content="&#xE00E;"
+                    FontFamily="Segoe MDL2 Assets"
+                    Background="Transparent"
+                    Width="40"
+                    Height="40"/>
+            <!-- Next -->
+            <Button x:Name="btnFindNext"
+                    Grid.Column="3"
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Content="&#xE00F;"
+                    FontFamily="Segoe MDL2 Assets"
+                    Background="Transparent"
+                    Width="40"
+                    Height="40"/>
+            <!-- Close -->
+            <Button x:Name="btnFindClose"
+                    Grid.Column="4"
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Content="&#xE106;"
+                    FontFamily="Segoe MDL2 Assets"
+                    Background="Transparent"
+                    Width="40"
+                    Height="40"
+                    Command="{x:Bind FindBarCloseCommand}"/>
+
+        </Grid>
 
         <!-- Textbox -->
         <TextBox x:Name="txtContent"

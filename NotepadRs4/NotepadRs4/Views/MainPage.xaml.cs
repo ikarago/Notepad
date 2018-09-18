@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Windows.Input;
 using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
 using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -17,6 +19,49 @@ namespace NotepadRs4.Views
             InitializeComponent();
         }
 
+        // Commands
+        private ICommand _findCommand;
+        public ICommand FindCommand
+        {
+            get
+            {
+                if (_findCommand == null)
+                {
+                    _findCommand = new RelayCommand(
+                        () =>
+                        {
+                            ShowHideFindBar();
+                        });
+                }
+                return _findCommand;
+            }
+        }
+
+        private ICommand _findBarCloseCommand;
+        public ICommand FindBarCloseCommand
+        {
+            get
+            {
+                if (_findBarCloseCommand == null)
+                {
+                    _findBarCloseCommand = new RelayCommand(
+                        () =>
+                        {
+                            CloseFindBar();
+                        });
+                }
+                return _findBarCloseCommand;
+            }
+        }
+
+
+
+
+
+
+
+
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter is StorageFile)
@@ -30,12 +75,18 @@ namespace NotepadRs4.Views
             }
 
 #if DEBUG
-            cbtnPlayground.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            // Show Find & Replace-buttons
+            cbtnFind.Visibility = Visibility.Visible;
+            cbtnSeperator.Visibility = Visibility.Visible;
+
+            // Show XAML Playground-button
+            cbtnPlayground.Visibility = Visibility.Visible;
+
 #endif
         }
 
         // TODO: Check if this can be done soly by the ViewModel
-        private async void txtContent_Drop(object sender, Windows.UI.Xaml.DragEventArgs e)
+        private async void txtContent_Drop(object sender, DragEventArgs e)
         {
             await ViewModel.DropText(e);
             // Set the cursor at the end of the added text
@@ -43,9 +94,33 @@ namespace NotepadRs4.Views
 
         }
         // TODO: Check if this can be done soly by the ViewModel
-        private void txtContent_DragOver(object sender, Windows.UI.Xaml.DragEventArgs e)
+        private void txtContent_DragOver(object sender, DragEventArgs e)
         {
             e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Copy;
         }
+
+
+
+        // Methods
+        private void ShowHideFindBar()
+        {
+            if (gridFind.Visibility == Visibility.Collapsed)
+            {
+                // #TODO: Add animation stuff here
+                gridFind.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                // #TODO: Add animation stuff here
+                gridFind.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void CloseFindBar()
+        {
+            // #TODO: Add animation stuff here
+            gridFind.Visibility = Visibility.Collapsed;
+        }
+
     }
 }
