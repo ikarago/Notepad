@@ -33,7 +33,7 @@
         <Grid Grid.Row="0"
               contract5NotPresent:Background="{ThemeResource SystemControlBackgroundAccentBrush}"
               contract5NotPresent:RequestedTheme="Dark"
-              contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+              contract5Present:Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="imgAppIcon"
                        Height="16"
@@ -61,7 +61,7 @@
                     Grid.Row="1"
                     contract5NotPresent:Background="{ThemeResource SystemControlBackgroundAccentBrush}"
                     contract5NotPresent:RequestedTheme="Dark"
-                    contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                    contract5Present:Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
                     contract5Present:Style="{ThemeResource CommandBarRevealStyle}" 
                     ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
@@ -77,15 +77,6 @@
                               Icon="Save"
                               Label="Save"
                               Command="{x:Bind ViewModel.SaveFileAsCommand}"/>
-                <!--<AppBarButton x:Name="cbtnCut"
-                              Icon="Cut"
-                              Label="Cut" />
-                <AppBarButton x:Name="cbtnCopy"
-                              Icon="Copy"
-                              Label="Copy" />
-                <AppBarButton x:Name="cbtnPaste"
-                              Icon="Paste"
-                              Label="Paste" />-->
                 <AppBarSeparator Visibility="Collapsed"/>
                 <AppBarButton x:Name="cbtnFind"
                               Icon="Find"
@@ -145,7 +136,7 @@
         <StackPanel x:Name="gridSearch"
                     Grid.Row="2"
                     contract5NotPresent:Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                    contract5Present:Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
+                    contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                     Height="128"
                     Visibility="Collapsed"
                     Orientation="Horizontal">

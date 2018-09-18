@@ -92,23 +92,6 @@ namespace NotepadRs4.ViewModels
             }
         }
 
-        private ICommand _navigateBackCommand;
-        public ICommand NavigateBackCommand
-        {
-            get
-            {
-                if (_navigateBackCommand == null)
-                {
-                    _navigateBackCommand = new RelayCommand(
-                        async () =>
-                        {
-                            NavigateBack();
-                        });
-                }
-                return _navigateBackCommand;
-            }
-        }
-
         public SettingsViewModel()
         {
         }
@@ -143,14 +126,6 @@ namespace NotepadRs4.ViewModels
         private async void GetSettingValues()
         {
             TextWrapping = await Windows.Storage.ApplicationData.Current.LocalSettings.ReadAsync<TextWrapping>(nameof(TextWrapping));
-        }
-
-        private void NavigateBack()
-        {
-            if (NavigationService.CanGoBack == true)
-            {
-                NavigationService.GoBack();
-            }
         }
 
         /*
