@@ -138,7 +138,7 @@
         <!-- Search 'n replace bar -->
         <Grid x:Name="gridFind"
               Grid.Row="2"
-              contract5NotPresent:Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+              contract5NotPresent:Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
               contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
               Height="48"
               Visibility="Collapsed">
