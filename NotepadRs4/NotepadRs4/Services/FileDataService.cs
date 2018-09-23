@@ -23,7 +23,6 @@ namespace NotepadRs4.Services
                 {
                     // Prevent remote access to file until saving is done
                     CachedFileManager.DeferUpdates(file);
-                    //file.
 
                     // Write the stuff to the file
                     await FileIO.WriteTextAsync(file, data.Text);
@@ -68,8 +67,8 @@ namespace NotepadRs4.Services
 
                 // Get Fast Access token
                 string faToken = Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
-                // TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
-                // TODO: Store this token somewhere
+                // #TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
+                // #TODO: Store this token somewhere
 
                 // Let Windows know stuff is done
                 FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
@@ -83,8 +82,7 @@ namespace NotepadRs4.Services
                 {
                     Debug.WriteLine("File " + file.Name + " has NOT been saved");
                 }
-
-                // TODO; Let the user know stuff has been saved
+                
             }
 
 
@@ -116,8 +114,8 @@ namespace NotepadRs4.Services
 
                     // Get Fast Access token
                     string faToken = Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
-                    // TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
-                    // TODO: Store this token somewhere
+                    // #TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
+                    // #TODO: Store this token somewhere
 
 
                     Debug.WriteLine("File " + file.Name + " has been loaded");
@@ -148,8 +146,8 @@ namespace NotepadRs4.Services
 
                     // Get Fast Access token
                     string faToken = Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
-                    // TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
-                    // TODO: Store this token somewhere
+                    // #TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
+                    // #TODO: Store this token somewhere
 
 
                     Debug.WriteLine("File " + file.Name + " has been loaded");
