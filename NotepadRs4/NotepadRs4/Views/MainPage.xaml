@@ -32,6 +32,7 @@
 
         <!-- Titlebar -->
         <Grid Grid.Row="0"
+              Canvas.ZIndex="100"
               contract5NotPresent:Background="{ThemeResource SystemControlBackgroundAccentBrush}"
               contract5NotPresent:RequestedTheme="Dark"
               contract5Present:Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
@@ -60,6 +61,7 @@
         <!-- Commandbar -->
         <CommandBar x:Name="cmbar"
                     Grid.Row="1"
+                    Canvas.ZIndex="75"
                     contract5NotPresent:Background="{ThemeResource SystemControlBackgroundAccentBrush}"
                     contract5NotPresent:RequestedTheme="Dark"
                     contract5Present:Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
@@ -138,6 +140,7 @@
         <!-- Search 'n replace bar -->
         <Grid x:Name="gridFind"
               Grid.Row="2"
+              Canvas.ZIndex="50"
               contract5NotPresent:Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
               contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
               Height="48"
@@ -239,6 +242,7 @@
         <!-- Textbox -->
         <TextBox x:Name="txtContent"
                  Grid.Row="3"
+                 Canvas.ZIndex="10"
                  BorderThickness="0"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"

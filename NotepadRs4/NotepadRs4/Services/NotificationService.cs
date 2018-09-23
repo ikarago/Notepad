@@ -18,7 +18,7 @@ namespace NotepadRs4.Services
         {
             // #TODO: Get strings from Resource
             string title = "Save successful!";
-            string content = ("Saved to your device");
+            string content = ("File saved to your device");
 
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {

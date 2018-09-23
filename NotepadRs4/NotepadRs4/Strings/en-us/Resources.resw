@@ -186,7 +186,9 @@
     <comment>View disposed</comment>
   </data>
   <data name="AfterUpdate_Body.Text" xml:space="preserve">
-    <value>We've added the option to control the Text Wrapping of your document view. We've also made quite a few improvements under the hood. Happy editing!</value>
+    <value>We've added Windows Mobile support and improved some of the UX.
+
+Happy editing!</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="AfterUpdate_Title.Text" xml:space="preserve">
