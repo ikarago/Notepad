@@ -44,6 +44,38 @@ namespace NotepadRs4.ViewModels
         }
 
 
+        // UI Notification triggers
+        // Save Successful
+        private Visibility _uxNotificationSaveSuccessful;
+        public Visibility UXNotificationSaveSuccessful
+        {
+            get { return _uxNotificationSaveSuccessful; }
+            set { SetProperty(ref _uxNotificationSaveSuccessful, value); }
+        }
+        // Save Failed
+        private Visibility _uxNotificationSaveFailed;
+        public Visibility UXNotificationSaveFailed
+        {
+            get { return _uxNotificationSaveFailed; }
+            set { SetProperty(ref _uxNotificationSaveFailed, value); }
+        }
+        // Load Successful
+        private Visibility _uxNotificationLoadSuccessful;
+        public Visibility UXNotificationLoadSuccessful
+        {
+            get { return _uxNotificationLoadSuccessful; }
+            set { SetProperty(ref _uxNotificationLoadSuccessful, value); }
+        }
+        // Load Failed
+        private Visibility _uxNotificationLoadFailed;
+        public Visibility UXNotificationLoadFailed
+        {
+            get { return _uxNotificationLoadFailed; }
+            set { SetProperty(ref _uxNotificationLoadFailed, value); }
+        }
+
+
+
         // Main
         public MainViewModel()
         {
@@ -59,6 +91,8 @@ namespace NotepadRs4.ViewModels
                 Data = data;
                 RefreshTitlebarTitle();
             }
+
+            SetUXToggles();
         }
 
         public async void InitializeByFileActivation(StorageFile file)
@@ -70,6 +104,16 @@ namespace NotepadRs4.ViewModels
                 PreviousData = data;
                 RefreshTitlebarTitle();
             }
+
+            SetUXToggles();
+        }
+
+        private void SetUXToggles()
+        {
+            UXNotificationSaveSuccessful = Visibility.Collapsed;
+            UXNotificationSaveFailed = Visibility.Collapsed;
+            UXNotificationLoadSuccessful = Visibility.Collapsed;
+            UXNotificationLoadFailed = Visibility.Collapsed;
         }
         
 
@@ -237,7 +281,8 @@ namespace NotepadRs4.ViewModels
                     {
                         // Show Save Successful Notification
                         Debug.WriteLine("New File: Saving Successful");
-                        NotificationService.ShowNotificationSaveSuccessful();
+                        ShowUXMessage(1);
+                        //NotificationService.ShowNotificationSaveSuccessful();
 
                         // Set up the new empty document
                         TextDataModel emptyData = new TextDataModel();
@@ -250,7 +295,8 @@ namespace NotepadRs4.ViewModels
                     {
                         // Show Save Failed Notification
                         Debug.WriteLine("New File: Saving Failed");
-                        NotificationService.ShowNotificationSaveFailed();
+                        ShowUXMessage(2);
+                        //NotificationService.ShowNotificationSaveFailed();
                     }
 
 
@@ -278,7 +324,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // Save
-        // TODO: Build this correctly and make sure changes are saved without additional file dialogs
+        // #TODO: Build this correctly and make sure changes are saved without additional file dialogs
         public async Task<bool> SaveFile()
         {
             if (File == null)
@@ -315,7 +361,8 @@ namespace NotepadRs4.ViewModels
 
                 // Show Save Successful Notification
                 Debug.WriteLine("Save File As File: Saving Successful");
-                NotificationService.ShowNotificationSaveSuccessful();
+                ShowUXMessage(1);
+                //NotificationService.ShowNotificationSaveSuccessful();
 
                 return true;
             }
@@ -323,7 +370,8 @@ namespace NotepadRs4.ViewModels
             {
                 // Show Save Failed Notification
                 Debug.WriteLine("Save File As: Saving Failed");
-                NotificationService.ShowNotificationSaveFailed();
+                ShowUXMessage(2);
+                //NotificationService.ShowNotificationSaveFailed();
                 return false;
             }
         }
@@ -405,6 +453,7 @@ namespace NotepadRs4.ViewModels
                 Data = data;
                 PreviousData = data;
                 RefreshTitlebarTitle();
+                ShowUXMessage(3);
                 return true;
             }
             else
@@ -481,8 +530,43 @@ namespace NotepadRs4.ViewModels
             };
 
             var answer = await dialog.ShowAsync();
-
             return answer;
+        }
+
+        /// <summary>
+        /// Toggle the Visibility-state of a UX message in the View
+        /// </summary>
+        /// <param name="message">
+        /// 1 = Save Successful,
+        /// 2 = Save Failed,
+        /// 3 = Load Successful,
+        /// 4 = Load Failed</param>
+        private async void ShowUXMessage(int message)
+        {
+            if (message == 1)
+            {
+                UXNotificationSaveSuccessful = Visibility.Visible;
+                await Task.Delay(TimeSpan.FromSeconds(3));
+                UXNotificationSaveSuccessful = Visibility.Collapsed;
+            }
+            else if (message == 2)
+            {
+                UXNotificationSaveFailed = Visibility.Visible;
+                await Task.Delay(TimeSpan.FromSeconds(3));
+                UXNotificationSaveFailed = Visibility.Collapsed;
+            }
+            else if (message == 3)
+            {
+                UXNotificationLoadSuccessful = Visibility.Visible;
+                await Task.Delay(TimeSpan.FromSeconds(3));
+                UXNotificationLoadSuccessful = Visibility.Collapsed;
+            }
+            else if (message == 4)
+            {
+                UXNotificationLoadFailed = Visibility.Visible;
+                await Task.Delay(TimeSpan.FromSeconds(3));
+                UXNotificationLoadFailed = Visibility.Collapsed;
+            }
         }
     }
 }

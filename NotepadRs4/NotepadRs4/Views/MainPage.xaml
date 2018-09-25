@@ -259,6 +259,77 @@
                  Drop="txtContent_Drop"
                  DragOver="txtContent_DragOver"/>
 
+        <!-- UX Messages -->
+        <Grid Grid.Row="3"
+              Canvas.ZIndex="30"
+              Margin="48,0,48,-5"
+              Padding="0,0,0,4"
+              VerticalAlignment="Bottom">
+            <!-- Save successful -->
+            <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
+                        contract5NotPresent:Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                        contract5NotPresent:BorderBrush="{ThemeResource SystemControlBackgroundBaseHighBrush}"
+                        contract5Present:Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
+                        contract5Present:BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                        Visibility="{x:Bind ViewModel.UXNotificationSaveSuccessful, Mode=OneWay}">
+                <TextBlock Text="&#xE10B;"
+                           FontFamily="Segoe MDL2 Assets" 
+                           Margin="0,0,18,0"
+                           VerticalAlignment="Center"
+                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <TextBlock Text="Save successful!" 
+                           Style="{ThemeResource BaseTextBlockStyle}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
 
+            <!-- Save Failed -->
+            <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
+                        Background="Crimson"
+                        contract5NotPresent:BorderBrush="{ThemeResource SystemControlBackgroundBaseHighBrush}"
+                        contract5Present:BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                        Visibility="{x:Bind ViewModel.UXNotificationSaveFailed, Mode=OneWay}">
+                <TextBlock Text="&#xE10A;"
+                           FontFamily="Segoe MDL2 Assets" 
+                           Margin="0,0,18,0"
+                           VerticalAlignment="Center"
+                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <TextBlock Text="Couldn't save your file" 
+                           Style="{ThemeResource BaseTextBlockStyle}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Load successful -->
+            <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
+                        contract5NotPresent:Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                        contract5NotPresent:BorderBrush="{ThemeResource SystemControlBackgroundBaseHighBrush}"
+                        contract5Present:Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
+                        contract5Present:BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                        Visibility="{x:Bind ViewModel.UXNotificationLoadSuccessful, Mode=OneWay}">
+                <TextBlock Text="&#xE1A5;"
+                           FontFamily="Segoe MDL2 Assets" 
+                           Margin="0,0,18,0"
+                           VerticalAlignment="Center"
+                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <TextBlock Text="File opened" 
+                           Style="{ThemeResource BaseTextBlockStyle}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Load Failed -->
+            <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
+                        Background="Crimson"
+                        contract5NotPresent:BorderBrush="{ThemeResource SystemControlBackgroundBaseHighBrush}"
+                        contract5Present:BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                        Visibility="{x:Bind ViewModel.UXNotificationLoadFailed, Mode=OneWay}">
+                <TextBlock Text="&#xE10A;"
+                           FontFamily="Segoe MDL2 Assets" 
+                           Margin="0,0,18,0"
+                           VerticalAlignment="Center"
+                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <TextBlock Text="Couldn't open your file" 
+                           Style="{ThemeResource BaseTextBlockStyle}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 5)"
+    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)">
+    
+    <!-- Normal UX Message -->
+    <Style x:Key="StackPanelUXMessageRegularStyle" TargetType="StackPanel">
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="12,18" />
+        <Setter Property="BorderThickness" Value="1,1,1,0" />
+
+        <!-- Old Style-->
+        <!--<contract5NotPresent:Setter Property="Background" Value="{ThemeResource SystemControlBackgroundBaseBrush}" />
+        <contract5NotPresent:Setter Property="BorderBrush" Value="{ThemeResource SystemControlBackgroundBaseHighBrush}" />-->
+        
+        <!-- Fluent Style -->
+        <!--<contract5Present:Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+        <contract5Present:Setter Property="BorderBrush" Value="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}" />-->
+    </Style>
+    
+    <!-- Error UX Message -->
+    <Style x:Key="StackPanelUXMessageErrorStyle" TargetType="StackPanel">
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="12,18" />
+        <Setter Property="BorderThickness" Value="1,1,1,0" />
+        <Setter Property="RequestedTheme" Value="Dark" />
+        <Setter Property="Background" Value="Red" />
+
+        <!-- Old Style-->
+        <!--<contract5NotPresent:Setter Property="BorderBrush" Value="{ThemeResource SystemControlBackgroundBaseHighBrush}" />-->
+
+        <!-- Fluent Style -->
+        <!--<contract5Present:Setter Property="BorderBrush" Value="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}" />-->
+    </Style>
+</ResourceDictionary>
