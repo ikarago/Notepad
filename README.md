@@ -15,7 +15,7 @@ Currently supported systems:
 
 Windows 10 Desktop ✔
 
-Windows 10 Mobile ❌
+Windows 10 Mobile ✔
 
 Windows 10 Holographic ❌
 
