@@ -10,7 +10,10 @@ using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace NotepadRs4.Services
 {
-    public static class NotificationService
+    // #LEGACY CODE: It's still here so you might learn something from it, but it's not used in the app anymore
+    //      Reason to remove this code is that it has been superseded by the in-app Notifications which keep the experience inside the app and doesn't destract from it with outside influences.
+
+    /*public static class NotificationService
     {
         // Show Notifications (TEMP)        
         // Save Successful
@@ -124,18 +127,5 @@ namespace NotepadRs4.Services
                 await statusbar.ProgressIndicator.HideAsync();
             }
         }
-
-
-
-        // #TODO: Show UI Notification (will replace the other Notification methods)
-
-
-
-
-
-
-
-
-
-    }
+    }*/
 }

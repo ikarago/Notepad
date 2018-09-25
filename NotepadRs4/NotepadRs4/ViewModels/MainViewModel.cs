@@ -82,26 +82,23 @@ namespace NotepadRs4.ViewModels
             Initialize();
         }
 
-        public void Initialize()
+        public async void Initialize(StorageFile file = null)
         {
-            if (_data == null)
+            if (file != null)
+            {
+                TextDataModel data = await FileDataService.LoadWithoutPrompt(file);
+                if (data != null)
+                {
+                    Data = data;
+                    PreviousData = data;
+                    RefreshTitlebarTitle();
+                }
+            }
+            else if (_data == null)
             {
                 TextDataModel data = new TextDataModel();
                 data.DocumentTitle = "Untitled";
                 Data = data;
-                RefreshTitlebarTitle();
-            }
-
-            SetUXToggles();
-        }
-
-        public async void InitializeByFileActivation(StorageFile file)
-        {
-            TextDataModel data = await FileDataService.LoadWithoutPrompt(file);
-            if (data != null)
-            {
-                Data = data;
-                PreviousData = data;
                 RefreshTitlebarTitle();
             }
 
@@ -282,7 +279,6 @@ namespace NotepadRs4.ViewModels
                         // Show Save Successful Notification
                         Debug.WriteLine("New File: Saving Successful");
                         ShowUXMessage(1);
-                        //NotificationService.ShowNotificationSaveSuccessful();
 
                         // Set up the new empty document
                         TextDataModel emptyData = new TextDataModel();
@@ -296,7 +292,6 @@ namespace NotepadRs4.ViewModels
                         // Show Save Failed Notification
                         Debug.WriteLine("New File: Saving Failed");
                         ShowUXMessage(2);
-                        //NotificationService.ShowNotificationSaveFailed();
                     }
 
 
@@ -362,7 +357,6 @@ namespace NotepadRs4.ViewModels
                 // Show Save Successful Notification
                 Debug.WriteLine("Save File As File: Saving Successful");
                 ShowUXMessage(1);
-                //NotificationService.ShowNotificationSaveSuccessful();
 
                 return true;
             }
@@ -371,7 +365,6 @@ namespace NotepadRs4.ViewModels
                 // Show Save Failed Notification
                 Debug.WriteLine("Save File As: Saving Failed");
                 ShowUXMessage(2);
-                //NotificationService.ShowNotificationSaveFailed();
                 return false;
             }
         }
@@ -446,7 +439,7 @@ namespace NotepadRs4.ViewModels
             //return false;
 
 
-            // TODO: Ask if the user wants to save their work before loading another file
+            // #TODO: Ask if the user wants to save their work before loading another file
             TextDataModel data = await FileDataService.Load();
             if (data != null)
             {

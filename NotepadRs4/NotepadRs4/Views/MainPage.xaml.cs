@@ -55,13 +55,7 @@ namespace NotepadRs4.Views
                 return _findBarCloseCommand;
             }
         }
-
-
-
-
-
-
-
+                                 
 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -69,7 +63,7 @@ namespace NotepadRs4.Views
             if (e.Parameter is StorageFile)
             {
                 StorageFile file = e.Parameter as StorageFile;
-                ViewModel.InitializeByFileActivation(file);
+                ViewModel.Initialize(file);
             }
             else
             {
@@ -85,11 +79,10 @@ namespace NotepadRs4.Views
 
             // Show XAML Playground-button
             cbtnPlayground.Visibility = Visibility.Visible;
-
 #endif
         }
 
-        // TODO: Check if this can be done soly by the ViewModel
+        // #TODO: Check if this can be done soly by the ViewModel
         private async void txtContent_Drop(object sender, DragEventArgs e)
         {
             await ViewModel.DropText(e);
@@ -97,7 +90,7 @@ namespace NotepadRs4.Views
             txtContent.Select(txtContent.Text.Length, 0);
 
         }
-        // TODO: Check if this can be done soly by the ViewModel
+        // #TODO: Check if this can be done soly by the ViewModel
         private void txtContent_DragOver(object sender, DragEventArgs e)
         {
             e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Copy;
@@ -110,22 +103,20 @@ namespace NotepadRs4.Views
         {
             if (gridFind.Visibility == Visibility.Collapsed)
             {
-                // #TODO: Add animation stuff here
                 gridFind.Visibility = Visibility.Visible;
             }
             else
             {
-                // #TODO: Add animation stuff here
                 gridFind.Visibility = Visibility.Collapsed;
             }
         }
 
         private void CloseFindBar()
         {
-            // #TODO: Add animation stuff here
             gridFind.Visibility = Visibility.Collapsed;
         }
 
+        // Set the StatusBar on Windows 10 Mobile devices so it doesn't look buttugly on those devices
         private async void SetStatusBar()
         {
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
