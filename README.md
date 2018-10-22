@@ -1,24 +1,25 @@
 # Notepad
 
-A simple Notepad proof-of-concept-app inspired by the design work of Michael West - https://michaelwest.design/
+A Fluent-style Notepad-application because Microsoft doesn't make it.
 
-This app still is in a very early stage, as it was meant as an XAML proof-of-concept for Notepad with Fluent Design. Feel free to check it out!
+The design of the app has been inspired by the work of Michael West, go give that man your cheers over on his website ;) - https://michaelwest.design/
 
-Not feeling like building the project yourself? A build and signed version is available to download from the Microsoft Store for free! https://www.microsoft.com/store/apps/9N7LRQ8P8PD5
+## Get the app
+**For purists**: you can build and tinker with the project yourself.
 
-=========================================================
+**For anyone else who hasn't lost his/her mind yet**: you can also just download the signed app from the Microsoft Store here: https://www.microsoft.com/store/apps/9N7LRQ8P8PD5
 
-Minimal supported Windows 10 version: 15063 (Creators Update)
+## Supported Windows versions
+**Minimal supported Windows 10 version:** 15063 (Creators Update)
+
+**Currently supported systems:**
+
+* Windows 10 Desktop ✔
+* Windows 10 Mobile ✔
+* Windows 10 Team ✔
+* Windows 10 Holographic ❌
+* Windows 10 Xbox ❌
 
 
-Currently supported systems:
-
-Windows 10 Desktop ✔
-
-Windows 10 Mobile ✔
-
-Windows 10 Holographic ❌
-
-Windows 10 Team ❌
-
-Windows 10 Xbox ❌
+## Support me
+**Like this project?** Buy me a coffee: https://paypal.me/ikarago
