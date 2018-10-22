@@ -98,7 +98,7 @@
                     x:Uid="About_GitHubLink"
                     Margin="{StaticResource EightTopMargin}"
                     Content="GitHub project"
-                    NavigateUri="https://ikarago.tumblr.com/privacy-policy"/>
+                    NavigateUri="https://github.com/ikarago/Notepad"/>
             </StackPanel>
         </Grid>
 
