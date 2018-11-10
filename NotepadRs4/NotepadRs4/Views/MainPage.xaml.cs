@@ -7,6 +7,7 @@ using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 namespace NotepadRs4.Views
@@ -19,6 +20,10 @@ namespace NotepadRs4.Views
         public MainPage()
         {
             InitializeComponent();
+
+            // Put in triggers for the logo
+            this.ActualThemeChanged += MainPage_ActualThemeChanged;
+            CheckThemeForLogo();
         }
 
         // Commands
@@ -114,6 +119,26 @@ namespace NotepadRs4.Views
         private void CloseFindBar()
         {
             gridFind.Visibility = Visibility.Collapsed;
+        }
+
+        private void MainPage_ActualThemeChanged(FrameworkElement sender, object args)
+        {
+            CheckThemeForLogo();
+        }
+
+        private void CheckThemeForLogo()
+        {
+            // Change the displayed logo
+            if (ActualTheme == ElementTheme.Dark)
+            {
+                BitmapImage image = new BitmapImage(new Uri("ms-appx:///Assets/Logo/contrast-black/Square44x44Logo.altform-unplated_targetsize-256.png"));
+                imgAppIcon.Source = image;
+            }
+            else if (ActualTheme == ElementTheme.Light)
+            {
+                BitmapImage image = new BitmapImage(new Uri("ms-appx:///Assets/Logo/contrast-white/Square44x44Logo.altform-unplated_targetsize-256.png"));
+                imgAppIcon.Source = image;
+            }
         }
 
         // Set the StatusBar on Windows 10 Mobile devices so it doesn't look buttugly on those devices
