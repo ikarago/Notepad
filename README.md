@@ -11,6 +11,7 @@ The design of the app has been inspired by the work of Michael West, go give tha
 
 ## Supported Windows versions
 **Minimal supported Windows 10 version:** 16299 (Fall Creators Update)
+
 **Minimal supported Windows 10 version: (mobile-branch)** 15086 (Creators Update)
 
 **Currently supported systems:**
