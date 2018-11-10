@@ -10,14 +10,14 @@ The design of the app has been inspired by the work of Michael West, go give tha
 **For anyone else who hasn't lost his/her mind yet**: you can also just download the signed app from the Microsoft Store here: https://www.microsoft.com/store/apps/9N7LRQ8P8PD5
 
 ## Supported Windows versions
-**Minimal supported Windows 10 version:** 15063 (Creators Update)
+**Minimal supported Windows 10 version:** 16299 (Fall Creators Update)
 
 **Currently supported systems:**
 
 * Windows 10 Desktop ✔
-* Windows 10 Mobile ✔
+* Windows 10 Mobile ❌ --> Incompatible due to usage of newer APIs not available on Mobile
 * Windows 10 Team ✔
-* Windows 10 Holographic ❌
+* Windows 10 Holographic ✔
 * Windows 10 Xbox ❌
 
 
