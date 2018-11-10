@@ -75,8 +75,6 @@ namespace NotepadRs4.Views
                 ViewModel.Initialize();
             }
 
-            SetStatusBar();
-
 #if DEBUG
             // Show Find & Replace-buttons
             cbtnFind.Visibility = Visibility.Visible;
@@ -141,19 +139,5 @@ namespace NotepadRs4.Views
             }
         }
 
-        // Set the StatusBar on Windows 10 Mobile devices so it doesn't look buttugly on those devices
-        private async void SetStatusBar()
-        {
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-                SolidColorBrush solidColorBrush = (SolidColorBrush)App.Current.Resources["SystemControlBackgroundAccentBrush"];
-                statusbar.BackgroundColor = solidColorBrush.Color;
-                statusbar.BackgroundOpacity = 1;
-                statusbar.ForegroundColor = Colors.White;
-
-                await statusbar.ShowAsync();
-            }
-        }
     }
 }

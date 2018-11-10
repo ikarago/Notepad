@@ -4,14 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 5)"
-    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     
-    contract5NotPresent:Background="{ThemeResource SystemControlBackgroundAltHighBrush}"
-    contract5NotPresent:BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}"
-    contract5Present:Background="{ThemeResource SystemControlAcrylicElementBrush}"
-    contract5Present:BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+    Background="{ThemeResource SystemControlAcrylicElementBrush}"
+    BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
     
     PrimaryButtonText="Close"
     
