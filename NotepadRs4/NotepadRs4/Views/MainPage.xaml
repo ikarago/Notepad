@@ -4,9 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    
-    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 5)"
-    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     
     mc:Ignorable="d">
@@ -17,8 +14,7 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <Grid contract5NotPresent:Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-          contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <contract7Present:Grid.BackgroundTransition>
             <contract7Present:BrushTransition />
         </contract7Present:Grid.BackgroundTransition>
@@ -39,9 +35,7 @@
         <!-- Titlebar -->
         <Grid Grid.Row="0"
               Canvas.ZIndex="100"
-              contract5NotPresent:Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-              contract5NotPresent:RequestedTheme="Dark"
-              contract5Present:Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
+              Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="imgAppIcon"
                        Height="16"
@@ -68,10 +62,8 @@
         <CommandBar x:Name="cmbar"
                     Grid.Row="1"
                     Canvas.ZIndex="75"
-                    contract5NotPresent:Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-                    contract5NotPresent:RequestedTheme="Dark"
-                    contract5Present:Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
-                    contract5Present:Style="{ThemeResource CommandBarRevealStyle}" 
+                    Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
+                    Style="{ThemeResource CommandBarRevealStyle}" 
                     ClosedDisplayMode="Compact">
             <CommandBar.PrimaryCommands>
                 <AppBarButton x:Name="cbtnNewFile"
@@ -147,8 +139,7 @@
         <Grid x:Name="gridFind"
               Grid.Row="2"
               Canvas.ZIndex="50"
-              contract5NotPresent:Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
-              contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+              Background="{ThemeResource SystemControlAcrylicWindowBrush}"
               Height="48"
               Visibility="Collapsed">
             <!-- Animation libraries -->
@@ -273,10 +264,8 @@
               VerticalAlignment="Bottom">
             <!-- Save successful -->
             <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
-                        contract5NotPresent:Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                        contract5NotPresent:BorderBrush="{ThemeResource SystemControlBackgroundBaseHighBrush}"
-                        contract5Present:Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
-                        contract5Present:BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                        Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
+                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                         Visibility="{x:Bind ViewModel.UXNotificationSaveSuccessful, Mode=OneWay}">
                 <TextBlock Text="&#xE10B;"
                            FontFamily="Segoe MDL2 Assets" 
@@ -291,8 +280,7 @@
             <!-- Save Failed -->
             <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
                         Background="Crimson"
-                        contract5NotPresent:BorderBrush="{ThemeResource SystemControlBackgroundBaseHighBrush}"
-                        contract5Present:BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                         Visibility="{x:Bind ViewModel.UXNotificationSaveFailed, Mode=OneWay}">
                 <TextBlock Text="&#xE10A;"
                            FontFamily="Segoe MDL2 Assets" 
@@ -306,10 +294,8 @@
 
             <!-- Load successful -->
             <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
-                        contract5NotPresent:Background="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                        contract5NotPresent:BorderBrush="{ThemeResource SystemControlBackgroundBaseHighBrush}"
-                        contract5Present:Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
-                        contract5Present:BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                        Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
+                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                         Visibility="{x:Bind ViewModel.UXNotificationLoadSuccessful, Mode=OneWay}">
                 <TextBlock Text="&#xE1A5;"
                            FontFamily="Segoe MDL2 Assets" 
@@ -324,8 +310,7 @@
             <!-- Load Failed -->
             <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
                         Background="Crimson"
-                        contract5NotPresent:BorderBrush="{ThemeResource SystemControlBackgroundBaseHighBrush}"
-                        contract5Present:BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                         Visibility="{x:Bind ViewModel.UXNotificationLoadFailed, Mode=OneWay}">
                 <TextBlock Text="&#xE10A;"
                            FontFamily="Segoe MDL2 Assets" 
