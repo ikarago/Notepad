@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 7)"
     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     
     mc:Ignorable="d">
@@ -69,28 +70,50 @@
                 <AppBarButton x:Name="cbtnNewFile"
                               Icon="Add"
                               Label="New"
-                              Command="{x:Bind ViewModel.NewFileCommand}"/>
+                              Command="{x:Bind ViewModel.NewFileCommand}">
+                    <contract7Present:AppBarButton.KeyboardAccelerators>
+                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                              Key="N" />
+                    </contract7Present:AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
                 <AppBarButton x:Name="cbtnOpenFile"
                               Icon="OpenFile"
                               Label="Open..."
-                              Command="{x:Bind ViewModel.LoadFileCommand}"/>
+                              Command="{x:Bind ViewModel.LoadFileCommand}">
+                    <contract7Present:AppBarButton.KeyboardAccelerators>
+                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                              Key="O" />
+                    </contract7Present:AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
                 <AppBarButton x:Name="cbtnSaveFile"
                               Icon="Save"
                               Label="Save"
-                              Command="{x:Bind ViewModel.SaveFileAsCommand}"/>
+                              Command="{x:Bind ViewModel.SaveFileAsCommand}">
+                    <contract7Present:AppBarButton.KeyboardAccelerators>
+                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                              Key="S" />
+                    </contract7Present:AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
                 <AppBarSeparator x:Name="cbtnSeperator"
                                  Visibility="Collapsed"/>
                 <AppBarButton x:Name="cbtnFind"
                               Icon="Find"
                               Label="Find and Replace"
                               Visibility="Collapsed"
-                              Command="{x:Bind FindCommand}"/>
+                              Command="{x:Bind FindCommand}">
+                    <contract7Present:AppBarButton.KeyboardAccelerators>
+                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                              Key="F"
+                                                              IsEnabled="False"/>
+                    </contract7Present:AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Name="cbtnSaveAsFile"
                               Icon="SaveLocal"
                               Label="Save As..."
-                              Command="{x:Bind ViewModel.SaveFileAsCommand}"/>
+                              Command="{x:Bind ViewModel.SaveFileAsCommand}">
+                </AppBarButton>
                 <AppBarButton x:Name="cbtnPrint"
                               Label="Print"
                               Visibility="Collapsed"
@@ -98,6 +121,11 @@
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xE2F6;"/>
                     </AppBarButton.Icon>
+                    <contract7Present:AppBarButton.KeyboardAccelerators>
+                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                              Key="P" 
+                                                              IsEnabled="False"/>
+                    </contract7Present:AppBarButton.KeyboardAccelerators>
                 </AppBarButton>
                 <AppBarSeparator />
                 <!-- New idea: Toggle to keep Notepad on Top -->
