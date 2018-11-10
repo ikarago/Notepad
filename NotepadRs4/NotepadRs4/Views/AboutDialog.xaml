@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 5)"
     xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     
     contract5NotPresent:Background="{ThemeResource SystemControlBackgroundAltHighBrush}"
     contract5NotPresent:BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}"
@@ -15,6 +16,10 @@
     mc:Ignorable="d">
 
     <Grid>
+        <contract7Present:Grid.BackgroundTransition>
+            <contract7Present:BrushTransition />
+        </contract7Present:Grid.BackgroundTransition>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

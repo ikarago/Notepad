@@ -19,6 +19,10 @@
 
     <Grid contract5NotPresent:Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
           contract5Present:Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+        <contract7Present:Grid.BackgroundTransition>
+            <contract7Present:BrushTransition />
+        </contract7Present:Grid.BackgroundTransition>
+        
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition />
