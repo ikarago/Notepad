@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Source>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</Source>
-    <SmallTileSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</SmallTileSource>
-    <MediumTileSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</MediumTileSource>
-    <WideTileSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</WideTileSource>
-    <LargeTileSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</LargeTileSource>
-    <AppIconSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</AppIconSource>
-    <SplashScreenSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</SplashScreenSource>
-    <PackageLogoSource>D:\pants\Pictures\Affinity\Notepad UWP\logo-white.png</PackageLogoSource>
+    <Source>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</Source>
+    <SmallTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</SmallTileSource>
+    <MediumTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</MediumTileSource>
+    <WideTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</WideTileSource>
+    <LargeTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</LargeTileSource>
+    <AppIconSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</AppIconSource>
+    <SplashScreenSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</SplashScreenSource>
+    <PackageLogoSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</PackageLogoSource>
     <AppxPackageIsForStore>True</AppxPackageIsForStore>
     <AppxShowAllApps>False</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
