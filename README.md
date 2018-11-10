@@ -12,10 +12,12 @@ The design of the app has been inspired by the work of Michael West, go give tha
 ## Supported Windows versions
 **Minimal supported Windows 10 version:** 16299 (Fall Creators Update)
 
+**Minimal supported Windows 10 version (mobile-branch):** 15086 (Creators Update)
+
 **Currently supported systems:**
 
 * Windows 10 Desktop ✔
-* Windows 10 Mobile ❌ --> Incompatible due to usage of newer APIs not available on Mobile
+* Windows 10 Mobile ✔ --> Using the Mmbile-branch 
 * Windows 10 Team ✔
 * Windows 10 Holographic ✔
 * Windows 10 Xbox ❌
