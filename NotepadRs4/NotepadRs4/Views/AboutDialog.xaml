@@ -65,9 +65,9 @@
             </Grid.ColumnDefinitions>
                 
             <!-- App logo -->
-            <!-- #TODO: Make this dynamic with the Light/Dark themes -->
-            <Image Grid.Column="0"
-                   Source="/Assets/Square44x44Logo.targetsize-48.png" 
+            <Image x:Name="imgLogo"
+                   Grid.Column="0"
+                   Source="/Assets/Logo/contrast-standard/Square44x44Logo.scale-400.png" 
                    Height="38"
                    Width="38"
                    VerticalAlignment="Center"/>
