@@ -186,7 +186,9 @@
     <comment>View disposed</comment>
   </data>
   <data name="AfterUpdate_Body.Text" xml:space="preserve">
-    <value>We've added Windows Mobile support and improved some of the UX.
+    <value>- NEW: Added accelerator keys (Ctrl + N for New File, Ctrl + O for Open File and Ctrl + S for Saving the file. This is for peeps on Windows 10 version 1809 and newer).
+- IMPROVED: Added high-contrast logos and fixed the hidden logo when using the app in Light mode.
+IMPORTANT: From now on Notepad will require you to be on the Fall Creators Update (16299) or newer.
 
 Happy editing!</value>
     <comment>What's new prompt message body</comment>
