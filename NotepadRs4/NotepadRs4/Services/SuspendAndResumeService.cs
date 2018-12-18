@@ -21,6 +21,7 @@ namespace NotepadRs4.Services
 
         public async Task SaveStateAsync()
         {
+            // #TODO Update to make sure states get saved properly with multiple instances
             var suspensionState = new SuspensionState()
             {
                 SuspensionDate = DateTime.Now
