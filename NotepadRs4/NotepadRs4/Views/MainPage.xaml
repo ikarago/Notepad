@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    
     xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 7)"
     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     
@@ -60,145 +62,156 @@
         </Grid>
 
         <!-- Commandbar -->
-        <CommandBar x:Name="cmbar"
+        <controls:DropShadowPanel x:Name="gridCmbar"
+                                  Grid.Row="1"
+                                  Canvas.ZIndex="75"
+                                  ShadowOpacity="0.6"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch">
+            <CommandBar x:Name="cmbar"
                     Grid.Row="1"
                     Canvas.ZIndex="75"
                     Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
                     Style="{ThemeResource CommandBarRevealStyle}" 
                     ClosedDisplayMode="Compact">
-            <CommandBar.PrimaryCommands>
-                <AppBarButton x:Name="cbtnNewFile"
+                <CommandBar.PrimaryCommands>
+                    <AppBarButton x:Name="cbtnNewFile"
                               Icon="Add"
                               Label="New"
                               Command="{x:Bind ViewModel.NewFileCommand}">
-                    <contract7Present:AppBarButton.KeyboardAccelerators>
-                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
                                                               Key="N" />
-                    </contract7Present:AppBarButton.KeyboardAccelerators>
-                </AppBarButton>
-                <AppBarButton x:Name="cbtnOpenFile"
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton x:Name="cbtnOpenFile"
                               Icon="OpenFile"
                               Label="Open..."
                               Command="{x:Bind ViewModel.LoadFileCommand}">
-                    <contract7Present:AppBarButton.KeyboardAccelerators>
-                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
                                                               Key="O" />
-                    </contract7Present:AppBarButton.KeyboardAccelerators>
-                </AppBarButton>
-                <AppBarButton x:Name="cbtnSaveFile"
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton x:Name="cbtnSaveFile"
                               Icon="Save"
                               Label="Save"
                               Command="{x:Bind ViewModel.SaveFileAsCommand}">
-                    <contract7Present:AppBarButton.KeyboardAccelerators>
-                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
                                                               Key="S" />
-                    </contract7Present:AppBarButton.KeyboardAccelerators>
-                </AppBarButton>
-                <AppBarSeparator x:Name="cbtnSeperator"
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarSeparator x:Name="cbtnSeperator"
                                  Visibility="Collapsed"/>
-                <AppBarButton x:Name="cbtnFind"
+                    <AppBarButton x:Name="cbtnFind"
                               Icon="Find"
                               Label="Find and Replace"
                               Visibility="Collapsed"
                               Command="{x:Bind FindCommand}">
-                    <contract7Present:AppBarButton.KeyboardAccelerators>
-                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
                                                               Key="F"
                                                               IsEnabled="False"/>
-                    </contract7Present:AppBarButton.KeyboardAccelerators>
-                </AppBarButton>
-            </CommandBar.PrimaryCommands>
-            <CommandBar.SecondaryCommands>
-                <AppBarButton x:Name="cbtnSaveAsFile"
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                </CommandBar.PrimaryCommands>
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton x:Name="cbtnSaveAsFile"
                               Icon="SaveLocal"
                               Label="Save As..."
                               Command="{x:Bind ViewModel.SaveFileAsCommand}">
-                </AppBarButton>
-                <AppBarButton x:Name="cbtnPrint"
+                    </AppBarButton>
+                    <AppBarButton x:Name="cbtnPrint"
                               Label="Print"
                               Visibility="Collapsed"
                               Command="{x:Bind ViewModel.PrintCommand}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE2F6;"/>
-                    </AppBarButton.Icon>
-                    <contract7Present:AppBarButton.KeyboardAccelerators>
-                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE2F6;"/>
+                        </AppBarButton.Icon>
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
                                                               Key="P" 
                                                               IsEnabled="False"/>
-                    </contract7Present:AppBarButton.KeyboardAccelerators>
-                </AppBarButton>
-                <AppBarSeparator />
-                <!-- New idea: Toggle to keep Notepad on Top -->
-                <!--<AppBarToggleButton x:Name="ctbtnAlwaysOnTop"
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarSeparator />
+                    <!-- New idea: Toggle to keep Notepad on Top -->
+                    <!--<AppBarToggleButton x:Name="ctbtnAlwaysOnTop"
                                     Label="Always on top"
                                     Visibility="Visible">
                     <AppBarToggleButton.Icon>
                         <FontIcon Glyph="&#xF26E;" />
                     </AppBarToggleButton.Icon>
                 </AppBarToggleButton>-->
-                <AppBarButton x:Name="cbtnFontOptions"
+                    <AppBarButton x:Name="cbtnFontOptions"
                               Icon="Font"
                               Label="Font options"
                               Visibility="Collapsed"/>
-                <AppBarButton x:Name="cbtnPlayground"
+                    <AppBarButton x:Name="cbtnPlayground"
                               Label="Debug"
                               Visibility="Collapsed"
                               Command="{x:Bind ViewModel.PlaygroundCommand}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE15E;"/>
-                    </AppBarButton.Icon>
-                </AppBarButton>
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE15E;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
 
-                <AppBarButton x:Name="cbtnSettings"
+                    <AppBarButton x:Name="cbtnSettings"
                               Icon="Setting"
                               Label="Settings"
                               Command="{x:Bind ViewModel.SettingsCommand}"/>
-                <AppBarButton x:Name="cbtnAbout"
+                    <AppBarButton x:Name="cbtnAbout"
                               Label="About"
                               Command="{x:Bind ViewModel.AboutCommand}">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE946;"/>
-                    </AppBarButton.Icon>
-                </AppBarButton>
-            </CommandBar.SecondaryCommands>
-        </CommandBar>
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE946;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </CommandBar.SecondaryCommands>
+            </CommandBar>
+
+        </controls:DropShadowPanel>
 
         <!-- Search 'n replace bar -->
-        <Grid x:Name="gridFind"
-              Grid.Row="2"
-              Canvas.ZIndex="50"
-              Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-              Height="48"
-              Visibility="Collapsed">
-            <!-- Animation libraries -->
-            <Grid.Transitions>
+        <controls:DropShadowPanel x:Name="gridFind"
+                                  Grid.Row="2"
+                                  Canvas.ZIndex="50"
+                                  ShadowOpacity="0.6"
+                                  Visibility="Collapsed"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch">
+            <controls:DropShadowPanel.Transitions>
                 <TransitionCollection>
                     <PaneThemeTransition />
                 </TransitionCollection>
-            </Grid.Transitions>
-            <Grid.ChildrenTransitions>
-                <TransitionCollection>
-                    <RepositionThemeTransition />
-                </TransitionCollection>
-            </Grid.ChildrenTransitions>
+            </controls:DropShadowPanel.Transitions>
+            <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                  Height="48">
+                <!-- Animation libraries -->
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <RepositionThemeTransition />
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
 
-            <!-- Grid definitions -->
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition x:Name="gridFindBarReplaceRow" 
+                <!-- Grid definitions -->
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition x:Name="gridFindBarReplaceRow" 
                                Height="0"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            
-            <!-- Icon -->
-            <Button x:Name="btnFindSettings"
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Icon -->
+                <Button x:Name="btnFindSettings"
                     Grid.Column="0"
                     Grid.Row="0"
                     Grid.RowSpan="2"
@@ -208,7 +221,7 @@
                     Visibility="Collapsed"
                     Width="40"
                     Height="40"/>
-            <TextBlock Grid.Column="0"
+                <TextBlock Grid.Column="0"
                        Grid.Row="0"
                        Grid.RowSpan="2"                
                        Text="&#xE11A;"
@@ -218,20 +231,20 @@
                        TextAlignment="Center"
                        Visibility="Visible"
                        VerticalAlignment="Center"/>
-            <!-- Find -->
-            <AutoSuggestBox Grid.Row="0"
+                <!-- Find -->
+                <AutoSuggestBox Grid.Row="0"
                             Grid.Column="1"                
                             PlaceholderText="Find..."
                             QueryIcon="Find"
                             VerticalAlignment="Center"/>
-            <!-- Replace -->
-            <AutoSuggestBox Grid.Row="1"
+                <!-- Replace -->
+                <AutoSuggestBox Grid.Row="1"
                             Grid.Column="1"                
                             PlaceholderText="Replace..."
                             VerticalAlignment="Center"
                             BorderThickness="0,0,0,1"/>
-            <!-- Previous -->
-            <Button x:Name="btnFindPrevious"
+                <!-- Previous -->
+                <Button x:Name="btnFindPrevious"
                     Grid.Column="2"
                     Grid.Row="0"
                     Grid.RowSpan="1"
@@ -240,8 +253,8 @@
                     Background="Transparent"
                     Width="40"
                     Height="40"/>
-            <!-- Next -->
-            <Button x:Name="btnFindNext"
+                <!-- Next -->
+                <Button x:Name="btnFindNext"
                     Grid.Column="3"
                     Grid.Row="0"
                     Grid.RowSpan="1"
@@ -250,8 +263,8 @@
                     Background="Transparent"
                     Width="40"
                     Height="40"/>
-            <!-- Close -->
-            <Button x:Name="btnFindClose"
+                <!-- Close -->
+                <Button x:Name="btnFindClose"
                     Grid.Column="4"
                     Grid.Row="0"
                     Grid.RowSpan="1"
@@ -262,7 +275,9 @@
                     Height="40"
                     Command="{x:Bind FindBarCloseCommand}"/>
 
-        </Grid>
+            </Grid>
+        </controls:DropShadowPanel>
+
 
         <!-- Textbox -->
         <TextBox x:Name="txtContent"
@@ -285,70 +300,78 @@
                  DragOver="txtContent_DragOver"/>
 
         <!-- UX Messages -->
-        <Grid Grid.Row="3"
+        <controls:DropShadowPanel Grid.Row="3"
+                                  Canvas.ZIndex="30"
+                                  Margin="48,0,48,-5"
+                                  Padding="0,0,0,4"
+                                  ShadowOpacity="0.6"
+                                  HorizontalContentAlignment="Stretch"
+                                  VerticalAlignment="Bottom">
+            <Grid Grid.Row="3"
               Canvas.ZIndex="30"
-              Margin="48,0,48,-5"
-              Padding="0,0,0,4"
               VerticalAlignment="Bottom">
-            <!-- Save successful -->
-            <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
-                        Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
+                <!-- Save successful -->
+                <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
+                        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                         BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                         Visibility="{x:Bind ViewModel.UXNotificationSaveSuccessful, Mode=OneWay}">
-                <TextBlock Text="&#xE10B;"
+                    <TextBlock Text="&#xE10B;"
                            FontFamily="Segoe MDL2 Assets" 
                            Margin="0,0,18,0"
                            VerticalAlignment="Center"
                            Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                <TextBlock Text="Save successful!" 
+                    <TextBlock Text="Save successful!" 
                            Style="{ThemeResource BaseTextBlockStyle}"
                            VerticalAlignment="Center"/>
-            </StackPanel>
+                </StackPanel>
 
-            <!-- Save Failed -->
-            <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
+                <!-- Save Failed -->
+                <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
                         Background="Crimson"
                         BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                         Visibility="{x:Bind ViewModel.UXNotificationSaveFailed, Mode=OneWay}">
-                <TextBlock Text="&#xE10A;"
+                    <TextBlock Text="&#xE10A;"
                            FontFamily="Segoe MDL2 Assets" 
                            Margin="0,0,18,0"
                            VerticalAlignment="Center"
                            Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                <TextBlock Text="Couldn't save your file" 
+                    <TextBlock Text="Couldn't save your file" 
                            Style="{ThemeResource BaseTextBlockStyle}"
                            VerticalAlignment="Center"/>
-            </StackPanel>
+                </StackPanel>
 
-            <!-- Load successful -->
-            <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
-                        Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
+                <!-- Load successful -->
+                <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
+                        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                         BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                         Visibility="{x:Bind ViewModel.UXNotificationLoadSuccessful, Mode=OneWay}">
-                <TextBlock Text="&#xE1A5;"
+                    <TextBlock Text="&#xE1A5;"
                            FontFamily="Segoe MDL2 Assets" 
                            Margin="0,0,18,0"
                            VerticalAlignment="Center"
                            Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                <TextBlock Text="File opened" 
+                    <TextBlock Text="File opened" 
                            Style="{ThemeResource BaseTextBlockStyle}"
                            VerticalAlignment="Center"/>
-            </StackPanel>
+                </StackPanel>
 
-            <!-- Load Failed -->
-            <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
+                <!-- Load Failed -->
+                <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
                         Background="Crimson"
                         BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                         Visibility="{x:Bind ViewModel.UXNotificationLoadFailed, Mode=OneWay}">
-                <TextBlock Text="&#xE10A;"
+                    <TextBlock Text="&#xE10A;"
                            FontFamily="Segoe MDL2 Assets" 
                            Margin="0,0,18,0"
                            VerticalAlignment="Center"
                            Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                <TextBlock Text="Couldn't open your file" 
+                    <TextBlock Text="Couldn't open your file" 
                            Style="{ThemeResource BaseTextBlockStyle}"
                            VerticalAlignment="Center"/>
-            </StackPanel>
-        </Grid>
+                </StackPanel>
+            </Grid>
+
+        </controls:DropShadowPanel>
+                                  
     </Grid>
 </Page>
