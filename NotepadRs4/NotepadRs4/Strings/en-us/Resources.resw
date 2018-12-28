@@ -154,7 +154,7 @@
     <comment>About this application title for About</comment>
   </data>
   <data name="About_AboutDescription.Text" xml:space="preserve">
-    <value>Modern Notepad, created and programmed by Ikarago, 2018</value>
+    <value>Modern Notepad, created and programmed by Ikarago, 2018-2019</value>
     <comment>About this application description for About</comment>
   </data>
   <data name="About_PrivacyTermsLink.Content" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>Privacy Statement link content for About</comment>
   </data>
   <data name="About_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://ikarago.tumblr.com/privacy-policy</value>
+    <value>https://ikarago.com/privacy-policy</value>
     <comment>Privacy Statement url for About</comment>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
@@ -186,9 +186,9 @@
     <comment>View disposed</comment>
   </data>
   <data name="AfterUpdate_Body.Text" xml:space="preserve">
-    <value>- NEW: Added accelerator keys (Ctrl + N for New File, Ctrl + O for Open File and Ctrl + S for Saving the file. This is for peeps on Windows 10 version 1809 and newer).
-- IMPROVED: Added high-contrast logos and fixed the hidden logo when using the app in Light mode.
-IMPORTANT: From now on Notepad will require you to be on the Fall Creators Update (16299) or newer.
+    <value>- NEW: You can now open multiple instances of the app!
+- IMPROVED: Improved the Fluent Layout with shadows.
+- IMPROVED: Various other bugfixes and small improvements.
 
 Happy editing!</value>
     <comment>What's new prompt message body</comment>
