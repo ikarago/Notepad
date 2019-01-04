@@ -73,7 +73,7 @@
                     Canvas.ZIndex="75"
                     Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
                     Style="{ThemeResource CommandBarRevealStyle}" 
-                    ClosedDisplayMode="Compact">
+                    >
                 <CommandBar.PrimaryCommands>
                     <AppBarButton x:Name="cbtnNewFile"
                               Icon="Add"
