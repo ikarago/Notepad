@@ -10,7 +10,7 @@
     <SplashScreenSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</SplashScreenSource>
     <PackageLogoSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</PackageLogoSource>
     <AppxPackageIsForStore>True</AppxPackageIsForStore>
-    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxShowAllApps>True</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
