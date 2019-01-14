@@ -82,6 +82,10 @@ namespace NotepadRs4.ViewModels
             Initialize();
         }
 
+        /// <summary>
+        /// Initilize the ViewModel
+        /// </summary>
+        /// <param name="file">File that needs to be loaded. Leave empty for a new document</param>
         public async void Initialize(StorageFile file = null)
         {
             if (file != null)
@@ -96,23 +100,11 @@ namespace NotepadRs4.ViewModels
             }
             else if (_data == null)
             {
-                TextDataModel data = new TextDataModel();
-                data.DocumentTitle = "Untitled";
-                Data = data;
-                RefreshTitlebarTitle();
+                PrepareNewDocument();
             }
 
             SetUXToggles();
         }
-
-        private void SetUXToggles()
-        {
-            UXNotificationSaveSuccessful = Visibility.Collapsed;
-            UXNotificationSaveFailed = Visibility.Collapsed;
-            UXNotificationLoadSuccessful = Visibility.Collapsed;
-            UXNotificationLoadFailed = Visibility.Collapsed;
-        }
-        
 
 
         // Commands
@@ -260,7 +252,6 @@ namespace NotepadRs4.ViewModels
         public async void NewFile()
         {
             // #TODO: Ask the user to save the current file if there is one open
-            // #BUG: ContentDialog is bugged on Mobile and will crash the app in it's current implementation
             if (_data.Text != "")
             {
                 var answer = await SaveBeforeClosing();
@@ -279,13 +270,8 @@ namespace NotepadRs4.ViewModels
                         // Show Save Successful Notification
                         Debug.WriteLine("New File: Saving Successful");
                         ShowUXMessage(1);
-
                         // Set up the new empty document
-                        TextDataModel emptyData = new TextDataModel();
-                        emptyData.DocumentTitle = "Untitled";
-                        Data = emptyData;
-                        File = null;
-                        RefreshTitlebarTitle();
+                        PrepareNewDocument();
                     }
                     else
                     {
@@ -300,12 +286,7 @@ namespace NotepadRs4.ViewModels
                 {
                     // Discard changes and open a new file
                     Debug.WriteLine("New File: Discard changes");
-
-                    TextDataModel emptyData = new TextDataModel();
-                    emptyData.DocumentTitle = "Untitled";
-                    Data = emptyData;
-                    File = null;
-                    RefreshTitlebarTitle();
+                    PrepareNewDocument();
                 }
                 else
                 {
@@ -477,34 +458,64 @@ namespace NotepadRs4.ViewModels
         }
 
 
+        // Preperation Methods
+        /// <summary>
+        /// Sets up a new document for use in this ViewModel
+        /// </summary>
+        private void PrepareNewDocument()
+        {
+            TextDataModel emptyData = new TextDataModel();
+            emptyData.DocumentTitle = "Untitled";
+            Data = emptyData;
+            File = null;
+            RefreshTitlebarTitle();
+        }
 
-        // Go to Playground Page
+        /// <summary>
+        /// Sets up the UX Toggles to their default state
+        /// </summary>
+        private void SetUXToggles()
+        {
+            UXNotificationSaveSuccessful = Visibility.Collapsed;
+            UXNotificationSaveFailed = Visibility.Collapsed;
+            UXNotificationLoadSuccessful = Visibility.Collapsed;
+            UXNotificationLoadFailed = Visibility.Collapsed;
+        }
+
+        /// <summary>
+        /// Sets the title of the app
+        /// </summary>
+        private void RefreshTitlebarTitle()
+        {
+            ApplicationView.GetForCurrentView().Title = Data.DocumentTitle;
+        }
+
+
+        // Navigation and dialogs
+        /// <summary>
+        /// Navigates to the Playground Page
+        /// </summary>
         private void GoToPlayground()
         {
             NavigationService.Navigate(typeof(Views.XamlPlayground));
         }
 
-        // Show Settings-dialog
+        /// <summary>
+        /// Opens the Settings Dialog
+        /// </summary>
         private async void ShowSettingsDialog()
         {
             var dialog = new SettingsDialog();
             await dialog.ShowAsync();
         }
 
-        // Show About-dialog
+        /// <summary>
+        /// Opens the About Dialog
+        /// </summary>
         private async void ShowAboutDialog()
         {
             var dialog = new AboutDialog();
             await dialog.ShowAsync();
-        }
-
-
-
-
-        // Set title of the app
-        private void RefreshTitlebarTitle()
-        {
-            ApplicationView.GetForCurrentView().Title = Data.DocumentTitle;
         }
 
         // Save before closing dialog
@@ -518,7 +529,7 @@ namespace NotepadRs4.ViewModels
                 PrimaryButtonText = "Save",
                 SecondaryButtonText = "Don't save",
                 CloseButtonText = "Cancel",
-                DefaultButton = ContentDialogButton.Primary,
+                DefaultButton = ContentDialogButton.Primary
                 //Style = (Style)Application.Current.Resources["FluentDialogWithIcon2"]
             };
 

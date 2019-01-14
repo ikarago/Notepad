@@ -63,6 +63,12 @@
                                    Text="{x:Bind ViewModel.Data.DocumentTitle, Mode=TwoWay, FallbackValue='Untitled'}"
                                    Margin="4,0,0,0"
                                    VerticalAlignment="Center"/>
+                        <TextBlock x:Name="tblUnsaved"
+                                   Visibility="Collapsed"
+                                   Text="(Unsaved)"
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Margin="6,0,0,0"
+                                   VerticalAlignment="Center"/>
                         <TextBlock Text="-"
                                    Style="{ThemeResource CaptionTextBlockStyle}"
                                    Margin="6,0"
