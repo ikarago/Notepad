@@ -68,7 +68,7 @@
             <!-- App logo -->
             <Image x:Name="imgLogo"
                    Grid.Column="0"
-                   Source="/Assets/Logo/contrast-standard/Square44x44Logo.scale-400.png" 
+                   Source="/Assets/Logo/in-app/logo-white.png" 
                    Height="38"
                    Width="38"
                    VerticalAlignment="Center"/>

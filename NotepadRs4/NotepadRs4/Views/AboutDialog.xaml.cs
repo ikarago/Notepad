@@ -62,12 +62,12 @@ namespace NotepadRs4.Views
             // Change the displayed logo
             if (ActualTheme == ElementTheme.Dark)
             {
-                BitmapImage image = new BitmapImage(new Uri("ms-appx:///Assets/Logo/contrast-black/Square44x44Logo.scale-400.png"));
+                BitmapImage image = new BitmapImage(new Uri("ms-appx:///Assets/Logo/in-app/logo-white.png"));
                 imgLogo.Source = image;
             }
             else if (ActualTheme == ElementTheme.Light)
             {
-                BitmapImage image = new BitmapImage(new Uri("ms-appx:///Assets/Logo/contrast-white/Square44x44Logo.scale-400.png"));
+                BitmapImage image = new BitmapImage(new Uri("ms-appx:///Assets/Logo/in-app/logo-black.png"));
                 imgLogo.Source = image;
             }
         }
