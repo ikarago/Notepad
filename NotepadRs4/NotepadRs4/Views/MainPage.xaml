@@ -64,6 +64,7 @@
                                    Margin="4,0,0,0"
                                    VerticalAlignment="Center"/>
                         <TextBlock x:Name="tblUnsaved"
+                                   x:Uid="Main_Unsaved"
                                    Visibility="Collapsed"
                                    Text="(Unsaved)"
                                    Style="{ThemeResource CaptionTextBlockStyle}"
@@ -73,7 +74,8 @@
                                    Style="{ThemeResource CaptionTextBlockStyle}"
                                    Margin="6,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock Text="Notepad"
+                        <TextBlock x:Uid="Main_AppDisplayName"
+                                   Text="Notepad"
                                    Style="{ThemeResource CaptionTextBlockStyle}"
                                    Margin="0,0,12,0"
                                    VerticalAlignment="Center"/>
@@ -89,6 +91,7 @@
                             ClosedDisplayMode="Compact">
                     <CommandBar.PrimaryCommands>
                         <AppBarButton x:Name="cbtnNewFile"
+                                      x:Uid="Main_Abb_NewFile"
                                       Icon="Add"
                                       Label="New"
                                       Command="{x:Bind ViewModel.NewFileCommand}">
@@ -98,6 +101,7 @@
                             </contract7Present:AppBarButton.KeyboardAccelerators>
                         </AppBarButton>
                         <AppBarButton x:Name="cbtnOpenFile"
+                                      x:Uid="Main_Abb_OpenFile"
                                       Icon="OpenFile"
                                       Label="Open..."
                                       Command="{x:Bind ViewModel.LoadFileCommand}">
@@ -107,6 +111,7 @@
                             </contract7Present:AppBarButton.KeyboardAccelerators>
                         </AppBarButton>
                         <AppBarButton x:Name="cbtnSaveFile"
+                                      x:Uid="Main_Abb_SaveFile"
                                       Icon="Save"
                                       Label="Save"
                                       Command="{x:Bind ViewModel.SaveFileAsCommand}">
@@ -118,6 +123,7 @@
                         <AppBarSeparator x:Name="cbtnSeperator"
                                          Visibility="Collapsed"/>
                         <AppBarButton x:Name="cbtnFind"
+                                      x:Uid="Main_Abb_FindAndReplace"
                                       Icon="Find"
                                       Label="Find and Replace"
                                       Visibility="Collapsed"
@@ -131,11 +137,13 @@
                     </CommandBar.PrimaryCommands>
                     <CommandBar.SecondaryCommands>
                         <AppBarButton x:Name="cbtnSaveAsFile"
+                                      x:Uid="Main_Abb_SaveAsFile"
                                       Icon="SaveLocal"
                                       Label="Save As..."
                                       Command="{x:Bind ViewModel.SaveFileAsCommand}">
                         </AppBarButton>
                         <AppBarButton x:Name="cbtnPrint"
+                                      x:Uid="Main_Abb_Print"
                                       Label="Print"
                                       Visibility="Collapsed"
                                       Command="{x:Bind ViewModel.PrintCommand}">
@@ -151,6 +159,7 @@
                         <AppBarSeparator />
                         <!-- New idea: Toggle to keep Notepad on Top -->
                         <!--<AppBarToggleButton x:Name="ctbtnAlwaysOnTop"
+                                                x:Uid="Main_Abb_AlwaysOnTop"
                                     Label="Always on top"
                                     Visibility="Visible">
                     <AppBarToggleButton.Icon>
@@ -158,6 +167,7 @@
                     </AppBarToggleButton.Icon>
                 </AppBarToggleButton>-->
                         <AppBarButton x:Name="cbtnFontOptions"
+                                      x:Uid="Main_Abb_FontOptions"
                                       Icon="Font"
                                       Label="Font options"
                                       Visibility="Collapsed"/>
@@ -171,10 +181,12 @@
                         </AppBarButton>
 
                         <AppBarButton x:Name="cbtnSettings"
+                                      x:Uid="Main_Abb_Settings"
                                       Icon="Setting"
                                       Label="Settings"
                                       Command="{x:Bind ViewModel.SettingsCommand}"/>
                         <AppBarButton x:Name="cbtnAbout"
+                                      x:Uid="Main_Abb_About"
                                       Label="About"
                                       Command="{x:Bind ViewModel.AboutCommand}">
                             <AppBarButton.Icon>
@@ -225,68 +237,73 @@
 
                 <!-- Icon -->
                 <Button x:Name="btnFindSettings"
-                    Grid.Column="0"
-                    Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Content="&#xE11A;"
-                    FontFamily="Segoe MDL2 Assets"
-                    Background="Transparent"
-                    Visibility="Collapsed"
-                    Width="40"
-                    Height="40"/>
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Content="&#xE11A;"
+                        FontFamily="Segoe MDL2 Assets"
+                        Background="Transparent"
+                        Visibility="Collapsed"
+                        Width="40"
+                        Height="40"/>
                 <TextBlock Grid.Column="0"
-                       Grid.Row="0"
-                       Grid.RowSpan="2"                
-                       Text="&#xE11A;"
-                       FontFamily="Segoe MDL2 Assets"
-                       Margin="12,0"
-                       Width="24"
-                       TextAlignment="Center"
-                       Visibility="Visible"
-                       VerticalAlignment="Center"/>
+                           Grid.Row="0"
+                           Grid.RowSpan="2"                
+                           Text="&#xE11A;"
+                           FontFamily="Segoe MDL2 Assets"
+                           Margin="12,0"
+                           Width="24"
+                           TextAlignment="Center"
+                           Visibility="Visible"
+                           VerticalAlignment="Center"/>
                 <!-- Find -->
-                <AutoSuggestBox Grid.Row="0"
-                            Grid.Column="1"                
-                            PlaceholderText="Find..."
-                            QueryIcon="Find"
-                            VerticalAlignment="Center"/>
+                <AutoSuggestBox x:Uid="Main_Find_FindBar"
+                                Grid.Row="0"
+                                Grid.Column="1"                
+                                PlaceholderText="Find..."
+                                QueryIcon="Find"
+                                VerticalAlignment="Center"/>
                 <!-- Replace -->
-                <AutoSuggestBox Grid.Row="1"
-                            Grid.Column="1"                
-                            PlaceholderText="Replace..."
-                            VerticalAlignment="Center"
-                            BorderThickness="0,0,0,1"/>
+                <AutoSuggestBox x:Uid="Main_Find_ReplaceBar"
+                                Grid.Row="1"
+                                Grid.Column="1"                
+                                PlaceholderText="Replace..."
+                                VerticalAlignment="Center"
+                                BorderThickness="0,0,0,1"/>
                 <!-- Previous -->
                 <Button x:Name="btnFindPrevious"
-                    Grid.Column="2"
-                    Grid.Row="0"
-                    Grid.RowSpan="1"
-                    Content="&#xE00E;"
-                    FontFamily="Segoe MDL2 Assets"
-                    Background="Transparent"
-                    Width="40"
-                    Height="40"/>
+                        x:Uid="Main_Find_Previous"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Content="&#xE00E;"
+                        FontFamily="Segoe MDL2 Assets"
+                        Background="Transparent"
+                        Width="40"
+                        Height="40"/>
                 <!-- Next -->
                 <Button x:Name="btnFindNext"
-                    Grid.Column="3"
-                    Grid.Row="0"
-                    Grid.RowSpan="1"
-                    Content="&#xE00F;"
-                    FontFamily="Segoe MDL2 Assets"
-                    Background="Transparent"
-                    Width="40"
-                    Height="40"/>
+                        x:Uid="Main_Find_Next"
+                        Grid.Column="3"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Content="&#xE00F;"
+                        FontFamily="Segoe MDL2 Assets"
+                        Background="Transparent"
+                        Width="40"
+                        Height="40"/>
                 <!-- Close -->
                 <Button x:Name="btnFindClose"
-                    Grid.Column="4"
-                    Grid.Row="0"
-                    Grid.RowSpan="1"
-                    Content="&#xE106;"
-                    FontFamily="Segoe MDL2 Assets"
-                    Background="Transparent"
-                    Width="40"
-                    Height="40"
-                    Command="{x:Bind FindBarCloseCommand}"/>
+                        x:Uid="Main_Find_Close"
+                        Grid.Column="4"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Content="&#xE106;"
+                        FontFamily="Segoe MDL2 Assets"
+                        Background="Transparent"
+                        Width="40"
+                        Height="40"
+                        Command="{x:Bind FindBarCloseCommand}"/>
 
             </Grid>
         </controls:DropShadowPanel>
@@ -294,6 +311,7 @@
 
         <!-- Textbox -->
         <TextBox x:Name="txtContent"
+                 x:Uid="Main_Content"
                  Grid.Row="2"
                  Canvas.ZIndex="10"
                  BorderThickness="0"
@@ -309,6 +327,7 @@
                  Style="{StaticResource TextBoxStyleTransparent}"
                  IsSpellCheckEnabled="False"
                  Text="{x:Bind ViewModel.Data.Text, Mode=TwoWay}"
+                 PlaceholderText="Type something here..."
                  Drop="txtContent_Drop"
                  DragOver="txtContent_DragOver"/>
 
@@ -321,21 +340,22 @@
                                   HorizontalContentAlignment="Stretch"
                                   VerticalAlignment="Bottom">
             <Grid Grid.Row="3"
-              Canvas.ZIndex="30"
-              VerticalAlignment="Bottom">
+                  Canvas.ZIndex="30"
+                  VerticalAlignment="Bottom">
                 <!-- Save successful -->
                 <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
-                        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
-                        Visibility="{x:Bind ViewModel.UXNotificationSaveSuccessful, Mode=OneWay}">
+                            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                            BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                            Visibility="{x:Bind ViewModel.UXNotificationSaveSuccessful, Mode=OneWay}">
                     <TextBlock Text="&#xE10B;"
-                           FontFamily="Segoe MDL2 Assets" 
-                           Margin="0,0,18,0"
-                           VerticalAlignment="Center"
-                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Text="Save successful!" 
-                           Style="{ThemeResource BaseTextBlockStyle}"
-                           VerticalAlignment="Center"/>
+                               FontFamily="Segoe MDL2 Assets" 
+                               Margin="0,0,18,0"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                    <TextBlock x:Uid="Main_NotificationSaveOk"
+                               Text="Save successful!" 
+                               Style="{ThemeResource BaseTextBlockStyle}"
+                               VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <!-- Save Failed -->
@@ -344,43 +364,45 @@
                         BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                         Visibility="{x:Bind ViewModel.UXNotificationSaveFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"
-                           FontFamily="Segoe MDL2 Assets" 
-                           Margin="0,0,18,0"
-                           VerticalAlignment="Center"
-                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Text="Couldn't save your file" 
-                           Style="{ThemeResource BaseTextBlockStyle}"
-                           VerticalAlignment="Center"/>
+                               FontFamily="Segoe MDL2 Assets" 
+                               Margin="0,0,18,0"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                    <TextBlock x:Uid="Main_NotificationSaveFailed"
+                               Text="Couldn't save your file" 
+                               Style="{ThemeResource BaseTextBlockStyle}"
+                               VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <!-- Load successful -->
                 <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
-                        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
-                        Visibility="{x:Bind ViewModel.UXNotificationLoadSuccessful, Mode=OneWay}">
+                            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                            BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                            Visibility="{x:Bind ViewModel.UXNotificationLoadSuccessful, Mode=OneWay}">
                     <TextBlock Text="&#xE1A5;"
-                           FontFamily="Segoe MDL2 Assets" 
-                           Margin="0,0,18,0"
-                           VerticalAlignment="Center"
-                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Text="File opened" 
-                           Style="{ThemeResource BaseTextBlockStyle}"
-                           VerticalAlignment="Center"/>
+                               FontFamily="Segoe MDL2 Assets" 
+                               Margin="0,0,18,0"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                    <TextBlock x:Uid="Main_NotificationLoadOk"
+                               Text="File opened" 
+                               Style="{ThemeResource BaseTextBlockStyle}"
+                               VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <!-- Load Failed -->
                 <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
-                        Background="Crimson"
-                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
-                        Visibility="{x:Bind ViewModel.UXNotificationLoadFailed, Mode=OneWay}">
+                            Background="Crimson"
+                            BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                            Visibility="{x:Bind ViewModel.UXNotificationLoadFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"
-                           FontFamily="Segoe MDL2 Assets" 
-                           Margin="0,0,18,0"
-                           VerticalAlignment="Center"
-                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                               FontFamily="Segoe MDL2 Assets" 
+                               Margin="0,0,18,0"
+                               VerticalAlignment="Center"
+                               Style="{ThemeResource SubtitleTextBlockStyle}"/>
                     <TextBlock Text="Couldn't open your file" 
-                           Style="{ThemeResource BaseTextBlockStyle}"
-                           VerticalAlignment="Center"/>
+                               Style="{ThemeResource BaseTextBlockStyle}"
+                               VerticalAlignment="Center"/>
                 </StackPanel>
             </Grid>
 
