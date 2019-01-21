@@ -125,10 +125,6 @@
     <value>Notepad</value>
     <comment>Application description</comment>
   </data>
-  <data name="Main_Title.Text" xml:space="preserve">
-    <value>Main</value>
-    <comment>Page title for MainPage</comment>
-  </data>
   <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
     <value>File name is null or empty. Specify a valid file name</value>
     <comment>File name is null or empty to save file in settings storage extensions</comment>
@@ -153,12 +149,8 @@
     <value>About this application</value>
     <comment>About this application title for About</comment>
   </data>
-  <data name="About_AboutDescription.Text" xml:space="preserve">
-    <value>Modern Notepad, created and programmed by Ikarago, 2018-2019</value>
-    <comment>About this application description for About</comment>
-  </data>
   <data name="About_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy Statement</value>
+    <value>Privacy Policy</value>
     <comment>Privacy Statement link content for About</comment>
   </data>
   <data name="About_PrivacyTermsLink.NavigateUri" xml:space="preserve">
@@ -300,5 +292,22 @@ Happy editing!</value>
   <data name="Main_Unsaved.Text" xml:space="preserve">
     <value>(Unsaved)</value>
     <comment>MainPage - Unsaved-status</comment>
+  </data>
+  <data name="About_Description.Text" xml:space="preserve">
+    <value>Created and programmed by Ikarago, 2018-2019</value>
+    <comment>About this application description for Settings</comment>
+  </data>
+  <data name="About_LinksTitle.Text" xml:space="preserve">
+    <value>Links</value>
+    <comment>About - Title of the Links category</comment>
+  </data>
+  <data name="About_Translators.Text" xml:space="preserve">
+    <value>English by Ikarago
+*future languages*</value>
+    <comment>About - List of translators</comment>
+  </data>
+  <data name="About_TranslatorsTitle.Text" xml:space="preserve">
+    <value>Translators</value>
+    <comment>About - Translators</comment>
   </data>
 </root>

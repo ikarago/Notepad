@@ -22,8 +22,7 @@
     <Grid Margin="0">
         <contract7Present:Grid.BackgroundTransition>
             <contract7Present:BrushTransition />
-        </contract7Present:Grid.BackgroundTransition>
-        
+        </contract7Present:Grid.BackgroundTransition>        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -48,32 +47,75 @@
         </StackPanel>
         
         
-        <!-- Title and close button -->
-        <RelativePanel Grid.Row="0"
-                       HorizontalAlignment="Stretch"
-                       Visibility="Collapsed"
-                       Padding="0,0,0,6"
-                       BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                       BorderThickness="0,0,0,1">
-            <TextBlock Text="Settings"
-                       FontWeight="Bold"
-                       Style="{ThemeResource TitleTextBlockStyle}"
-                       RelativePanel.AlignVerticalCenterWithPanel="True"/>
-            <Button Content="&#xE106;"
-                    Background="Transparent"
-                    FontFamily="Segoe MDL2 Assets"
-                    Height="40"
-                    Width="40"
-                    RelativePanel.AlignRightWithPanel="True"
-                    Command="{x:Bind CloseDialogCommand}"/>
-        </RelativePanel>
-        
         <!-- Content -->
-        <StackPanel Grid.Row="1"
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Padding="0,12,0,0">
+                <!-- Personalization -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
+                    <TextBlock Text="Personalization"
+                               x:Uid="Settings_Personalization"
+                               FontWeight="Bold"
+                               Margin="{StaticResource DialogSubtitleMargin}"
+                               Style="{StaticResource SubtitleTextBlockStyle}" />
+
+                    <!-- Text wrapping -->
+                    <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
+                        <TextBlock x:Uid="Settings_TextWrapping"
+                                   Text="Text Wrapping"
+                                   FontWeight="SemiBold"
+                                   Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.TextWrapping, Mode=TwoWay, Converter={StaticResource BoolToTextWrappingConverter}, ConverterParameter=Reverse}"
+                                      Margin="{StaticResource XSmallTopMargin}"/>
+                    </StackPanel>
+
+                    <!-- Theme -->
+                    <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
+                        <TextBlock Text="Theme"
+                                   x:Uid="Settings_Theme"
+                                   FontWeight="SemiBold"
+                                   Style="{StaticResource BodyTextBlockStyle}" />
+
+                        <StackPanel Margin="{StaticResource XSmallTopMargin}">
+                            <RadioButton x:Uid="Settings_Theme_Light"
+                                         GroupName="AppTheme"
+                                         IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
+                                         Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                                <RadioButton.CommandParameter>
+                                    <xaml:ElementTheme>Light</xaml:ElementTheme>
+                                </RadioButton.CommandParameter>
+                            </RadioButton>
+                            <RadioButton x:Uid="Settings_Theme_Dark"
+                                         GroupName="AppTheme"
+                                         IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
+                                         Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                                <RadioButton.CommandParameter>
+                                    <xaml:ElementTheme>Dark</xaml:ElementTheme>
+                                </RadioButton.CommandParameter>
+                            </RadioButton>
+                            <RadioButton x:Uid="Settings_Theme_Default"
+                                         GroupName="AppTheme"
+                                         IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
+                                         Command="{x:Bind ViewModel.SwitchThemeCommand}">
+                                <RadioButton.CommandParameter>
+                                    <xaml:ElementTheme>Default</xaml:ElementTheme>
+                                </RadioButton.CommandParameter>
+                            </RadioButton>
+                        </StackPanel>
+                    </StackPanel>
+
+                </StackPanel>
+
+
+            </StackPanel>
+        </ScrollViewer>
+
+
+
+        <!--<StackPanel Grid.Row="1"
                     Canvas.ZIndex="10"
                     Padding="0,12,0,0"
                     ScrollViewer.VerticalScrollMode="Auto">
-            <!-- Personalization -->
+            --><!-- Personalization --><!--
             <TextBlock Text="Personalization"
                 x:Uid="Settings_Personalization"
                 FontWeight="Bold"
@@ -86,7 +128,7 @@
                 <ToggleSwitch IsOn="{x:Bind ViewModel.TextWrapping, Mode=TwoWay, Converter={StaticResource BoolToTextWrappingConverter}, ConverterParameter=Reverse}" />
             </StackPanel>
             
-            <!-- Theme -->
+            --><!-- Theme --><!--
             <StackPanel Margin="{StaticResource SettingsSubheaderMargin}">
                 <TextBlock Text="Theme"
                     x:Uid="Settings_Theme"
@@ -123,7 +165,7 @@
                     </RadioButton>
                 </StackPanel>
             </StackPanel>
-        </StackPanel>
+        </StackPanel>-->
 
         <FontIcon Grid.Row="1"
                   Canvas.ZIndex="5"

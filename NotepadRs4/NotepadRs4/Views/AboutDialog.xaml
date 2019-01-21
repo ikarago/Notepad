@@ -15,7 +15,6 @@
         <contract7Present:Grid.BackgroundTransition>
             <contract7Present:BrushTransition />
         </contract7Present:Grid.BackgroundTransition>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -38,70 +37,74 @@
                        FontWeight="Bold"/>
         </StackPanel>
 
-        <!-- Title and close button -->
-        <RelativePanel Grid.Row="0"
-                       HorizontalAlignment="Stretch"
-                       Visibility="Collapsed"
-                       Padding="0,0,0,6"
-                       BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                       BorderThickness="0,0,0,1">
-            <TextBlock Text="About"
-                       FontWeight="Bold"
-                       Style="{ThemeResource TitleTextBlockStyle}"
-                       RelativePanel.AlignVerticalCenterWithPanel="True"/>
-            <Button Content="&#xE106;"
-                    Background="Transparent"
-                    FontFamily="Segoe MDL2 Assets"
-                    Height="40"
-                    Width="40"
-                    RelativePanel.AlignRightWithPanel="True"
-                    Command="{x:Bind CloseDialogCommand}"/>
-        </RelativePanel>
+        <!-- Content -->
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Padding="0,12,0,0">
+                <!-- App info -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
+                    <!-- App Title -->
+                    <TextBlock Text="{x:Bind ViewModel.AppName}"
+                               Style="{ThemeResource SubtitleTextBlockStyle}"
+                               FontWeight="Bold"/>
+                    <!-- Version number -->
+                    <TextBlock Text="{x:Bind ViewModel.VersionNumber, Mode=OneWay}"
+                               Margin="0,0,0,4"
+                               Style="{ThemeResource CaptionTextBlockStyle}"/>
+                    <!-- About Description -->
+                    <TextBlock Text="Notepad, created and programmed by Ikarago, 2018-2019"
+                               x:Uid="About_Description"
+                               TextWrapping="Wrap"
+                               Margin="{StaticResource XSmallTopMargin}"/>
+                </StackPanel>
 
-        <Grid Grid.Row="1"
-              Margin="0,12,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-                
-            <!-- App logo -->
-            <Image x:Name="imgLogo"
-                   Grid.Column="0"
-                   Source="/Assets/Logo/in-app/logo-white.png" 
-                   Height="38"
-                   Width="38"
-                   VerticalAlignment="Center"/>
 
-            <StackPanel Grid.Column="1"
-                        Margin="24,0,12,0">
-                <!-- App Title -->
-                <!-- #TODO: Make this more dynamic -->
-                <TextBlock Text="Notepad"
-                           Style="{ThemeResource SubtitleTextBlockStyle}"
-                           FontWeight="Bold"/>
-                <!-- Version number -->
-                <TextBlock Text="{x:Bind ViewModel.VersionNumber, Mode=OneWay}" 
-                           Style="{ThemeResource CaptionTextBlockStyle}"/>
-                <!-- About Description -->
-                <TextBlock Text="Modern Notepad, created and programmed by Ikarago, 2018"
-                           x:Uid="About_AboutDescription"
-                           TextWrapping="Wrap"
-                           Margin="{StaticResource EightTopMargin}" />
-                <!-- Privacy Policy -->
-                <HyperlinkButton
-                    x:Uid="About_PrivacyTermsLink"
-                    Margin="{StaticResource EightTopMargin}"
-                    Content="Privacy Policy"
-                    NavigateUri="https://ikarago.tumblr.com/privacy-policy"/>
-                <!-- GitHub Project -->
-                <HyperlinkButton
-                    x:Uid="About_GitHubLink"
-                    Margin="{StaticResource EightTopMargin}"
-                    Content="GitHub project"
-                    NavigateUri="https://github.com/ikarago/Notepad"/>
+                <!-- Translators -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}"
+                            Visibility="Collapsed">
+                    <TextBlock x:Uid="About_TranslatorsTitle"
+                               Text="Translators"
+                               FontWeight="Bold"
+                               Margin="{StaticResource DialogSubtitleMargin}"
+                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <TextBlock x:Uid="About_Translators"
+                               Text="Sample text"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+
+
+                <!-- Links -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
+                    <TextBlock x:Uid="About_LinksTitle"
+                               Text="Links"
+                               FontWeight="Bold"
+                               Margin="{StaticResource DialogSubtitleMargin}"
+                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <!-- Privacy Policy -->
+                    <HyperlinkButton x:Uid="About_PrivacyTermsLink"
+                                     Content="Privacy Policy"/>
+                    <!-- Feedback Hub link-->
+                    <!--<HyperlinkButton x:Uid="FeedbackHub_Link"
+                                     Content="Feedback"
+                                     Command="{x:Bind ViewModel.LaunchFeedbackHubCommand}"
+                                     Visibility="{x:Bind ViewModel.FeedbackLinkVisibility}"/>-->
+                    <!-- GitHub Project -->
+                    <HyperlinkButton x:Uid="About_GitHubLink"
+                                     Content="GitHub project"/>
+                </StackPanel>
             </StackPanel>
-        </Grid>
+
+        </ScrollViewer>
+
+        <!-- Dialog background icon -->
+        <Image x:Name="imgLogo"
+               Grid.Row="1"
+               Source="/Assets/Logo/in-app/logo-white.png" 
+               Height="72"
+               Width="72"
+               Opacity="0.25"
+               Visibility="Visible"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Bottom"/>
 
         <FontIcon Grid.Row="1"
                   Canvas.ZIndex="5"
