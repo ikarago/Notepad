@@ -310,4 +310,24 @@ Happy editing!</value>
     <value>Translators</value>
     <comment>About - Translators</comment>
   </data>
+  <data name="Unsaved_CloseText.Text" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Unsaved dialog - Close button text</comment>
+  </data>
+  <data name="Unsaved_Content.Text" xml:space="preserve">
+    <value>Would you like to save your work?</value>
+    <comment>Unsaved dialog - Content text</comment>
+  </data>
+  <data name="Unsaved_PrimaryText.Text" xml:space="preserve">
+    <value>Save</value>
+    <comment>Unsaved dialog - Save option</comment>
+  </data>
+  <data name="Unsaved_SecondaryText.Text" xml:space="preserve">
+    <value>Discard changes</value>
+    <comment>Unsaved dialog - Discard option</comment>
+  </data>
+  <data name="Unsaved_Title.Text" xml:space="preserve">
+    <value>Unsaved changes</value>
+    <comment>Unsaved dialog - Title</comment>
+  </data>
 </root>
