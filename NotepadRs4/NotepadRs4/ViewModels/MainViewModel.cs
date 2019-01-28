@@ -7,6 +7,7 @@ using NotepadRs4.Helpers;
 using NotepadRs4.Models;
 using NotepadRs4.Services;
 using NotepadRs4.Views;
+using NotepadRs4.Views.Dialogs;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.UI.Popups;
@@ -521,7 +522,13 @@ namespace NotepadRs4.ViewModels
         // Save before closing dialog
         private async Task<ContentDialogResult> SaveBeforeClosing()
         {
-            ContentDialog dialog = new ContentDialog()
+            UnsavedDialog dialog = new UnsavedDialog()
+            {
+                DefaultButton = ContentDialogButton.Primary
+            };
+
+
+            /*ContentDialog dialog = new ContentDialog()
             {
                 Content = "Would you like to save your work?",
                 Title = "You have unsaved work",
@@ -531,9 +538,10 @@ namespace NotepadRs4.ViewModels
                 CloseButtonText = "Cancel",
                 DefaultButton = ContentDialogButton.Primary
                 //Style = (Style)Application.Current.Resources["FluentDialogWithIcon2"]
-            };
+            };*/
 
-            var answer = await dialog.ShowAsync();
+            await dialog.ShowAsync();
+            var answer = dialog.Result;
             return answer;
         }
 

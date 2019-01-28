@@ -1,0 +1,186 @@
+﻿<ContentDialog
+    x:Class="NotepadRs4.Views.Dialogs.UnsavedDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NotepadRs4.Views.Dialogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
+    
+    Background="{ThemeResource SystemControlAcrylicElementBrush}"
+    BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+    
+    mc:Ignorable="d">
+
+    <!-- NOTE - This dialog is still experimental and subject to (massive) changes. Use at your own risk -->
+
+    <Grid>
+        <contract7Present:Grid.BackgroundTransition>
+            <contract7Present:BrushTransition />
+        </contract7Present:Grid.BackgroundTransition>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Title with back button -->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Visibility="Collapsed"
+                    Padding="0,0,0,8"
+                    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                    BorderThickness="0,0,0,1">
+            <Button Style="{ThemeResource NavigationBackButtonNormalStyle}"
+                    Click="CloseButton_Click"/>
+            <TextBlock x:Uid="About_Title"
+                       Text="About"
+                       Margin="12,0"
+                       VerticalAlignment="Center"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       FontWeight="Bold"/>
+        </StackPanel>
+
+        <!-- Title and close button -->
+        <RelativePanel Grid.Row="0"
+                       HorizontalAlignment="Stretch"
+                       Visibility="Visible"
+                       Padding="0,0,0,8"
+                       BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                       BorderThickness="0,0,0,1">
+            <TextBlock Text="Unsaved changes"
+                       FontWeight="Bold"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"/>
+            <Button Content="&#xE106;"
+                    Background="Transparent"
+                    FontFamily="Segoe MDL2 Assets"
+                    Height="40"
+                    Width="40"
+                    RelativePanel.AlignRightWithPanel="True"
+                    Click="CloseButton_Click"/>
+        </RelativePanel>
+
+
+        <!-- Content -->
+        <ScrollViewer Grid.Row="1"
+                      MinHeight="160">
+            <StackPanel Padding="0,12,0,0">
+                <TextBlock Text="Would you like to save your current document?"
+                           TextWrapping="Wrap"
+                           Margin="{StaticResource DialogSubcategoryMargin}"/>
+            </StackPanel>
+
+        </ScrollViewer>
+
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Stretch"
+                    Padding="0,8,0,0"
+                    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                    BorderThickness="0,1,0,0">
+            <!-- Button 1 -->
+            <Button Padding="12,6"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    Click="PrimaryButton_Click">
+                <Button.Content>
+                    <StackPanel MinWidth="128"
+                                MinHeight="32"
+                                Orientation="Horizontal">
+                        <TextBlock Text="&#xE105;"
+                                   FontFamily="Segoe MDL2 Assets"
+                                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                                   VerticalAlignment="Center"
+                                   Padding="0,0,12,0"/>
+                        <TextBlock Text="Save"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Modifiers="None"
+                                         Key="S" />
+                </Button.KeyboardAccelerators>
+            </Button>
+
+
+            <!-- Button 2 -->
+            <Button Padding="12,6"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    Click="SecondaryButton_Click">
+                <Button.Content>
+                    <StackPanel MinWidth="128"
+                                MinHeight="32"
+                                Orientation="Horizontal">
+                        <TextBlock Text="&#xE107;"
+                                   FontFamily="Segoe MDL2 Assets"
+                                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                                   Padding="0,0,12,0"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Text="Discard changes"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Modifiers="None"
+                                         Key="N" />
+                </Button.KeyboardAccelerators>
+            </Button>
+
+            <!-- Button 3 -->
+            <Button Padding="12,6"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    Click="CloseButton_Click">
+                
+                <Button.Content>
+                    <StackPanel MinWidth="128"
+                                MinHeight="32"
+                                Orientation="Horizontal">
+                        <TextBlock Text="&#xE106;"
+                                   FontFamily="Segoe MDL2 Assets"
+                                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                                   Padding="0,0,12,0"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Text="Cancel"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Modifiers="None"
+                                         Key="Escape" />
+                </Button.KeyboardAccelerators>
+            </Button>
+
+        </StackPanel>
+
+
+
+        <!-- Dialog background icon -->
+        <Image x:Name="imgLogo"
+               Grid.Row="1"
+               Source="/Assets/Logo/in-app/logo-white.png" 
+               Height="72"
+               Width="72"
+               Opacity="0.25"
+               Visibility="Collapsed"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Bottom"/>
+
+        <FontIcon Grid.Row="2"
+                  Canvas.ZIndex="5"
+                  Visibility="Collapsed"
+                  Glyph="&#xE105;"
+                  FontSize="72"
+                  Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Bottom"/>
+    </Grid>
+</ContentDialog>
+
