@@ -43,6 +43,13 @@ namespace NotepadRs4.ViewModels
             set { SetProperty(ref _file, value); }
         }
 
+        private bool _dirtyEdited;
+        public bool DirtyEdited
+        {
+            get { return _dirtyEdited; }
+            set { SetProperty(ref _dirtyEdited, value); }
+        }
+
 
         // UI Notification triggers
         // Save Successful
@@ -103,6 +110,7 @@ namespace NotepadRs4.ViewModels
                 PrepareNewDocument();
             }
 
+            SetEditedFalse();
             SetUXToggles();
         }
 
@@ -338,6 +346,7 @@ namespace NotepadRs4.ViewModels
                 // Show Save Successful Notification
                 Debug.WriteLine("Save File As File: Saving Successful");
                 ShowUXMessage(1);
+                SetEditedFalse();
 
                 return true;
             }
@@ -427,6 +436,7 @@ namespace NotepadRs4.ViewModels
                 Data = data;
                 PreviousData = data;
                 RefreshTitlebarTitle();
+                SetEditedFalse();
                 ShowUXMessage(3);
                 return true;
             }
@@ -468,6 +478,7 @@ namespace NotepadRs4.ViewModels
             emptyData.DocumentTitle = "Untitled";
             Data = emptyData;
             File = null;
+            SetEditedFalse();
             RefreshTitlebarTitle();
         }
 
@@ -490,6 +501,16 @@ namespace NotepadRs4.ViewModels
             ApplicationView.GetForCurrentView().Title = Data.DocumentTitle;
         }
 
+
+        // Set save status
+        public void SetEditedFalse()
+        {
+            DirtyEdited = false;
+        }
+        public void SetEditedTrue()
+        {
+            DirtyEdited = true;
+        }
 
         // Navigation and dialogs
         /// <summary>

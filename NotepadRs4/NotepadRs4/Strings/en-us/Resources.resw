@@ -289,9 +289,9 @@ Happy editing!</value>
     <value>Save successful!</value>
     <comment>MainPage - IAN - Save OK</comment>
   </data>
-  <data name="Main_Unsaved.Text" xml:space="preserve">
-    <value>(Unsaved)</value>
-    <comment>MainPage - Unsaved-status</comment>
+  <data name="Main_Edited.Text" xml:space="preserve">
+    <value>(Edited)</value>
+    <comment>MainPage - Edited-status</comment>
   </data>
   <data name="About_Description.Text" xml:space="preserve">
     <value>Created and programmed by Ikarago, 2018-2019</value>

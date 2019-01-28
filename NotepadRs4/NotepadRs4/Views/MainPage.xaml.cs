@@ -139,5 +139,9 @@ namespace NotepadRs4.Views
             }
         }
 
+        private void TxtContent_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            ViewModel.SetEditedTrue();
+        }
     }
 }
