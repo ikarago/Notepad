@@ -14,9 +14,13 @@ namespace NotepadRs4.Views
 {
     public sealed partial class MainPage : Page
     {
+        // Properties
         public MainViewModel ViewModel { get; } = new MainViewModel();
         public SettingsViewModel SettingViewModel { get; } = Singleton<SettingsViewModel>.Instance;
+        private bool _isPageLoaded = false;
 
+
+        // Constructor
         public MainPage()
         {
             InitializeComponent();
@@ -24,7 +28,11 @@ namespace NotepadRs4.Views
             // Put in triggers for the logo
             this.ActualThemeChanged += MainPage_ActualThemeChanged;
             CheckThemeForLogo();
+
+            this.Loaded += MainPage_Loaded;
+            this.LayoutUpdated += MainPage_LayoutUpdated;
         }
+
 
         // Commands
         private ICommand _findCommand;
@@ -62,7 +70,7 @@ namespace NotepadRs4.Views
         }
                                  
 
-
+        // Overrides
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter is StorageFile)
@@ -85,6 +93,24 @@ namespace NotepadRs4.Views
 #endif
         }
 
+
+        // Methods
+        // Stuff for putting the focus on the content
+        private void MainPage_LayoutUpdated(object sender, object e)
+        {
+            if (_isPageLoaded == true)
+            {
+                // Set focus on the main content so the user can start typing right away
+                txtContent.Focus(FocusState.Programmatic);
+                _isPageLoaded = false;
+            }
+        }
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            _isPageLoaded = true;
+        }
+
+
         // #TODO: Check if this can be done soly by the ViewModel
         private async void txtContent_Drop(object sender, DragEventArgs e)
         {
@@ -100,8 +126,6 @@ namespace NotepadRs4.Views
         }
 
 
-
-        // Methods
         private void ShowHideFindBar()
         {
             if (gridFind.Visibility == Visibility.Collapsed)
