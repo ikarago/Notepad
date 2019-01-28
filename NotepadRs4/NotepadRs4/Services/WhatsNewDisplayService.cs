@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 using Microsoft.Toolkit.Uwp.Helpers;
 
-using NotepadRs4.Views;
+using NotepadRs4.Views.Dialogs;
 
 namespace NotepadRs4.Services
 {

@@ -14,25 +14,21 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
-namespace NotepadRs4.Views
+namespace NotepadRs4.Views.Dialogs
 {
-    public sealed partial class AboutDialog : ContentDialog
+    public sealed partial class SettingsDialog : ContentDialog
     {
-        public AboutViewModel ViewModel { get; } = new AboutViewModel();
+        public SettingsViewModel ViewModel { get; } = Singleton<SettingsViewModel>.Instance;
 
-        public AboutDialog()
+        public SettingsDialog()
         {
             RequestedTheme = (Window.Current.Content as FrameworkElement).RequestedTheme;
             this.InitializeComponent();
-
-            // Theme trigger for the logo
-            this.ActualThemeChanged += AboutDialog_ActualThemeChanged;
-            CheckThemeForLogo();
         }
 
+        // #TODO: Put this stuff in the ViewModel
         private ICommand _closeDialogCommand;
         public ICommand CloseDialogCommand
         {
@@ -43,33 +39,16 @@ namespace NotepadRs4.Views
                     _closeDialogCommand = new RelayCommand(
                         () =>
                         {
-                            Hide();
+                            CloseDialog();
                         });
                 }
                 return _closeDialogCommand;
             }
         }
 
-
-        // Methods
-        private void AboutDialog_ActualThemeChanged(FrameworkElement sender, object args)
+        private void CloseDialog()
         {
-            CheckThemeForLogo();
-        }
-
-        private void CheckThemeForLogo()
-        {
-            // Change the displayed logo
-            if (ActualTheme == ElementTheme.Dark)
-            {
-                BitmapImage image = new BitmapImage(new Uri("ms-appx:///Assets/Logo/in-app/logo-white.png"));
-                imgLogo.Source = image;
-            }
-            else if (ActualTheme == ElementTheme.Light)
-            {
-                BitmapImage image = new BitmapImage(new Uri("ms-appx:///Assets/Logo/in-app/logo-black.png"));
-                imgLogo.Source = image;
-            }
+            this.Hide();
         }
     }
 }

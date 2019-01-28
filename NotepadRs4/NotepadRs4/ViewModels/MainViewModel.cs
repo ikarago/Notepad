@@ -6,7 +6,6 @@ using System.Windows.Input;
 using NotepadRs4.Helpers;
 using NotepadRs4.Models;
 using NotepadRs4.Services;
-using NotepadRs4.Views;
 using NotepadRs4.Views.Dialogs;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;

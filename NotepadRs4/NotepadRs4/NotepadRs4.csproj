@@ -157,7 +157,7 @@
     <Compile Include="ViewModels\NotificationBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="Views\AboutDialog.xaml.cs">
+    <Compile Include="Views\Dialogs\AboutDialog.xaml.cs">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\UnsavedDialog.xaml.cs">
@@ -166,10 +166,10 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingsDialog.xaml.cs">
+    <Compile Include="Views\Dialogs\SettingsDialog.xaml.cs">
       <DependentUpon>SettingsDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WhatsNewDialog.xaml.cs">
+    <Compile Include="Views\Dialogs\WhatsNewDialog.xaml.cs">
       <DependentUpon>WhatsNewDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\XamlPlayground.xaml.cs">
@@ -219,7 +219,7 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Views\AboutDialog.xaml">
+    <Page Include="Views\Dialogs\AboutDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,11 +231,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\SettingsDialog.xaml">
+    <Page Include="Views\Dialogs\SettingsDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\WhatsNewDialog.xaml">
+    <Page Include="Views\Dialogs\WhatsNewDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
