@@ -330,4 +330,12 @@ Happy editing!</value>
     <value>Unsaved changes</value>
     <comment>Unsaved dialog - Title</comment>
   </data>
+  <data name="Main_Loaded.Text" xml:space="preserve">
+    <value>File loaded</value>
+    <comment>MainPage - Titlebar - File loaded text</comment>
+  </data>
+  <data name="Main_Saved.Text" xml:space="preserve">
+    <value>Saved!</value>
+    <comment>MainPage - Titlebar - File saved text</comment>
+  </data>
 </root>

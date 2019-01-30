@@ -69,6 +69,7 @@
                                    Text="{x:Bind ViewModel.Data.DocumentTitle, Mode=TwoWay, FallbackValue='Untitled'}"
                                    Margin="4,0,0,0"
                                    VerticalAlignment="Center"/>
+                        <!-- UX statusses -->
                         <TextBlock x:Name="tblEdited"
                                    x:Uid="Main_Edited"
                                    Visibility="{x:Bind ViewModel.DirtyEdited, Mode=OneWay}"
@@ -77,6 +78,21 @@
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                    Margin="6,0,0,0"
                                    VerticalAlignment="Center"/>
+                        <TextBlock x:Uid="Main_Saved"
+                                   Visibility="{x:Bind ViewModel.UXNotificationSaveSuccessful, Mode=OneWay}"
+                                   Text="Saved!"
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                   Margin="6,0,0,0"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock x:Uid="Main_Loaded"
+                                   Visibility="{x:Bind ViewModel.UXNotificationLoadSuccessful, Mode=OneWay}"
+                                   Text="File loaded"
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                   Margin="6,0,0,0"
+                                   VerticalAlignment="Center"/>
+                        <!-- END OF UX statusses-->
                         <TextBlock Text="-"
                                    Style="{ThemeResource CaptionTextBlockStyle}"
                                    Margin="6,0"
@@ -471,7 +487,7 @@
                   Canvas.ZIndex="30"
                   VerticalAlignment="Bottom">
                 <!-- Save successful -->
-                <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
+                <!--<StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
                             Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                             BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                             Visibility="{x:Bind ViewModel.UXNotificationSaveSuccessful, Mode=OneWay}">
@@ -484,7 +500,7 @@
                                Text="Save successful!" 
                                Style="{ThemeResource BaseTextBlockStyle}"
                                VerticalAlignment="Center"/>
-                </StackPanel>
+                </StackPanel>-->
 
                 <!-- Save Failed -->
                 <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
@@ -503,7 +519,7 @@
                 </StackPanel>
 
                 <!-- Load successful -->
-                <StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
+                <!--<StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
                             Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                             BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                             Visibility="{x:Bind ViewModel.UXNotificationLoadSuccessful, Mode=OneWay}">
@@ -516,7 +532,7 @@
                                Text="File opened" 
                                Style="{ThemeResource BaseTextBlockStyle}"
                                VerticalAlignment="Center"/>
-                </StackPanel>
+                </StackPanel>-->
 
                 <!-- Load Failed -->
                 <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"

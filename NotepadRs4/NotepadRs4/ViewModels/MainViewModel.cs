@@ -328,9 +328,9 @@ namespace NotepadRs4.ViewModels
         // Save As
         public async Task<bool> SaveFileAs()
         {
+            // #TODO: Check whether the user cancelled the action or it has actually failed
             StorageFile tempFile = await FileDataService.SaveAs(_data);
 
-            // #TODO - Expose the proper check here for the UI to react to
             if (tempFile != null)
             {
                 File = tempFile;
