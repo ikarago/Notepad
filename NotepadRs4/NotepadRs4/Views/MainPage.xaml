@@ -32,6 +32,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -176,7 +177,8 @@
                                       x:Uid="Main_Abb_FontOptions"
                                       Icon="Font"
                                       Label="Font options"
-                                      Visibility="Collapsed"/>
+                                      Visibility="Collapsed"
+                                      Command="{x:Bind FontOptionsCommand}" />
                         <AppBarButton x:Name="cbtnPlayground"
                                       Label="Debug"
                                       Visibility="Collapsed"
@@ -204,8 +206,9 @@
             </Grid>          
         </controls:DropShadowPanel>
 
-        <!-- Search 'n replace bar -->
-        <controls:DropShadowPanel x:Name="gridFind"
+        <!-- Font-options bar -->
+        <!-- #TODO: EXPERIMENTAL! Also still really bad. Needs more cues from Word Mobile in more compact situations? -->
+        <controls:DropShadowPanel x:Name="gridFontOptions"
                                   Grid.Row="1"
                                   Canvas.ZIndex="50"
                                   ShadowOpacity="0.6"
@@ -227,6 +230,119 @@
                 </Grid.ChildrenTransitions>
 
                 <!-- Grid definitions -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Icon -->
+                <Button Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Content="&#xE185;"
+                        FontFamily="Segoe MDL2 Assets"
+                        Background="Transparent"
+                        Visibility="Collapsed"
+                        Width="40"
+                        Height="40"/>
+                <TextBlock Grid.Column="0"
+                           Grid.Row="0"
+                           Grid.RowSpan="2"                
+                           Text="&#xE185;"
+                           FontFamily="Segoe MDL2 Assets"
+                           Margin="12,0"
+                           Width="24"
+                           TextAlignment="Center"
+                           Visibility="Visible"
+                           VerticalAlignment="Center"/>
+                <!-- Font -->
+                <ComboBox Grid.Column="1"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center">
+                    <ComboBoxItem Content="Times New Roman" />
+                </ComboBox>
+                <!-- Font Size -->
+                <ComboBox Grid.Column="2"
+                          Margin="0,0,8,0"
+                          VerticalAlignment="Center">
+                    <ComboBoxItem Content="11" />
+                    <ComboBoxItem Content="12" />
+                    <ComboBoxItem Content="14" />
+                    <ComboBoxItem Content="16" />
+                </ComboBox>
+
+                <!-- Bold -->
+                <ToggleButton Grid.Column="4"
+                                Grid.Row="0"
+                                Grid.RowSpan="1"
+                                Content="&#xE19B;"
+                                FontFamily="Segoe MDL2 Assets"
+                                Background="Transparent"
+                              Style="{ThemeResource ToggleButtonRound}"
+                                Width="40"
+                                Height="40"/>
+                
+                <!-- Italic -->
+                <ToggleButton Grid.Column="5"
+                                Grid.Row="0"
+                                Grid.RowSpan="1"
+                                Content="&#xE199;"
+                                FontFamily="Segoe MDL2 Assets"
+                                Background="Transparent"
+                              Style="{ThemeResource ToggleButtonRound}"
+                                Width="40"
+                                Height="40"/>
+                
+                <AppBarSeparator Grid.Column="6"
+                                 VerticalAlignment="Center"/>
+
+                <!-- Close -->
+                <Button x:Uid="Main_Find_Close"
+                        Grid.Column="7"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        Content="&#xE106;"
+                        FontFamily="Segoe MDL2 Assets"
+                        Background="Transparent"
+                        Width="40"
+                        Height="40"
+                        Command="{x:Bind FontOptionsCloseCommand}"/>
+
+            </Grid>
+        </controls:DropShadowPanel>
+        
+        <!-- Search 'n replace bar -->
+        <controls:DropShadowPanel x:Name="gridFind"
+                                  Grid.Row="2"
+                                  Canvas.ZIndex="30"
+                                  ShadowOpacity="0.6"
+                                  Visibility="Collapsed"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch">
+            <controls:DropShadowPanel.Transitions>
+                <TransitionCollection>
+                    <PaneThemeTransition />
+                </TransitionCollection>
+            </controls:DropShadowPanel.Transitions>
+            <!-- #TODO: Remove opacity and make a 'deeper' colour AcrylicBrush for this to ensure logic in depth -->
+            <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                  Opacity="0.9"
+                  Height="48">
+                <!-- Animation libraries -->
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <RepositionThemeTransition />
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
+
+                <!-- Grid definitions -->
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition x:Name="gridFindBarReplaceRow" 
@@ -235,6 +351,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
@@ -298,10 +415,14 @@
                         Background="Transparent"
                         Width="40"
                         Height="40"/>
+                
+                <AppBarSeparator Grid.Column="4"
+                                 VerticalAlignment="Center"/>
+
                 <!-- Close -->
                 <Button x:Name="btnFindClose"
                         x:Uid="Main_Find_Close"
-                        Grid.Column="4"
+                        Grid.Column="5"
                         Grid.Row="0"
                         Grid.RowSpan="1"
                         Content="&#xE106;"
@@ -318,7 +439,7 @@
         <!-- Textbox -->
         <TextBox x:Name="txtContent"
                  x:Uid="Main_Content"
-                 Grid.Row="2"
+                 Grid.Row="3"
                  Canvas.ZIndex="10"
                  BorderThickness="0"
                  HorizontalAlignment="Stretch"
@@ -339,7 +460,7 @@
                  TextChanging="TxtContent_TextChanging"/>
 
         <!-- UX Messages -->
-        <controls:DropShadowPanel Grid.Row="2"
+        <controls:DropShadowPanel Grid.Row="3"
                                   Canvas.ZIndex="30"
                                   Margin="48,0,48,-5"
                                   Padding="0,0,0,4"

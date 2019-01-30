@@ -20,15 +20,19 @@ namespace NotepadRs4.Views.Dialogs
 {
     public sealed partial class SettingsDialog : ContentDialog
     {
+        // Properties
         public SettingsViewModel ViewModel { get; } = Singleton<SettingsViewModel>.Instance;
 
+
+        // Constructor
         public SettingsDialog()
         {
             RequestedTheme = (Window.Current.Content as FrameworkElement).RequestedTheme;
             this.InitializeComponent();
         }
 
-        // #TODO: Put this stuff in the ViewModel
+
+        // Commands
         private ICommand _closeDialogCommand;
         public ICommand CloseDialogCommand
         {
@@ -46,6 +50,8 @@ namespace NotepadRs4.Views.Dialogs
             }
         }
 
+
+        // Methods
         private void CloseDialog()
         {
             this.Hide();

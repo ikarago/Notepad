@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using Microsoft.Toolkit.Uwp.Helpers;
 using NotepadRs4.Helpers;
 using NotepadRs4.Services;
 
@@ -14,8 +14,9 @@ namespace NotepadRs4.ViewModels
     // TODO WTS: Add other settings as necessary. For help see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/pages/settings.md
     public class SettingsViewModel : Observable
     {
+        // Properties
         private bool _hasInstanceBeenInitialized = false;
-
+        private bool _haveSettingDefaultsBeenSet = false;
 
         private ElementTheme _elementTheme = ThemeSelectorService.Theme;
         public ElementTheme ElementTheme
@@ -25,11 +26,10 @@ namespace NotepadRs4.ViewModels
             set { Set(ref _elementTheme, value); }
         }
 
-        private TextWrapping _textWrapping = TextWrapping.NoWrap;
+        private TextWrapping _textWrapping;
         public TextWrapping TextWrapping
         {
             get { return _textWrapping; }
-
             set
             {
                 if (value != _textWrapping)
@@ -45,7 +45,6 @@ namespace NotepadRs4.ViewModels
         public string VersionDescription
         {
             get { return _versionDescription; }
-
             set { Set(ref _versionDescription, value); }
         }
 
@@ -72,7 +71,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // #TODO: Create a switch TextWrapping command
-        private ICommand _switchTextWrapping;
+        /*private ICommand _switchTextWrapping;
         public ICommand SwitchTextWrapping
         {
             get
@@ -90,18 +89,23 @@ namespace NotepadRs4.ViewModels
                 }
                 return _switchTextWrapping;
             }
-        }
+        }*/
+        
 
+        // Constructor
         public SettingsViewModel()
         {
         }
 
+        // Initialize
         public void Initialize()
         {
             GetSettingValues();
             VersionDescription = GetVersionDescription();
         }
 
+
+        // Methods
         public async Task EnsureInstanceInitializedAsync()
         {
             if (!_hasInstanceBeenInitialized)
@@ -112,7 +116,6 @@ namespace NotepadRs4.ViewModels
             }
         }
 
-        // Methods
         private string GetVersionDescription()
         {
             var appName = "AppDisplayName".GetLocalized();
@@ -125,7 +128,16 @@ namespace NotepadRs4.ViewModels
 
         private async void GetSettingValues()
         {
-            TextWrapping = await Windows.Storage.ApplicationData.Current.LocalSettings.ReadAsync<TextWrapping>(nameof(TextWrapping));
+            // Set the default settings on the first run
+            if (SystemInformation.IsFirstRun && _haveSettingDefaultsBeenSet == false)
+            {
+                TextWrapping = TextWrapping.Wrap;
+                _haveSettingDefaultsBeenSet = true;
+            }
+            else
+            {
+                TextWrapping = await Windows.Storage.ApplicationData.Current.LocalSettings.ReadAsync<TextWrapping>(nameof(TextWrapping));
+            }
         }
 
         /*

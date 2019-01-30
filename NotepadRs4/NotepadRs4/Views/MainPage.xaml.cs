@@ -35,6 +35,7 @@ namespace NotepadRs4.Views
 
 
         // Commands
+        // Find and Replace
         private ICommand _findCommand;
         public ICommand FindCommand
         {
@@ -51,7 +52,6 @@ namespace NotepadRs4.Views
                 return _findCommand;
             }
         }
-
         private ICommand _findBarCloseCommand;
         public ICommand FindBarCloseCommand
         {
@@ -66,6 +66,40 @@ namespace NotepadRs4.Views
                         });
                 }
                 return _findBarCloseCommand;
+            }
+        }
+
+        // Font Options
+        private ICommand _fontOptionsCommand;
+        public ICommand FontOptionsCommand
+        {
+            get
+            {
+                if (_fontOptionsCommand == null)
+                {
+                    _fontOptionsCommand = new RelayCommand(
+                        () =>
+                        {
+                            ShowHideFontOptionsBar();
+                        });
+                }
+                return _fontOptionsCommand;
+            }
+        }
+        private ICommand _fontOptionsCloseCommand;
+        public ICommand FontOptionsCloseCommand
+        {
+            get
+            {
+                if (_fontOptionsCloseCommand == null)
+                {
+                    _fontOptionsCloseCommand = new RelayCommand(
+                        () =>
+                        {
+                            CloseFontOptionsBar();
+                        });
+                }
+                return _fontOptionsCloseCommand;
             }
         }
                                  
@@ -84,9 +118,12 @@ namespace NotepadRs4.Views
             }
 
 #if DEBUG
-            // Show Find & Replace-buttons
+            // Show Find & Replace-button
             cbtnFind.Visibility = Visibility.Visible;
             cbtnSeperator.Visibility = Visibility.Visible;
+
+            // Show Font Options-button
+            cbtnFontOptions.Visibility = Visibility.Visible;
 
             // Show XAML Playground-button
             cbtnPlayground.Visibility = Visibility.Visible;
@@ -137,10 +174,25 @@ namespace NotepadRs4.Views
                 gridFind.Visibility = Visibility.Collapsed;
             }
         }
-
         private void CloseFindBar()
         {
             gridFind.Visibility = Visibility.Collapsed;
+        }
+
+        private void ShowHideFontOptionsBar()
+        {
+            if (gridFontOptions.Visibility == Visibility.Collapsed)
+            {
+                gridFontOptions.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                gridFontOptions.Visibility = Visibility.Collapsed;
+            }
+        }
+        private void CloseFontOptionsBar()
+        {
+            gridFontOptions.Visibility = Visibility.Collapsed;
         }
 
         private void MainPage_ActualThemeChanged(FrameworkElement sender, object args)
