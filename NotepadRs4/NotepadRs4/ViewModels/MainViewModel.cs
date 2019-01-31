@@ -259,12 +259,11 @@ namespace NotepadRs4.ViewModels
         // New
         public async void NewFile()
         {
-            // #TODO: Ask the user to save the current file if there is one open
             if (_data.Text != "")
             {
                 var answer = await SaveBeforeClosing();
 
-                if (answer == ContentDialogResult.Primary)
+                if (answer == UnsavedDialogResult.Save)
                 {
                     // Save & then open a new file
                     Debug.WriteLine("New File: Save & open new file");
@@ -290,7 +289,7 @@ namespace NotepadRs4.ViewModels
 
 
                 }
-                if (answer == ContentDialogResult.Secondary)
+                if (answer == UnsavedDialogResult.Discard)
                 {
                     // Discard changes and open a new file
                     Debug.WriteLine("New File: Discard changes");
@@ -360,7 +359,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // Load
-        // TODO: Check against previous versions if there have been any changes
+        // #TODO: Check against previous versions if there have been any changes
         public async Task<bool> LoadFile()
         {
             // #TODO: Temporary turned dialog off for simplicity of the code while adding a proper base for this
@@ -539,27 +538,13 @@ namespace NotepadRs4.ViewModels
             await dialog.ShowAsync();
         }
 
-        // Save before closing dialog
-        private async Task<ContentDialogResult> SaveBeforeClosing()
+        /// <summary>
+        /// Display a Save before Closing dialog
+        /// </summary>
+        /// <returns>Returns UnsavedDialogResult</returns>
+        private async Task<UnsavedDialogResult> SaveBeforeClosing()
         {
-            UnsavedDialog dialog = new UnsavedDialog()
-            {
-                DefaultButton = ContentDialogButton.Primary
-            };
-
-
-            /*ContentDialog dialog = new ContentDialog()
-            {
-                Content = "Would you like to save your work?",
-                Title = "You have unsaved work",
-                Tag = "&#xE11B;",
-                PrimaryButtonText = "Save",
-                SecondaryButtonText = "Don't save",
-                CloseButtonText = "Cancel",
-                DefaultButton = ContentDialogButton.Primary
-                //Style = (Style)Application.Current.Resources["FluentDialogWithIcon2"]
-            };*/
-
+            UnsavedDialog dialog = new UnsavedDialog();
             await dialog.ShowAsync();
             var answer = dialog.Result;
             return answer;

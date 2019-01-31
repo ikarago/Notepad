@@ -12,8 +12,6 @@
     
     mc:Ignorable="d">
 
-    <!-- NOTE - This dialog is still experimental and subject to (massive) changes. Use at your own risk -->
-
     <Grid>
         <contract7Present:Grid.BackgroundTransition>
             <contract7Present:BrushTransition />
@@ -32,7 +30,7 @@
                     BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                     BorderThickness="0,0,0,1">
             <Button Style="{ThemeResource NavigationBackButtonNormalStyle}"
-                    Click="CloseButton_Click"/>
+                    Command="{x:Bind CloseCommand}" />
             <TextBlock x:Uid="About_Title"
                        Text="About"
                        Margin="12,0"
@@ -59,7 +57,7 @@
                     Height="40"
                     Width="40"
                     RelativePanel.AlignRightWithPanel="True"
-                    Click="CloseButton_Click"/>
+                    Command="{x:Bind CloseCommand}"/>
         </RelativePanel>
 
 
@@ -72,7 +70,6 @@
                            TextWrapping="Wrap"
                            Margin="{StaticResource DialogSubcategoryMargin}"/>
             </StackPanel>
-
         </ScrollViewer>
 
 
@@ -83,12 +80,12 @@
                     Padding="0,8,0,0"
                     BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                     BorderThickness="0,1,0,0">
-            <!-- Primary button -->
+            <!-- Save button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Left"
                     Background="Transparent"
-                    Click="PrimaryButton_Click">
+                    Command="{x:Bind SaveCommand}">
                 <Button.Content>
                     <StackPanel MinWidth="128"
                                 MinHeight="32"
@@ -98,7 +95,7 @@
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    VerticalAlignment="Center"
                                    Padding="0,0,12,0"/>
-                        <TextBlock x:Uid="Unsaved_PrimaryText"
+                        <TextBlock x:Uid="Unsaved_SaveText"
                                    Text="Save"
                                    VerticalAlignment="Center"/>
                     </StackPanel>
@@ -109,12 +106,12 @@
                 </Button.KeyboardAccelerators>
             </Button>
 
-            <!-- Secondary button -->
+            <!-- Discard button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Left"
                     Background="Transparent"
-                    Click="SecondaryButton_Click">
+                    Command="{x:Bind DiscardCommand}">
                 <Button.Content>
                     <StackPanel MinWidth="128"
                                 MinHeight="32"
@@ -124,7 +121,7 @@
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved_SecondaryText"
+                        <TextBlock x:Uid="Unsaved_DiscardText"
                                    Text="Discard changes"
                                    VerticalAlignment="Center"/>
                     </StackPanel>
@@ -135,12 +132,12 @@
                 </Button.KeyboardAccelerators>
             </Button>
 
-            <!-- Close button -->
+            <!-- Cancel button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Left"
                     Background="Transparent"
-                    Click="CloseButton_Click">                
+                    Command="{x:Bind CancelCommand}">
                 <Button.Content>
                     <StackPanel MinWidth="128"
                                 MinHeight="32"
@@ -150,7 +147,7 @@
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved_CloseText"
+                        <TextBlock x:Uid="Unsaved_CancelText"
                                    Text="Cancel"
                                    VerticalAlignment="Center"/>
                     </StackPanel>
@@ -164,7 +161,6 @@
         </StackPanel>
 
 
-
         <!-- Dialog background icon -->
         <FontIcon Grid.Row="2"
                   Canvas.ZIndex="5"
@@ -176,4 +172,3 @@
                   VerticalAlignment="Bottom"/>
     </Grid>
 </ContentDialog>
-
