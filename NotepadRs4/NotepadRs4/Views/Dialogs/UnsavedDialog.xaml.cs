@@ -45,6 +45,7 @@ namespace NotepadRs4.Views.Dialogs
         // Constructor
         public UnsavedDialog()
         {
+            RequestedTheme = (Window.Current.Content as FrameworkElement).RequestedTheme;
             this.InitializeComponent();
             Result = UnsavedDialogResult.Nothing;
         }
