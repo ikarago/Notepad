@@ -72,6 +72,36 @@
                 </StackPanel>
 
 
+                <!-- Acknowledgements -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
+                    <TextBlock x:Uid="About_AcknowledgementsTitle"
+                               Text="Acknowledgements"
+                               FontWeight="Bold"
+                               Margin="{StaticResource DialogSubtitleMargin}"
+                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <!-- Intro -->
+                    <TextBlock x:Uid="About_AcknowledgementsIntro"
+                               Text="This app makes use of code from the following projects:"
+                               TextWrapping="Wrap"
+                               Margin="{StaticResource DialogSubtitleMargin}"/>
+
+                    <!-- Windows Template Studio -->
+                    <HyperlinkButton x:Uid="About_AcknowledgementsWts"
+                                     Content="Windows Template Studio"
+                                     NavigateUri="https://github.com/Microsoft/WindowsTemplateStudio"/>
+
+                    <!-- Windows Community Toolkit -->
+                    <HyperlinkButton x:Uid="About_AcknowledgementsWct"
+                                     Content="Windows Community Toolkit"
+                                     NavigateUri="https://github.com/windows-toolkit/WindowsCommunityToolkit"/>
+
+                    <!-- FluBase -->
+                    <HyperlinkButton x:Uid="About_AcknowledgementsFlubase"
+                                     Content="FluBase"
+                                     NavigateUri="https://github.com/ikarago/FluBase"/>
+                </StackPanel>
+
+
                 <!-- Links -->
                 <StackPanel Margin="{StaticResource DialogCategoryMargin}">
                     <TextBlock x:Uid="About_LinksTitle"

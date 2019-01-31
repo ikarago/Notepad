@@ -338,4 +338,36 @@ Happy editing!</value>
     <value>Saved!</value>
     <comment>MainPage - Titlebar - File saved text</comment>
   </data>
+  <data name="About_AcknowledgementsFlubase.Content" xml:space="preserve">
+    <value>FluBase</value>
+    <comment>About - Acknowlegdements FluBase title</comment>
+  </data>
+  <data name="About_AcknowledgementsFlubase.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ikarago/FluBase</value>
+    <comment>About - Acknowlegdements FluBase Project URL</comment>
+  </data>
+  <data name="About_AcknowledgementsIntro.Text" xml:space="preserve">
+    <value>This app makes use of code from the following projects:</value>
+    <comment>About - Acknowlegdements Intro text</comment>
+  </data>
+  <data name="About_AcknowledgementsTitle.Text" xml:space="preserve">
+    <value>Acknowledgements</value>
+    <comment>About - Acknowlegdements Title</comment>
+  </data>
+  <data name="About_AcknowledgementsWct.Content" xml:space="preserve">
+    <value>Windows Community Toolkit</value>
+    <comment>About - Acknowledgements Windows Community Toolkit title</comment>
+  </data>
+  <data name="About_AcknowledgementsWct.NavigateUri" xml:space="preserve">
+    <value>https://github.com/windows-toolkit/WindowsCommunityToolkit</value>
+    <comment>About - Acknowledgements Windows Community Toolkit Project URL</comment>
+  </data>
+  <data name="About_AcknowledgementsWts.Content" xml:space="preserve">
+    <value>Windows Template Studio</value>
+    <comment>About - Acknowlegdements Windows Template Studio title</comment>
+  </data>
+  <data name="About_AcknowledgementsWts.NavigateUri" xml:space="preserve">
+    <value>https://github.com/Microsoft/WindowsTemplateStudio</value>
+    <comment>About - Acknowlegdements Windows Template Studio Project URL</comment>
+  </data>
 </root>
