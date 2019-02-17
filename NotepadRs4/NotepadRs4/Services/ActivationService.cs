@@ -134,6 +134,15 @@ namespace NotepadRs4.Services
             titlebar.ButtonBackgroundColor = Colors.Transparent;
             titlebar.ButtonInactiveBackgroundColor = Colors.Transparent;
 
+            if (App.Current.RequestedTheme == ApplicationTheme.Dark)
+            {
+                titlebar.ButtonForegroundColor = Colors.White;
+            }
+            else if (App.Current.RequestedTheme == ApplicationTheme.Light)
+            {
+                titlebar.ButtonForegroundColor = Colors.Black;
+            }
+
             // Extend the normal window to the Titlebar for the blur to reach there too
             CoreApplicationViewTitleBar coreTitlebar = CoreApplication.GetCurrentView().TitleBar;
             coreTitlebar.ExtendViewIntoTitleBar = true;
