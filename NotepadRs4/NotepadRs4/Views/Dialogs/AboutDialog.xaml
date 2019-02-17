@@ -83,7 +83,7 @@
                             Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal"
                                 Margin="{ThemeResource DialogTitleMargin}">
-                        <TextBlock Text="&#xF2B7;"
+                        <TextBlock Text="&#xE164;"
                                    VerticalAlignment="Center"
                                    Style="{ThemeResource FluentTitleIconStyle}"/>
                         <TextBlock x:Uid="About_TranslatorsTitle"
@@ -101,7 +101,7 @@
                 <StackPanel Margin="{StaticResource DialogCategoryMargin}">
                     <StackPanel Orientation="Horizontal"
                                 Margin="{ThemeResource DialogTitleMargin}">
-                        <TextBlock Text="&#xE19F;"
+                        <TextBlock Text="&#xE134;"
                                    Style="{ThemeResource FluentTitleIconStyle}" />
                         <TextBlock x:Uid="About_AcknowledgementsTitle"
                                    Text="Acknowledgements"                              
@@ -135,7 +135,7 @@
                 <StackPanel Margin="{ThemeResource DialogCategoryMargin}">
                     <StackPanel Orientation="Horizontal"
                                 Margin="{ThemeResource DialogTitleMargin}">
-                        <TextBlock Text="&#xE12B;"
+                        <TextBlock Text="&#xE71B;"
                                    Style="{ThemeResource FluentTitleIconStyle}"/>
                         <TextBlock x:Uid="About_LinksTitle"
                                    Text="Links"
