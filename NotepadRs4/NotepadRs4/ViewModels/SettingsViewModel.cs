@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Toolkit.Uwp.Helpers;
@@ -8,6 +10,7 @@ using NotepadRs4.Services;
 using Windows.ApplicationModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace NotepadRs4.ViewModels
 {
@@ -26,6 +29,14 @@ namespace NotepadRs4.ViewModels
             set { Set(ref _elementTheme, value); }
         }
 
+        private string _versionDescription;
+        public string VersionDescription
+        {
+            get { return _versionDescription; }
+            set { Set(ref _versionDescription, value); }
+        }
+
+        // Textbox properties
         private TextWrapping _textWrapping;
         public TextWrapping TextWrapping
         {
@@ -41,13 +52,107 @@ namespace NotepadRs4.ViewModels
             }
         }
 
-        private string _versionDescription;
-        public string VersionDescription
+        /// <summary>
+        /// List of Fonts available on the system
+        /// </summary>
+        public ObservableCollection<string> Fonts
         {
-            get { return _versionDescription; }
-            set { Set(ref _versionDescription, value); }
+            get
+            {
+                ObservableCollection<string> list = new ObservableCollection<string>();
+
+                // Get the array of fonts
+                var fonts = Microsoft.Graphics.Canvas.Text.CanvasTextFormat.GetSystemFontFamilies();
+
+                // Put the individual fonts in the list
+                foreach (string font in fonts)
+                {
+                    list.Add(font);
+                }
+
+                return list;
+            }
         }
 
+        private string _selectedFontFamily;
+        public string SelectedFontFamily
+        {
+            get { return _selectedFontFamily; }
+            set
+            {
+                if (value != _selectedFontFamily)
+                {
+                    // #TODO Save the new value to Settings
+                }
+
+                Set(ref _selectedFontFamily, value);
+            }
+        }
+
+        private ObservableCollection<int> _fontSizes;
+        public ObservableCollection<int> FontSizes
+        {
+            get { return _fontSizes; }
+            set { Set(ref _fontSizes, value); }
+        }
+
+        private int _selectedFontSize;
+        public int SelectedFontSize
+        {
+            get { return _selectedFontSize; }
+            set
+            {
+                if (value != _selectedFontSize)
+                {
+                    // #TODO Save the new value to Settings
+                }
+
+                Set(ref _selectedFontSize, value);
+            }
+        }
+
+        // #TODO: Bold property
+        // #TODO: Italic property
+        
+
+        // Constructor
+        public SettingsViewModel()
+        {
+        }
+
+        // Initialize
+        public void Initialize()
+        {
+            GetSettingValues();
+            VersionDescription = GetVersionDescription();
+
+            FontSizes = new ObservableCollection<int>
+            {
+                8,
+                9,
+                10,
+                11,
+                12,
+                14,
+                16,
+                18,
+                20,
+                22,
+                24,
+                26,
+                28,
+                36,
+                48,
+                72
+            };
+
+            // #TODO - TEMP Set the default fontsize and family for the session
+            SelectedFontFamily = FontFamily.XamlAutoFontFamily.Source;
+            SelectedFontSize = 14;
+        }
+
+
+        // Commands
         private ICommand _switchThemeCommand;
         public ICommand SwitchThemeCommand
         {
@@ -68,40 +173,6 @@ namespace NotepadRs4.ViewModels
 
                 return _switchThemeCommand;
             }
-        }
-
-        // #TODO: Create a switch TextWrapping command
-        /*private ICommand _switchTextWrapping;
-        public ICommand SwitchTextWrapping
-        {
-            get
-            {
-                if (_switchTextWrapping == null)
-                {
-                    _switchTextWrapping = new RelayCommand<TextWrapping>(
-                        async (param) =>
-                        {
-                            if (_hasInstanceBeenInitialized)
-                            {
-                                // Check true or false and set the new value
-                            }
-                        });
-                }
-                return _switchTextWrapping;
-            }
-        }*/
-        
-
-        // Constructor
-        public SettingsViewModel()
-        {
-        }
-
-        // Initialize
-        public void Initialize()
-        {
-            GetSettingValues();
-            VersionDescription = GetVersionDescription();
         }
 
 
@@ -140,13 +211,11 @@ namespace NotepadRs4.ViewModels
             }
         }
 
-        /*
-        private void CloseDialog(ContentDialog dialog)
+        private void AddCustomFontSize(int value)
         {
-            if (dialog != null)
-            {
-                dialog.Hide();
-            }
-        } */
+            FontSizes.Add(value);
+            // Automatically set as selected font size
+            SelectedFontSize = value;
+        }
     }
 }

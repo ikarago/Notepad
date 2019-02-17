@@ -18,5 +18,31 @@
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
+    
+    <!-- Fluent styles -->    
+    <!-- Fluent Header Styles #TODO -->
+    
+    <!-- Fluent Subheader Styles #TODO -->    
+    
+    <!-- Fluent Title Styles-->
+    <Style x:Key="FluentTitleTextStyle" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <Style x:Key="FluentTitleIconStyle" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Margin" Value="0,0,18,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    
+    <!-- Fluent Subtitle Styles #TODO -->
+    
+    <!-- Fluent Body Styles #TODO -->
+    
+    <!-- Fluent Caption Styles #TODO -->
 
 </ResourceDictionary>

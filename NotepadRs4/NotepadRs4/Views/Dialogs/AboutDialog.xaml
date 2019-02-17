@@ -41,15 +41,35 @@
         <ScrollViewer Grid.Row="1">
             <StackPanel Padding="0,12,0,0">
                 <!-- App info -->
-                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
-                    <!-- App Title -->
-                    <TextBlock Text="{x:Bind ViewModel.AppName}"
-                               Style="{ThemeResource SubtitleTextBlockStyle}"
-                               FontWeight="Bold"/>
-                    <!-- Version number -->
-                    <TextBlock Text="{x:Bind ViewModel.VersionNumber, Mode=OneWay}"
-                               Margin="0,0,0,4"
-                               Style="{ThemeResource CaptionTextBlockStyle}"/>
+                <StackPanel Margin="{ThemeResource DialogCategoryMargin}">
+                    <Grid Margin="{ThemeResource DialogTitleMargin}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Text="&#xE946;"
+                                   Style="{ThemeResource FluentTitleIconStyle}"/>
+                        <!-- App Title -->
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="0"
+                                   Text="{x:Bind ViewModel.AppName}"
+                                   Style="{ThemeResource FluentTitleTextStyle}"
+                                   FontWeight="SemiBold"/>
+                        <!-- Version number -->
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="1"
+                                   Text="{x:Bind ViewModel.VersionNumber, Mode=OneWay}"
+                                   Style="{ThemeResource CaptionTextBlockStyle}"/>
+                    </Grid>
+
                     <!-- About Description -->
                     <TextBlock Text="Notepad, created and programmed by Ikarago, 2018-2019"
                                x:Uid="About_Description"
@@ -59,13 +79,18 @@
 
 
                 <!-- Translators -->
-                <StackPanel Margin="{StaticResource DialogCategoryMargin}"
+                <StackPanel Margin="{ThemeResource DialogCategoryMargin}"
                             Visibility="Collapsed">
-                    <TextBlock x:Uid="About_TranslatorsTitle"
-                               Text="Translators"
-                               FontWeight="Bold"
-                               Margin="{StaticResource DialogSubtitleMargin}"
-                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xF2B7;"
+                                   VerticalAlignment="Center"
+                                   Style="{ThemeResource FluentTitleIconStyle}"/>
+                        <TextBlock x:Uid="About_TranslatorsTitle"
+                                   Text="Translators"
+                                   Style="{ThemeResource FluentTitleTextStyle}"/>
+                    </StackPanel>
+
                     <TextBlock x:Uid="About_Translators"
                                Text="Sample text"
                                TextWrapping="Wrap"/>
@@ -74,11 +99,15 @@
 
                 <!-- Acknowledgements -->
                 <StackPanel Margin="{StaticResource DialogCategoryMargin}">
-                    <TextBlock x:Uid="About_AcknowledgementsTitle"
-                               Text="Acknowledgements"
-                               FontWeight="Bold"
-                               Margin="{StaticResource DialogSubtitleMargin}"
-                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE19F;"
+                                   Style="{ThemeResource FluentTitleIconStyle}" />
+                        <TextBlock x:Uid="About_AcknowledgementsTitle"
+                                   Text="Acknowledgements"                              
+                                   Style="{StaticResource FluentTitleTextStyle}" />
+                    </StackPanel>
+
                     <!-- Intro -->
                     <TextBlock x:Uid="About_AcknowledgementsIntro"
                                Text="This app makes use of code from the following projects:"
@@ -103,12 +132,17 @@
 
 
                 <!-- Links -->
-                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
-                    <TextBlock x:Uid="About_LinksTitle"
-                               Text="Links"
-                               FontWeight="Bold"
-                               Margin="{StaticResource DialogSubtitleMargin}"
-                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                <StackPanel Margin="{ThemeResource DialogCategoryMargin}">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE12B;"
+                                   Style="{ThemeResource FluentTitleIconStyle}"/>
+                        <TextBlock x:Uid="About_LinksTitle"
+                                   Text="Links"
+                                   Style="{ThemeResource FluentTitleTextStyle}" />
+                    </StackPanel>
+                    
+
                     <!-- Privacy Policy -->
                     <HyperlinkButton x:Uid="About_PrivacyTermsLink"
                                      Content="Privacy Policy"/>

@@ -9,7 +9,14 @@
     <!-- Fluent Dialog margins -->
     <Thickness x:Key="DialogCategoryMargin">0,0,0,48</Thickness>
     <Thickness x:Key="DialogSubcategoryMargin">0,0,0,24</Thickness>
+    <Thickness x:Key="DialogTitleMargin">0,0,0,16</Thickness>
     <Thickness x:Key="DialogSubtitleMargin">0,0,0,12</Thickness>
+    
+    <!-- Fluent margins -->
+    <!--<Thickness x:Key="BlockCategoryMargin">0,0,0,48</Thickness>
+    <Thickness x:Key="BlockSubcategoryMargin">0,0,0,24</Thickness>
+    <Thickness x:Key="BlockTitleMargin">0,0,0,16</Thickness>-->
+
 
     <!--Medium size margins-->
     <Thickness x:Key="MediumLeftMargin">24,0,0,0</Thickness>
