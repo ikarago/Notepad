@@ -178,6 +178,12 @@
                                                                       IsEnabled="False"/>
                             </contract7Present:AppBarButton.KeyboardAccelerators>
                         </AppBarButton>
+                        <AppBarButton x:Name="cbtnShare"
+                                      x:Uid="Main_Abb_Share"
+                                      Icon="Share"
+                                      Label="Share"
+                                      Command="{x:Bind ViewModel.ShareCommand}">
+                        </AppBarButton>
                         <AppBarSeparator />
                         <!-- New idea: Toggle to keep Notepad on Top -->
                         <!--<AppBarToggleButton x:Name="ctbtnAlwaysOnTop"

@@ -194,11 +194,27 @@ namespace NotepadRs4.ViewModels
                     _printCommand = new RelayCommand(
                         async () =>
                         {
-                            // Print stuff
-                            //throw new NotImplementedException();
+                            // #TODO
                         });
                 }
                 return _printCommand;
+            }
+        }
+
+        private ICommand _shareCommand;
+        public ICommand ShareCommand
+        {
+            get
+            {
+                if (_shareCommand == null)
+                {
+                    _shareCommand = new RelayCommand(
+                        async () =>
+                        {
+                            // #TODO
+                        });
+                }
+                return _shareCommand;
             }
         }
 
@@ -442,13 +458,16 @@ namespace NotepadRs4.ViewModels
         private void PrepareNewDocument()
         {
             TextDataModel emptyData = new TextDataModel();
-            emptyData.DocumentTitle = "Untitled";
+            emptyData.DocumentTitle = ResourceExtensions.GetLocalized("UnititledLabel");
             Data = emptyData;
             File = null;
             SetEditedFalse();
             RefreshTitlebarTitle();
         }
 
+        /// <summary>
+        /// Loads a document for use in this ViewModel
+        /// </summary>
         private async void LoadDocument()
         {
             // Just load

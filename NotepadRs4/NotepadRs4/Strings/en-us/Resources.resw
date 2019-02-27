@@ -370,4 +370,12 @@ Happy editing!</value>
     <value>https://github.com/Microsoft/WindowsTemplateStudio</value>
     <comment>About - Acknowlegdements Windows Template Studio Project URL</comment>
   </data>
+  <data name="Main_Abb_Share.Label" xml:space="preserve">
+    <value>Share</value>
+    <comment>MainPage - AppBarButton - Share</comment>
+  </data>
+  <data name="UnititledLabel" xml:space="preserve">
+    <value>Untitled</value>
+    <comment>Name for a new, empty document</comment>
+  </data>
 </root>
