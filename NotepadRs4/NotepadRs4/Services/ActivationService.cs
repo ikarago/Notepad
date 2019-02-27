@@ -10,6 +10,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.Core;
+using Windows.UI.Core.Preview;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -53,6 +54,9 @@ namespace NotepadRs4.Services
                     if (SystemNavigationManager.GetForCurrentView() != null)
                     {
                         SystemNavigationManager.GetForCurrentView().BackRequested += ActivationService_BackRequested;
+                        
+                        // Stuff for popping a confirmation dialog before closing
+                        SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += App_CloseRequested;
                     }
                 }
             }
@@ -83,6 +87,28 @@ namespace NotepadRs4.Services
                 // Tasks after activation
                 await StartupAsync();
             }
+        }
+
+        private async void App_CloseRequested(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
+        {
+            // CREDIT: Made possible by the really helpful blog post by Martin Zikmund, go check it out! https://blog.mzikmund.com/2018/09/app-close-confirmation-in-uwp/
+
+            // #TODO: Only pop this up when the user actually has unsaved stuff
+            // #TODO: Give the user the option to save from this dialog
+            // #TODO: Migrate to the use of Fluent Framework for the shown dialog
+            var deferral = e.GetDeferral();
+            var dialog = new ContentDialog();
+            dialog.Title = "Exit and discard changes?";
+            dialog.PrimaryButtonText = "Yes";
+            dialog.SecondaryButtonText = "No";
+
+            // Check the answer; if no then cancel closing the app
+            if (await dialog.ShowAsync() == ContentDialogResult.Secondary)
+            {
+                // Cancel the closure by setting the Handled-status to true
+                e.Handled = true;
+            }
+            deferral.Complete();
         }
 
         private async Task InitializeAsync()

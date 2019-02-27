@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
          xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
-         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" 
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
          xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio" 
          xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
          xmlns:iot2="http://schemas.microsoft.com/appx/manifest/iot/windows10/2"
-         IgnorableNamespaces="uap mp genTemplate desktop4 iot2">
+         IgnorableNamespaces="uap mp rescap genTemplate desktop4 iot2">
   <Identity Name="Notepad" Publisher="CN=IkaragoTest" Version="1.1.1.0" />
   <mp:PhoneIdentity PhoneProductId="359447e4-10d3-4cd9-87bf-9f285be91432" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
@@ -49,6 +50,7 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <rescap:Capability Name="confirmAppClose" />
   </Capabilities>
   <genTemplate:Metadata>
     <genTemplate:Item Name="generator" Value="Windows Template Studio" />
