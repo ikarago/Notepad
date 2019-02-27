@@ -226,7 +226,7 @@
                                   Grid.Row="1"
                                   Canvas.ZIndex="50"
                                   ShadowOpacity="0.6"
-                                  Visibility="Visible"
+                                  Visibility="Collapsed"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
             <controls:DropShadowPanel.Transitions>
@@ -353,7 +353,7 @@
                                   Grid.Row="2"
                                   Canvas.ZIndex="30"
                                   ShadowOpacity="0.6"
-                                  Visibility="Visible"
+                                  Visibility="Collapsed"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
             <controls:DropShadowPanel.Transitions>
