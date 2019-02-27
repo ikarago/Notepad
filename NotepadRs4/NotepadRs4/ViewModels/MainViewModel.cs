@@ -124,7 +124,7 @@ namespace NotepadRs4.ViewModels
                 if (_newFileCommand == null)
                 {
                     _newFileCommand = new RelayCommand(
-                        async () =>
+                        () =>
                         {
                             NewFile();
                         });
@@ -210,7 +210,7 @@ namespace NotepadRs4.ViewModels
                 if (_playgroundCommand == null)
                 {
                     _playgroundCommand = new RelayCommand(
-                        async () =>
+                        () =>
                         {
                             GoToPlayground();
                         });
@@ -227,7 +227,7 @@ namespace NotepadRs4.ViewModels
                 if (_settingsCommand == null)
                 {
                     _settingsCommand = new RelayCommand(
-                        async () =>
+                        () =>
                         {
                             ShowSettingsDialog();
                         });
@@ -244,7 +244,7 @@ namespace NotepadRs4.ViewModels
                 if (_aboutCommand == null)
                 {
                     _aboutCommand = new RelayCommand(
-                        async () =>
+                        () =>
                         {
                             ShowAboutDialog();
                         });
@@ -261,8 +261,9 @@ namespace NotepadRs4.ViewModels
         {
             if (_data.Text != "")
             {
+                // Show dialog
                 var answer = await SaveBeforeClosing();
-
+                // Result Save
                 if (answer == UnsavedDialogResult.Save)
                 {
                     // Save & then open a new file
@@ -271,7 +272,6 @@ namespace NotepadRs4.ViewModels
                     // TODO: Change between Save and SaveAs methods when it has been saved before
 
                     bool saveSuccessful = await SaveFileAs();
-
                     if (saveSuccessful == true)
                     {
                         // Show Save Successful Notification
@@ -286,15 +286,15 @@ namespace NotepadRs4.ViewModels
                         Debug.WriteLine("New File: Saving Failed");
                         ShowUXMessage(2);
                     }
-
-
                 }
+                // Result Discard
                 if (answer == UnsavedDialogResult.Discard)
                 {
                     // Discard changes and open a new file
                     Debug.WriteLine("New File: Discard changes");
                     PrepareNewDocument();
                 }
+                // Result Cancelled
                 else
                 {
                     // Close the dialog and do nothing
@@ -359,90 +359,58 @@ namespace NotepadRs4.ViewModels
         }
 
         // Load
-        // #TODO: Check against previous versions if there have been any changes
         public async Task<bool> LoadFile()
         {
-            // #TODO: Temporary turned dialog off for simplicity of the code while adding a proper base for this
-
-            //if (_data.Text != "")
-            //{
-            //    var answer = await SaveBeforeClosing();
-            //    if (answer == ContentDialogResult.Primary)
-            //    {
-            //        // Save & then open a new file
-            //        Debug.WriteLine("Load File: Save & open load file");
-            //        // TODO: Change between Save and SaveAs methods when it has been saved before
-
-            //        bool saveSuccessful = await SaveFileAs();
-            //        if (saveSuccessful == true)
-            //        {
-            //            TextDataModel data = await FileDataService.Load();
-            //            if (data != null)
-            //            {
-            //                Data = data;
-            //                RefreshTitlebarTitle();
-            //                return true;
-            //            }
-            //            else
-            //            {
-            //                // Do nothing
-            //                Debug.WriteLine("Load File: Loading cancelled");
-            //                return false;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            Debug.WriteLine("Load File: Saving Failed");
-            //            return false;
-            //            // TODO: Give a message back that saving has failed
-            //        }
-
-
-            //    }
-            //    if (answer == ContentDialogResult.Secondary)
-            //    {
-            //        // Discard changes and open a new file
-            //        Debug.WriteLine("Load File: Discard changes");
-
-            //        TextDataModel data = await FileDataService.Load();
-            //        if (data != null)
-            //        {
-            //            Data = data;
-            //            RefreshTitlebarTitle();
-            //            return true;
-            //        }
-            //        else
-            //        {
-            //            // Do nothing
-            //            Debug.WriteLine("Load File: Loading cancelled");
-            //            return false;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        // Close the dialog and do nothing
-            //        Debug.WriteLine("Load File: Dialog cancelled");
-            //        return false;
-            //    }
-            //}
-            //return false;
-
-
-            // #TODO: Ask if the user wants to save their work before loading another file
-            TextDataModel data = await FileDataService.Load();
-            if (data != null)
+            if (_data.Text != "" && DirtyEdited == true)
             {
-                Data = data;
-                PreviousData = data;
-                RefreshTitlebarTitle();
-                SetEditedFalse();
-                ShowUXMessage(3);
-                return true;
+                // Show dialog
+                var answer = await SaveBeforeClosing();
+                // Save result
+                if (answer == UnsavedDialogResult.Save)
+                {
+                    // Save & then open load file
+                    Debug.WriteLine("Load File: Save & open new file");
+                    // TODO: Change between Save and SaveAs methods when it has been saved before
+
+                    bool saveSuccessful = await SaveFileAs();
+                    if (saveSuccessful == true)
+                    {
+                        // Show Save Successful Notification
+                        Debug.WriteLine("Load File: Saving Successful");
+                        ShowUXMessage(1);
+                        // Load the other document
+                        LoadDocument();
+                        return true;
+                    }
+                    else
+                    {
+                        // Show Save Failed Notification
+                        Debug.WriteLine("Load File: Saving Failed");
+                        ShowUXMessage(2);
+                        return false;
+                    }
+                }
+                // Discard Result
+                if (answer == UnsavedDialogResult.Discard)
+                {
+                    // Discard changes and open a new file
+                    Debug.WriteLine("Load File: Discard changes");
+                    LoadDocument();
+                    return true;
+                }
+                // Cancel result
+                else
+                {
+                    // Close the dialog and do nothing
+                    Debug.WriteLine("Load File: Dialog cancelled");
+                    return false;
+                }
             }
+            // If no changes have been made in the first place, just load the document
             else
             {
-                Debug.WriteLine("Load File: Dialog cancelled");
-                return false;
+                LoadDocument();
+                return true;
             }
         }
 
@@ -479,6 +447,26 @@ namespace NotepadRs4.ViewModels
             File = null;
             SetEditedFalse();
             RefreshTitlebarTitle();
+        }
+
+        private async void LoadDocument()
+        {
+            // Just load
+            TextDataModel data = await FileDataService.Load();
+            if (data != null)
+            {
+                Data = data;
+                PreviousData = data;
+                RefreshTitlebarTitle();
+                SetEditedFalse();
+                ShowUXMessage(3);
+                //return true;
+            }
+            else
+            {
+                Debug.WriteLine("Load File: Dialog cancelled");
+                //return false;
+            }
         }
 
         /// <summary>
