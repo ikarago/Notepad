@@ -43,6 +43,7 @@ namespace NotepadRs4.Services
             FileSavePicker picker = new FileSavePicker();
             picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             picker.FileTypeChoices.Add("Text Documents", new List<string>() { ".txt" });
+            picker.FileTypeChoices.Add("All files", new List<string>() { "." });
             picker.DefaultFileExtension = ".txt";
             if (data.DocumentTitle != "")
             {
