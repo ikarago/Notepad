@@ -232,7 +232,7 @@
                                   Grid.Row="1"
                                   Canvas.ZIndex="50"
                                   ShadowOpacity="0.6"
-                                  Visibility="Collapsed"
+                                  Visibility="Visible"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
             <controls:DropShadowPanel.Transitions>
@@ -289,6 +289,7 @@
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Center"
                           BorderThickness="1"
+                          contract7Present:CornerRadius="2,0,0,2"
                           Height="36"
                           Background="Transparent">
                     <ComboBox.ItemTemplate>
@@ -306,6 +307,7 @@
                           Margin="0,0,8,0"
                           VerticalAlignment="Center"
                           BorderThickness="1"
+                          contract7Present:CornerRadius="0,2,2,0"
                           Height="36"
                           MinWidth="72"
                           Background="Transparent">
@@ -359,7 +361,7 @@
                                   Grid.Row="2"
                                   Canvas.ZIndex="30"
                                   ShadowOpacity="0.6"
-                                  Visibility="Collapsed"
+                                  Visibility="Visible"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
             <controls:DropShadowPanel.Transitions>
@@ -421,6 +423,7 @@
                          MinHeight="36"
                          Margin="0,8,0,4"
                          Padding="8"
+                         contract7Present:CornerRadius="2"
                          BorderThickness="1"
                          PlaceholderText="Find..."
                          VerticalAlignment="Center"/>
@@ -431,6 +434,7 @@
                          MinHeight="36"
                          Margin="0,4,0,8"
                          Padding="8"
+                         contract7Present:CornerRadius="2"
                          BorderThickness="1"
                          PlaceholderText="Replace..."
                          VerticalAlignment="Center"/>
