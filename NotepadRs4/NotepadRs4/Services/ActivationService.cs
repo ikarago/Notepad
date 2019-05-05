@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NotepadRs4.Activation;
 using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
+using NotepadRs4.Views.Dialogs;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
@@ -96,19 +97,21 @@ namespace NotepadRs4.Services
             // #TODO: Only pop this up when the user actually has unsaved stuff
             // #TODO: Give the user the option to save from this dialog
             // #TODO: Migrate to the use of Fluent Framework for the shown dialog
-            var deferral = e.GetDeferral();
-            var dialog = new ContentDialog();
-            dialog.Title = "Exit and discard changes?";
-            dialog.PrimaryButtonText = "Yes";
-            dialog.SecondaryButtonText = "No";
-
-            // Check the answer; if no then cancel closing the app
-            if (await dialog.ShowAsync() == ContentDialogResult.Secondary)
+            if (App.UnsavedChanges == true)
             {
-                // Cancel the closure by setting the Handled-status to true
-                e.Handled = true;
+                var deferral = e.GetDeferral();
+                var dialog = new ExitConfirmationDialog();
+
+                await dialog.ShowAsync();
+                // Check the answer; if no then cancel closing the app
+                if (dialog.Result == ExitConfirmationDialogResult.Cancel || dialog.Result == ExitConfirmationDialogResult.DialogClosed)
+                {
+                    // Cancel the closure by setting the Handled-status to true
+                    e.Handled = true;
+                }
+                deferral.Complete();
             }
-            deferral.Complete();
+
         }
 
         private async Task InitializeAsync()

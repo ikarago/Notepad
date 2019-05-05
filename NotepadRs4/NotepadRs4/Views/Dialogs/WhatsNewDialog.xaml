@@ -8,6 +8,7 @@
     
     Background="{ThemeResource SystemControlAcrylicElementBrush}"
     BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+    contract7Present:CornerRadius="{StaticResource FluentDialogCorners}"
     
     PrimaryButtonText="Close"
     
