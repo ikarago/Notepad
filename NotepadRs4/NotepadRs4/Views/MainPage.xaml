@@ -71,7 +71,7 @@
                         <!-- UX statusses -->
                         <TextBlock x:Name="tblEdited"
                                    x:Uid="Main_Edited"
-                                   Visibility="{x:Bind ViewModel.DirtyEdited, Mode=OneWay}"
+                                   Visibility="{x:Bind ViewModel.FileEdited, Mode=OneWay}"
                                    Text="(Edited)"
                                    Style="{ThemeResource CaptionTextBlockStyle}"
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
@@ -232,7 +232,7 @@
                                   Grid.Row="1"
                                   Canvas.ZIndex="50"
                                   ShadowOpacity="0.6"
-                                  Visibility="Visible"
+                                  Visibility="Collapsed"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
             <controls:DropShadowPanel.Transitions>
@@ -361,7 +361,7 @@
                                   Grid.Row="2"
                                   Canvas.ZIndex="30"
                                   ShadowOpacity="0.6"
-                                  Visibility="Visible"
+                                  Visibility="Collapsed"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
             <controls:DropShadowPanel.Transitions>
@@ -423,7 +423,7 @@
                          MinHeight="36"
                          Margin="0,8,0,4"
                          Padding="8"
-                         contract7Present:CornerRadius="2"
+                         contract7Present:CornerRadius="{StaticResource FluentTextBoxCorners}"
                          BorderThickness="1"
                          PlaceholderText="Find..."
                          VerticalAlignment="Center"/>
@@ -434,7 +434,7 @@
                          MinHeight="36"
                          Margin="0,4,0,8"
                          Padding="8"
-                         contract7Present:CornerRadius="2"
+                         contract7Present:CornerRadius="{StaticResource FluentTextBoxCorners}"
                          BorderThickness="1"
                          PlaceholderText="Replace..."
                          VerticalAlignment="Center"/>
@@ -557,9 +557,10 @@
 
                 <!-- Save Failed -->
                 <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
-                        Background="Crimson"
-                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
-                        Visibility="{x:Bind ViewModel.UXNotificationSaveFailed, Mode=OneWay}">
+                            Background="Crimson"
+                            contract7Present:CornerRadius="2,2,0,0"
+                            BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
+                            Visibility="{x:Bind ViewModel.UXNotificationSaveFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"
                                FontFamily="Segoe MDL2 Assets" 
                                Margin="0,0,18,0"
@@ -590,6 +591,7 @@
                 <!-- Load Failed -->
                 <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
                             Background="Crimson"
+                            contract7Present:CornerRadius="2,2,0,0"
                             BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                             Visibility="{x:Bind ViewModel.UXNotificationLoadFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"

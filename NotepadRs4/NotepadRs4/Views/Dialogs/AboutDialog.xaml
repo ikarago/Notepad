@@ -9,6 +9,8 @@
     
     Background="{ThemeResource SystemControlAcrylicElementBrush}"
     BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+    contract7Present:CornerRadius="{StaticResource FluentDialogCorners}"
+    
     mc:Ignorable="d">
 
     <Grid>

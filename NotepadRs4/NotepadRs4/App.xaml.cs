@@ -10,6 +10,9 @@ namespace NotepadRs4
 {
     public sealed partial class App : Application
     {
+        // Set a global variable for the App_CloseRequest so it can keep an eye on whether to show the confirm close-dialog.
+        public static bool UnsavedChanges { get; set; }
+
         private Lazy<ActivationService> _activationService;
 
         private ActivationService ActivationService
@@ -20,6 +23,7 @@ namespace NotepadRs4
         public App()
         {
             InitializeComponent();
+            UnsavedChanges = false; // Setting it by default to false, because the app will open the files unedited anyway. :)
 
             EnteredBackground += App_EnteredBackground;
 

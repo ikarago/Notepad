@@ -43,11 +43,11 @@ namespace NotepadRs4.ViewModels
             set { SetProperty(ref _file, value); }
         }
 
-        private bool _dirtyEdited;
-        public bool DirtyEdited
+        private bool _fileEdited;
+        public bool FileEdited
         {
-            get { return _dirtyEdited; }
-            set { SetProperty(ref _dirtyEdited, value); }
+            get { return _fileEdited; }
+            set { SetProperty(ref _fileEdited, value); }
         }
 
 
@@ -377,7 +377,7 @@ namespace NotepadRs4.ViewModels
         // Load
         public async Task<bool> LoadFile()
         {
-            if (_data.Text != "" && DirtyEdited == true)
+            if (_data.Text != "" && FileEdited == true)
             {
                 // Show dialog
                 var answer = await SaveBeforeClosing();
@@ -511,11 +511,13 @@ namespace NotepadRs4.ViewModels
         // Set save status
         public void SetEditedFalse()
         {
-            DirtyEdited = false;
+            FileEdited = false;
+            App.UnsavedChanges = false;
         }
         public void SetEditedTrue()
         {
-            DirtyEdited = true;
+            FileEdited = true;
+            App.UnsavedChanges = true;
         }
 
         // Navigation and dialogs

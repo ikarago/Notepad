@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="/Styles/_Colors.xaml"/>
                 <ResourceDictionary Source="/Styles/_FontSizes.xaml"/>
                 <ResourceDictionary Source="/Styles/_Thickness.xaml"/>
+                <ResourceDictionary Source="/Styles/_Corners.xaml" />
 
                 <ResourceDictionary Source="/Styles/TextBox.xaml" />
                 <ResourceDictionary Source="/Styles/ToggleButton.xaml" />
