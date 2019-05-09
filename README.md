@@ -2,7 +2,7 @@
 
 A Fluent-style Notepad-application because Microsoft doesn't make it.
 
-The design of the app has been inspired by the work of Michael West, go give that man your cheers over on [his website](https://michaelwest.design) ;)
+The design of the app has been inspired by the work of Michael West, go give that man your cheers over on [his website](https://www.michaelwe.st/) ;)
 
 ## Get the app
 **For purists**: you can build and tinker with the project yourself.
