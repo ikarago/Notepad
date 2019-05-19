@@ -23,7 +23,6 @@ namespace NotepadRs4.Services
                 {
                     // Prevent remote access to file until saving is done
                     CachedFileManager.DeferUpdates(file);
-
                     // Write the stuff to the file
                     await FileIO.WriteTextAsync(file, data.Text);
 
@@ -67,8 +66,7 @@ namespace NotepadRs4.Services
                 await FileIO.WriteTextAsync(file, data.Text);
 
                 // Get Fast Access token
-                string faToken = Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
-                // #TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
+                GetFaToken(file);
                 // #TODO: Store this token somewhere
 
                 // Let Windows know stuff is done
@@ -92,9 +90,13 @@ namespace NotepadRs4.Services
         }
 
         // Load
-        public static async Task<TextDataModel> Load()
+        public static async Task<LoadDataModel> Load()
         {
+            LoadDataModel model = null;
             TextDataModel data = null;
+
+            model = new LoadDataModel();
+            model.LoadSuccessful = false;
 
             FileOpenPicker picker = new FileOpenPicker();
             picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
@@ -114,10 +116,13 @@ namespace NotepadRs4.Services
                     data.DocumentTitle = file.DisplayName + file.FileType;
 
                     // Get Fast Access token
-                    string faToken = Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
-                    // #TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
+                    GetFaToken(file);
                     // #TODO: Store this token somewhere
 
+
+                    model.TextModel = data;
+                    model.File = file;
+                    model.LoadSuccessful = true;
 
                     Debug.WriteLine("File " + file.Name + " has been loaded");
                 }
@@ -127,13 +132,17 @@ namespace NotepadRs4.Services
                 }
             }         
 
-            return data;
+            return model;
         }
 
         // Load without prompt (for when loading from Explorer)
-        public static async Task<TextDataModel> LoadWithoutPrompt(StorageFile file)
+        public static async Task<LoadDataModel> LoadWithoutPrompt(StorageFile file)
         {
+            LoadDataModel model = null;
             TextDataModel data = null;
+
+            model = new LoadDataModel();
+            model.LoadSuccessful = false;
 
             if (file != null)
             {
@@ -146,10 +155,13 @@ namespace NotepadRs4.Services
                     data.DocumentTitle = file.DisplayName + file.FileType;
 
                     // Get Fast Access token
-                    string faToken = Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
-                    // #TODO: Check if the limit of 1000 has been reached and if yes, remove the 100 oldest entries
+                    GetFaToken(file);
                     // #TODO: Store this token somewhere
 
+
+                    model.File = file;
+                    model.TextModel = data;
+                    model.LoadSuccessful = true;
 
                     Debug.WriteLine("File " + file.Name + " has been loaded");
                 }
@@ -159,7 +171,22 @@ namespace NotepadRs4.Services
                 }
             }
 
-            return data;
+            return model;
+        }
+
+        private static string GetFaToken(StorageFile file)
+        {
+            // Check if the maximum amount of Fast Access List items has been met
+            if (Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Entries.Count >= Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.MaximumItemsAllowed)
+            {
+                // If so, clear the whole list (should only happen rarely)
+                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Clear();
+            }
+
+            // Get the Fast Access List Token
+            string faToken = Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.Add(file);
+
+            return faToken;
         }
     }
 }

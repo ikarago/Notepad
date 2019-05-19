@@ -136,7 +136,7 @@
                                       x:Uid="Main_Abb_SaveFile"
                                       Icon="Save"
                                       Label="Save"
-                                      Command="{x:Bind ViewModel.SaveFileAsCommand}">
+                                      Command="{x:Bind ViewModel.SaveFileCommand}">
                             <contract7Present:AppBarButton.KeyboardAccelerators>
                                 <contract7Present:KeyboardAccelerator Modifiers="Control"
                                                                       Key="S" />
