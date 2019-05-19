@@ -97,11 +97,12 @@ namespace NotepadRs4.ViewModels
         {
             if (file != null)
             {
-                TextDataModel data = await FileDataService.LoadWithoutPrompt(file);
-                if (data != null)
+                LoadDataModel model = await FileDataService.LoadWithoutPrompt(file);
+                if (model.LoadSuccessful == true)
                 {
-                    Data = data;
-                    PreviousData = data;
+                    Data = model.TextModel;
+                    PreviousData = model.TextModel;
+                    File = model.File;
                     RefreshTitlebarTitle();
                 }
             }
@@ -143,7 +144,7 @@ namespace NotepadRs4.ViewModels
                     _saveFileCommand = new RelayCommand(
                         async () =>
                         {
-                            await SaveFileAs();
+                            await SaveFile();
                         });
                 }
                 return _saveFileCommand;
@@ -323,19 +324,31 @@ namespace NotepadRs4.ViewModels
         }
 
         // Save
-        // #TODO: Build this correctly and make sure changes are saved without additional file dialogs
         public async Task<bool> SaveFile()
         {
             if (File == null)
             {
-                bool success = await SaveFileAs();
-                return success;
+                return await SaveFileAs();
             }
             else
             {
+                bool success = await FileDataService.Save(Data, File);
 
-                bool success = await FileDataService.Save(_data, _file);
-                return success;
+                if (success == true)
+                {
+                    // Show Save Successful Notification
+                    Debug.WriteLine("Save File: Saving Successful");
+                    ShowUXMessage(1);
+                    SetEditedFalse();
+                    return true;
+                }
+                else
+                {
+                    // Show Save Failed Notification
+                    Debug.WriteLine("Save File: Saving Failed");
+                    ShowUXMessage(2);
+                    return false;
+                }
             }
         }
 
@@ -471,11 +484,13 @@ namespace NotepadRs4.ViewModels
         private async void LoadDocument()
         {
             // Just load
-            TextDataModel data = await FileDataService.Load();
-            if (data != null)
+            LoadDataModel model = await FileDataService.Load();
+            //TextDataModel data = await FileDataService.Load();
+            if (model.LoadSuccessful == true)
             {
-                Data = data;
-                PreviousData = data;
+                Data = model.TextModel;
+                PreviousData = model.TextModel;
+                File = model.File;
                 RefreshTitlebarTitle();
                 SetEditedFalse();
                 ShowUXMessage(3);

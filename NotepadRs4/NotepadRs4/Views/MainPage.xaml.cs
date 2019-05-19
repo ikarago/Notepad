@@ -220,6 +220,8 @@ namespace NotepadRs4.Views
         {
             // #TODO Fix this so it won't affect the Edited bool when loading from explorer (with the Initialize stuff) as this stupid trigger constantly finds a way to sneak before it and get triggered when it's not supposed to
             ViewModel.SetEditedTrue();
+            ViewModel.Data.Text = txtContent.Text;
         }
+
     }
 }
