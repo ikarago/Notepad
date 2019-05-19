@@ -138,6 +138,7 @@ namespace NotepadRs4.Views
             if (_isPageLoaded == true)
             {
                 // Set focus on the main content so the user can start typing right away
+                txtContent.SelectionStart = (txtContent.Text.Length);
                 txtContent.Focus(FocusState.Programmatic);
                 _isPageLoaded = false;
             }
@@ -217,6 +218,7 @@ namespace NotepadRs4.Views
 
         private void TxtContent_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
+            // #TODO Fix this so it won't affect the Edited bool when loading from explorer (with the Initialize stuff) as this stupid trigger constantly finds a way to sneak before it and get triggered when it's not supposed to
             ViewModel.SetEditedTrue();
         }
     }
