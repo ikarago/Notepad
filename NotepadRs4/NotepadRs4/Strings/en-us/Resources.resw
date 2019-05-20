@@ -378,4 +378,8 @@ Happy editing!</value>
     <value>Untitled</value>
     <comment>Name for a new, empty document</comment>
   </data>
+  <data name="ShareDescription" xml:space="preserve">
+    <value>The current version of file</value>
+    <comment>Text shown in the Share Description</comment>
+  </data>
 </root>
