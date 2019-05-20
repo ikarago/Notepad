@@ -57,6 +57,24 @@ namespace NotepadRs4.ViewModels
 
 
 
+        // Capability buttons
+        // Share Button
+        private Visibility _uiShareButtonVisibility;
+        public Visibility UiShareButtonVisibility
+        {
+            get { return _uiShareButtonVisibility; }
+            set { SetProperty(ref _uiShareButtonVisibility, value); }
+        }
+
+        // Print Button
+        private Visibility _uiPrintButtonVisibility;
+        public Visibility UiPrintButtonVisibility
+        {
+            get { return _uiPrintButtonVisibility; }
+            set { SetProperty(ref _uiPrintButtonVisibility, value); }
+        }
+
+
         // UI Notification triggers
         // Save Successful
         private Visibility _uxNotificationSaveSuccessful;
@@ -118,6 +136,7 @@ namespace NotepadRs4.ViewModels
             }
 
             SetEditedFalse();
+            CheckDeviceCapabilities();
             SetUXToggles();
         }
 
@@ -358,7 +377,6 @@ namespace NotepadRs4.ViewModels
             }
         }
 
-
         // Save As
         public async Task<bool> SaveFileAs()
         {
@@ -449,7 +467,7 @@ namespace NotepadRs4.ViewModels
             }
         }
 
-
+        // Drop Text
         public async Task<bool> DropText(DragEventArgs e)
         {
             bool success = false;
@@ -509,6 +527,9 @@ namespace NotepadRs4.ViewModels
             }
         }
 
+        /// <summary>
+        /// Shares the current opened document via the Share capabilities in Windows
+        /// </summary>
         private async void ShareDocument()
         {
             // Get the data from the ReadOnlyList
@@ -578,6 +599,18 @@ namespace NotepadRs4.ViewModels
             UXNotificationSaveFailed = Visibility.Collapsed;
             UXNotificationLoadSuccessful = Visibility.Collapsed;
             UXNotificationLoadFailed = Visibility.Collapsed;
+        }
+
+        /// <summary>
+        /// Checks whether the device running is capable of using certain capabilities and if not hides them
+        /// </summary>
+        private void CheckDeviceCapabilities()
+        {
+            // Check for the Share Button
+            if (DataTransferManager.IsSupported()) { UiShareButtonVisibility = Visibility.Visible; }
+            else { UiShareButtonVisibility = Visibility.Collapsed; }
+
+            // #TODO Check for the Print Button
         }
 
         /// <summary>

@@ -182,7 +182,12 @@
                                       x:Uid="Main_Abb_Share"
                                       Icon="Share"
                                       Label="Share"
+                                      Visibility="{x:Bind ViewModel.UiShareButtonVisibility, Mode=OneWay}"
                                       Command="{x:Bind ViewModel.ShareCommand}">
+                            <contract7Present:AppBarButton.KeyboardAccelerators>
+                                <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                      Key="H" />
+                            </contract7Present:AppBarButton.KeyboardAccelerators>
                         </AppBarButton>
                         <AppBarSeparator />
                         <!-- New idea: Toggle to keep Notepad on Top -->
