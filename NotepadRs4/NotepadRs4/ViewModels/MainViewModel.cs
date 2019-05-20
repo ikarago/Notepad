@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using NotepadRs4.Services;
 using NotepadRs4.Views.Dialogs;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
+using Windows.Storage.Provider;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -49,6 +51,10 @@ namespace NotepadRs4.ViewModels
             get { return _fileEdited; }
             set { SetProperty(ref _fileEdited, value); }
         }
+
+        // List for Share Data
+        private IReadOnlyList<StorageFile> FilesToShare;
+
 
 
         // UI Notification triggers
@@ -212,7 +218,7 @@ namespace NotepadRs4.ViewModels
                     _shareCommand = new RelayCommand(
                         async () =>
                         {
-                            // #TODO
+                            ShareDocument();
                         });
                 }
                 return _shareCommand;
@@ -501,6 +507,66 @@ namespace NotepadRs4.ViewModels
                 Debug.WriteLine("Load File: Dialog cancelled");
                 //return false;
             }
+        }
+
+        private async void ShareDocument()
+        {
+            // Get the data from the ReadOnlyList
+            await GetShareStorageFiles();
+            // #TODO Show/hide the Share button depending on whether the device supports sharing
+            DataTransferManager.GetForCurrentView().DataRequested += MainViewModel_ShareDataRequested;
+            DataTransferManager.ShowShareUI();
+        }
+
+        private void MainViewModel_ShareDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            // Show the Share UI
+            DataRequest request = args.Request;
+
+            // Set the metadata
+            request.Data.Properties.Title = Windows.ApplicationModel.Package.Current.DisplayName;
+            request.Data.Properties.Description = (ResourceExtensions.GetLocalized("ShareDescription") + " " + FilesToShare[0].Name);
+
+            // Set the StorageItem
+            request.Data.SetStorageItems(FilesToShare);
+        }
+
+        /// <summary>
+        /// Prepare the temp files to be shared in a ReadOnlyList
+        /// </summary>
+        private async Task<bool> GetShareStorageFiles()
+        {
+            // Save the current document to a temp folder
+            ApplicationData appData = ApplicationData.Current;
+            StorageFile tempFile;
+
+            // If the file being shared already has been saved use that name instead
+            // #TODO: Instead, save the current file as well?
+            if (File != null)
+            {
+                tempFile = await appData.TemporaryFolder.CreateFileAsync(File.Name, CreationCollisionOption.ReplaceExisting);
+            }
+            else
+            {
+                tempFile = await appData.TemporaryFolder.CreateFileAsync((ResourceExtensions.GetLocalized("UnititledLabel") + ".txt"), CreationCollisionOption.ReplaceExisting);
+            }
+
+            // Write the data to the temp file
+            // Prevent remote access to file until saving is done
+            CachedFileManager.DeferUpdates(tempFile);
+            // Write the stuff to the file
+            await FileIO.WriteTextAsync(tempFile, Data.Text);
+            // Let Windows know stuff is done
+            FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(tempFile);
+
+            // Create a List and set add the files to it
+            List<StorageFile> filesToShare = new List<StorageFile>();
+            filesToShare.Add(tempFile);
+            // Set the ReadOnlyList with the new data
+            FilesToShare = filesToShare;
+
+            // Preperation is done, continue with the other stuff
+            return true;
         }
 
         /// <summary>
