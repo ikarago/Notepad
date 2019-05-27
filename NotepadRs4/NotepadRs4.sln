@@ -1,16 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotepadRs4", "NotepadRs4\NotepadRs4.csproj", "{7A73946B-5716-4B11-99FE-FCD48B80893A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -18,6 +20,9 @@ Global
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Debug|ARM.ActiveCfg = Debug|ARM
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Debug|ARM.Build.0 = Debug|ARM
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Debug|ARM.Deploy.0 = Debug|ARM
+		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Debug|ARM64.Build.0 = Debug|ARM64
+		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Debug|ARM64.Deploy.0 = Debug|ARM64
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Debug|x64.ActiveCfg = Debug|x64
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Debug|x64.Build.0 = Debug|x64
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Debug|x64.Deploy.0 = Debug|x64
@@ -27,6 +32,9 @@ Global
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Release|ARM.ActiveCfg = Release|ARM
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Release|ARM.Build.0 = Release|ARM
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Release|ARM.Deploy.0 = Release|ARM
+		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Release|ARM64.ActiveCfg = Release|ARM64
+		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Release|ARM64.Build.0 = Release|ARM64
+		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Release|ARM64.Deploy.0 = Release|ARM64
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Release|x64.ActiveCfg = Release|x64
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Release|x64.Build.0 = Release|x64
 		{7A73946B-5716-4B11-99FE-FCD48B80893A}.Release|x64.Deploy.0 = Release|x64
