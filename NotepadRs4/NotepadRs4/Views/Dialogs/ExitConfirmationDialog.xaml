@@ -47,7 +47,8 @@
                        Padding="0,0,0,8"
                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                        BorderThickness="0,0,0,1">
-            <TextBlock Text="Exit and discard?"
+            <TextBlock x:Uid="ExitConfirmation-Title"
+                       Text="Exit and discard?"
                        FontWeight="Bold"
                        Style="{ThemeResource TitleTextBlockStyle}"
                        RelativePanel.AlignVerticalCenterWithPanel="True"/>
@@ -70,7 +71,8 @@
         <ScrollViewer Grid.Row="1"
                       MinHeight="160">
             <StackPanel Padding="0,12,0,0">
-                <TextBlock Text="Would you like to exit and discard unsaved changes?"
+                <TextBlock x:Uid="ExitConfirmation-BodyText"
+                           Text="Would you like to exit and discard unsaved changes?"
                            TextWrapping="Wrap"
                            Margin="{StaticResource DialogSubcategoryMargin}"/>
             </StackPanel>
@@ -126,7 +128,8 @@
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock Text="Yes"
+                        <TextBlock x:Uid="ExitConfirmation-Yes"
+                                   Text="Yes"
                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button.Content>
@@ -151,7 +154,8 @@
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock Text="No"
+                        <TextBlock x:Uid="ExitConfirmation-No"
+                                   Text="No"
                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button.Content>
