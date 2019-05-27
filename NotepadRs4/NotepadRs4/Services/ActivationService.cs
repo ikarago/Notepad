@@ -94,9 +94,7 @@ namespace NotepadRs4.Services
         {
             // CREDIT: Made possible by the really helpful blog post by Martin Zikmund, go check it out! https://blog.mzikmund.com/2018/09/app-close-confirmation-in-uwp/
 
-            // #TODO: Only pop this up when the user actually has unsaved stuff
             // #TODO: Give the user the option to save from this dialog
-            // #TODO: Migrate to the use of Fluent Framework for the shown dialog
             if (App.UnsavedChanges == true)
             {
                 var deferral = e.GetDeferral();

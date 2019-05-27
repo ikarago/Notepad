@@ -164,7 +164,7 @@
         <!-- Dialog background icon -->
         <Image x:Name="imgLogo"
                Grid.Row="1"
-               Source="/Assets/Logo/in-app/logo-white.png" 
+               Source="ms-appx:///Assets/Logo/in-app/logo-white.png" 
                Height="72"
                Width="72"
                Opacity="0.25"
