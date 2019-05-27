@@ -178,9 +178,10 @@
     <comment>View disposed</comment>
   </data>
   <data name="AfterUpdate_Body.Text" xml:space="preserve">
-    <value>- NEW: You can now open multiple instances of the app!
-- IMPROVED: Improved the Fluent Layout with shadows.
-- IMPROVED: Various other bugfixes and small improvements.
+    <value>- NEW: Share the opened document by pressing the Share-button!
+- NEW: Added a exit confirmation dialog that pops up when you try to exit the app with unsaved changes.
+- IMPROVED: Various UI updates.
+- BUGFIX: Pressing Save doesn't bring up the Save As-dialog once you've saved the file or opened it from a file.
 
 Happy editing!</value>
     <comment>What's new prompt message body</comment>
