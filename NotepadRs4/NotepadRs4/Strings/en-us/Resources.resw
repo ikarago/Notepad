@@ -382,4 +382,20 @@ Happy editing!</value>
     <value>The current version of file</value>
     <comment>Text shown in the Share Description</comment>
   </data>
+  <data name="ExitConfirmation-BodyText.Text" xml:space="preserve">
+    <value>Would you like to exit and discard unsaved changes?</value>
+    <comment>ExitConfirmation dialog - Text in the body of the dialog</comment>
+  </data>
+  <data name="ExitConfirmation-No.Text" xml:space="preserve">
+    <value>No</value>
+    <comment>ExitConfirmation dialog - No (cancel)</comment>
+  </data>
+  <data name="ExitConfirmation-Title.Text" xml:space="preserve">
+    <value>Exit and discard?</value>
+    <comment>ExitConfirmation dialog - Title</comment>
+  </data>
+  <data name="ExitConfirmation-Yes.Text" xml:space="preserve">
+    <value>Yes</value>
+    <comment>ExitConfirmation dialog - Yes (confirmation)</comment>
+  </data>
 </root>
