@@ -17,10 +17,18 @@ The design of the app has been inspired by the work of Michael West, go give tha
 **Currently supported systems:**
 
 * Windows 10 Desktop ✔
-* Windows 10 Mobile ✔ --> Using the Mobile-branch 
+* Windows 10 Mobile ✔ --> Using the Mobile-branch
 * Windows 10 Team ✔
 * Windows 10 Holographic ✔
 * Windows 10 Xbox ❌
+
+## Screenshots
+
+![1](screenshots/1.png)
+![2](screenshots/2.png)
+![3](screenshots/3.png)
+![4](screenshots/4.png)
+![5](screenshots/5.png)
 
 
 ## Support me
