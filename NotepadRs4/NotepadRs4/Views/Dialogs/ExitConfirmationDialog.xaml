@@ -56,7 +56,9 @@
                     Background="Transparent"
                     FontFamily="Segoe MDL2 Assets"
                     Height="40"
-                    Width="40"
+                    Width="40"             
+                    Style="{ThemeResource ButtonRevealStyle}"
+                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     RelativePanel.AlignRightWithPanel="True"
                     Command="{x:Bind CloseCommand}">
                 <Button.KeyboardAccelerators>
@@ -118,6 +120,8 @@
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Left"
                     Background="Transparent"
+                    Style="{ThemeResource ButtonRevealStyle}"
+                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind DiscardCommand}">
                 <Button.Content>
                     <StackPanel MinWidth="128"
@@ -144,6 +148,8 @@
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Left"
                     Background="Transparent"
+                    Style="{ThemeResource ButtonRevealStyle}"
+                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind CancelCommand}">
                 <Button.Content>
                     <StackPanel MinWidth="128"
