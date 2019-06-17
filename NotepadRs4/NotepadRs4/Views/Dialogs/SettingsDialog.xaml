@@ -43,8 +43,7 @@
                        Text="Settings"
                        Margin="12,0"
                        VerticalAlignment="Center"
-                       Style="{ThemeResource TitleTextBlockStyle}"
-                       FontWeight="Bold"/>
+                       Style="{ThemeResource FluentSubheaderTextStyle}"/>
         </StackPanel>
         
         

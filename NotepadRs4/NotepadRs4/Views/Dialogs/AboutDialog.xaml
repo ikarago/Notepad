@@ -35,8 +35,7 @@
                        Text="About"
                        Margin="12,0"
                        VerticalAlignment="Center"
-                       Style="{ThemeResource TitleTextBlockStyle}"
-                       FontWeight="Bold"/>
+                       Style="{ThemeResource FluentSubheaderTextStyle}"/>
         </StackPanel>
 
         <!-- Content -->
@@ -128,8 +127,8 @@
 
                     <!-- FluBase -->
                     <HyperlinkButton x:Uid="About_AcknowledgementsFlubase"
-                                     Content="FluBase"
-                                     NavigateUri="https://github.com/ikarago/FluBase"/>
+                                     Content="FLUI Framework"
+                                     NavigateUri="https://github.com/Team-FLUI/FluiFramework"/>
                 </StackPanel>
 
 

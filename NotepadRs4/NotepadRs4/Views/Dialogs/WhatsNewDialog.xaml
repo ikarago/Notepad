@@ -44,8 +44,7 @@
                        Text="What's new?"
                        Margin="12,0"
                        VerticalAlignment="Center"
-                       Style="{ThemeResource TitleTextBlockStyle}"
-                       FontWeight="Bold"/>
+                       Style="{ThemeResource FluentSubheaderTextStyle}"/>
         </StackPanel>
 
         <!-- Title and close button -->

@@ -2,11 +2,14 @@
     x:Class="NotepadRs4.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:flui="using:FluiFramework.UWP.Core"
     >
 
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <flui:FluiFrameworkThemeResources />
+
                 <ResourceDictionary Source="/Styles/_Colors.xaml"/>
                 <ResourceDictionary Source="/Styles/_FontSizes.xaml"/>
                 <ResourceDictionary Source="/Styles/_Thickness.xaml"/>

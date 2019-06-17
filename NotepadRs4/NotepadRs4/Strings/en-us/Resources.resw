@@ -340,11 +340,11 @@ Happy editing!</value>
     <comment>MainPage - Titlebar - File saved text</comment>
   </data>
   <data name="About_AcknowledgementsFlubase.Content" xml:space="preserve">
-    <value>FluBase</value>
+    <value>FLUI Framework</value>
     <comment>About - Acknowlegdements FluBase title</comment>
   </data>
   <data name="About_AcknowledgementsFlubase.NavigateUri" xml:space="preserve">
-    <value>https://github.com/ikarago/FluBase</value>
+    <value>https://github.com/Team-FLUI/FluiFramework</value>
     <comment>About - Acknowlegdements FluBase Project URL</comment>
   </data>
   <data name="About_AcknowledgementsIntro.Text" xml:space="preserve">

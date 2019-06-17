@@ -25,7 +25,7 @@
     <!-- Fluent Subheader Styles #TODO -->    
     
     <!-- Fluent Title Styles-->
-    <Style x:Key="FluentTitleTextStyle" TargetType="TextBlock">
+    <!--<Style x:Key="FluentTitleTextStyle" TargetType="TextBlock">
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="FontSize" Value="20" />
     </Style>
@@ -37,7 +37,7 @@
         <Setter Property="Width" Value="20" />
         <Setter Property="Margin" Value="0,0,18,0" />
         <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
+    </Style>-->
     
     <!-- Fluent Subtitle Styles #TODO -->
     

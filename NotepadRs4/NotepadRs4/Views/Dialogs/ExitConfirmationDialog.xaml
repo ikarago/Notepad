@@ -49,8 +49,7 @@
                        BorderThickness="0,0,0,1">
             <TextBlock x:Uid="ExitConfirmation-Title"
                        Text="Exit and discard?"
-                       FontWeight="Bold"
-                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Style="{ThemeResource FluentSubheaderTextStyle}"
                        RelativePanel.AlignVerticalCenterWithPanel="True"/>
             <Button Content="&#xE106;"
                     Background="Transparent"
