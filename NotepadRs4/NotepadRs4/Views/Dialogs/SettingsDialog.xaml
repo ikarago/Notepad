@@ -67,6 +67,16 @@
                         <ToggleSwitch IsOn="{x:Bind ViewModel.TextWrapping, Mode=TwoWay, Converter={StaticResource BoolToTextWrappingConverter}, ConverterParameter=Reverse}"
                                       Margin="{StaticResource XSmallTopMargin}"/>
                     </StackPanel>
+                    
+                    <!-- Spell checker -->
+                    <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
+                        <TextBlock x:Uid="Settings_SpellChecker"
+                                   Text="Spell checker"
+                                   FontWeight="SemiBold"
+                                   Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.IsSpellCheckerEnabled, Mode=TwoWay}"
+                                      Margin="{StaticResource XSmallTopMargin}"/>
+                    </StackPanel>
 
                     <!-- Theme -->
                     <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">

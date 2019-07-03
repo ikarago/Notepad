@@ -399,4 +399,8 @@ Happy editing!</value>
     <value>Yes</value>
     <comment>ExitConfirmation dialog - Yes (confirmation)</comment>
   </data>
+  <data name="Settings_SpellChecker.Text" xml:space="preserve">
+    <value>Spell Checker</value>
+    <comment>Spell Checker title for Settings</comment>
+  </data>
 </root>

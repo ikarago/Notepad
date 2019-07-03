@@ -37,6 +37,9 @@ namespace NotepadRs4.ViewModels
         }
 
         // Textbox properties
+        /// <summary>
+        /// Text Wrapping
+        /// </summary>
         private TextWrapping _textWrapping;
         public TextWrapping TextWrapping
         {
@@ -49,6 +52,24 @@ namespace NotepadRs4.ViewModels
                 }
 
                 Set(ref _textWrapping, value);
+            }
+        }
+
+        /// <summary>
+        /// Spell Checker
+        /// </summary>
+        private bool _isSpellCheckerEnabled;
+        public bool IsSpellCheckerEnabled
+        {
+            get { return _isSpellCheckerEnabled; }
+            set
+            {
+                if (value != _isSpellCheckerEnabled)
+                {
+                    Task.Run(async () => await Windows.Storage.ApplicationData.Current.LocalSettings.SaveAsync(nameof(IsSpellCheckerEnabled), value));
+                }
+
+                Set(ref _isSpellCheckerEnabled, value);
             }
         }
 
@@ -105,6 +126,10 @@ namespace NotepadRs4.ViewModels
                 if (value != _selectedFontSize)
                 {
                     // #TODO Save the new value to Settings
+                    /*if (!FontSizes.Contains(value))
+                    {
+                        FontSizes.Add(value);
+                    }*/
                 }
 
                 Set(ref _selectedFontSize, value);
@@ -199,16 +224,16 @@ namespace NotepadRs4.ViewModels
 
         private async void GetSettingValues()
         {
-            // Set the default settings on the first run
-            if (SystemInformation.IsFirstRun && _haveSettingDefaultsBeenSet == false)
-            {
-                TextWrapping = TextWrapping.Wrap;
-                _haveSettingDefaultsBeenSet = true;
-            }
-            else
-            {
-                TextWrapping = await Windows.Storage.ApplicationData.Current.LocalSettings.ReadAsync<TextWrapping>(nameof(TextWrapping));
-            }
+            // Reworked this with try/catches so it's not dependent on the first run bool anymore and checks stuff dynamically
+            // The purpose of this is; try to read the data; if it fails set a default value on the public property so it'll be saved back to the backend settings automatically
+
+            /// Text Wrapping
+            try { TextWrapping = await Windows.Storage.ApplicationData.Current.LocalSettings.ReadAsync<TextWrapping>(nameof(TextWrapping)); }
+            catch { TextWrapping = TextWrapping.Wrap; }
+
+            /// Spell Checkers
+            try { IsSpellCheckerEnabled = await Windows.Storage.ApplicationData.Current.LocalSettings.ReadAsync<bool>(nameof(IsSpellCheckerEnabled)); }
+            catch { IsSpellCheckerEnabled = false; }
         }
 
         private void AddCustomFontSize(int value)

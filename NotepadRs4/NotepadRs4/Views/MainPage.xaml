@@ -524,7 +524,7 @@
                  AllowDrop="True"
                  CanDrag="True"
                  Style="{StaticResource TextBoxStyleTransparent}"
-                 IsSpellCheckEnabled="False"
+                 IsSpellCheckEnabled="{x:Bind SettingViewModel.IsSpellCheckerEnabled, Mode=OneWay}"
                  Text="{x:Bind ViewModel.Data.Text, Mode=TwoWay}"
                  FontFamily="{x:Bind SettingViewModel.SelectedFontFamily, Mode=OneWay}"
                  FontSize="{x:Bind SettingViewModel.SelectedFontSize, Mode=OneWay}"
