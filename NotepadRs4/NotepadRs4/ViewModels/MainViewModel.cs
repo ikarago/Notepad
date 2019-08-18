@@ -575,6 +575,8 @@ namespace NotepadRs4.ViewModels
             // Write the data to the temp file
             // Prevent remote access to file until saving is done
             CachedFileManager.DeferUpdates(tempFile);
+            //We need to make sure Data.Text isn't null.
+            Data.Text = Data.Text ?? ""; //coalescing operator '??' returns left-hand operand's value if it isn't null, else right-hand's
             // Write the stuff to the file
             await FileIO.WriteTextAsync(tempFile, Data.Text);
             // Let Windows know stuff is done
