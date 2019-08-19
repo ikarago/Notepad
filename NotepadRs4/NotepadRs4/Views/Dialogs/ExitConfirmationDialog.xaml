@@ -48,7 +48,7 @@
                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                        BorderThickness="0,0,0,1">
             <TextBlock x:Uid="ExitConfirmation-Title"
-                       Text="Exit and discard?"
+                       Text="Unsaved changes"
                        Style="{ThemeResource FluentSubheaderTextStyle}"
                        RelativePanel.AlignVerticalCenterWithPanel="True"/>
             <Button Content="&#xE106;"
@@ -90,85 +90,135 @@
             <!-- Save button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"                    
+                    Margin="0,0,0,8"
                     Background="Transparent"
                     Visibility="Collapsed"
+                    IsEnabled="False"
                     Command="{x:Bind SaveCommand}">
                 <Button.Content>
-                    <StackPanel MinWidth="128"
-                                MinHeight="32"
-                                Orientation="Horizontal">
-                        <TextBlock Text="&#xE105;"
+                    <Grid MinWidth="128"
+                          MinHeight="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="&#xE74E;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
-                                   VerticalAlignment="Center"
-                                   Padding="0,0,12,0"/>
-                        <TextBlock x:Uid="Unsaved_SaveText"
-                                   Text="Save"
+                                   Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                    </StackPanel>
+                        <TextBlock x:Uid="ExitConfirmation-SaveAndExit"
+                                   Grid.Column="1"
+                                   Text="Save and exit"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock x:Uid="ExitConfirmation-SaveAndExit-Acc"
+                                   Grid.Column="2"
+                                   Text="S"
+                                   VerticalAlignment="Center"
+                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                   Style="{ThemeResource FluentCaptionTextStyle}"/>
+                    </Grid>
                 </Button.Content>
                 <Button.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="None"
                                          Key="S" />
                 </Button.KeyboardAccelerators>
+                <ToolTipService.ToolTip>
+                    <ToolTip Visibility="Collapsed" />
+                </ToolTipService.ToolTip>
             </Button>
 
             <!-- Discard button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="Transparent"
                     Margin="0,0,0,8"
                     Style="{ThemeResource ButtonRevealStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind DiscardCommand}">
                 <Button.Content>
-                    <StackPanel MinWidth="128"
-                                MinHeight="32"
-                                Orientation="Horizontal">
-                        <TextBlock Text="&#xE10B;"
+                    <Grid MinWidth="128"
+                          MinHeight="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="&#xF3B1;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="ExitConfirmation-Yes"
-                                   Text="Yes"
+                        <TextBlock x:Uid="ExitConfirmation-DiscardAndExit"
+                                   Grid.Column="1"
+                                   Text="Discard and exit"
                                    VerticalAlignment="Center"/>
-                    </StackPanel>
+                        <TextBlock x:Uid="ExitConfirmation-DiscardAndExit-Acc"
+                                   Grid.Column="2"
+                                   Text="D"
+                                   VerticalAlignment="Center"
+                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                   Style="{ThemeResource FluentCaptionTextStyle}"/>
+                    </Grid>
                 </Button.Content>
                 <Button.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="None"
-                                         Key="Y" />
+                                         Key="D" />
                 </Button.KeyboardAccelerators>
+                <ToolTipService.ToolTip>
+                    <ToolTip Visibility="Collapsed" />
+                </ToolTipService.ToolTip>
             </Button>
 
             <!-- Cancel button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="Transparent"
                     Style="{ThemeResource ButtonRevealStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind CancelCommand}">
                 <Button.Content>
-                    <StackPanel MinWidth="128"
-                                MinHeight="32"
-                                Orientation="Horizontal">
-                        <TextBlock Text="&#xE10A;"
+                    <Grid MinWidth="128"
+                          MinHeight="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="&#xE72B;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="ExitConfirmation-No"
-                                   Text="No"
+                        <TextBlock x:Uid="ExitConfirmation-GoBack"
+                                   Grid.Column="1"
+                                   Text="Go back"
                                    VerticalAlignment="Center"/>
-                    </StackPanel>
+                        <TextBlock x:Uid="ExitConfirmation-GoBack-Acc"
+                                   Grid.Column="2"
+                                   Text="B"
+                                   VerticalAlignment="Center"
+                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                   Style="{ThemeResource FluentCaptionTextStyle}"/>
+
+                    </Grid>
                 </Button.Content>
                 <Button.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="None"
-                                         Key="N" />
+                                         Key="B" />
+                    <KeyboardAccelerator Modifiers="None"
+                                         Key="Back" />
                 </Button.KeyboardAccelerators>
+                <ToolTipService.ToolTip>
+                    <ToolTip Visibility="Collapsed" />
+                </ToolTipService.ToolTip>
             </Button>
 
         </StackPanel>

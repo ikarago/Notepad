@@ -387,20 +387,36 @@ Happy editing!</value>
     <value>Would you like to exit and discard unsaved changes?</value>
     <comment>ExitConfirmation dialog - Text in the body of the dialog</comment>
   </data>
-  <data name="ExitConfirmation-No.Text" xml:space="preserve">
-    <value>No</value>
-    <comment>ExitConfirmation dialog - No (cancel)</comment>
-  </data>
   <data name="ExitConfirmation-Title.Text" xml:space="preserve">
-    <value>Exit and discard?</value>
+    <value>Unsaved changes</value>
     <comment>ExitConfirmation dialog - Title</comment>
-  </data>
-  <data name="ExitConfirmation-Yes.Text" xml:space="preserve">
-    <value>Yes</value>
-    <comment>ExitConfirmation dialog - Yes (confirmation)</comment>
   </data>
   <data name="Settings_SpellChecker.Text" xml:space="preserve">
     <value>Spell Checker</value>
     <comment>Spell Checker title for Settings</comment>
+  </data>
+  <data name="ExitConfirmation-DiscardAndExit-Acc.Text" xml:space="preserve">
+    <value>D</value>
+    <comment>ExitConfirmation dialog - Discard and exit - Keyboard accellerator hint</comment>
+  </data>
+  <data name="ExitConfirmation-DiscardAndExit.Text" xml:space="preserve">
+    <value>Discard and exit</value>
+    <comment>ExitConfirmation dialog - Discard and exit</comment>
+  </data>
+  <data name="ExitConfirmation-GoBack-Acc.Text" xml:space="preserve">
+    <value>B</value>
+    <comment>ExitConfirmation dialog - Go back - Keyboard accellerator hint</comment>
+  </data>
+  <data name="ExitConfirmation-GoBack.Text" xml:space="preserve">
+    <value>Go back</value>
+    <comment>ExitConfirmation dialog - Go back</comment>
+  </data>
+  <data name="ExitConfirmation-SaveAndExit-Acc.Text" xml:space="preserve">
+    <value>S</value>
+    <comment>ExitConfirmation dialog - Save and exit - Keyboard accellerator hint</comment>
+  </data>
+  <data name="ExitConfirmation-SaveAndExit.Text" xml:space="preserve">
+    <value>Save and exit</value>
+    <comment>ExitConfirmation dialog - Save and exit</comment>
   </data>
 </root>
