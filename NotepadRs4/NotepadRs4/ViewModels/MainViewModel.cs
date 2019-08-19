@@ -129,12 +129,17 @@ namespace NotepadRs4.ViewModels
                     File = model.File;
                     RefreshTitlebarTitle();
                 }
+                else // If loading fails fall back by preparing a new, empty document instead
+                {
+                    PrepareNewDocument();
+                }
             }
             else if (_data == null)
             {
                 PrepareNewDocument();
             }
 
+            // Set UI and UX stuff
             SetEditedFalse();
             CheckDeviceCapabilities();
             SetUXToggles();
@@ -235,7 +240,7 @@ namespace NotepadRs4.ViewModels
                 if (_shareCommand == null)
                 {
                     _shareCommand = new RelayCommand(
-                        async () =>
+                        () =>
                         {
                             ShareDocument();
                         });

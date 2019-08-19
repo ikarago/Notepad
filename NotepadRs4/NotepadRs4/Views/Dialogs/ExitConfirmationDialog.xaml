@@ -119,6 +119,7 @@
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Left"
                     Background="Transparent"
+                    Margin="0,0,0,8"
                     Style="{ThemeResource ButtonRevealStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind DiscardCommand}">
