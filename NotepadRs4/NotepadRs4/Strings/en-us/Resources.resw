@@ -311,23 +311,23 @@ Happy editing!</value>
     <value>Translators</value>
     <comment>About - Translators</comment>
   </data>
-  <data name="Unsaved_CancelText.Text" xml:space="preserve">
-    <value>Cancel</value>
-    <comment>Unsaved dialog - Close button text</comment>
+  <data name="Unsaved-GoBack.Text" xml:space="preserve">
+    <value>Go back</value>
+    <comment>Unsaved dialog - Go back text</comment>
   </data>
-  <data name="Unsaved_Content.Text" xml:space="preserve">
+  <data name="Unsaved-Content.Text" xml:space="preserve">
     <value>Would you like to save your work?</value>
     <comment>Unsaved dialog - Content text</comment>
   </data>
-  <data name="Unsaved_SaveText.Text" xml:space="preserve">
-    <value>Save</value>
+  <data name="Unsaved-SaveChanges.Text" xml:space="preserve">
+    <value>Save changes</value>
     <comment>Unsaved dialog - Save option</comment>
   </data>
-  <data name="Unsaved_DiscardText.Text" xml:space="preserve">
+  <data name="Unsaved-DiscardChanges.Text" xml:space="preserve">
     <value>Discard changes</value>
     <comment>Unsaved dialog - Discard option</comment>
   </data>
-  <data name="Unsaved_Title.Text" xml:space="preserve">
+  <data name="Unsaved-Title.Text" xml:space="preserve">
     <value>Unsaved changes</value>
     <comment>Unsaved dialog - Title</comment>
   </data>
@@ -418,5 +418,17 @@ Happy editing!</value>
   <data name="ExitConfirmation-SaveAndExit.Text" xml:space="preserve">
     <value>Save and exit</value>
     <comment>ExitConfirmation dialog - Save and exit</comment>
+  </data>
+  <data name="Unsaved-DiscardChanges-Acc.Text" xml:space="preserve">
+    <value>D</value>
+    <comment>Unsaved dialog - Discard changes - Keyboard accellerator hint</comment>
+  </data>
+  <data name="Unsaved-GoBack-Acc.Text" xml:space="preserve">
+    <value>B</value>
+    <comment>Unsaved dialog - Go back - Keyboard accellerator hint</comment>
+  </data>
+  <data name="Unsaved-SaveChanges-Acc.Text" xml:space="preserve">
+    <value>S</value>
+    <comment>Unsaved dialog - Save changes - Keyboard accellerator hint</comment>
   </data>
 </root>
