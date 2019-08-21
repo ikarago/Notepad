@@ -47,7 +47,7 @@
                        Padding="0,0,0,8"
                        BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                        BorderThickness="0,0,0,1">
-            <TextBlock x:Uid="Unsaved_Title"
+            <TextBlock x:Uid="Unsaved-Title"
                        Text="Unsaved changes"
                        Style="{ThemeResource FluentSubheaderTextStyle}"
                        RelativePanel.AlignVerticalCenterWithPanel="True"/>
@@ -59,7 +59,12 @@
                     Style="{ThemeResource ButtonRevealStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     RelativePanel.AlignRightWithPanel="True"
-                    Command="{x:Bind CloseCommand}"/>
+                    Command="{x:Bind CloseCommand}">
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Modifiers="None"
+                                         Key="Escape" />
+                </Button.KeyboardAccelerators>
+            </Button>
         </RelativePanel>
 
 
@@ -67,7 +72,7 @@
         <ScrollViewer Grid.Row="1"
                       MinHeight="160">
             <StackPanel Padding="0,12,0,0">
-                <TextBlock x:Uid="Unsaved_Content"
+                <TextBlock x:Uid="Unsaved-Content"
                            Text="Would you like to save your current document?"
                            TextWrapping="Wrap"
                            Margin="{StaticResource DialogSubcategoryMargin}"/>
@@ -85,85 +90,134 @@
             <!-- Save button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="Transparent"
+                    Margin="0,0,0,8"
                     Style="{ThemeResource ButtonRevealStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind SaveCommand}">
                 <Button.Content>
-                    <StackPanel MinWidth="128"
-                                MinHeight="32"
-                                Orientation="Horizontal">
-                        <TextBlock Text="&#xE105;"
+                    <Grid MinWidth="128"
+                          MinHeight="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="&#xE105;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
-                                   VerticalAlignment="Center"
-                                   Padding="0,0,12,0"/>
-                        <TextBlock x:Uid="Unsaved_SaveText"
-                                   Text="Save"
+                                   Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                    </StackPanel>
+                        <TextBlock x:Uid="Unsaved-SaveChanges"
+                                   Grid.Column="1"
+                                   Text="Save changes"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock x:Uid="Unsaved-SaveChanges-Acc"
+                                   Grid.Column="2"
+                                   Text="S"
+                                   VerticalAlignment="Center"
+                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                   Style="{ThemeResource FluentCaptionTextStyle}"/>
+                    </Grid>
                 </Button.Content>
                 <Button.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="None"
                                          Key="S" />
                 </Button.KeyboardAccelerators>
+                <ToolTipService.ToolTip>
+                    <ToolTip Visibility="Collapsed" />
+                </ToolTipService.ToolTip>
             </Button>
 
             <!-- Discard button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="Transparent"
+                    Margin="0,0,0,8"
                     Style="{ThemeResource ButtonRevealStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind DiscardCommand}">
                 <Button.Content>
-                    <StackPanel MinWidth="128"
-                                MinHeight="32"
-                                Orientation="Horizontal">
-                        <TextBlock Text="&#xE107;"
+                    <Grid MinWidth="128"
+                          MinHeight="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="&#xE74D;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved_DiscardText"
+                        <TextBlock x:Uid="Unsaved-DiscardChanges"
+                                   Grid.Column="1"
                                    Text="Discard changes"
                                    VerticalAlignment="Center"/>
-                    </StackPanel>
+                        <TextBlock x:Uid="Unsaved-DiscardChanges-Acc"
+                                   Grid.Column="2"
+                                   Text="D"
+                                   VerticalAlignment="Center"
+                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                   Style="{ThemeResource FluentCaptionTextStyle}"/>
+                    </Grid>
                 </Button.Content>
                 <Button.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="None"
-                                         Key="N" />
+                                         Key="D" />
                 </Button.KeyboardAccelerators>
+                <ToolTipService.ToolTip>
+                    <ToolTip Visibility="Collapsed" />
+                </ToolTipService.ToolTip>
             </Button>
 
             <!-- Cancel button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="Transparent"
                     Style="{ThemeResource ButtonRevealStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind CancelCommand}">
                 <Button.Content>
-                    <StackPanel MinWidth="128"
-                                MinHeight="32"
-                                Orientation="Horizontal">
-                        <TextBlock Text="&#xE106;"
+                    <Grid MinWidth="128"
+                          MinHeight="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="&#xE72B;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved_CancelText"
-                                   Text="Cancel"
+                        <TextBlock x:Uid="Unsaved-GoBack"
+                                   Grid.Column="1"
+                                   Text="Go back"
                                    VerticalAlignment="Center"/>
-                    </StackPanel>
+                        <TextBlock x:Uid="Unsaved-GoBack-Acc"
+                                   Grid.Column="2"
+                                   Text="B"
+                                   VerticalAlignment="Center"
+                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                   Style="{ThemeResource FluentCaptionTextStyle}"/>
+                    </Grid>
                 </Button.Content>
                 <Button.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="None"
-                                         Key="Escape" />
+                                         Key="B" />
+                    <KeyboardAccelerator Modifiers="None"
+                                         Key="Back" />
                 </Button.KeyboardAccelerators>
+                <ToolTipService.ToolTip>
+                    <ToolTip Visibility="Collapsed" />
+                </ToolTipService.ToolTip>
             </Button>
 
         </StackPanel>

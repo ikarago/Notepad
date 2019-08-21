@@ -100,6 +100,7 @@ namespace NotepadRs4.Services
                 var deferral = e.GetDeferral();
                 var dialog = new ExitConfirmationDialog();
 
+                // #TODO Catch the rare case when another dialog is already open by cancelling that dialog and prioritizing this dialog over it instead
                 await dialog.ShowAsync();
                 // Check the answer; if no then cancel closing the app
                 if (dialog.Result == ExitConfirmationDialogResult.Cancel || dialog.Result == ExitConfirmationDialogResult.DialogClosed)
