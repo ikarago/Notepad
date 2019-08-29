@@ -51,19 +51,14 @@
                        Text="Unsaved changes"
                        Style="{ThemeResource FluentSubheaderTextStyle}"
                        RelativePanel.AlignVerticalCenterWithPanel="True"/>
-            <Button Content="&#xE106;"
-                    Background="Transparent"
-                    FontFamily="Segoe MDL2 Assets"
-                    Height="40"
-                    Width="40"
-                    Style="{ThemeResource ButtonRevealStyle}"
-                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
+            <Button Style="{ThemeResource FluentDialogButtonCloseStyle}"
                     RelativePanel.AlignRightWithPanel="True"
                     Command="{x:Bind CloseCommand}">
-                <Button.KeyboardAccelerators>
+                <!-- Commented out for now because the Go Back-option does the same -->
+                <!--<Button.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="None"
                                          Key="Escape" />
-                </Button.KeyboardAccelerators>
+                </Button.KeyboardAccelerators>-->
             </Button>
         </RelativePanel>
 
@@ -203,7 +198,7 @@
                                    VerticalAlignment="Center"/>
                         <TextBlock x:Uid="Unsaved-GoBack-Acc"
                                    Grid.Column="2"
-                                   Text="B"
+                                   Text="Esc"
                                    VerticalAlignment="Center"
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                    Style="{ThemeResource FluentCaptionTextStyle}"/>
@@ -211,9 +206,9 @@
                 </Button.Content>
                 <Button.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="None"
-                                         Key="B" />
-                    <KeyboardAccelerator Modifiers="None"
                                          Key="Back" />
+                    <KeyboardAccelerator Modifiers="None"
+                                         Key="Escape" />
                 </Button.KeyboardAccelerators>
                 <ToolTipService.ToolTip>
                     <ToolTip Visibility="Collapsed" />
