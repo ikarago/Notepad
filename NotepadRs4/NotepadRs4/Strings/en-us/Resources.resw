@@ -178,10 +178,7 @@
     <comment>View disposed</comment>
   </data>
   <data name="AfterUpdate_Body.Text" xml:space="preserve">
-    <value>- NEW: Share the opened document by pressing the Share-button!
-- NEW: Added a exit confirmation dialog that pops up when you try to exit the app with unsaved changes.
-- IMPROVED: Various UI updates.
-- BUGFIX: Pressing Save doesn't bring up the Save As-dialog once you've saved the file or opened it from a file.
+    <value>Various small fixes and UX imrpovements to make the app even more fun to use. :)
 
 Happy editing!</value>
     <comment>What's new prompt message body</comment>
@@ -339,13 +336,13 @@ Happy editing!</value>
     <value>Saved!</value>
     <comment>MainPage - Titlebar - File saved text</comment>
   </data>
-  <data name="About_AcknowledgementsFlubase.Content" xml:space="preserve">
+  <data name="About_AcknowledgementsFlui.Content" xml:space="preserve">
     <value>FLUI Framework</value>
-    <comment>About - Acknowlegdements FluBase title</comment>
+    <comment>About - Acknowlegdements FLUI Framework Project title</comment>
   </data>
-  <data name="About_AcknowledgementsFlubase.NavigateUri" xml:space="preserve">
+  <data name="About_AcknowledgementsFlui.NavigateUri" xml:space="preserve">
     <value>https://github.com/Team-FLUI/FluiFramework</value>
-    <comment>About - Acknowlegdements FluBase Project URL</comment>
+    <comment>About - Acknowlegdements  FLUI Framework Project URL</comment>
   </data>
   <data name="About_AcknowledgementsIntro.Text" xml:space="preserve">
     <value>This app makes use of code from the following projects:</value>
@@ -430,5 +427,41 @@ Happy editing!</value>
   <data name="Unsaved-SaveChanges-Acc.Text" xml:space="preserve">
     <value>S</value>
     <comment>Unsaved dialog - Save changes - Keyboard accellerator hint</comment>
+  </data>
+  <data name="About_Contribute.Content" xml:space="preserve">
+    <value>Contribute to the project</value>
+    <comment>About - Contribute content</comment>
+  </data>
+  <data name="About_Contribute.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ikarago/Notepad</value>
+    <comment>About - Contribute link</comment>
+  </data>
+  <data name="About_Kofi.Content" xml:space="preserve">
+    <value>Buy me a Ko-Fi</value>
+    <comment>About - Ko-Fi Content</comment>
+  </data>
+  <data name="About_Kofi.NavigateUri" xml:space="preserve">
+    <value>https://ko-fi.com/ikarago</value>
+    <comment>About - Ko-Fi link</comment>
+  </data>
+  <data name="About_Patreon.Content" xml:space="preserve">
+    <value>Support me on Patreon</value>
+    <comment>About - Patreon - Content</comment>
+  </data>
+  <data name="About_Patreon.NavigateUri" xml:space="preserve">
+    <value>https://www.patreon.com/ikarago</value>
+    <comment>About - Patreon link</comment>
+  </data>
+  <data name="About_ProjectSupportTitle.Text" xml:space="preserve">
+    <value>Support us</value>
+    <comment>About - Support the project title</comment>
+  </data>
+  <data name="About_Translate.Content" xml:space="preserve">
+    <value>Translate the app</value>
+    <comment>About - Translate content</comment>
+  </data>
+  <data name="About_Translate.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ikarago/Notepad</value>
+    <comment>About - Translate link</comment>
   </data>
 </root>

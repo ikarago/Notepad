@@ -126,7 +126,7 @@
                                      NavigateUri="https://github.com/windows-toolkit/WindowsCommunityToolkit"/>
 
                     <!-- FluBase -->
-                    <HyperlinkButton x:Uid="About_AcknowledgementsFlubase"
+                    <HyperlinkButton x:Uid="About_AcknowledgementsFlui"
                                      Content="FLUI Framework"
                                      NavigateUri="https://github.com/Team-FLUI/FluiFramework"/>
                 </StackPanel>
@@ -156,6 +156,32 @@
                     <HyperlinkButton x:Uid="About_GitHubLink"
                                      Content="GitHub project"/>
                 </StackPanel>
+
+                <!-- Support us -->
+                <StackPanel Margin="{ThemeResource DialogCategoryMargin}">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xED59;"
+                                   Style="{ThemeResource FluentTitleIconStyle}"/>
+                        <TextBlock x:Uid="About_ProjectSupportTitle"
+                                   Text="Support us"
+                                   Style="{ThemeResource FluentTitleTextStyle}" />
+                    </StackPanel>
+
+
+                    <!-- Contribute -->
+                    <HyperlinkButton x:Uid="About_Contribute"
+                                     Content="Contibute to the project on GitHub"/>
+                    <!-- Translate -->
+                    <HyperlinkButton x:Uid="About_Translate"
+                                     Content="Translate the app"/>
+                    <!-- Patreon -->
+                    <HyperlinkButton x:Uid="About_Patreon"
+                                     Content="Support me on Patreon"/>
+                    <!-- Ko-Fi -->
+                    <HyperlinkButton x:Uid="About_Kofi"
+                                     Content="Buy me a Ko-Fi"/>
+                </StackPanel>
             </StackPanel>
 
         </ScrollViewer>
@@ -167,13 +193,13 @@
                Height="72"
                Width="72"
                Opacity="0.25"
-               Visibility="Visible"
+               Visibility="Collapsed"
                HorizontalAlignment="Right"
                VerticalAlignment="Bottom"/>
 
         <FontIcon Grid.Row="1"
                   Canvas.ZIndex="5"
-                  Visibility="Collapsed"
+                  Visibility="Visible"
                   Glyph="&#xE946;"
                   FontSize="72"
                   Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"
