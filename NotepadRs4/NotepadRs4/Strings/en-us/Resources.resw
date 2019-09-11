@@ -401,7 +401,7 @@ Happy editing!</value>
     <comment>ExitConfirmation dialog - Discard and exit</comment>
   </data>
   <data name="ExitConfirmation-GoBack-Acc.Text" xml:space="preserve">
-    <value>B</value>
+    <value>Esc</value>
     <comment>ExitConfirmation dialog - Go back - Keyboard accellerator hint</comment>
   </data>
   <data name="ExitConfirmation-GoBack.Text" xml:space="preserve">
@@ -421,7 +421,7 @@ Happy editing!</value>
     <comment>Unsaved dialog - Discard changes - Keyboard accellerator hint</comment>
   </data>
   <data name="Unsaved-GoBack-Acc.Text" xml:space="preserve">
-    <value>B</value>
+    <value>Esc</value>
     <comment>Unsaved dialog - Go back - Keyboard accellerator hint</comment>
   </data>
   <data name="Unsaved-SaveChanges-Acc.Text" xml:space="preserve">

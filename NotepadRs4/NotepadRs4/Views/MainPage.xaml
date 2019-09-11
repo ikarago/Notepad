@@ -425,22 +425,14 @@
                 <TextBox x:Uid="Main_Find_FindBar"
                          Grid.Row="0"
                          Grid.Column="1"     
-                         MinHeight="36"
                          Margin="0,8,0,4"
-                         Padding="8"
-                         contract7Present:CornerRadius="{StaticResource FluentTextBoxCorners}"
-                         BorderThickness="1"
                          PlaceholderText="Find..."
                          VerticalAlignment="Center"/>
                 <!-- Replace -->
                 <TextBox x:Uid="Main_Find_ReplaceBar"
                          Grid.Row="1"
                          Grid.Column="1"   
-                         MinHeight="36"
                          Margin="0,4,0,8"
-                         Padding="8"
-                         contract7Present:CornerRadius="{StaticResource FluentTextBoxCorners}"
-                         BorderThickness="1"
                          PlaceholderText="Replace..."
                          VerticalAlignment="Center"/>
                 <!-- Previous -->

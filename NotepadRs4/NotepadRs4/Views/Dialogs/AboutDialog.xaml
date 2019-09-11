@@ -29,7 +29,7 @@
                     Padding="0,0,0,8"
                     BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                     BorderThickness="0,0,0,1">
-            <Button Style="{ThemeResource NavigationBackButtonNormalStyle}"
+            <Button Style="{ThemeResource FluentDialogButtonBackStyle}"
                     Command="{x:Bind CloseDialogCommand}"/>
             <TextBlock x:Uid="About_Title"
                        Text="About"
