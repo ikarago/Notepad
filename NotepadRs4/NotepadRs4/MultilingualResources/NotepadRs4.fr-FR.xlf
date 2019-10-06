@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="fr-FR" original="NOTEPADRS4/STRINGS/EN-US/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6914.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="NOTEPADRS4/STRINGS/EN-US/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
+          <source>Notepad</source>
+          <target state="new">Notepad</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Application display name</note>
+        </trans-unit>
+        <trans-unit id="AppDescription" translate="yes" xml:space="preserve">
+          <source>Notepad</source>
+          <target state="new">Notepad</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Application description</note>
+        </trans-unit>
+        <trans-unit id="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" translate="yes" xml:space="preserve">
+          <source>File name is null or empty. Specify a valid file name</source>
+          <target state="new">File name is null or empty. Specify a valid file name</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">File name is null or empty to save file in settings storage extensions</note>
+        </trans-unit>
+        <trans-unit id="Settings_Theme.Text" translate="yes" xml:space="preserve">
+          <source>Choose Theme</source>
+          <target state="new">Choose Theme</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Choose theme text for Settings</note>
+        </trans-unit>
+        <trans-unit id="Settings_Theme_Dark.Content" translate="yes" xml:space="preserve">
+          <source>Dark</source>
+          <target state="new">Dark</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Dark theme text for Settings</note>
+        </trans-unit>
+        <trans-unit id="Settings_Theme_Default.Content" translate="yes" xml:space="preserve">
+          <source>Windows default</source>
+          <target state="new">Windows default</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Windows default theme text for Settings</note>
+        </trans-unit>
+        <trans-unit id="Settings_Theme_Light.Content" translate="yes" xml:space="preserve">
+          <source>Light</source>
+          <target state="new">Light</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Light theme text for Settings</note>
+        </trans-unit>
+        <trans-unit id="About_About.Text" translate="yes" xml:space="preserve">
+          <source>About this application</source>
+          <target state="new">About this application</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About this application title for About</note>
+        </trans-unit>
+        <trans-unit id="About_PrivacyTermsLink.Content" translate="yes" xml:space="preserve">
+          <source>Privacy Policy</source>
+          <target state="new">Privacy Policy</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Privacy Statement link content for About</note>
+        </trans-unit>
+        <trans-unit id="About_PrivacyTermsLink.NavigateUri" translate="yes" xml:space="preserve">
+          <source>https://ikarago.com/privacy-policy</source>
+          <target state="new">https://ikarago.com/privacy-policy</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Privacy Statement url for About</note>
+        </trans-unit>
+        <trans-unit id="Settings_Personalization.Text" translate="yes" xml:space="preserve">
+          <source>Personalization</source>
+          <target state="new">Personalization</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Personalization text for Settings</note>
+        </trans-unit>
+        <trans-unit id="ExceptionEnumToBooleanConverterValueMustBeAnEnum" translate="yes" xml:space="preserve">
+          <source>value must be an Enum!</source>
+          <target state="new">value must be an Enum!</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Value must be an Enum in enum to boolean converter</note>
+        </trans-unit>
+        <trans-unit id="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" translate="yes" xml:space="preserve">
+          <source>parameter must be an Enum name!</source>
+          <target state="new">parameter must be an Enum name!</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Parameter must be an Enum name in enum to boolean converter</note>
+        </trans-unit>
+        <trans-unit id="Settings_Title.Text" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="new">Settings</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Page title for SettingsPage</note>
+        </trans-unit>
+        <trans-unit id="ExceptionViewLifeTimeControlViewDisposal" translate="yes" xml:space="preserve">
+          <source>This view is being disposed.</source>
+          <target state="new">This view is being disposed.</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">View disposed</note>
+        </trans-unit>
+        <trans-unit id="AfterUpdate_Body.Text" translate="yes" xml:space="preserve">
+          <source>Various small fixes and UX imrpovements to make the app even more fun to use. :)
+
+Happy editing!</source>
+          <target state="new">Various small fixes and UX imrpovements to make the app even more fun to use. :)
+
+Happy editing!</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">What's new prompt message body</note>
+        </trans-unit>
+        <trans-unit id="AfterUpdate_Title.Text" translate="yes" xml:space="preserve">
+          <source>What's new?</source>
+          <target state="new">What's new?</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">What's new prompt message title</note>
+        </trans-unit>
+        <trans-unit id="About_Title.Text" translate="yes" xml:space="preserve">
+          <source>About</source>
+          <target state="new">About</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Page title for AboutDialog</note>
+        </trans-unit>
+        <trans-unit id="Settings_TextWrapping.Text" translate="yes" xml:space="preserve">
+          <source>Text Wrapping</source>
+          <target state="new">Text Wrapping</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Text Wrapping title for Settings</note>
+        </trans-unit>
+        <trans-unit id="About_GitHubLink.Content" translate="yes" xml:space="preserve">
+          <source>GitHub project</source>
+          <target state="new">GitHub project</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">GitHub project link content for About</note>
+        </trans-unit>
+        <trans-unit id="About_GitHubLink.NavigateUri" translate="yes" xml:space="preserve">
+          <source>https://github.com/ikarago/Notepad</source>
+          <target state="new">https://github.com/ikarago/Notepad</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Link to the GitHub project for About</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_About.Label" translate="yes" xml:space="preserve">
+          <source>About</source>
+          <target state="new">About</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - About</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_AlwaysOnTop.Label" translate="yes" xml:space="preserve">
+          <source>Always on top</source>
+          <target state="new">Always on top</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - Always on top</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_FindAndReplace.Label" translate="yes" xml:space="preserve">
+          <source>Find and Replace</source>
+          <target state="new">Find and Replace</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - Find and Replace</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_FontOptions.Label" translate="yes" xml:space="preserve">
+          <source>Font options</source>
+          <target state="new">Font options</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - Font Options</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_NewFile.Label" translate="yes" xml:space="preserve">
+          <source>New file</source>
+          <target state="new">New file</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - New File</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_OpenFile.Label" translate="yes" xml:space="preserve">
+          <source>Open...</source>
+          <target state="new">Open...</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - Open File</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_Print.Label" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <target state="new">Print</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - Print</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_SaveAsFile.Label" translate="yes" xml:space="preserve">
+          <source>Save As...</source>
+          <target state="new">Save As...</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - Save As File</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_SaveFile.Label" translate="yes" xml:space="preserve">
+          <source>Save</source>
+          <target state="new">Save</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - Save File</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_Settings.Label" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="new">Settings</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - Settings</note>
+        </trans-unit>
+        <trans-unit id="Main_AppDisplayName.Text" translate="yes" xml:space="preserve">
+          <source>Notepad</source>
+          <target state="new">Notepad</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - App name</note>
+        </trans-unit>
+        <trans-unit id="Main_Content.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Type something here...</source>
+          <target state="new">Type something here...</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - Main content placeholder Text</note>
+        </trans-unit>
+        <trans-unit id="Main_Find_Close.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Close</source>
+          <target state="new">Close</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ToolTip for closing the Findbar</note>
+        </trans-unit>
+        <trans-unit id="Main_Find_FindBar.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Find...</source>
+          <target state="new">Find...</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - Find - Findbar placeholder text</note>
+        </trans-unit>
+        <trans-unit id="Main_Find_Next.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Next entry</source>
+          <target state="new">Next entry</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ToolTip for the next entry</note>
+        </trans-unit>
+        <trans-unit id="Main_Find_Previous.ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Previous entry</source>
+          <target state="new">Previous entry</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ToolTip for the previous entry</note>
+        </trans-unit>
+        <trans-unit id="Main_Find_ReplaceBar.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Replace...</source>
+          <target state="new">Replace...</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - Find - Replacebar placeholder text</note>
+        </trans-unit>
+        <trans-unit id="Main_NotificationLoadFailed.Text" translate="yes" xml:space="preserve">
+          <source>Couldn't open your file</source>
+          <target state="new">Couldn't open your file</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - IAN - Load Failed</note>
+        </trans-unit>
+        <trans-unit id="Main_NotificationLoadOk.Text" translate="yes" xml:space="preserve">
+          <source>File opened</source>
+          <target state="new">File opened</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - IAN - Load OK</note>
+        </trans-unit>
+        <trans-unit id="Main_NotificationSaveFailed.Text" translate="yes" xml:space="preserve">
+          <source>Coudn't save your file</source>
+          <target state="new">Coudn't save your file</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - IAN - Save Failed</note>
+        </trans-unit>
+        <trans-unit id="Main_NotificationSaveOk.Text" translate="yes" xml:space="preserve">
+          <source>Save successful!</source>
+          <target state="new">Save successful!</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - IAN - Save OK</note>
+        </trans-unit>
+        <trans-unit id="Main_Edited.Text" translate="yes" xml:space="preserve">
+          <source>(Edited)</source>
+          <target state="new">(Edited)</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - Edited-status</note>
+        </trans-unit>
+        <trans-unit id="About_Description.Text" translate="yes" xml:space="preserve">
+          <source>Created and programmed by Ikarago, 2018-2019</source>
+          <target state="new">Created and programmed by Ikarago, 2018-2019</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About this application description for Settings</note>
+        </trans-unit>
+        <trans-unit id="About_LinksTitle.Text" translate="yes" xml:space="preserve">
+          <source>Links</source>
+          <target state="new">Links</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Title of the Links category</note>
+        </trans-unit>
+        <trans-unit id="About_Translators.Text" translate="yes" xml:space="preserve">
+          <source>English by Ikarago
+*future languages*</source>
+          <target state="new">English by Ikarago
+*future languages*</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - List of translators</note>
+        </trans-unit>
+        <trans-unit id="About_TranslatorsTitle.Text" translate="yes" xml:space="preserve">
+          <source>Translators</source>
+          <target state="new">Translators</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Translators</note>
+        </trans-unit>
+        <trans-unit id="Unsaved-GoBack.Text" translate="yes" xml:space="preserve">
+          <source>Go back</source>
+          <target state="new">Go back</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Unsaved dialog - Go back text</note>
+        </trans-unit>
+        <trans-unit id="Unsaved-Content.Text" translate="yes" xml:space="preserve">
+          <source>Would you like to save your work?</source>
+          <target state="new">Would you like to save your work?</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Unsaved dialog - Content text</note>
+        </trans-unit>
+        <trans-unit id="Unsaved-SaveChanges.Text" translate="yes" xml:space="preserve">
+          <source>Save changes</source>
+          <target state="new">Save changes</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Unsaved dialog - Save option</note>
+        </trans-unit>
+        <trans-unit id="Unsaved-DiscardChanges.Text" translate="yes" xml:space="preserve">
+          <source>Discard changes</source>
+          <target state="new">Discard changes</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Unsaved dialog - Discard option</note>
+        </trans-unit>
+        <trans-unit id="Unsaved-Title.Text" translate="yes" xml:space="preserve">
+          <source>Unsaved changes</source>
+          <target state="new">Unsaved changes</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Unsaved dialog - Title</note>
+        </trans-unit>
+        <trans-unit id="Main_Loaded.Text" translate="yes" xml:space="preserve">
+          <source>File loaded</source>
+          <target state="new">File loaded</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - Titlebar - File loaded text</note>
+        </trans-unit>
+        <trans-unit id="Main_Saved.Text" translate="yes" xml:space="preserve">
+          <source>Saved!</source>
+          <target state="new">Saved!</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - Titlebar - File saved text</note>
+        </trans-unit>
+        <trans-unit id="About_AcknowledgementsFlui.Content" translate="yes" xml:space="preserve">
+          <source>FLUI Framework</source>
+          <target state="new">FLUI Framework</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Acknowlegdements FLUI Framework Project title</note>
+        </trans-unit>
+        <trans-unit id="About_AcknowledgementsFlui.NavigateUri" translate="yes" xml:space="preserve">
+          <source>https://github.com/Team-FLUI/FluiFramework</source>
+          <target state="new">https://github.com/Team-FLUI/FluiFramework</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Acknowlegdements  FLUI Framework Project URL</note>
+        </trans-unit>
+        <trans-unit id="About_AcknowledgementsIntro.Text" translate="yes" xml:space="preserve">
+          <source>This app makes use of code from the following projects:</source>
+          <target state="new">This app makes use of code from the following projects:</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Acknowlegdements Intro text</note>
+        </trans-unit>
+        <trans-unit id="About_AcknowledgementsTitle.Text" translate="yes" xml:space="preserve">
+          <source>Acknowledgements</source>
+          <target state="new">Acknowledgements</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Acknowlegdements Title</note>
+        </trans-unit>
+        <trans-unit id="About_AcknowledgementsWct.Content" translate="yes" xml:space="preserve">
+          <source>Windows Community Toolkit</source>
+          <target state="new">Windows Community Toolkit</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Acknowledgements Windows Community Toolkit title</note>
+        </trans-unit>
+        <trans-unit id="About_AcknowledgementsWct.NavigateUri" translate="yes" xml:space="preserve">
+          <source>https://github.com/windows-toolkit/WindowsCommunityToolkit</source>
+          <target state="new">https://github.com/windows-toolkit/WindowsCommunityToolkit</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Acknowledgements Windows Community Toolkit Project URL</note>
+        </trans-unit>
+        <trans-unit id="About_AcknowledgementsWts.Content" translate="yes" xml:space="preserve">
+          <source>Windows Template Studio</source>
+          <target state="new">Windows Template Studio</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Acknowlegdements Windows Template Studio title</note>
+        </trans-unit>
+        <trans-unit id="About_AcknowledgementsWts.NavigateUri" translate="yes" xml:space="preserve">
+          <source>https://github.com/Microsoft/WindowsTemplateStudio</source>
+          <target state="new">https://github.com/Microsoft/WindowsTemplateStudio</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Acknowlegdements Windows Template Studio Project URL</note>
+        </trans-unit>
+        <trans-unit id="Main_Abb_Share.Label" translate="yes" xml:space="preserve">
+          <source>Share</source>
+          <target state="new">Share</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">MainPage - AppBarButton - Share</note>
+        </trans-unit>
+        <trans-unit id="UnititledLabel" translate="yes" xml:space="preserve">
+          <source>Untitled</source>
+          <target state="new">Untitled</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Name for a new, empty document</note>
+        </trans-unit>
+        <trans-unit id="ShareDescription" translate="yes" xml:space="preserve">
+          <source>The current version of file</source>
+          <target state="new">The current version of file</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Text shown in the Share Description</note>
+        </trans-unit>
+        <trans-unit id="ExitConfirmation-BodyText.Text" translate="yes" xml:space="preserve">
+          <source>Would you like to exit and discard unsaved changes?</source>
+          <target state="new">Would you like to exit and discard unsaved changes?</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ExitConfirmation dialog - Text in the body of the dialog</note>
+        </trans-unit>
+        <trans-unit id="ExitConfirmation-Title.Text" translate="yes" xml:space="preserve">
+          <source>Unsaved changes</source>
+          <target state="new">Unsaved changes</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ExitConfirmation dialog - Title</note>
+        </trans-unit>
+        <trans-unit id="Settings_SpellChecker.Text" translate="yes" xml:space="preserve">
+          <source>Spell Checker</source>
+          <target state="new">Spell Checker</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Spell Checker title for Settings</note>
+        </trans-unit>
+        <trans-unit id="ExitConfirmation-DiscardAndExit-Acc.Text" translate="yes" xml:space="preserve">
+          <source>D</source>
+          <target state="new">D</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ExitConfirmation dialog - Discard and exit - Keyboard accellerator hint</note>
+        </trans-unit>
+        <trans-unit id="ExitConfirmation-DiscardAndExit.Text" translate="yes" xml:space="preserve">
+          <source>Discard and exit</source>
+          <target state="new">Discard and exit</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ExitConfirmation dialog - Discard and exit</note>
+        </trans-unit>
+        <trans-unit id="ExitConfirmation-GoBack-Acc.Text" translate="yes" xml:space="preserve">
+          <source>Esc</source>
+          <target state="new">Esc</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ExitConfirmation dialog - Go back - Keyboard accellerator hint</note>
+        </trans-unit>
+        <trans-unit id="ExitConfirmation-GoBack.Text" translate="yes" xml:space="preserve">
+          <source>Go back</source>
+          <target state="new">Go back</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ExitConfirmation dialog - Go back</note>
+        </trans-unit>
+        <trans-unit id="ExitConfirmation-SaveAndExit-Acc.Text" translate="yes" xml:space="preserve">
+          <source>S</source>
+          <target state="new">S</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ExitConfirmation dialog - Save and exit - Keyboard accellerator hint</note>
+        </trans-unit>
+        <trans-unit id="ExitConfirmation-SaveAndExit.Text" translate="yes" xml:space="preserve">
+          <source>Save and exit</source>
+          <target state="new">Save and exit</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">ExitConfirmation dialog - Save and exit</note>
+        </trans-unit>
+        <trans-unit id="Unsaved-DiscardChanges-Acc.Text" translate="yes" xml:space="preserve">
+          <source>D</source>
+          <target state="new">D</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Unsaved dialog - Discard changes - Keyboard accellerator hint</note>
+        </trans-unit>
+        <trans-unit id="Unsaved-GoBack-Acc.Text" translate="yes" xml:space="preserve">
+          <source>Esc</source>
+          <target state="new">Esc</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Unsaved dialog - Go back - Keyboard accellerator hint</note>
+        </trans-unit>
+        <trans-unit id="Unsaved-SaveChanges-Acc.Text" translate="yes" xml:space="preserve">
+          <source>S</source>
+          <target state="new">S</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Unsaved dialog - Save changes - Keyboard accellerator hint</note>
+        </trans-unit>
+        <trans-unit id="About_Contribute.Content" translate="yes" xml:space="preserve">
+          <source>Contribute to the project</source>
+          <target state="new">Contribute to the project</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Contribute content</note>
+        </trans-unit>
+        <trans-unit id="About_Contribute.NavigateUri" translate="yes" xml:space="preserve">
+          <source>https://github.com/ikarago/Notepad</source>
+          <target state="new">https://github.com/ikarago/Notepad</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Contribute link</note>
+        </trans-unit>
+        <trans-unit id="About_Kofi.Content" translate="yes" xml:space="preserve">
+          <source>Buy me a Ko-Fi</source>
+          <target state="new">Buy me a Ko-Fi</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Ko-Fi Content</note>
+        </trans-unit>
+        <trans-unit id="About_Kofi.NavigateUri" translate="yes" xml:space="preserve">
+          <source>https://ko-fi.com/ikarago</source>
+          <target state="new">https://ko-fi.com/ikarago</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Ko-Fi link</note>
+        </trans-unit>
+        <trans-unit id="About_Patreon.Content" translate="yes" xml:space="preserve">
+          <source>Support me on Patreon</source>
+          <target state="new">Support me on Patreon</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Patreon - Content</note>
+        </trans-unit>
+        <trans-unit id="About_Patreon.NavigateUri" translate="yes" xml:space="preserve">
+          <source>https://www.patreon.com/ikarago</source>
+          <target state="new">https://www.patreon.com/ikarago</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Patreon link</note>
+        </trans-unit>
+        <trans-unit id="About_ProjectSupportTitle.Text" translate="yes" xml:space="preserve">
+          <source>Support us</source>
+          <target state="new">Support us</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Support the project title</note>
+        </trans-unit>
+        <trans-unit id="About_Translate.Content" translate="yes" xml:space="preserve">
+          <source>Translate the app</source>
+          <target state="new">Translate the app</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Translate content</note>
+        </trans-unit>
+        <trans-unit id="About_Translate.NavigateUri" translate="yes" xml:space="preserve">
+          <source>https://github.com/ikarago/Notepad</source>
+          <target state="new">https://github.com/ikarago/Notepad</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">About - Translate link</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
