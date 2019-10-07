@@ -81,7 +81,7 @@
 
                 <!-- Translators -->
                 <StackPanel Margin="{ThemeResource DialogCategoryMargin}"
-                            Visibility="Collapsed">
+                            Visibility="Visible">
                     <StackPanel Orientation="Horizontal"
                                 Margin="{ThemeResource DialogTitleMargin}">
                         <TextBlock Text="&#xE164;"
