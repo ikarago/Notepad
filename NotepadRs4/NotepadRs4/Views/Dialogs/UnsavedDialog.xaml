@@ -81,14 +81,14 @@
                     HorizontalAlignment="Stretch"
                     Padding="0,8,0,0"
                     BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                    BorderThickness="0,1,0,0">
+                    BorderThickness="0,0,0,0">
             <!-- Save button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Stretch"
-                    Background="Transparent"
                     Margin="0,0,0,8"
-                    Style="{ThemeResource ButtonRevealStyle}"
+                    BorderBrush="{ThemeResource SystemChromeGrayColor}"
+                    Style="{ThemeResource FluentButtonStandardStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind SaveCommand}">
                 <Button.Content>
@@ -130,9 +130,9 @@
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Stretch"
-                    Background="Transparent"
                     Margin="0,0,0,8"
-                    Style="{ThemeResource ButtonRevealStyle}"
+                    BorderBrush="{ThemeResource SystemChromeGrayColor}"
+                    Style="{ThemeResource FluentButtonStandardStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind DiscardCommand}">
                 <Button.Content>
@@ -174,8 +174,9 @@
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Stretch"
-                    Background="Transparent"
-                    Style="{ThemeResource ButtonRevealStyle}"
+                    Margin="0,0,0,8"
+                    BorderBrush="{ThemeResource SystemChromeGrayColor}"
+                    Style="{ThemeResource FluentButtonStandardStyle}"
                     contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
                     Command="{x:Bind CancelCommand}">
                 <Button.Content>
