@@ -247,7 +247,7 @@
                               Color="Black"
                               OffsetX="4"
                               OffsetY="4"
-                              Visibility="Visible"
+                              Visibility="Collapsed"
                               Margin="12"
                               HorizontalAlignment="Right"
                               HorizontalContentAlignment="Stretch"
