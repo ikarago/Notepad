@@ -240,19 +240,29 @@
         <!-- Font-options bar -->
         <!-- #TODO: EXPERIMENTAL! Also still really bad. Needs more cues from Word Mobile in more compact situations? -->
         <ctkc:DropShadowPanel x:Name="gridFontOptions"
-                                  Grid.Row="1"
-                                  Canvas.ZIndex="50"
-                                  ShadowOpacity="0.6"
-                                  Visibility="Collapsed"
-                                  HorizontalAlignment="Stretch"
-                                  HorizontalContentAlignment="Stretch">
+                              Grid.Row="3"
+                              Canvas.ZIndex="50"
+                              BlurRadius="10.0"
+                              ShadowOpacity="0.30"
+                              Color="Black"
+                              OffsetX="4"
+                              OffsetY="4"
+                              Visibility="Visible"
+                              Margin="12"
+                              HorizontalAlignment="Right"
+                              HorizontalContentAlignment="Stretch"
+                              VerticalAlignment="Top">
             <ctkc:DropShadowPanel.Transitions>
                 <TransitionCollection>
                     <PaneThemeTransition />
                 </TransitionCollection>
             </ctkc:DropShadowPanel.Transitions>
-            <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-                  Height="56">
+            <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}"
+                  BorderBrush="{ThemeResource SystemChromeGrayColor}"
+                  BorderThickness="1"
+                  CornerRadius="2"
+                  Padding="2"
+                  MinWidth="180">
                 <!-- Animation libraries -->
                 <Grid.ChildrenTransitions>
                     <TransitionCollection>
@@ -288,7 +298,7 @@
                            Grid.RowSpan="2"                
                            Text="&#xE185;"
                            FontFamily="Segoe MDL2 Assets"
-                           Margin="12,0"
+                           Margin="8,0,12,0"
                            Width="32"
                            TextAlignment="Center"
                            Visibility="Visible"
@@ -315,7 +325,7 @@
                           ItemsSource="{x:Bind SettingViewModel.FontSizes, Mode=OneWay}"
                           SelectedItem="{x:Bind SettingViewModel.SelectedFontSize, Mode=TwoWay}"
                           IsEditable="False"
-                          Margin="0,0,8,0"
+                          Margin="0,0,0,0"
                           VerticalAlignment="Center"
                           BorderThickness="1"
                           contract7Present:CornerRadius="0,2,2,0"
@@ -326,27 +336,27 @@
 
                 <!-- Bold -->
                 <ToggleButton Grid.Column="4"
-                                Grid.Row="0"
-                                Grid.RowSpan="1"
+                              Grid.Row="0"
+                              Grid.RowSpan="1"
                               Visibility="Collapsed"
-                                Content="&#xE19B;"
-                                FontFamily="Segoe MDL2 Assets"
-                                Background="Transparent"
+                              Content="&#xE19B;"
+                              FontFamily="Segoe MDL2 Assets"
+                              Background="Transparent"
                               Style="{ThemeResource ToggleButtonRound}"
-                                Width="40"
-                                Height="40"/>
+                              Width="40"
+                              Height="40"/>
                 
                 <!-- Italic -->
                 <ToggleButton Grid.Column="5"
-                                Grid.Row="0"
-                                Grid.RowSpan="1"
+                              Grid.Row="0"
+                              Grid.RowSpan="1"
                               Visibility="Collapsed"
-                                Content="&#xE199;"
-                                FontFamily="Segoe MDL2 Assets"
-                                Background="Transparent"
+                              Content="&#xE199;"
+                              FontFamily="Segoe MDL2 Assets"
+                              Background="Transparent"
                               Style="{ThemeResource ToggleButtonRound}"
-                                Width="40"
-                                Height="40"/>
+                              Width="40"
+                              Height="40"/>
                 
                 <AppBarSeparator Grid.Column="6"
                                  VerticalAlignment="Center"/>
@@ -359,8 +369,9 @@
                         Content="&#xE106;"
                         FontFamily="Segoe MDL2 Assets"
                         Background="Transparent"
-                        Width="48"
-                        Height="48"
+                        Width="40"
+                        Height="40"
+                        Margin="0,0,2,0"
                         Style="{ThemeResource ButtonRevealStyle}"
                         Command="{x:Bind FontOptionsCloseCommand}"/>
 
@@ -381,8 +392,7 @@
                 </TransitionCollection>
             </ctkc:DropShadowPanel.Transitions>
             <!-- #TODO: Remove opacity and make a 'deeper' colour AcrylicBrush for this to ensure logic in depth -->
-            <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-                  MinHeight="56">
+            <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
                 <!-- Animation libraries -->
                 <Grid.ChildrenTransitions>
                     <TransitionCollection>
