@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:ctkc="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:controls="using:NotepadRs4.Controls"
     
     xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 7)"
     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
@@ -37,10 +38,14 @@
 
 
         <!-- Top -->
-        <controls:DropShadowPanel x:Name="gridCmbar"
+        <ctkc:DropShadowPanel x:Name="gridCmbar"
                                   Grid.Row="0"
                                   Canvas.ZIndex="75"
-                                  ShadowOpacity="0.6"
+                                  BlurRadius="10.0"
+                                  ShadowOpacity="0.30"
+                                  Color="Black"
+                                  OffsetX="0"
+                                  OffsetY="4"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
             <Grid Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
@@ -105,13 +110,14 @@
                 </Grid>
 
                 <!-- Commandbar -->
-                <CommandBar x:Name="cmbar"
+                <controls:OpenDownCommandBar x:Name="cmbar"
                             Grid.Row="1"
                             Canvas.ZIndex="75"
+                            VerticalAlignment="Top"
                             Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
                             Style="{ThemeResource CommandBarRevealStyle}" 
                             ClosedDisplayMode="Compact">
-                    <CommandBar.PrimaryCommands>
+                    <controls:OpenDownCommandBar.PrimaryCommands>
                         <AppBarButton x:Name="cbtnNewFile"
                                       x:Uid="Main_Abb_NewFile"
                                       Icon="Add"
@@ -156,8 +162,8 @@
                                                                       IsEnabled="False"/>
                             </contract7Present:AppBarButton.KeyboardAccelerators>
                         </AppBarButton>
-                    </CommandBar.PrimaryCommands>
-                    <CommandBar.SecondaryCommands>
+                    </controls:OpenDownCommandBar.PrimaryCommands>
+                    <controls:OpenDownCommandBar.SecondaryCommands>
                         <AppBarButton x:Name="cbtnSaveAsFile"
                                       x:Uid="Main_Abb_SaveAsFile"
                                       Icon="SaveLocal"
@@ -226,25 +232,25 @@
                                 <FontIcon Glyph="&#xE946;"/>
                             </AppBarButton.Icon>
                         </AppBarButton>
-                    </CommandBar.SecondaryCommands>
-                </CommandBar>
+                    </controls:OpenDownCommandBar.SecondaryCommands>
+                </controls:OpenDownCommandBar>
             </Grid>          
-        </controls:DropShadowPanel>
+        </ctkc:DropShadowPanel>
 
         <!-- Font-options bar -->
         <!-- #TODO: EXPERIMENTAL! Also still really bad. Needs more cues from Word Mobile in more compact situations? -->
-        <controls:DropShadowPanel x:Name="gridFontOptions"
+        <ctkc:DropShadowPanel x:Name="gridFontOptions"
                                   Grid.Row="1"
                                   Canvas.ZIndex="50"
                                   ShadowOpacity="0.6"
                                   Visibility="Collapsed"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
-            <controls:DropShadowPanel.Transitions>
+            <ctkc:DropShadowPanel.Transitions>
                 <TransitionCollection>
                     <PaneThemeTransition />
                 </TransitionCollection>
-            </controls:DropShadowPanel.Transitions>
+            </ctkc:DropShadowPanel.Transitions>
             <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                   Height="56">
                 <!-- Animation libraries -->
@@ -359,21 +365,21 @@
                         Command="{x:Bind FontOptionsCloseCommand}"/>
 
             </Grid>
-        </controls:DropShadowPanel>
+        </ctkc:DropShadowPanel>
         
         <!-- Search 'n replace bar -->
-        <controls:DropShadowPanel x:Name="gridFind"
+        <ctkc:DropShadowPanel x:Name="gridFind"
                                   Grid.Row="2"
                                   Canvas.ZIndex="30"
                                   ShadowOpacity="0.6"
                                   Visibility="Collapsed"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
-            <controls:DropShadowPanel.Transitions>
+            <ctkc:DropShadowPanel.Transitions>
                 <TransitionCollection>
                     <PaneThemeTransition />
                 </TransitionCollection>
-            </controls:DropShadowPanel.Transitions>
+            </ctkc:DropShadowPanel.Transitions>
             <!-- #TODO: Remove opacity and make a 'deeper' colour AcrylicBrush for this to ensure logic in depth -->
             <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                   MinHeight="56">
@@ -497,7 +503,7 @@
                         Command="{x:Bind FindBarCloseCommand}"/>
 
             </Grid>
-        </controls:DropShadowPanel>
+        </ctkc:DropShadowPanel>
 
 
         <!-- Textbox -->
@@ -526,16 +532,31 @@
                  TextChanging="TxtContent_TextChanging"/>
 
         <!-- UX Messages -->
-        <controls:DropShadowPanel Grid.Row="3"
+        <ctkc:DropShadowPanel Grid.Row="3"
                                   Canvas.ZIndex="30"
-                                  Margin="48,0,48,-5"
-                                  Padding="0,0,0,4"
-                                  ShadowOpacity="0.6"
+                                  Margin="24,0,24,24"
+                                  Padding="0,0,0,0"
+                                  BlurRadius="10.0"
+                                  ShadowOpacity="0.30"
+                                  Color="Black"
+                                  OffsetX="4"
+                                  OffsetY="4"
                                   HorizontalContentAlignment="Stretch"
                                   VerticalAlignment="Bottom">
             <Grid Grid.Row="3"
                   Canvas.ZIndex="30"
+                  CornerRadius="2"
                   VerticalAlignment="Bottom">
+                <Grid.Transitions>
+                    <TransitionCollection>
+                        <PopupThemeTransition />
+                    </TransitionCollection>
+                </Grid.Transitions>
+                <!--<Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <PopupThemeTransition />
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>-->
                 <!-- Save successful -->
                 <!--<StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
                             Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -560,7 +581,7 @@
                             Visibility="{x:Bind ViewModel.UXNotificationSaveFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"
                                FontFamily="Segoe MDL2 Assets" 
-                               Margin="0,0,18,0"
+                               Margin="8,0,16,0"
                                VerticalAlignment="Center"
                                Style="{ThemeResource SubtitleTextBlockStyle}"/>
                     <TextBlock x:Uid="Main_NotificationSaveFailed"
@@ -593,7 +614,7 @@
                             Visibility="{x:Bind ViewModel.UXNotificationLoadFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"
                                FontFamily="Segoe MDL2 Assets" 
-                               Margin="0,0,18,0"
+                               Margin="8,0,16,0"
                                VerticalAlignment="Center"
                                Style="{ThemeResource SubtitleTextBlockStyle}"/>
                     <TextBlock Text="Couldn't open your file" 
@@ -602,7 +623,7 @@
                 </StackPanel>
             </Grid>
 
-        </controls:DropShadowPanel>
+        </ctkc:DropShadowPanel>
                                   
     </Grid>
 </Page>

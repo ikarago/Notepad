@@ -145,6 +145,14 @@
     <value>https://github.com/windows-toolkit/WindowsCommunityToolkit</value>
     <comment>About - Acknowledgements Windows Community Toolkit Project URL</comment>
   </data>
+  <data name="About_AcknowledgementsWinUI.Content" xml:space="preserve">
+    <value>Windows UI Library</value>
+    <comment>About - Acknowlegdements Windows UI Library title</comment>
+  </data>
+  <data name="About_AcknowledgementsWinUI.NavigateUri" xml:space="preserve">
+    <value>https://github.com/Microsoft/microsoft-ui-xaml</value>
+    <comment>About - Acknowlegdements Windows UI Library Project URL</comment>
+  </data>
   <data name="About_AcknowledgementsWts.Content" xml:space="preserve">
     <value>Windows Template Studio</value>
     <comment>About - Acknowlegdements Windows Template Studio title</comment>

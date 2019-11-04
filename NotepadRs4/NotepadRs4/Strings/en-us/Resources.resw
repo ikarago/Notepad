@@ -464,4 +464,12 @@ Dutch by Ikarago</value>
     <value>https://github.com/ikarago/Notepad</value>
     <comment>About - Translate link</comment>
   </data>
+  <data name="About_AcknowledgementsWinUI.Content" xml:space="preserve">
+    <value>Windows UI Library</value>
+    <comment>About - Acknowlegdements Windows UI Library title</comment>
+  </data>
+  <data name="About_AcknowledgementsWinUI.NavigateUri" xml:space="preserve">
+    <value>https://github.com/Microsoft/microsoft-ui-xaml</value>
+    <comment>About - Acknowlegdements Windows UI Library Project URL</comment>
+  </data>
 </root>

@@ -125,7 +125,12 @@
                                      Content="Windows Community Toolkit"
                                      NavigateUri="https://github.com/windows-toolkit/WindowsCommunityToolkit"/>
 
-                    <!-- FluBase -->
+                    <!-- WinUI -->
+                    <HyperlinkButton x:Uid="About_AcknowledgementsWinUI"
+                                     Content="Windows UI Library"
+                                     NavigateUri="https://github.com/Microsoft/microsoft-ui-xaml"/>
+
+                    <!-- FLUI Framework -->
                     <HyperlinkButton x:Uid="About_AcknowledgementsFlui"
                                      Content="FLUI Framework"
                                      NavigateUri="https://github.com/Team-FLUI/FluiFramework"/>
