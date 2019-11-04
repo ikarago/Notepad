@@ -100,7 +100,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluiFramework.UWP">
-      <Version>0.0.29</Version>
+      <Version>0.0.33</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
@@ -112,7 +112,7 @@
       <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.2.190830001</Version>
+      <Version>2.2.190917002</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.1</Version>
@@ -127,7 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\en-us\Resources.resw" />
-    <PRIResource Include="Strings\fr-FR\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
@@ -422,6 +421,7 @@
     </Content>
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
+    <PRIResource Include="Strings\nl-nl\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />

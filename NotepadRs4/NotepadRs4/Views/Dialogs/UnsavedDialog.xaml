@@ -6,14 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
-    
+    xmlns:ctkc="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource SystemControlAcrylicElementBrush}"
     BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
     contract7Present:CornerRadius="{StaticResource FluentDialogCorners}"
     
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid Padding="8">
         <contract7Present:Grid.BackgroundTransition>
             <contract7Present:BrushTransition />
         </contract7Present:Grid.BackgroundTransition>
@@ -83,138 +83,154 @@
                     BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
                     BorderThickness="0,0,0,0">
             <!-- Save button -->
-            <Button Padding="12,6"
-                    HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Stretch"
-                    Margin="0,0,0,8"
-                    BorderBrush="{ThemeResource SystemChromeGrayColor}"
-                    Style="{ThemeResource FluentButtonStandardStyle}"
-                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
-                    Command="{x:Bind SaveCommand}">
-                <Button.Content>
-                    <Grid MinWidth="128"
-                          MinHeight="32">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"
+            <ctkc:DropShadowPanel Canvas.ZIndex="10"
+                                  Margin="0,0,0,8"
+                                  BlurRadius="10.0"
+                                  ShadowOpacity="0.30"
+                                  Color="Black"
+                                  OffsetX="4"
+                                  OffsetY="4"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch">
+                <Button Style="{ThemeResource FluentDialogButtonAccentStyle}"
+                        Command="{x:Bind SaveCommand}">
+                    <Button.Content>
+                        <Grid MinWidth="128"
+                          MinHeight="32"
+                          RequestedTheme="Dark">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
                                    Text="&#xE105;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved-SaveChanges"
+                            <TextBlock x:Uid="Unsaved-SaveChanges"
                                    Grid.Column="1"
                                    Text="Save changes"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved-SaveChanges-Acc"
+                            <TextBlock x:Uid="Unsaved-SaveChanges-Acc"
                                    Grid.Column="2"
                                    Text="S"
                                    VerticalAlignment="Center"
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                    Style="{ThemeResource FluentCaptionTextStyle}"/>
-                    </Grid>
-                </Button.Content>
-                <Button.KeyboardAccelerators>
-                    <KeyboardAccelerator Modifiers="None"
+                        </Grid>
+                    </Button.Content>
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="None"
                                          Key="S" />
-                </Button.KeyboardAccelerators>
-                <ToolTipService.ToolTip>
-                    <ToolTip Visibility="Collapsed" />
-                </ToolTipService.ToolTip>
-            </Button>
+                    </Button.KeyboardAccelerators>
+                    <ToolTipService.ToolTip>
+                        <ToolTip Visibility="Collapsed" />
+                    </ToolTipService.ToolTip>
+                </Button>
+            </ctkc:DropShadowPanel>
+
 
             <!-- Discard button -->
-            <Button Padding="12,6"
-                    HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Stretch"
-                    Margin="0,0,0,8"
-                    BorderBrush="{ThemeResource SystemChromeGrayColor}"
-                    Style="{ThemeResource FluentButtonStandardStyle}"
-                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
-                    Command="{x:Bind DiscardCommand}">
-                <Button.Content>
-                    <Grid MinWidth="128"
+            <ctkc:DropShadowPanel Canvas.ZIndex="10"
+                                  Margin="0,0,0,8"
+                                  BlurRadius="10.0"
+                                  ShadowOpacity="0.30"
+                                  Color="Black"
+                                  OffsetX="4"
+                                  OffsetY="4"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch">
+                <Button Background="{ThemeResource SystemControlAcrylicElementBrush}"
+                        Style="{ThemeResource FluentDialogButtonStandardStyle}"
+                        Command="{x:Bind DiscardCommand}">
+                    <Button.Content>
+                        <Grid MinWidth="128"
                           MinHeight="32">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
                                    Text="&#xE74D;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved-DiscardChanges"
+                            <TextBlock x:Uid="Unsaved-DiscardChanges"
                                    Grid.Column="1"
                                    Text="Discard changes"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved-DiscardChanges-Acc"
+                            <TextBlock x:Uid="Unsaved-DiscardChanges-Acc"
                                    Grid.Column="2"
                                    Text="D"
                                    VerticalAlignment="Center"
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                    Style="{ThemeResource FluentCaptionTextStyle}"/>
-                    </Grid>
-                </Button.Content>
-                <Button.KeyboardAccelerators>
-                    <KeyboardAccelerator Modifiers="None"
+                        </Grid>
+                    </Button.Content>
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="None"
                                          Key="D" />
-                </Button.KeyboardAccelerators>
-                <ToolTipService.ToolTip>
-                    <ToolTip Visibility="Collapsed" />
-                </ToolTipService.ToolTip>
-            </Button>
+                    </Button.KeyboardAccelerators>
+                    <ToolTipService.ToolTip>
+                        <ToolTip Visibility="Collapsed" />
+                    </ToolTipService.ToolTip>
+                </Button>
+            </ctkc:DropShadowPanel>
 
             <!-- Cancel button -->
-            <Button Padding="12,6"
-                    HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Stretch"
-                    Margin="0,0,0,8"
-                    BorderBrush="{ThemeResource SystemChromeGrayColor}"
-                    Style="{ThemeResource FluentButtonStandardStyle}"
-                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
-                    Command="{x:Bind CancelCommand}">
-                <Button.Content>
-                    <Grid MinWidth="128"
+            <ctkc:DropShadowPanel Canvas.ZIndex="10"
+                                  Margin="0,0,0,8"
+                                  BlurRadius="10.0"
+                                  ShadowOpacity="0.30"
+                                  Color="Black"
+                                  OffsetX="4"
+                                  OffsetY="4"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch">
+                <Button Background="{ThemeResource SystemControlAcrylicElementBrush}"
+                        Style="{ThemeResource FluentDialogButtonStandardStyle}"
+                        Command="{x:Bind CancelCommand}">
+                    <Button.Content>
+                        <Grid MinWidth="128"
                           MinHeight="32">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
                                    Text="&#xE72B;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved-GoBack"
+                            <TextBlock x:Uid="Unsaved-GoBack"
                                    Grid.Column="1"
                                    Text="Go back"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Unsaved-GoBack-Acc"
+                            <TextBlock x:Uid="Unsaved-GoBack-Acc"
                                    Grid.Column="2"
                                    Text="Esc"
                                    VerticalAlignment="Center"
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                    Style="{ThemeResource FluentCaptionTextStyle}"/>
-                    </Grid>
-                </Button.Content>
-                <Button.KeyboardAccelerators>
-                    <KeyboardAccelerator Modifiers="None"
+                        </Grid>
+                    </Button.Content>
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="None"
                                          Key="Back" />
-                    <KeyboardAccelerator Modifiers="None"
+                        <KeyboardAccelerator Modifiers="None"
                                          Key="Escape" />
-                </Button.KeyboardAccelerators>
-                <ToolTipService.ToolTip>
-                    <ToolTip Visibility="Collapsed" />
-                </ToolTipService.ToolTip>
-            </Button>
+                    </Button.KeyboardAccelerators>
+                    <ToolTipService.ToolTip>
+                        <ToolTip Visibility="Collapsed" />
+                    </ToolTipService.ToolTip>
+                </Button>
+            </ctkc:DropShadowPanel>
 
         </StackPanel>
 

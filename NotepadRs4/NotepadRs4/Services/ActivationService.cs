@@ -81,6 +81,8 @@ namespace NotepadRs4.Services
                 // Set custom stuff
                 SetTitlebar();
                 SetMinimalWindowSize();
+                // Maximize UI on Xbox (Disabled, only here for testing)
+                //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
 
                 // Ensure the current window is active
                 Window.Current.Activate();

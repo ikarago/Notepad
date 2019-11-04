@@ -219,8 +219,7 @@
   </data>
   <data name="About_Translators.Text" xml:space="preserve">
     <value>English by Ikarago
-Dutch by Ikarago
-French by François-Joseph du Fou</value>
+Dutch by Ikarago</value>
     <comment>About - List of translators</comment>
   </data>
   <data name="About_TranslatorsTitle.Text" xml:space="preserve">
@@ -406,7 +405,7 @@ Happy editing!</value>
     <comment>Text Wrapping title for Settings</comment>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Kies een theme</value>
+    <value>Kies een thema</value>
     <comment>Choose theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Dark.Content" xml:space="preserve">

@@ -301,8 +301,7 @@ Happy editing!</value>
   </data>
   <data name="About_Translators.Text" xml:space="preserve">
     <value>English by Ikarago
-Dutch by Ikarago
-French by François-Joseph du Fou</value>
+Dutch by Ikarago</value>
     <comment>About - List of translators</comment>
   </data>
   <data name="About_TranslatorsTitle.Text" xml:space="preserve">
