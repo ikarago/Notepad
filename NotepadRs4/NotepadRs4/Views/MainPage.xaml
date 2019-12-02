@@ -637,7 +637,6 @@
 
         </ctkc:DropShadowPanel>
 
-
         <ctkc:DropShadowPanel x:Name="gridStatusBar"
                                   Grid.Row="4"
                                   Canvas.ZIndex="75"
