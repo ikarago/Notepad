@@ -34,6 +34,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
 
@@ -525,6 +526,7 @@
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
                  Padding="12" 
+                 SelectionChanged="txtContent_SelectionChanged"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                  InputScope="Default" 
                  AcceptsReturn="True" 
@@ -634,6 +636,33 @@
             </Grid>
 
         </ctkc:DropShadowPanel>
-                                  
+
+
+        <ctkc:DropShadowPanel x:Name="gridStatusBar"
+                                  Grid.Row="4"
+                                  Canvas.ZIndex="75"
+                                  BlurRadius="10"
+                                  ShadowOpacity="0.30"
+                                  Color="Black"
+                                  Height="26"
+                                  OffsetX="0"
+                                  OffsetY="-2"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch"
+                                  Visibility="Collapsed">
+            <Grid Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
+                <!--Line and character count-->
+                <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Padding="5,0,10,0"
+                   FontSize="11"
+                   Grid.Column="2"
+                   Margin="0,0,5,0"
+                   Foreground="{ThemeResource SystemControlForegroundBaseMediumHighBrush}">
+                <Run Text="Ln: "/><Run Text="{x:Bind ViewModel.Line, Mode=OneWay}"/><Run Text=","/>
+                <Run Text="Col: "/><Run Text="{x:Bind ViewModel.Col, Mode=OneWay}"/>
+                </TextBlock>
+            </Grid>
+        </ctkc:DropShadowPanel>
     </Grid>
 </Page>
