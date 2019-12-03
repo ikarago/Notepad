@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Input;
 using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
@@ -221,6 +222,16 @@ namespace NotepadRs4.Views
             // #TODO Fix this so it won't affect the Edited bool when loading from explorer (with the Initialize stuff) as this stupid trigger constantly finds a way to sneak before it and get triggered when it's not supposed to
             ViewModel.SetEditedTrue();
             ViewModel.Data.Text = txtContent.Text;
+        }
+
+        private void txtContent_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            //Getting current position
+            ViewModel.Col = txtContent.SelectionStart + 1;
+
+            //Getting current line
+            string sub = txtContent.Text.Substring(0, txtContent.SelectionStart);
+            ViewModel.Line = sub.Count(i => i == '\r') + 1;
         }
 
     }
