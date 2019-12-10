@@ -45,6 +45,20 @@ namespace NotepadRs4.ViewModels
             set { SetProperty(ref _file, value); }
         }
 
+        private int _line;
+        public int Line
+        {
+            get { return _line; }
+            set { SetProperty(ref _line, value); }
+        }
+
+        private int _col;
+        public int Col
+        {
+            get { return _col; }
+            set { SetProperty(ref _col, value); }
+        }
+
         private bool _fileEdited;
         public bool FileEdited
         {
