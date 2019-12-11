@@ -174,8 +174,8 @@ namespace NotepadRs4.Services
             }
 
             // Extend the normal window to the Titlebar for the blur to reach there too
-            CoreApplicationViewTitleBar coreTitlebar = CoreApplication.GetCurrentView().TitleBar;
-            coreTitlebar.ExtendViewIntoTitleBar = true;
+            //CoreApplicationViewTitleBar coreTitlebar = CoreApplication.GetCurrentView().TitleBar;
+            //coreTitlebar.ExtendViewIntoTitleBar = true;
         }
 
         private void SetMinimalWindowSize()

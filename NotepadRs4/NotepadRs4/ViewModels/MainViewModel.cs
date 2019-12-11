@@ -69,23 +69,56 @@ namespace NotepadRs4.ViewModels
         // List for Share Data
         private IReadOnlyList<StorageFile> FilesToShare;
 
+        private bool _isInAlwaysOnTopMode;
 
+
+        /// <summary>
+        /// UI Triggers
+        /// </summary>
+        /// 
+        private bool _uiTitlebarDetailsVisibility;
+        public bool UITitlebarDetailsVisibility
+        {
+            get { return _uiTitlebarDetailsVisibility; }
+            set { SetProperty(ref _uiTitlebarDetailsVisibility, value); }
+        }
+
+        private AppBarClosedDisplayMode _uiAppBarDisplayMode;
+        public AppBarClosedDisplayMode UIAppBarDisplayMode
+        {
+            get { return _uiAppBarDisplayMode; }
+            set { SetProperty(ref _uiAppBarDisplayMode, value); }
+        }
 
         // Capability buttons
         // Share Button
-        private Visibility _uiShareButtonVisibility;
-        public Visibility UiShareButtonVisibility
+        private bool _uiShareButtonVisibility;
+        public bool UIShareButtonVisibility
         {
             get { return _uiShareButtonVisibility; }
             set { SetProperty(ref _uiShareButtonVisibility, value); }
         }
 
         // Print Button
-        private Visibility _uiPrintButtonVisibility;
-        public Visibility UiPrintButtonVisibility
+        private bool _uiPrintButtonVisibility;
+        public bool UIPrintButtonVisibility
         {
             get { return _uiPrintButtonVisibility; }
             set { SetProperty(ref _uiPrintButtonVisibility, value); }
+        }
+
+        // Always on Top
+        private bool _uiAlwaysOnTopButtonVisibility;
+        public bool UIAlwaysOnTopButtonVisibility
+        {
+            get { return _uiAlwaysOnTopButtonVisibility; }
+            set { SetProperty(ref _uiAlwaysOnTopButtonVisibility, value); }
+        }
+        private bool _uiCloseAlwaysOnTopButtonVisibility;
+        public bool UICloseAlwaysOnTopButtonVisibility
+        {
+            get { return _uiCloseAlwaysOnTopButtonVisibility; }
+            set { SetProperty(ref _uiCloseAlwaysOnTopButtonVisibility, value); }
         }
 
 
@@ -154,6 +187,9 @@ namespace NotepadRs4.ViewModels
             }
 
             // Set UI and UX stuff
+            _isInAlwaysOnTopMode = false;
+            UIAppBarDisplayMode = AppBarClosedDisplayMode.Compact;
+            UITitlebarDetailsVisibility = true;
             SetEditedFalse();
             CheckDeviceCapabilities();
             SetUXToggles();
@@ -311,6 +347,23 @@ namespace NotepadRs4.ViewModels
                         });
                 }
                 return _aboutCommand;
+            }
+        }
+
+        private ICommand _toggleAlwaysOnTopCommand;
+        public ICommand ToggleAlwaysOnTopCommand
+        {
+            get
+            {
+                if (_toggleAlwaysOnTopCommand == null)
+                {
+                    _toggleAlwaysOnTopCommand = new RelayCommand(
+                        () =>
+                        {
+                            ToggleAlwaysOnTopMode();
+                        });
+                }
+                return _toggleAlwaysOnTopCommand;
             }
         }
 
@@ -628,10 +681,52 @@ namespace NotepadRs4.ViewModels
         private void CheckDeviceCapabilities()
         {
             // Check for the Share Button
-            if (DataTransferManager.IsSupported()) { UiShareButtonVisibility = Visibility.Visible; }
-            else { UiShareButtonVisibility = Visibility.Collapsed; }
+            if (DataTransferManager.IsSupported()) { UIShareButtonVisibility = true; }
+            else { UIShareButtonVisibility = false; }
 
             // #TODO Check for the Print Button
+
+            // Check for Always on Top capability
+            if (ApplicationView.GetForCurrentView().IsViewModeSupported(ApplicationViewMode.CompactOverlay)) 
+            { 
+                UIAlwaysOnTopButtonVisibility = true;
+                UICloseAlwaysOnTopButtonVisibility = false;
+            }
+            else 
+            { 
+                UIAlwaysOnTopButtonVisibility = false;
+                UICloseAlwaysOnTopButtonVisibility = false;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private async void ToggleAlwaysOnTopMode()
+        {
+            if (ApplicationView.GetForCurrentView().IsViewModeSupported(ApplicationViewMode.CompactOverlay))    // Extra check, just in case
+            {
+                if (!_isInAlwaysOnTopMode)
+                {
+                    _isInAlwaysOnTopMode = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay);
+                    UIAppBarDisplayMode = AppBarClosedDisplayMode.Minimal;
+                    UITitlebarDetailsVisibility = false;
+                    UIAlwaysOnTopButtonVisibility = false;
+                    UICloseAlwaysOnTopButtonVisibility = true;
+                }
+                else
+                {
+                    bool switched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
+                    if (switched)
+                    {
+                        _isInAlwaysOnTopMode = false;
+                        UIAppBarDisplayMode = AppBarClosedDisplayMode.Compact;
+                        UITitlebarDetailsVisibility = true;
+                        UIAlwaysOnTopButtonVisibility = true;
+                        UICloseAlwaysOnTopButtonVisibility = false;
+                    }
+                }
+            }
         }
 
         /// <summary>

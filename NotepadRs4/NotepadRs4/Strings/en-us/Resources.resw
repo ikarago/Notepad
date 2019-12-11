@@ -208,7 +208,7 @@ Happy editing!</value>
     <comment>MainPage - AppBarButton - About</comment>
   </data>
   <data name="Main_Abb_AlwaysOnTop.Label" xml:space="preserve">
-    <value>Always on top</value>
+    <value>Keep on top</value>
     <comment>MainPage - AppBarButton - Always on top</comment>
   </data>
   <data name="Main_Abb_FindAndReplace.Label" xml:space="preserve">
@@ -471,5 +471,13 @@ Dutch by Ikarago</value>
   <data name="About_AcknowledgementsWinUI.NavigateUri" xml:space="preserve">
     <value>https://github.com/Microsoft/microsoft-ui-xaml</value>
     <comment>About - Acknowlegdements Windows UI Library Project URL</comment>
+  </data>
+  <data name="Main_Abb_CloseAlwaysOnTop.Label" xml:space="preserve">
+    <value>Back to full view</value>
+    <comment>MainPage - AppBarButton - Always on top</comment>
+  </data>
+  <data name="Main_CloseAlwaysOnTop.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Back to full view</value>
+    <comment>MainPage - Close overlay mode</comment>
   </data>
 </root>

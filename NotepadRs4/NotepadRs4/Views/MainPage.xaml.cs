@@ -3,8 +3,10 @@ using System.Linq;
 using System.Windows.Input;
 using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
+using Windows.ApplicationModel.Core;
 using Windows.Storage;
 using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -26,6 +28,16 @@ namespace NotepadRs4.Views
         {
             InitializeComponent();
 
+            // Extend the normal window to the Titlebar for the blur to reach there too
+            CoreApplicationViewTitleBar coreTitlebar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitlebar.ExtendViewIntoTitleBar = true;
+            UpdateTitleBarLayout(coreTitlebar);
+
+            // Set the draggable region
+            Window.Current.SetTitleBar(AppTitleBar);
+            coreTitlebar.LayoutMetricsChanged += CoreTitlebar_LayoutMetricsChanged;
+            coreTitlebar.IsVisibleChanged += CoreTitlebar_IsVisibleChanged;
+
             // Put in triggers for the logo
             this.ActualThemeChanged += MainPage_ActualThemeChanged;
             CheckThemeForLogo();
@@ -34,6 +46,29 @@ namespace NotepadRs4.Views
             this.LayoutUpdated += MainPage_LayoutUpdated;
         }
 
+
+
+        private void CoreTitlebar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+        {
+            UpdateTitleBarLayout(sender);
+        }
+
+        private void CoreTitlebar_IsVisibleChanged(CoreApplicationViewTitleBar sender, object args)
+        {
+            // Do nothing for now, as we want to keep the titlebar visible, even in Full Screen mode
+        }
+
+        private void UpdateTitleBarLayout(CoreApplicationViewTitleBar coreTitleBar)
+        {
+            // Get the size of the caption controls area and back button 
+            // (returned in logical pixels), and move your content around as necessary.
+            LeftPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayLeftInset);
+            RightPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayRightInset);
+            btnCloseCompactOverlay.Margin = new Thickness(0, 0, 0, 0);
+
+            // Update title bar control size as needed to account for system size changes.
+            AppTitleBar.Height = coreTitleBar.Height;
+        }
 
         // Commands
         // Find and Replace

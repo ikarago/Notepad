@@ -189,7 +189,7 @@
                                       x:Uid="Main_Abb_Share"
                                       Icon="Share"
                                       Label="Share"
-                                      Visibility="{x:Bind ViewModel.UiShareButtonVisibility, Mode=OneWay}"
+                                      Visibility="{x:Bind ViewModel.UIShareButtonVisibility, Mode=OneWay}"
                                       Command="{x:Bind ViewModel.ShareCommand}">
                             <contract7Present:AppBarButton.KeyboardAccelerators>
                                 <contract7Present:KeyboardAccelerator Modifiers="Control"

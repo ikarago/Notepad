@@ -49,8 +49,17 @@
 
             <!-- Titlebar -->
             <Grid Grid.Row="0"
-                    Canvas.ZIndex="100">
-                <StackPanel Orientation="Horizontal">
+                  Canvas.ZIndex="100">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="AppTitleBar"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="3"                  
+                            Orientation="Horizontal">
                     <StackPanel.ChildrenTransitions>
                         <TransitionCollection>
                             <RepositionThemeTransition />
@@ -60,6 +69,7 @@
                             Height="16"
                             Width="16"
                             Margin="16,0"
+                           Visibility="{x:Bind ViewModel.UITitlebarDetailsVisibility, Mode=OneWay}"
                             Source="ms-appx:///Assets/Logo/contrast-black/Square44x44Logo.altform-unplated_targetsize-256.png" />
                     <TextBlock x:Name="tblFileName"
                                 Style="{ThemeResource CaptionTextBlockStyle}"
@@ -91,16 +101,39 @@
                                 VerticalAlignment="Center"/>
                     <!-- END OF UX statusses-->
                     <TextBlock Text="-"
+                               Visibility="{x:Bind ViewModel.UITitlebarDetailsVisibility, Mode=OneWay}"
                                 Style="{ThemeResource CaptionTextBlockStyle}"
                                 Margin="6,0"
                                 VerticalAlignment="Center"/>
                     <TextBlock x:Uid="Main_AppDisplayName"
+                               Visibility="{x:Bind ViewModel.UITitlebarDetailsVisibility, Mode=OneWay}"
                                 Text="Notepad"
                                 Style="{ThemeResource CaptionTextBlockStyle}"
                                 Margin="0,0,12,0"
                                 VerticalAlignment="Center"/>
                 </StackPanel>
+                <Button x:Name="btnCloseCompactOverlay"
+                        x:Uid="Main_CloseAlwaysOnTop"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Canvas.ZIndex="101"
+                        Background="Transparent"
+                        Content="&#xE2B3;"
+                        FontFamily="Segoe MDL2 Assets"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Stretch"
+                        Width="48"
+                        Style="{ThemeResource ButtonRevealStyle}"
+                        Visibility="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility, Mode=OneWay}"
+                        Command="{x:Bind ViewModel.ToggleAlwaysOnTopCommand}">
+                    <contract7Present:Button.KeyboardAccelerators>
+                        <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                              Key="M"
+                                                              IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
+                    </contract7Present:Button.KeyboardAccelerators>
+                </Button>
             </Grid>
+
 
             <!-- Commandbar -->
             <controls:OpenDownCommandBar x:Name="cmbar"
@@ -109,7 +142,7 @@
                                          Background="{ThemeResource SystemControlAcrylicWindowBrush}"
                                          VerticalAlignment="Top"
                                          Style="{ThemeResource CommandBarRevealStyle}" 
-                                         ClosedDisplayMode="Compact">
+                                         ClosedDisplayMode="{x:Bind ViewModel.UIAppBarDisplayMode, Mode=OneWay}">
                 <controls:OpenDownCommandBar.PrimaryCommands>
                     <AppBarButton x:Name="cbtnNewFile"
                                     x:Uid="Main_Abb_NewFile"
@@ -142,7 +175,7 @@
                         </contract7Present:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarSeparator x:Name="cbtnSeperator"
-                                        Visibility="Collapsed"/>
+                                     Visibility="Collapsed"/>
                     <AppBarButton x:Name="cbtnFind"
                                     x:Uid="Main_Abb_FindAndReplace"
                                     Icon="Find"
@@ -181,7 +214,7 @@
                                     x:Uid="Main_Abb_Share"
                                     Icon="Share"
                                     Label="Share"
-                                    Visibility="{x:Bind ViewModel.UiShareButtonVisibility, Mode=OneWay}"
+                                    Visibility="{x:Bind ViewModel.UIShareButtonVisibility, Mode=OneWay}"
                                     Command="{x:Bind ViewModel.ShareCommand}">
                         <contract7Present:AppBarButton.KeyboardAccelerators>
                             <contract7Present:KeyboardAccelerator Modifiers="Control"
@@ -189,20 +222,39 @@
                         </contract7Present:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarSeparator />
-                    <!-- New idea: Toggle to keep Notepad on Top -->
-                    <!--<AppBarToggleButton x:Name="ctbtnAlwaysOnTop"
-                                            x:Uid="Main_Abb_AlwaysOnTop"
-                                Label="Always on top"
-                                Visibility="Visible">
-                <AppBarToggleButton.Icon>
-                    <FontIcon Glyph="&#xF26E;" />
-                </AppBarToggleButton.Icon>
-            </AppBarToggleButton>-->
+                    <AppBarButton x:Name="ctbtnAlwaysOnTop"
+                                  x:Uid="Main_Abb_AlwaysOnTop"
+                                  Label="Always on top"
+                                  Visibility="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility, Mode=OneWay}"
+                                  Command="{x:Bind ViewModel.ToggleAlwaysOnTopCommand}">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE2B4;" />
+                        </AppBarButton.Icon>
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                  Key="M"
+                                                                  IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton x:Uid="Main_Abb_CloseAlwaysOnTop"
+                                  Label="Close compact overlay"
+                                  Visibility="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility, Mode=OneWay}"
+                                  Command="{x:Bind ViewModel.ToggleAlwaysOnTopCommand}">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE2B3;" />
+                        </AppBarButton.Icon>
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                  Key="M"
+                                                                  IsEnabled="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility}"/>
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
                     <AppBarButton x:Name="cbtnFontOptions"
                                     x:Uid="Main_Abb_FontOptions"
                                     Icon="Font"
                                     Label="Font options"
                                     Command="{x:Bind FontOptionsCommand}" />
+                    <AppBarSeparator />
                     <AppBarButton x:Name="cbtnPlayground"
                                     Label="Debug"
                                     Visibility="Collapsed"
@@ -511,7 +563,7 @@
         <!-- Textbox -->
         <ctkc:DropShadowPanel Grid.Row="3"
                               Canvas.ZIndex="100"
-                              BlurRadius="20.0"
+                              BlurRadius="10.0"
                               ShadowOpacity="0.60"
                               Color="Black"
                               OffsetX="4"
