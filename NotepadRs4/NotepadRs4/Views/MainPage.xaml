@@ -195,6 +195,11 @@
                                     Icon="SaveLocal"
                                     Label="Save As..."
                                     Command="{x:Bind ViewModel.SaveFileAsCommand}">
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control,Shift"
+                                                                  Key="S">
+                            </contract7Present:KeyboardAccelerator>
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarButton x:Name="cbtnPrint"
                                     x:Uid="Main_Abb_Print"
