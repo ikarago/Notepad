@@ -163,8 +163,18 @@ namespace NotepadRs4.Services
                 {
                     data = new TextDataModel();
 
+                    // Get the buffer of the file so we can also read it when encoded in different encoding from UTF8
+                    // Fix with the help of Fred Bao's answer on https://social.msdn.microsoft.com/Forums/sqlserver/en-US/0f3cd056-a2e3-411b-8e8a-d2109255359a/uwpc-reading-ansi-text-file
+                    IBuffer buffer = await FileIO.ReadBufferAsync(file);
+                    DataReader dataReader = DataReader.FromBuffer(buffer);
+                    byte[] fileContent = new byte[dataReader.UnconsumedBufferLength];
+                    dataReader.ReadBytes(fileContent);
+                    string readText = Encoding.UTF8.GetString(fileContent, 0, fileContent.Length);
+                    // #TODO: Get the current encoding and display it in the TextDataModel
+
+
                     // Textdata
-                    data.Text = await FileIO.ReadTextAsync(file);
+                    data.Text = readText;
                     data.DocumentTitle = file.DisplayName + file.FileType;
 
                     // Get Fast Access token
