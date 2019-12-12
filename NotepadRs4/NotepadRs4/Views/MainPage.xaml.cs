@@ -7,6 +7,7 @@ using Windows.ApplicationModel.Core;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -284,6 +285,25 @@ namespace NotepadRs4.Views
                 txtContent.Select(ViewModel.Col + 1, 0);
                 e.Handled = true;                
             }
+
+            if (IsCtrlPressed() & e.Key == (VirtualKey)187) //ctrl + +
+            {
+                svContent.ChangeView(0.0, 0.0, svContent.ZoomFactor + 0.1f);
+            }
+            if (IsCtrlPressed() & e.Key == (VirtualKey)189) //ctrl + -
+            {
+                svContent.ChangeView(0.0, 0.0, svContent.ZoomFactor - 0.1f);
+            }
+            if (IsCtrlPressed() & e.Key == (VirtualKey)48) //ctrl + 0
+            {
+                svContent.ChangeView(0.0, 0.0, 0.0f);
+            }
+        }
+
+        private bool IsCtrlPressed()
+        {
+            var state = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Control);
+            return (state & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
         }
     }
 }
