@@ -213,6 +213,22 @@
     <value>Steun mij</value>
     <comment>About - Support the project title</comment>
   </data>
+  <data name="About_SpecialThanksIntro.Text" xml:space="preserve">
+    <value>Deze fantastische personen hebben meegeholpen met het bouwen en ontwerpen van de app of door advies te geven. Zonder deze personen was de app niet zo tof geweest als dat deze nu is:</value>
+    <comment>About - Special Thanks - Description</comment>
+  </data>
+  <data name="About_SpecialThanksTitle.Text" xml:space="preserve">
+    <value>Speciaal dankwoord</value>
+    <comment>About - Special Thanks - Title </comment>
+  </data>
+  <data name="About_SpecialThanksToYou.Text" xml:space="preserve">
+    <value>... en natuurlijk jij voor het gebruiken van de app. :)</value>
+    <comment>About - Special Thanks - You</comment>
+  </data>
+  <data name="About_SpecialThanksUWPCommunity.Text" xml:space="preserve">
+    <value>Iedereen in de UWP Community Discord</value>
+    <comment>About - Special Thanks - UWP Community Discord</comment>
+  </data>
   <data name="About_Title.Text" xml:space="preserve">
     <value>Over deze app</value>
     <comment>Page title for AboutDialog</comment>

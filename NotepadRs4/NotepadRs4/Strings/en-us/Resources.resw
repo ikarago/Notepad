@@ -480,4 +480,20 @@ Dutch by Ikarago</value>
     <value>Back to full view</value>
     <comment>MainPage - Close overlay mode</comment>
   </data>
+  <data name="About_SpecialThanksIntro.Text" xml:space="preserve">
+    <value>These amazing people helped build, design or gave advice along the way. Without these fine folks, the app wouldn't have been as awesome as it is today:</value>
+    <comment>About - Special Thanks - Description</comment>
+  </data>
+  <data name="About_SpecialThanksTitle.Text" xml:space="preserve">
+    <value>Special Thanks</value>
+    <comment>About - Special Thanks - Title </comment>
+  </data>
+  <data name="About_SpecialThanksToYou.Text" xml:space="preserve">
+    <value>... and of course you for using the app. :)</value>
+    <comment>About - Special Thanks - You</comment>
+  </data>
+  <data name="About_SpecialThanksUWPCommunity.Text" xml:space="preserve">
+    <value>Everyone in the UWP Community Discord</value>
+    <comment>About - Special Thanks - UWP Community Discord</comment>
+  </data>
 </root>

@@ -13,7 +13,7 @@
     
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid MaxWidth="320">
         <contract7Present:Grid.BackgroundTransition>
             <contract7Present:BrushTransition />
         </contract7Present:Grid.BackgroundTransition>
@@ -94,7 +94,50 @@
 
                     <TextBlock x:Uid="About_Translators"
                                Text="Sample text"
-                               TextWrapping="Wrap"/>
+                               TextWrapping="Wrap"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"/>
+                </StackPanel>
+
+                <!-- Special Thanks -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE006;"
+                                   Style="{ThemeResource FluentTitleIconStyle}" />
+                        <TextBlock x:Uid="About_SpecialThanksTitle"
+                                   Text="Special thanks"                              
+                                   Style="{StaticResource FluentTitleTextStyle}" />
+                    </StackPanel>
+
+                    <!-- Intro -->
+                    <TextBlock x:Uid="About_SpecialThanksIntro"
+                               Text="These amazing people helped build, design or gave advice along the way. Without these fine folks, the app wouldn't have been as awesome as it is today:"
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Left"
+                               Margin="{StaticResource DialogSubtitleMargin}"/>
+
+                    <TextBlock Text="Yair"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+                    <TextBlock Text="Filippo Fedeli"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+                    <TextBlock Text="Michael West"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+                    <TextBlock Text="Rudy Huyn"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+
+                    <TextBlock x:Uid="About_SpecialThanksUWPCommunity"
+                               Text="Everyone in the UWP Community Discord"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+                    <TextBlock x:Uid="About_SpecialThanksToYou"
+                               Text="... and of course you for using the app. :)"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+
                 </StackPanel>
 
 
