@@ -609,7 +609,8 @@
                      ScrollViewer.ZoomMode="Enabled"
                      Drop="txtContent_Drop"
                      DragOver="txtContent_DragOver"
-                     TextChanging="TxtContent_TextChanging"/>
+                     TextChanging="TxtContent_TextChanging"
+                     KeyDown="txtContent_KeyDown"/>
             </ScrollViewer>
         </ctkc:DropShadowPanel>
 

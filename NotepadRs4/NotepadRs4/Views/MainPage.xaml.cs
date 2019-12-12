@@ -5,6 +5,7 @@ using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
 using Windows.ApplicationModel.Core;
 using Windows.Storage;
+using Windows.System;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -273,6 +274,16 @@ namespace NotepadRs4.Views
         {
             ViewModel.ZoomFactor = svContent.ZoomFactor;
 
+        }
+
+        private void txtContent_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Tab)
+            {
+                txtContent.SelectedText = ("\t");
+                txtContent.Select(ViewModel.Col + 1, 0);
+                e.Handled = true;                
+            }
         }
     }
 }
