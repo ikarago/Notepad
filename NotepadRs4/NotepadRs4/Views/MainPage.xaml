@@ -127,8 +127,8 @@
                         Visibility="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility, Mode=OneWay}"
                         Command="{x:Bind ViewModel.ToggleAlwaysOnTopCommand}">
                     <contract7Present:Button.KeyboardAccelerators>
-                        <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                              Key="M"
+                        <contract7Present:KeyboardAccelerator Modifiers="Menu"
+                                                              Key="Down"
                                                               IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
                     </contract7Present:Button.KeyboardAccelerators>
                 </Button>
@@ -236,8 +236,8 @@
                             <FontIcon Glyph="&#xE2B4;" />
                         </AppBarButton.Icon>
                         <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                                  Key="M"
+                            <contract7Present:KeyboardAccelerator Modifiers="Menu"
+                                                                  Key="Up"
                                                                   IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
                         </contract7Present:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
