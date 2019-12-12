@@ -269,5 +269,10 @@ namespace NotepadRs4.Views
             ViewModel.Line = sub.Count(i => i == '\r') + 1;
         }
 
+        private void svContent_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            ViewModel.ZoomFactor = svContent.ZoomFactor;
+
+        }
     }
 }

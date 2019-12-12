@@ -25,7 +25,6 @@
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition />
-                <ReorderThemeTransition />
             </TransitionCollection>
         </Grid.ChildrenTransitions>
         
@@ -576,11 +575,15 @@
                               Margin="0"
                               HorizontalAlignment="Stretch"
                               HorizontalContentAlignment="Stretch">
-            <TextBox x:Name="txtContent"
+            <ScrollViewer x:Name="svContent"
+                          Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                          contract7Present:CornerRadius="2"
+                          MinZoomFactor="1"
+                          MaxZoomFactor="10"
+                          ZoomMode="Enabled"
+                          ViewChanged="svContent_ViewChanged">
+                <TextBox x:Name="txtContent"
                      x:Uid="Main_Content"
-                     Canvas.ZIndex="10"
-                     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                     contract7Present:CornerRadius="2"
                      BorderThickness="0"
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
@@ -598,9 +601,11 @@
                      FontFamily="{x:Bind SettingViewModel.SelectedFontFamily, Mode=OneWay}"
                      FontSize="{x:Bind SettingViewModel.SelectedFontSize, Mode=OneWay}"
                      PlaceholderText="Type something here..."
+                     ScrollViewer.ZoomMode="Enabled"
                      Drop="txtContent_Drop"
                      DragOver="txtContent_DragOver"
                      TextChanging="TxtContent_TextChanging"/>
+            </ScrollViewer>
         </ctkc:DropShadowPanel>
 
 
@@ -698,21 +703,34 @@
 
         </ctkc:DropShadowPanel>
 
+        <!-- Line and character count -->
         <Grid x:Name="gridStatusBar"
               Grid.Row="4"
               Canvas.ZIndex="75"
-              Background="{ThemeResource SystemControlAcrylicElementBrush}"
               CornerRadius="2">
-            <!--Line and character count-->
-            <TextBlock VerticalAlignment="Center"
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <RepositionThemeTransition />
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="8,4">
+                <TextBlock VerticalAlignment="Center"
                            HorizontalAlignment="Right"
-                           Padding="8,4"
-                           Grid.Column="2"
-                           Margin="0,0,4,0"
                            Style="{ThemeResource FluentSubcaptionTextStyle}">
-                <Run Text="Ln: "/><Run Text="{x:Bind ViewModel.Line, Mode=OneWay}"/><Run Text=","/>
-                <Run Text="Col: "/><Run Text="{x:Bind ViewModel.Col, Mode=OneWay}"/>
-            </TextBlock>
+                    <Run Text="Ln: "/><Run Text="{x:Bind ViewModel.Line, Mode=OneWay}"/><Run Text=","/>
+                    <Run Text="Col: "/><Run Text="{x:Bind ViewModel.Col, Mode=OneWay}"/>
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Visibility="{x:Bind ViewModel.UIZoomFactorVisibility, Mode=OneWay}"
+                           Style="{ThemeResource FluentSubcaptionTextStyle}">
+                <Run Text=", "/><Run Text="Zoom: "/><Run Text="{x:Bind ViewModel.ZoomFactorPercentage, Mode=OneWay}" /><Run Text="%"/>
+                </TextBlock>
+            </StackPanel>
+            
+
         </Grid>
     </Grid>
 </Page>
