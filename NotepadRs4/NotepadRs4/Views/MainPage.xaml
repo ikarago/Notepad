@@ -58,7 +58,8 @@
                 <StackPanel x:Name="AppTitleBar"
                             Grid.Column="2"
                             Grid.ColumnSpan="3"                  
-                            Orientation="Horizontal">
+                            Orientation="Horizontal"
+                            Background="Transparent">
                     <StackPanel.ChildrenTransitions>
                         <TransitionCollection>
                             <RepositionThemeTransition />
