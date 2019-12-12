@@ -58,7 +58,8 @@
                 <StackPanel x:Name="AppTitleBar"
                             Grid.Column="2"
                             Grid.ColumnSpan="3"                  
-                            Orientation="Horizontal">
+                            Orientation="Horizontal"
+                            Background="Transparent">
                     <StackPanel.ChildrenTransitions>
                         <TransitionCollection>
                             <RepositionThemeTransition />
@@ -126,8 +127,8 @@
                         Visibility="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility, Mode=OneWay}"
                         Command="{x:Bind ViewModel.ToggleAlwaysOnTopCommand}">
                     <contract7Present:Button.KeyboardAccelerators>
-                        <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                              Key="M"
+                        <contract7Present:KeyboardAccelerator Modifiers="Menu"
+                                                              Key="Down"
                                                               IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
                     </contract7Present:Button.KeyboardAccelerators>
                 </Button>
@@ -235,8 +236,8 @@
                             <FontIcon Glyph="&#xE2B4;" />
                         </AppBarButton.Icon>
                         <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                                  Key="M"
+                            <contract7Present:KeyboardAccelerator Modifiers="Menu"
+                                                                  Key="Up"
                                                                   IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
                         </contract7Present:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
@@ -421,7 +422,11 @@
                         Height="40"
                         Margin="0,0,2,0"
                         Style="{ThemeResource ButtonRevealStyle}"
-                        Command="{x:Bind FontOptionsCloseCommand}"/>
+                        Command="{x:Bind FontOptionsCloseCommand}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Escape"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
 
             </Grid>
         </ctkc:DropShadowPanel>
@@ -604,7 +609,8 @@
                      ScrollViewer.ZoomMode="Enabled"
                      Drop="txtContent_Drop"
                      DragOver="txtContent_DragOver"
-                     TextChanging="TxtContent_TextChanging"/>
+                     TextChanging="TxtContent_TextChanging"
+                     KeyDown="txtContent_KeyDown"/>
             </ScrollViewer>
         </ctkc:DropShadowPanel>
 
@@ -725,8 +731,9 @@
                 <TextBlock VerticalAlignment="Center"
                            HorizontalAlignment="Right"
                            Visibility="{x:Bind ViewModel.UIZoomFactorVisibility, Mode=OneWay}"
-                           Style="{ThemeResource FluentSubcaptionTextStyle}">
-                <Run Text=", "/><Run Text="Zoom: "/><Run Text="{x:Bind ViewModel.ZoomFactorPercentage, Mode=OneWay}" /><Run Text="%"/>
+                           Style="{ThemeResource FluentSubcaptionTextStyle}"
+                           Padding="15,0,0,0">
+                    <Run Text="Zoom: "/><Run Text="{x:Bind ViewModel.ZoomFactorPercentage, Mode=OneWay}" /><Run Text="%"/>
                 </TextBlock>
             </StackPanel>
             
