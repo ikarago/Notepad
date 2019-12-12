@@ -421,7 +421,11 @@
                         Height="40"
                         Margin="0,0,2,0"
                         Style="{ThemeResource ButtonRevealStyle}"
-                        Command="{x:Bind FontOptionsCloseCommand}"/>
+                        Command="{x:Bind FontOptionsCloseCommand}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Escape"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
 
             </Grid>
         </ctkc:DropShadowPanel>
