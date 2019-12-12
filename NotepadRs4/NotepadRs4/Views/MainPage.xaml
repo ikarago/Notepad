@@ -730,8 +730,9 @@
                 <TextBlock VerticalAlignment="Center"
                            HorizontalAlignment="Right"
                            Visibility="{x:Bind ViewModel.UIZoomFactorVisibility, Mode=OneWay}"
-                           Style="{ThemeResource FluentSubcaptionTextStyle}">
-                <Run Text=", "/><Run Text="Zoom: "/><Run Text="{x:Bind ViewModel.ZoomFactorPercentage, Mode=OneWay}" /><Run Text="%"/>
+                           Style="{ThemeResource FluentSubcaptionTextStyle}"
+                           Padding="15,0,0,0">
+                    <Run Text="Zoom: "/><Run Text="{x:Bind ViewModel.ZoomFactorPercentage, Mode=OneWay}" /><Run Text="%"/>
                 </TextBlock>
             </StackPanel>
             
