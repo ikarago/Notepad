@@ -399,7 +399,7 @@ namespace NotepadRs4.ViewModels
 
         // Methods
         // New
-        public async void NewFile()
+        private async void NewFile()
         {
             if (_data.Text != "")
             {
@@ -449,7 +449,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // Save
-        public async Task<bool> SaveFile()
+        private async Task<bool> SaveFile()
         {
             if (File == null)
             {
@@ -478,7 +478,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // Save As
-        public async Task<bool> SaveFileAs()
+        private async Task<bool> SaveFileAs()
         {
             // #TODO: Check whether the user cancelled the action or it has actually failed
             StorageFile tempFile = await FileDataService.SaveAs(_data);
@@ -512,7 +512,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // Load
-        public async Task<bool> LoadFile()
+        private async Task<bool> LoadFile()
         {
             if (_data.Text != "" && FileEdited == true)
             {
