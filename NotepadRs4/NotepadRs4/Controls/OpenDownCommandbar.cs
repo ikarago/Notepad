@@ -10,9 +10,10 @@ using Windows.UI.Xaml.Controls;
 
 namespace NotepadRs4.Controls
 {
-    // #LEGACY CODE: This code isn't used anymore in this app, but it's still here so you might be able to learn something from it
+    // #ACTIVE CODE (AGAIN): This code isn't used anymore in this app, but it's still here so you might be able to learn something from it
     //      Reason for abandoning this code is due to the CommandBar being able to function properly again, so no need for it anymore to force the DropDownMenu to go down.
-    /*
+    //          UPDATE: 2019-11-04: After some UI updates, the CommandBar goes ugly again, so I re-enabled this to be able to make use of it again.
+    
     public class OpenDownCommandBarVisualStateManager : VisualStateManager
     {
         protected override bool GoToStateCore(Control control, FrameworkElement templateRoot, string stateName, VisualStateGroup group, VisualState state, bool useTransitions)
@@ -43,5 +44,5 @@ namespace NotepadRs4.Controls
                 VisualStateManager.SetCustomVisualStateManager(layoutRoot, new OpenDownCommandBarVisualStateManager());
             }
         }
-    } */
+    } 
 }

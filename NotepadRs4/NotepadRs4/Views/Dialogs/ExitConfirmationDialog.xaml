@@ -6,14 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
-    
+    xmlns:ctkc="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource SystemControlAcrylicElementBrush}"
     BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
     contract7Present:CornerRadius="{StaticResource FluentDialogCorners}"
     
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid Padding="8">
         <contract7Present:Grid.BackgroundTransition>
             <contract7Present:BrushTransition />
         </contract7Present:Grid.BackgroundTransition>
@@ -51,19 +51,14 @@
                        Text="Unsaved changes"
                        Style="{ThemeResource FluentSubheaderTextStyle}"
                        RelativePanel.AlignVerticalCenterWithPanel="True"/>
-            <Button Content="&#xE106;"
-                    Background="Transparent"
-                    FontFamily="Segoe MDL2 Assets"
-                    Height="40"
-                    Width="40"             
-                    Style="{ThemeResource ButtonRevealStyle}"
-                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
+            <Button Style="{ThemeResource FluentDialogButtonCloseStyle}"
                     RelativePanel.AlignRightWithPanel="True"
                     Command="{x:Bind CloseCommand}">
-                <Button.KeyboardAccelerators>
+                <!-- Commented out for now because the Go Back-option does the same -->
+                <!--<Button.KeyboardAccelerators>
                     <KeyboardAccelerator Modifiers="None"
                                          Key="Escape" />
-                </Button.KeyboardAccelerators>
+                </Button.KeyboardAccelerators>-->
             </Button>
         </RelativePanel>
 
@@ -86,7 +81,7 @@
                     HorizontalAlignment="Stretch"
                     Padding="0,8,0,0"
                     BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
-                    BorderThickness="0,1,0,0">
+                    BorderThickness="0,0,0,0">
             <!-- Save button -->
             <Button Padding="12,6"
                     HorizontalAlignment="Stretch"
@@ -132,94 +127,111 @@
             </Button>
 
             <!-- Discard button -->
-            <Button Padding="12,6"
-                    HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Stretch"
-                    Background="Transparent"
-                    Margin="0,0,0,8"
-                    Style="{ThemeResource ButtonRevealStyle}"
-                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
+            <ctkc:DropShadowPanel Canvas.ZIndex="10"
+                                  Margin="0,0,0,8"
+                                  BlurRadius="10.0"
+                                  ShadowOpacity="0.30"
+                                  Color="Black"
+                                  OffsetX="4"
+                                  OffsetY="4"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch">
+                <Button Style="{ThemeResource FluentButtonAccentStyle}"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
                     Command="{x:Bind DiscardCommand}">
-                <Button.Content>
-                    <Grid MinWidth="128"
-                          MinHeight="32">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"
+                    <Button.Content>
+                        <Grid MinWidth="128"
+                              MinHeight="32"
+                              RequestedTheme="Dark">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
                                    Text="&#xF3B1;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="ExitConfirmation-DiscardAndExit"
+                            <TextBlock x:Uid="ExitConfirmation-DiscardAndExit"
                                    Grid.Column="1"
                                    Text="Discard and exit"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="ExitConfirmation-DiscardAndExit-Acc"
+                            <TextBlock x:Uid="ExitConfirmation-DiscardAndExit-Acc"
                                    Grid.Column="2"
                                    Text="D"
                                    VerticalAlignment="Center"
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                    Style="{ThemeResource FluentCaptionTextStyle}"/>
-                    </Grid>
-                </Button.Content>
-                <Button.KeyboardAccelerators>
-                    <KeyboardAccelerator Modifiers="None"
+                        </Grid>
+                    </Button.Content>
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="None"
                                          Key="D" />
-                </Button.KeyboardAccelerators>
-                <ToolTipService.ToolTip>
-                    <ToolTip Visibility="Collapsed" />
-                </ToolTipService.ToolTip>
-            </Button>
+                    </Button.KeyboardAccelerators>
+                    <ToolTipService.ToolTip>
+                        <ToolTip Visibility="Collapsed" />
+                    </ToolTipService.ToolTip>
+                </Button>
+            </ctkc:DropShadowPanel>
+
 
             <!-- Cancel button -->
-            <Button Padding="12,6"
-                    HorizontalAlignment="Stretch"
+            <ctkc:DropShadowPanel Canvas.ZIndex="10"
+                                  Margin="0,0,0,8"
+                                  BlurRadius="10.0"
+                                  ShadowOpacity="0.30"
+                                  Color="Black"
+                                  OffsetX="4"
+                                  OffsetY="4"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch">
+                <Button HorizontalAlignment="Stretch"
                     HorizontalContentAlignment="Stretch"
-                    Background="Transparent"
-                    Style="{ThemeResource ButtonRevealStyle}"
-                    contract7Present:CornerRadius="{ThemeResource FluentButtonCorners}"
+                    Background="{ThemeResource SystemControlAcrylicElementBrush}"
+                    Style="{ThemeResource FluentButtonStandardStyle}"
                     Command="{x:Bind CancelCommand}">
-                <Button.Content>
-                    <Grid MinWidth="128"
+                    <Button.Content>
+                        <Grid MinWidth="128"
                           MinHeight="32">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
                                    Text="&#xE72B;"
                                    FontFamily="Segoe MDL2 Assets"
                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                    Padding="0,0,12,0"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="ExitConfirmation-GoBack"
+                            <TextBlock x:Uid="ExitConfirmation-GoBack"
                                    Grid.Column="1"
                                    Text="Go back"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="ExitConfirmation-GoBack-Acc"
+                            <TextBlock x:Uid="ExitConfirmation-GoBack-Acc"
                                    Grid.Column="2"
-                                   Text="B"
+                                   Text="Esc"
                                    VerticalAlignment="Center"
                                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                    Style="{ThemeResource FluentCaptionTextStyle}"/>
 
-                    </Grid>
-                </Button.Content>
-                <Button.KeyboardAccelerators>
-                    <KeyboardAccelerator Modifiers="None"
-                                         Key="B" />
-                    <KeyboardAccelerator Modifiers="None"
+                        </Grid>
+                    </Button.Content>
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="None"
                                          Key="Back" />
-                </Button.KeyboardAccelerators>
-                <ToolTipService.ToolTip>
-                    <ToolTip Visibility="Collapsed" />
-                </ToolTipService.ToolTip>
-            </Button>
+                        <KeyboardAccelerator Modifiers="None"
+                                         Key="Escape" />
+                    </Button.KeyboardAccelerators>
+                    <ToolTipService.ToolTip>
+                        <ToolTip Visibility="Collapsed" />
+                    </ToolTipService.ToolTip>
+                </Button>
+            </ctkc:DropShadowPanel>
+
 
         </StackPanel>
 

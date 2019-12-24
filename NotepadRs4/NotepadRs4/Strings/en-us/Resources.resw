@@ -178,10 +178,17 @@
     <comment>View disposed</comment>
   </data>
   <data name="AfterUpdate_Body.Text" xml:space="preserve">
-    <value>- NEW: Share the opened document by pressing the Share-button!
-- NEW: Added a exit confirmation dialog that pops up when you try to exit the app with unsaved changes.
-- IMPROVED: Various UI updates.
-- BUGFIX: Pressing Save doesn't bring up the Save As-dialog once you've saved the file or opened it from a file.
+    <value>v1.9.2.x (2019-12-12):
+- NEW: Added the ability to zoom in and out on the text
+- NEW: Added a statusbar displaying the current position of the cursor and zoom (thanks Yair! :) )
+- NEW: Added an overlay mode where you can keep the app always on top (You can activate it by pressing ALT+Up to start it and ATL+Down to close it)
+- IMPROVED: The Splash screen is now optional so the app boots more quickly
+- IMPROVED: Updated the UI a bit more to make everything looks more in line with Microsofts Fluent Design system
+- BUGFIX: Fixed a bug where ANSI encoded files wouldn't open at all
+- BUGFIX: Changed Tab-behaviour to actually enter a tabbed space instead of jumping to the next control. (Once more, thanks Yair!)
+- BUGFIX: Various other small bugfixes and improvements
+
+A big shout out to Yair who worked on quite a few fixes and features for this release. Check out his Quick Pad-app in the store if you're looking into an app for some rich text editing. :)
 
 Happy editing!</value>
     <comment>What's new prompt message body</comment>
@@ -211,7 +218,7 @@ Happy editing!</value>
     <comment>MainPage - AppBarButton - About</comment>
   </data>
   <data name="Main_Abb_AlwaysOnTop.Label" xml:space="preserve">
-    <value>Always on top</value>
+    <value>Keep on top</value>
     <comment>MainPage - AppBarButton - Always on top</comment>
   </data>
   <data name="Main_Abb_FindAndReplace.Label" xml:space="preserve">
@@ -304,7 +311,7 @@ Happy editing!</value>
   </data>
   <data name="About_Translators.Text" xml:space="preserve">
     <value>English by Ikarago
-*future languages*</value>
+Dutch by Ikarago</value>
     <comment>About - List of translators</comment>
   </data>
   <data name="About_TranslatorsTitle.Text" xml:space="preserve">
@@ -339,13 +346,13 @@ Happy editing!</value>
     <value>Saved!</value>
     <comment>MainPage - Titlebar - File saved text</comment>
   </data>
-  <data name="About_AcknowledgementsFlubase.Content" xml:space="preserve">
+  <data name="About_AcknowledgementsFlui.Content" xml:space="preserve">
     <value>FLUI Framework</value>
-    <comment>About - Acknowlegdements FluBase title</comment>
+    <comment>About - Acknowlegdements FLUI Framework Project title</comment>
   </data>
-  <data name="About_AcknowledgementsFlubase.NavigateUri" xml:space="preserve">
+  <data name="About_AcknowledgementsFlui.NavigateUri" xml:space="preserve">
     <value>https://github.com/Team-FLUI/FluiFramework</value>
-    <comment>About - Acknowlegdements FluBase Project URL</comment>
+    <comment>About - Acknowlegdements  FLUI Framework Project URL</comment>
   </data>
   <data name="About_AcknowledgementsIntro.Text" xml:space="preserve">
     <value>This app makes use of code from the following projects:</value>
@@ -404,7 +411,7 @@ Happy editing!</value>
     <comment>ExitConfirmation dialog - Discard and exit</comment>
   </data>
   <data name="ExitConfirmation-GoBack-Acc.Text" xml:space="preserve">
-    <value>B</value>
+    <value>Esc</value>
     <comment>ExitConfirmation dialog - Go back - Keyboard accellerator hint</comment>
   </data>
   <data name="ExitConfirmation-GoBack.Text" xml:space="preserve">
@@ -424,11 +431,79 @@ Happy editing!</value>
     <comment>Unsaved dialog - Discard changes - Keyboard accellerator hint</comment>
   </data>
   <data name="Unsaved-GoBack-Acc.Text" xml:space="preserve">
-    <value>B</value>
+    <value>Esc</value>
     <comment>Unsaved dialog - Go back - Keyboard accellerator hint</comment>
   </data>
   <data name="Unsaved-SaveChanges-Acc.Text" xml:space="preserve">
     <value>S</value>
     <comment>Unsaved dialog - Save changes - Keyboard accellerator hint</comment>
+  </data>
+  <data name="About_Contribute.Content" xml:space="preserve">
+    <value>Contribute to the project</value>
+    <comment>About - Contribute content</comment>
+  </data>
+  <data name="About_Contribute.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ikarago/Notepad</value>
+    <comment>About - Contribute link</comment>
+  </data>
+  <data name="About_Kofi.Content" xml:space="preserve">
+    <value>Buy me a Ko-Fi</value>
+    <comment>About - Ko-Fi Content</comment>
+  </data>
+  <data name="About_Kofi.NavigateUri" xml:space="preserve">
+    <value>https://ko-fi.com/ikarago</value>
+    <comment>About - Ko-Fi link</comment>
+  </data>
+  <data name="About_Patreon.Content" xml:space="preserve">
+    <value>Support me on Patreon</value>
+    <comment>About - Patreon - Content</comment>
+  </data>
+  <data name="About_Patreon.NavigateUri" xml:space="preserve">
+    <value>https://www.patreon.com/ikarago</value>
+    <comment>About - Patreon link</comment>
+  </data>
+  <data name="About_ProjectSupportTitle.Text" xml:space="preserve">
+    <value>Support us</value>
+    <comment>About - Support the project title</comment>
+  </data>
+  <data name="About_Translate.Content" xml:space="preserve">
+    <value>Translate the app</value>
+    <comment>About - Translate content</comment>
+  </data>
+  <data name="About_Translate.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ikarago/Notepad</value>
+    <comment>About - Translate link</comment>
+  </data>
+  <data name="About_AcknowledgementsWinUI.Content" xml:space="preserve">
+    <value>Windows UI Library</value>
+    <comment>About - Acknowlegdements Windows UI Library title</comment>
+  </data>
+  <data name="About_AcknowledgementsWinUI.NavigateUri" xml:space="preserve">
+    <value>https://github.com/Microsoft/microsoft-ui-xaml</value>
+    <comment>About - Acknowlegdements Windows UI Library Project URL</comment>
+  </data>
+  <data name="Main_Abb_CloseAlwaysOnTop.Label" xml:space="preserve">
+    <value>Back to full view</value>
+    <comment>MainPage - AppBarButton - Always on top</comment>
+  </data>
+  <data name="Main_CloseAlwaysOnTop.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Back to full view</value>
+    <comment>MainPage - Close overlay mode</comment>
+  </data>
+  <data name="About_SpecialThanksIntro.Text" xml:space="preserve">
+    <value>These amazing people helped build, design or gave advice along the way. Without these fine folks, the app wouldn't have been as awesome as it is today:</value>
+    <comment>About - Special Thanks - Description</comment>
+  </data>
+  <data name="About_SpecialThanksTitle.Text" xml:space="preserve">
+    <value>Special Thanks</value>
+    <comment>About - Special Thanks - Title </comment>
+  </data>
+  <data name="About_SpecialThanksToYou.Text" xml:space="preserve">
+    <value>... and of course you for using the app. :)</value>
+    <comment>About - Special Thanks - You</comment>
+  </data>
+  <data name="About_SpecialThanksUWPCommunity.Text" xml:space="preserve">
+    <value>Everyone in the UWP Community Discord</value>
+    <comment>About - Special Thanks - UWP Community Discord</comment>
   </data>
 </root>

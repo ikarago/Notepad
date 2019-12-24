@@ -45,6 +45,38 @@ namespace NotepadRs4.ViewModels
             set { SetProperty(ref _file, value); }
         }
 
+        private int _line;
+        public int Line
+        {
+            get { return _line; }
+            set { SetProperty(ref _line, value); }
+        }
+
+        private int _col;
+        public int Col
+        {
+            get { return _col; }
+            set { SetProperty(ref _col, value); }
+        }
+
+        private float _zoomFactor;
+        public float ZoomFactor
+        {
+            get { return _zoomFactor; }
+            set 
+            { 
+                SetProperty(ref _zoomFactor, value);
+                UpdateZoomFactorPercentage();
+            }
+        }
+
+        private int _zoomFactorPercentage;
+        public int ZoomFactorPercentage
+        {
+            get { return _zoomFactorPercentage; }
+            set { SetProperty(ref _zoomFactorPercentage, value); }
+        }
+        
         private bool _fileEdited;
         public bool FileEdited
         {
@@ -55,23 +87,62 @@ namespace NotepadRs4.ViewModels
         // List for Share Data
         private IReadOnlyList<StorageFile> FilesToShare;
 
+        private bool _isInAlwaysOnTopMode;
 
+
+        /// <summary>
+        /// UI Triggers
+        /// </summary>
+        private bool _uiTitlebarDetailsVisibility;
+        public bool UITitlebarDetailsVisibility
+        {
+            get { return _uiTitlebarDetailsVisibility; }
+            set { SetProperty(ref _uiTitlebarDetailsVisibility, value); }
+        }
+
+        private AppBarClosedDisplayMode _uiAppBarDisplayMode;
+        public AppBarClosedDisplayMode UIAppBarDisplayMode
+        {
+            get { return _uiAppBarDisplayMode; }
+            set { SetProperty(ref _uiAppBarDisplayMode, value); }
+        }
+
+        private bool _uiZoomFactorVisibility;
+        public bool UIZoomFactorVisibility
+        {
+            get { return _uiZoomFactorVisibility; }
+            set { SetProperty(ref _uiZoomFactorVisibility, value); }
+        }
 
         // Capability buttons
         // Share Button
-        private Visibility _uiShareButtonVisibility;
-        public Visibility UiShareButtonVisibility
+        private bool _uiShareButtonVisibility;
+        public bool UIShareButtonVisibility
         {
             get { return _uiShareButtonVisibility; }
             set { SetProperty(ref _uiShareButtonVisibility, value); }
         }
 
         // Print Button
-        private Visibility _uiPrintButtonVisibility;
-        public Visibility UiPrintButtonVisibility
+        private bool _uiPrintButtonVisibility;
+        public bool UIPrintButtonVisibility
         {
             get { return _uiPrintButtonVisibility; }
             set { SetProperty(ref _uiPrintButtonVisibility, value); }
+        }
+
+        // Always on Top
+        private bool _uiAlwaysOnTopButtonVisibility;
+        public bool UIAlwaysOnTopButtonVisibility
+        {
+            get { return _uiAlwaysOnTopButtonVisibility; }
+            set { SetProperty(ref _uiAlwaysOnTopButtonVisibility, value); }
+        }
+        private bool _uiCloseAlwaysOnTopButtonVisibility;
+        public bool UICloseAlwaysOnTopButtonVisibility
+        {
+            get { return _uiCloseAlwaysOnTopButtonVisibility; }
+            set { SetProperty(ref _uiCloseAlwaysOnTopButtonVisibility, value); }
         }
 
 
@@ -107,7 +178,7 @@ namespace NotepadRs4.ViewModels
 
 
 
-        // Main
+        // Constructor
         public MainViewModel()
         {
             Initialize();
@@ -140,9 +211,15 @@ namespace NotepadRs4.ViewModels
             }
 
             // Set UI and UX stuff
+            ZoomFactor = 1;
+            //UIZoomFactorVisibility = true;  // Shown on purpose. Gets hidden in 3 seconds after launch
+            _isInAlwaysOnTopMode = false;
+            UIAppBarDisplayMode = AppBarClosedDisplayMode.Compact;
+            UITitlebarDetailsVisibility = true;
             SetEditedFalse();
             CheckDeviceCapabilities();
             SetUXToggles();
+            UpdateZoomFactorPercentage();
         }
 
 
@@ -249,6 +326,23 @@ namespace NotepadRs4.ViewModels
             }
         }
 
+        private ICommand _toggleAlwaysOnTopCommand;
+        public ICommand ToggleAlwaysOnTopCommand
+        {
+            get
+            {
+                if (_toggleAlwaysOnTopCommand == null)
+                {
+                    _toggleAlwaysOnTopCommand = new RelayCommand(
+                        () =>
+                        {
+                            ToggleAlwaysOnTopMode();
+                        });
+                }
+                return _toggleAlwaysOnTopCommand;
+            }
+        }
+
         private ICommand _playgroundCommand;
         public ICommand PlaygroundCommand
         {
@@ -302,9 +396,10 @@ namespace NotepadRs4.ViewModels
 
 
 
+
         // Methods
         // New
-        public async void NewFile()
+        private async void NewFile()
         {
             if (_data.Text != "")
             {
@@ -354,7 +449,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // Save
-        public async Task<bool> SaveFile()
+        private async Task<bool> SaveFile()
         {
             if (File == null)
             {
@@ -383,7 +478,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // Save As
-        public async Task<bool> SaveFileAs()
+        private async Task<bool> SaveFileAs()
         {
             // #TODO: Check whether the user cancelled the action or it has actually failed
             StorageFile tempFile = await FileDataService.SaveAs(_data);
@@ -417,7 +512,7 @@ namespace NotepadRs4.ViewModels
         }
 
         // Load
-        public async Task<bool> LoadFile()
+        private async Task<bool> LoadFile()
         {
             if (_data.Text != "" && FileEdited == true)
             {
@@ -614,10 +709,52 @@ namespace NotepadRs4.ViewModels
         private void CheckDeviceCapabilities()
         {
             // Check for the Share Button
-            if (DataTransferManager.IsSupported()) { UiShareButtonVisibility = Visibility.Visible; }
-            else { UiShareButtonVisibility = Visibility.Collapsed; }
+            if (DataTransferManager.IsSupported()) { UIShareButtonVisibility = true; }
+            else { UIShareButtonVisibility = false; }
 
             // #TODO Check for the Print Button
+
+            // Check for Always on Top capability
+            if (ApplicationView.GetForCurrentView().IsViewModeSupported(ApplicationViewMode.CompactOverlay)) 
+            { 
+                UIAlwaysOnTopButtonVisibility = true;
+                UICloseAlwaysOnTopButtonVisibility = false;
+            }
+            else 
+            { 
+                UIAlwaysOnTopButtonVisibility = false;
+                UICloseAlwaysOnTopButtonVisibility = false;
+            }
+        }
+
+        /// <summary>
+        /// Toggles the Always on Top-mode on and off
+        /// </summary>
+        private async void ToggleAlwaysOnTopMode()
+        {
+            if (ApplicationView.GetForCurrentView().IsViewModeSupported(ApplicationViewMode.CompactOverlay))    // Extra check, just in case
+            {
+                if (!_isInAlwaysOnTopMode)
+                {
+                    _isInAlwaysOnTopMode = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay);
+                    UIAppBarDisplayMode = AppBarClosedDisplayMode.Minimal;
+                    UITitlebarDetailsVisibility = false;
+                    UIAlwaysOnTopButtonVisibility = false;
+                    UICloseAlwaysOnTopButtonVisibility = true;
+                }
+                else
+                {
+                    bool switched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
+                    if (switched)
+                    {
+                        _isInAlwaysOnTopMode = false;
+                        UIAppBarDisplayMode = AppBarClosedDisplayMode.Compact;
+                        UITitlebarDetailsVisibility = true;
+                        UIAlwaysOnTopButtonVisibility = true;
+                        UICloseAlwaysOnTopButtonVisibility = false;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -628,6 +765,19 @@ namespace NotepadRs4.ViewModels
             ApplicationView.GetForCurrentView().Title = Data.DocumentTitle;
         }
 
+        private async void UpdateZoomFactorPercentage()
+        {
+            double factor = Convert.ToDouble(ZoomFactor);
+            int percentage = Convert.ToInt32(Math.Round(factor * 100, 0));
+            ZoomFactorPercentage = percentage;
+
+            if (percentage == 100)
+            {
+                await Task.Delay(3000);
+                UIZoomFactorVisibility = false;
+            }
+            else { UIZoomFactorVisibility = true; }
+        }
 
         // Set save status
         public void SetEditedFalse()

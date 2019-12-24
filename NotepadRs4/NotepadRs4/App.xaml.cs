@@ -4,6 +4,7 @@ using NotepadRs4.Services;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.System.Profile;
 using Windows.UI.Xaml;
 
 namespace NotepadRs4
@@ -23,6 +24,14 @@ namespace NotepadRs4
         public App()
         {
             InitializeComponent();
+
+            // Xbox stuff (Disabled, only here for testing)
+            //this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
+            //if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Xbox")
+            //{
+            //    this.FocusVisualKind = FocusVisualKind.Reveal;
+            //}
+
             UnsavedChanges = false; // Setting it by default to false, because the app will open the files unedited anyway. :)
 
             EnteredBackground += App_EnteredBackground;

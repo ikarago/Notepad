@@ -2,23 +2,25 @@
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
          xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
          xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
          xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
          xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio" 
          xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
          xmlns:iot2="http://schemas.microsoft.com/appx/manifest/iot/windows10/2"
-         IgnorableNamespaces="uap mp rescap genTemplate desktop4 iot2">
-  <Identity Name="Notepad" Publisher="CN=IkaragoTest" Version="1.1.1.0" />
-  <mp:PhoneIdentity PhoneProductId="359447e4-10d3-4cd9-87bf-9f285be91432" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+         IgnorableNamespaces="uap uap5 mp rescap genTemplate desktop4 iot2">
+  <Identity Name="21834MacaroniSoft.Notepad" Publisher="CN=A709FCE2-98A6-4948-A3F2-B538AFE341F1" Version="1.9.2.0" />
+  <mp:PhoneIdentity PhoneProductId="a1e4fbff-d154-46a0-ae8e-80b005563299" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Notepad</DisplayName>
-    <PublisherDisplayName>Ikarago-GitHub</PublisherDisplayName>
+    <PublisherDisplayName>Ikarago</PublisherDisplayName>
     <Logo>Assets\Logo\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
   </Dependencies>
   <Resources>
-    <Resource Language="x-generate" />
+    <Resource Language="en-us" />
+    <Resource Language="nl-nl" />
   </Resources>
   <Applications>
     <Application Id="App" 
@@ -34,7 +36,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\Logo\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\Logo\SplashScreen.png" uap5:Optional="true"/>
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.fileTypeAssociation">

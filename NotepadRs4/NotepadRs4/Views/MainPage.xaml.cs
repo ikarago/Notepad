@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Input;
 using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
+using Windows.ApplicationModel.Core;
 using Windows.Storage;
+using Windows.System;
 using Windows.UI;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -25,6 +30,16 @@ namespace NotepadRs4.Views
         {
             InitializeComponent();
 
+            // Extend the normal window to the Titlebar for the blur to reach there too
+            CoreApplicationViewTitleBar coreTitlebar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitlebar.ExtendViewIntoTitleBar = true;
+            UpdateTitleBarLayout(coreTitlebar);
+
+            // Set the draggable region
+            Window.Current.SetTitleBar(AppTitleBar);
+            coreTitlebar.LayoutMetricsChanged += CoreTitlebar_LayoutMetricsChanged;
+            coreTitlebar.IsVisibleChanged += CoreTitlebar_IsVisibleChanged;
+
             // Put in triggers for the logo
             this.ActualThemeChanged += MainPage_ActualThemeChanged;
             CheckThemeForLogo();
@@ -33,6 +48,29 @@ namespace NotepadRs4.Views
             this.LayoutUpdated += MainPage_LayoutUpdated;
         }
 
+
+
+        private void CoreTitlebar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+        {
+            UpdateTitleBarLayout(sender);
+        }
+
+        private void CoreTitlebar_IsVisibleChanged(CoreApplicationViewTitleBar sender, object args)
+        {
+            // Do nothing for now, as we want to keep the titlebar visible, even in Full Screen mode
+        }
+
+        private void UpdateTitleBarLayout(CoreApplicationViewTitleBar coreTitleBar)
+        {
+            // Get the size of the caption controls area and back button 
+            // (returned in logical pixels), and move your content around as necessary.
+            LeftPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayLeftInset);
+            RightPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayRightInset);
+            btnCloseCompactOverlay.Margin = new Thickness(0, 0, 0, 0);
+
+            // Update title bar control size as needed to account for system size changes.
+            AppTitleBar.Height = coreTitleBar.Height;
+        }
 
         // Commands
         // Find and Replace
@@ -223,5 +261,49 @@ namespace NotepadRs4.Views
             ViewModel.Data.Text = txtContent.Text;
         }
 
+        private void txtContent_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            //Getting current position
+            ViewModel.Col = txtContent.SelectionStart + 1;
+
+            //Getting current line
+            string sub = txtContent.Text.Substring(0, txtContent.SelectionStart);
+            ViewModel.Line = sub.Count(i => i == '\r') + 1;
+        }
+
+        private void svContent_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            ViewModel.ZoomFactor = svContent.ZoomFactor;
+
+        }
+
+        private void txtContent_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Tab)
+            {
+                txtContent.SelectedText = ("\t");
+                txtContent.Select(ViewModel.Col + 1, 0);
+                e.Handled = true;                
+            }
+
+            if (IsCtrlPressed() & e.Key == (VirtualKey)187) //ctrl + +
+            {
+                svContent.ChangeView(0.0, 0.0, svContent.ZoomFactor + 0.1f);
+            }
+            if (IsCtrlPressed() & e.Key == (VirtualKey)189) //ctrl + -
+            {
+                svContent.ChangeView(0.0, 0.0, svContent.ZoomFactor - 0.1f);
+            }
+            if (IsCtrlPressed() & e.Key == (VirtualKey)48) //ctrl + 0
+            {
+                svContent.ChangeView(0.0, 0.0, 0.0f);
+            }
+        }
+
+        private bool IsCtrlPressed()
+        {
+            var state = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Control);
+            return (state & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
+        }
     }
 }

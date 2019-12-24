@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:ctkc="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:controls="using:NotepadRs4.Controls"
     
     xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 7)"
     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
@@ -24,7 +25,6 @@
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition />
-                <RepositionThemeTransition />
             </TransitionCollection>
         </Grid.ChildrenTransitions>
         
@@ -33,220 +33,285 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
 
         <!-- Top -->
-        <controls:DropShadowPanel x:Name="gridCmbar"
-                                  Grid.Row="0"
-                                  Canvas.ZIndex="75"
-                                  ShadowOpacity="0.6"
-                                  HorizontalAlignment="Stretch"
-                                  HorizontalContentAlignment="Stretch">
-            <Grid Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="32" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+        <Grid x:Name="gridCmbar"
+                Grid.Row="0"
+                Canvas.ZIndex="75">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-                <!-- Titlebar -->
-                <Grid Grid.Row="0"
-                      Canvas.ZIndex="100">
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel.ChildrenTransitions>
-                            <TransitionCollection>
-                                <RepositionThemeTransition />
-                            </TransitionCollection>
-                        </StackPanel.ChildrenTransitions>
-                        <Image x:Name="imgAppIcon"
-                               Height="16"
-                               Width="16"
-                               Margin="16,0"
-                               Source="ms-appx:///Assets/Logo/contrast-black/Square44x44Logo.altform-unplated_targetsize-256.png" />
-                        <TextBlock x:Name="tblFileName"
-                                   Style="{ThemeResource CaptionTextBlockStyle}"
-                                   Text="{x:Bind ViewModel.Data.DocumentTitle, Mode=TwoWay, FallbackValue='Untitled'}"
-                                   Margin="4,0,0,0"
-                                   VerticalAlignment="Center"/>
-                        <!-- UX statusses -->
-                        <TextBlock x:Name="tblEdited"
-                                   x:Uid="Main_Edited"
-                                   Visibility="{x:Bind ViewModel.FileEdited, Mode=OneWay}"
-                                   Text="(Edited)"
-                                   Style="{ThemeResource CaptionTextBlockStyle}"
-                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                                   Margin="6,0,0,0"
-                                   VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Main_Saved"
-                                   Visibility="{x:Bind ViewModel.UXNotificationSaveSuccessful, Mode=OneWay}"
-                                   Text="Saved!"
-                                   Style="{ThemeResource CaptionTextBlockStyle}"
-                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                                   Margin="6,0,0,0"
-                                   VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Main_Loaded"
-                                   Visibility="{x:Bind ViewModel.UXNotificationLoadSuccessful, Mode=OneWay}"
-                                   Text="File loaded"
-                                   Style="{ThemeResource CaptionTextBlockStyle}"
-                                   Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                                   Margin="6,0,0,0"
-                                   VerticalAlignment="Center"/>
-                        <!-- END OF UX statusses-->
-                        <TextBlock Text="-"
-                                   Style="{ThemeResource CaptionTextBlockStyle}"
-                                   Margin="6,0"
-                                   VerticalAlignment="Center"/>
-                        <TextBlock x:Uid="Main_AppDisplayName"
-                                   Text="Notepad"
-                                   Style="{ThemeResource CaptionTextBlockStyle}"
-                                   Margin="0,0,12,0"
-                                   VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Grid>
+            <!-- Titlebar -->
+            <Grid Grid.Row="0"
+                  Canvas.ZIndex="100">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="AppTitleBar"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="3"                  
+                            Orientation="Horizontal"
+                            Background="Transparent">
+                    <StackPanel.ChildrenTransitions>
+                        <TransitionCollection>
+                            <RepositionThemeTransition />
+                        </TransitionCollection>
+                    </StackPanel.ChildrenTransitions>
+                    <Image x:Name="imgAppIcon"
+                            Height="16"
+                            Width="16"
+                            Margin="16,0"
+                           Visibility="{x:Bind ViewModel.UITitlebarDetailsVisibility, Mode=OneWay}"
+                            Source="ms-appx:///Assets/Logo/contrast-black/Square44x44Logo.altform-unplated_targetsize-256.png" />
+                    <TextBlock x:Name="tblFileName"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="{x:Bind ViewModel.Data.DocumentTitle, Mode=TwoWay, FallbackValue='Untitled'}"
+                                Margin="4,0,0,0"
+                                VerticalAlignment="Center"/>
+                    <!-- UX statusses -->
+                    <TextBlock x:Name="tblEdited"
+                                x:Uid="Main_Edited"
+                                Visibility="{x:Bind ViewModel.FileEdited, Mode=OneWay}"
+                                Text="(Edited)"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                Margin="6,0,0,0"
+                                VerticalAlignment="Center"/>
+                    <TextBlock x:Uid="Main_Saved"
+                                Visibility="{x:Bind ViewModel.UXNotificationSaveSuccessful, Mode=OneWay}"
+                                Text="Saved!"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                Margin="6,0,0,0"
+                                VerticalAlignment="Center"/>
+                    <TextBlock x:Uid="Main_Loaded"
+                                Visibility="{x:Bind ViewModel.UXNotificationLoadSuccessful, Mode=OneWay}"
+                                Text="File loaded"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                                Margin="6,0,0,0"
+                                VerticalAlignment="Center"/>
+                    <!-- END OF UX statusses-->
+                    <TextBlock Text="-"
+                               Visibility="{x:Bind ViewModel.UITitlebarDetailsVisibility, Mode=OneWay}"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Margin="6,0"
+                                VerticalAlignment="Center"/>
+                    <TextBlock x:Uid="Main_AppDisplayName"
+                               Visibility="{x:Bind ViewModel.UITitlebarDetailsVisibility, Mode=OneWay}"
+                                Text="Notepad"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button x:Name="btnCloseCompactOverlay"
+                        x:Uid="Main_CloseAlwaysOnTop"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Canvas.ZIndex="101"
+                        Background="Transparent"
+                        Content="&#xE2B3;"
+                        FontFamily="Segoe MDL2 Assets"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Stretch"
+                        Width="48"
+                        Style="{ThemeResource ButtonRevealStyle}"
+                        Visibility="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility, Mode=OneWay}"
+                        Command="{x:Bind ViewModel.ToggleAlwaysOnTopCommand}">
+                    <contract7Present:Button.KeyboardAccelerators>
+                        <contract7Present:KeyboardAccelerator Modifiers="Menu"
+                                                              Key="Down"
+                                                              IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
+                    </contract7Present:Button.KeyboardAccelerators>
+                </Button>
+            </Grid>
 
-                <!-- Commandbar -->
-                <CommandBar x:Name="cmbar"
-                            Grid.Row="1"
-                            Canvas.ZIndex="75"
-                            Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
-                            Style="{ThemeResource CommandBarRevealStyle}" 
-                            ClosedDisplayMode="Compact">
-                    <CommandBar.PrimaryCommands>
-                        <AppBarButton x:Name="cbtnNewFile"
-                                      x:Uid="Main_Abb_NewFile"
-                                      Icon="Add"
-                                      Label="New"
-                                      Command="{x:Bind ViewModel.NewFileCommand}">
-                            <contract7Present:AppBarButton.KeyboardAccelerators>
-                                <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                                      Key="N" />
-                            </contract7Present:AppBarButton.KeyboardAccelerators>
-                        </AppBarButton>
-                        <AppBarButton x:Name="cbtnOpenFile"
-                                      x:Uid="Main_Abb_OpenFile"
-                                      Icon="OpenFile"
-                                      Label="Open..."
-                                      Command="{x:Bind ViewModel.LoadFileCommand}">
-                            <contract7Present:AppBarButton.KeyboardAccelerators>
-                                <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                                      Key="O" />
-                            </contract7Present:AppBarButton.KeyboardAccelerators>
-                        </AppBarButton>
-                        <AppBarButton x:Name="cbtnSaveFile"
-                                      x:Uid="Main_Abb_SaveFile"
-                                      Icon="Save"
-                                      Label="Save"
-                                      Command="{x:Bind ViewModel.SaveFileCommand}">
-                            <contract7Present:AppBarButton.KeyboardAccelerators>
-                                <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                                      Key="S" />
-                            </contract7Present:AppBarButton.KeyboardAccelerators>
-                        </AppBarButton>
-                        <AppBarSeparator x:Name="cbtnSeperator"
-                                         Visibility="Collapsed"/>
-                        <AppBarButton x:Name="cbtnFind"
-                                      x:Uid="Main_Abb_FindAndReplace"
-                                      Icon="Find"
-                                      Label="Find and Replace"
-                                      Visibility="Collapsed"
-                                      Command="{x:Bind FindCommand}">
-                            <contract7Present:AppBarButton.KeyboardAccelerators>
-                                <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                                      Key="F"
-                                                                      IsEnabled="False"/>
-                            </contract7Present:AppBarButton.KeyboardAccelerators>
-                        </AppBarButton>
-                    </CommandBar.PrimaryCommands>
-                    <CommandBar.SecondaryCommands>
-                        <AppBarButton x:Name="cbtnSaveAsFile"
-                                      x:Uid="Main_Abb_SaveAsFile"
-                                      Icon="SaveLocal"
-                                      Label="Save As..."
-                                      Command="{x:Bind ViewModel.SaveFileAsCommand}">
-                        </AppBarButton>
-                        <AppBarButton x:Name="cbtnPrint"
-                                      x:Uid="Main_Abb_Print"
-                                      Label="Print"
-                                      Visibility="Collapsed"
-                                      Command="{x:Bind ViewModel.PrintCommand}">
-                            <AppBarButton.Icon>
-                                <FontIcon Glyph="&#xE2F6;"/>
-                            </AppBarButton.Icon>
-                            <contract7Present:AppBarButton.KeyboardAccelerators>
-                                <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                                      Key="P" 
-                                                                      IsEnabled="False"/>
-                            </contract7Present:AppBarButton.KeyboardAccelerators>
-                        </AppBarButton>
-                        <AppBarButton x:Name="cbtnShare"
-                                      x:Uid="Main_Abb_Share"
-                                      Icon="Share"
-                                      Label="Share"
-                                      Visibility="{x:Bind ViewModel.UiShareButtonVisibility, Mode=OneWay}"
-                                      Command="{x:Bind ViewModel.ShareCommand}">
-                            <contract7Present:AppBarButton.KeyboardAccelerators>
-                                <contract7Present:KeyboardAccelerator Modifiers="Control"
-                                                                      Key="H" />
-                            </contract7Present:AppBarButton.KeyboardAccelerators>
-                        </AppBarButton>
-                        <AppBarSeparator />
-                        <!-- New idea: Toggle to keep Notepad on Top -->
-                        <!--<AppBarToggleButton x:Name="ctbtnAlwaysOnTop"
-                                                x:Uid="Main_Abb_AlwaysOnTop"
-                                    Label="Always on top"
-                                    Visibility="Visible">
-                    <AppBarToggleButton.Icon>
-                        <FontIcon Glyph="&#xF26E;" />
-                    </AppBarToggleButton.Icon>
-                </AppBarToggleButton>-->
-                        <AppBarButton x:Name="cbtnFontOptions"
-                                      x:Uid="Main_Abb_FontOptions"
-                                      Icon="Font"
-                                      Label="Font options"
-                                      Command="{x:Bind FontOptionsCommand}" />
-                        <AppBarButton x:Name="cbtnPlayground"
-                                      Label="Debug"
-                                      Visibility="Collapsed"
-                                      Command="{x:Bind ViewModel.PlaygroundCommand}">
-                            <AppBarButton.Icon>
-                                <FontIcon Glyph="&#xE15E;"/>
-                            </AppBarButton.Icon>
-                        </AppBarButton>
 
-                        <AppBarButton x:Name="cbtnSettings"
-                                      x:Uid="Main_Abb_Settings"
-                                      Icon="Setting"
-                                      Label="Settings"
-                                      Command="{x:Bind ViewModel.SettingsCommand}"/>
-                        <AppBarButton x:Name="cbtnAbout"
-                                      x:Uid="Main_Abb_About"
-                                      Label="About"
-                                      Command="{x:Bind ViewModel.AboutCommand}">
-                            <AppBarButton.Icon>
-                                <FontIcon Glyph="&#xE946;"/>
-                            </AppBarButton.Icon>
-                        </AppBarButton>
-                    </CommandBar.SecondaryCommands>
-                </CommandBar>
-            </Grid>          
-        </controls:DropShadowPanel>
+            <!-- Commandbar -->
+            <controls:OpenDownCommandBar x:Name="cmbar"
+                                         Grid.Row="1"
+                                         Canvas.ZIndex="75"
+                                         Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                                         VerticalAlignment="Top"
+                                         Style="{ThemeResource CommandBarRevealStyle}" 
+                                         ClosedDisplayMode="{x:Bind ViewModel.UIAppBarDisplayMode, Mode=OneWay}">
+                <controls:OpenDownCommandBar.PrimaryCommands>
+                    <AppBarButton x:Name="cbtnNewFile"
+                                    x:Uid="Main_Abb_NewFile"
+                                    Icon="Add"
+                                    Label="New"
+                                    Command="{x:Bind ViewModel.NewFileCommand}">
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                    Key="N" />
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton x:Name="cbtnOpenFile"
+                                    x:Uid="Main_Abb_OpenFile"
+                                    Icon="OpenFile"
+                                    Label="Open..."
+                                    Command="{x:Bind ViewModel.LoadFileCommand}">
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                    Key="O" />
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton x:Name="cbtnSaveFile"
+                                    x:Uid="Main_Abb_SaveFile"
+                                    Icon="Save"
+                                    Label="Save"
+                                    Command="{x:Bind ViewModel.SaveFileCommand}">
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                    Key="S" />
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarSeparator x:Name="cbtnSeperator"
+                                     Visibility="Collapsed"/>
+                    <AppBarButton x:Name="cbtnFind"
+                                    x:Uid="Main_Abb_FindAndReplace"
+                                    Icon="Find"
+                                    Label="Find and Replace"
+                                    Visibility="Collapsed"
+                                    Command="{x:Bind FindCommand}">
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                    Key="F"
+                                                                    IsEnabled="False"/>
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                </controls:OpenDownCommandBar.PrimaryCommands>
+                <controls:OpenDownCommandBar.SecondaryCommands>
+                    <AppBarButton x:Name="cbtnSaveAsFile"
+                                    x:Uid="Main_Abb_SaveAsFile"
+                                    Icon="SaveLocal"
+                                    Label="Save As..."
+                                    Command="{x:Bind ViewModel.SaveFileAsCommand}">
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control,Shift"
+                                                                  Key="S">
+                            </contract7Present:KeyboardAccelerator>
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton x:Name="cbtnPrint"
+                                    x:Uid="Main_Abb_Print"
+                                    Label="Print"
+                                    Visibility="Collapsed"
+                                    Command="{x:Bind ViewModel.PrintCommand}">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE2F6;"/>
+                        </AppBarButton.Icon>
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                    Key="P" 
+                                                                    IsEnabled="False"/>
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton x:Name="cbtnShare"
+                                    x:Uid="Main_Abb_Share"
+                                    Icon="Share"
+                                    Label="Share"
+                                    Visibility="{x:Bind ViewModel.UIShareButtonVisibility, Mode=OneWay}"
+                                    Command="{x:Bind ViewModel.ShareCommand}">
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                    Key="H" />
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarSeparator />
+                    <AppBarButton x:Name="ctbtnAlwaysOnTop"
+                                  x:Uid="Main_Abb_AlwaysOnTop"
+                                  Label="Always on top"
+                                  Visibility="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility, Mode=OneWay}"
+                                  Command="{x:Bind ViewModel.ToggleAlwaysOnTopCommand}">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE2B4;" />
+                        </AppBarButton.Icon>
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Menu"
+                                                                  Key="Up"
+                                                                  IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton x:Uid="Main_Abb_CloseAlwaysOnTop"
+                                  Label="Close compact overlay"
+                                  Visibility="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility, Mode=OneWay}"
+                                  Command="{x:Bind ViewModel.ToggleAlwaysOnTopCommand}">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE2B3;" />
+                        </AppBarButton.Icon>
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                  Key="M"
+                                                                  IsEnabled="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility}"/>
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton x:Name="cbtnFontOptions"
+                                    x:Uid="Main_Abb_FontOptions"
+                                    Icon="Font"
+                                    Label="Font options"
+                                    Command="{x:Bind FontOptionsCommand}" />
+                    <AppBarSeparator />
+                    <AppBarButton x:Name="cbtnPlayground"
+                                    Label="Debug"
+                                    Visibility="Collapsed"
+                                    Command="{x:Bind ViewModel.PlaygroundCommand}">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE15E;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+
+                    <AppBarButton x:Name="cbtnSettings"
+                                    x:Uid="Main_Abb_Settings"
+                                    Icon="Setting"
+                                    Label="Settings"
+                                    Command="{x:Bind ViewModel.SettingsCommand}"/>
+                    <AppBarButton x:Name="cbtnAbout"
+                                    x:Uid="Main_Abb_About"
+                                    Label="About"
+                                    Command="{x:Bind ViewModel.AboutCommand}">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE946;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </controls:OpenDownCommandBar.SecondaryCommands>
+            </controls:OpenDownCommandBar>
+        </Grid>          
 
         <!-- Font-options bar -->
         <!-- #TODO: EXPERIMENTAL! Also still really bad. Needs more cues from Word Mobile in more compact situations? -->
-        <controls:DropShadowPanel x:Name="gridFontOptions"
-                                  Grid.Row="1"
-                                  Canvas.ZIndex="50"
-                                  ShadowOpacity="0.6"
-                                  Visibility="Collapsed"
-                                  HorizontalAlignment="Stretch"
-                                  HorizontalContentAlignment="Stretch">
-            <controls:DropShadowPanel.Transitions>
+        <ctkc:DropShadowPanel x:Name="gridFontOptions"
+                              Grid.Row="3"
+                              Canvas.ZIndex="150"
+                              BlurRadius="10.0"
+                              ShadowOpacity="0.30"
+                              Color="Black"
+                              OffsetX="4"
+                              OffsetY="4"
+                              Visibility="Collapsed"
+                              Margin="12"
+                              HorizontalAlignment="Right"
+                              HorizontalContentAlignment="Stretch"
+                              VerticalAlignment="Top">
+            <ctkc:DropShadowPanel.Transitions>
                 <TransitionCollection>
                     <PaneThemeTransition />
                 </TransitionCollection>
-            </controls:DropShadowPanel.Transitions>
-            <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-                  Height="56">
+            </ctkc:DropShadowPanel.Transitions>
+            <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}"
+                  BorderBrush="{ThemeResource SystemChromeGrayColor}"
+                  BorderThickness="1"
+                  CornerRadius="2"
+                  Padding="2"
+                  MinWidth="180">
                 <!-- Animation libraries -->
                 <Grid.ChildrenTransitions>
                     <TransitionCollection>
@@ -282,7 +347,7 @@
                            Grid.RowSpan="2"                
                            Text="&#xE185;"
                            FontFamily="Segoe MDL2 Assets"
-                           Margin="12,0"
+                           Margin="8,0,12,0"
                            Width="32"
                            TextAlignment="Center"
                            Visibility="Visible"
@@ -309,7 +374,7 @@
                           ItemsSource="{x:Bind SettingViewModel.FontSizes, Mode=OneWay}"
                           SelectedItem="{x:Bind SettingViewModel.SelectedFontSize, Mode=TwoWay}"
                           IsEditable="False"
-                          Margin="0,0,8,0"
+                          Margin="0,0,0,0"
                           VerticalAlignment="Center"
                           BorderThickness="1"
                           contract7Present:CornerRadius="0,2,2,0"
@@ -320,27 +385,27 @@
 
                 <!-- Bold -->
                 <ToggleButton Grid.Column="4"
-                                Grid.Row="0"
-                                Grid.RowSpan="1"
+                              Grid.Row="0"
+                              Grid.RowSpan="1"
                               Visibility="Collapsed"
-                                Content="&#xE19B;"
-                                FontFamily="Segoe MDL2 Assets"
-                                Background="Transparent"
+                              Content="&#xE19B;"
+                              FontFamily="Segoe MDL2 Assets"
+                              Background="Transparent"
                               Style="{ThemeResource ToggleButtonRound}"
-                                Width="40"
-                                Height="40"/>
+                              Width="40"
+                              Height="40"/>
                 
                 <!-- Italic -->
                 <ToggleButton Grid.Column="5"
-                                Grid.Row="0"
-                                Grid.RowSpan="1"
+                              Grid.Row="0"
+                              Grid.RowSpan="1"
                               Visibility="Collapsed"
-                                Content="&#xE199;"
-                                FontFamily="Segoe MDL2 Assets"
-                                Background="Transparent"
+                              Content="&#xE199;"
+                              FontFamily="Segoe MDL2 Assets"
+                              Background="Transparent"
                               Style="{ThemeResource ToggleButtonRound}"
-                                Width="40"
-                                Height="40"/>
+                              Width="40"
+                              Height="40"/>
                 
                 <AppBarSeparator Grid.Column="6"
                                  VerticalAlignment="Center"/>
@@ -353,30 +418,34 @@
                         Content="&#xE106;"
                         FontFamily="Segoe MDL2 Assets"
                         Background="Transparent"
-                        Width="48"
-                        Height="48"
+                        Width="40"
+                        Height="40"
+                        Margin="0,0,2,0"
                         Style="{ThemeResource ButtonRevealStyle}"
-                        Command="{x:Bind FontOptionsCloseCommand}"/>
+                        Command="{x:Bind FontOptionsCloseCommand}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="Escape"/>
+                    </Button.KeyboardAccelerators>
+                </Button>
 
             </Grid>
-        </controls:DropShadowPanel>
+        </ctkc:DropShadowPanel>
         
         <!-- Search 'n replace bar -->
-        <controls:DropShadowPanel x:Name="gridFind"
+        <ctkc:DropShadowPanel x:Name="gridFind"
                                   Grid.Row="2"
-                                  Canvas.ZIndex="30"
+                                  Canvas.ZIndex="160"
                                   ShadowOpacity="0.6"
                                   Visibility="Collapsed"
                                   HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
-            <controls:DropShadowPanel.Transitions>
+            <ctkc:DropShadowPanel.Transitions>
                 <TransitionCollection>
                     <PaneThemeTransition />
                 </TransitionCollection>
-            </controls:DropShadowPanel.Transitions>
+            </ctkc:DropShadowPanel.Transitions>
             <!-- #TODO: Remove opacity and make a 'deeper' colour AcrylicBrush for this to ensure logic in depth -->
-            <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-                  MinHeight="56">
+            <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
                 <!-- Animation libraries -->
                 <Grid.ChildrenTransitions>
                     <TransitionCollection>
@@ -425,22 +494,14 @@
                 <TextBox x:Uid="Main_Find_FindBar"
                          Grid.Row="0"
                          Grid.Column="1"     
-                         MinHeight="36"
                          Margin="0,8,0,4"
-                         Padding="8"
-                         contract7Present:CornerRadius="{StaticResource FluentTextBoxCorners}"
-                         BorderThickness="1"
                          PlaceholderText="Find..."
                          VerticalAlignment="Center"/>
                 <!-- Replace -->
                 <TextBox x:Uid="Main_Find_ReplaceBar"
                          Grid.Row="1"
                          Grid.Column="1"   
-                         MinHeight="36"
                          Margin="0,4,0,8"
-                         Padding="8"
-                         contract7Present:CornerRadius="{StaticResource FluentTextBoxCorners}"
-                         BorderThickness="1"
                          PlaceholderText="Replace..."
                          VerticalAlignment="Center"/>
                 <!-- Previous -->
@@ -505,45 +566,81 @@
                         Command="{x:Bind FindBarCloseCommand}"/>
 
             </Grid>
-        </controls:DropShadowPanel>
+        </ctkc:DropShadowPanel>
 
 
         <!-- Textbox -->
-        <TextBox x:Name="txtContent"
-                 x:Uid="Main_Content"
-                 Grid.Row="3"
-                 Canvas.ZIndex="10"
-                 BorderThickness="0"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 Padding="12" 
-                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                 InputScope="Default" 
-                 AcceptsReturn="True" 
-                 TextWrapping="{x:Bind SettingViewModel.TextWrapping, Mode=OneWay}"
-                 AllowDrop="True"
-                 CanDrag="True"
-                 Style="{StaticResource TextBoxStyleTransparent}"
-                 IsSpellCheckEnabled="{x:Bind SettingViewModel.IsSpellCheckerEnabled, Mode=OneWay}"
-                 Text="{x:Bind ViewModel.Data.Text, Mode=TwoWay}"
-                 FontFamily="{x:Bind SettingViewModel.SelectedFontFamily, Mode=OneWay}"
-                 FontSize="{x:Bind SettingViewModel.SelectedFontSize, Mode=OneWay}"
-                 PlaceholderText="Type something here..."
-                 Drop="txtContent_Drop"
-                 DragOver="txtContent_DragOver"
-                 TextChanging="TxtContent_TextChanging"/>
+        <ctkc:DropShadowPanel Grid.Row="3"
+                              Canvas.ZIndex="100"
+                              BlurRadius="10.0"
+                              ShadowOpacity="0.60"
+                              Color="Black"
+                              OffsetX="4"
+                              OffsetY="0"
+                              Margin="0"
+                              HorizontalAlignment="Stretch"
+                              HorizontalContentAlignment="Stretch">
+            <ScrollViewer x:Name="svContent"
+                          Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                          contract7Present:CornerRadius="2"
+                          MinZoomFactor="1"
+                          MaxZoomFactor="10"
+                          ZoomMode="Enabled"
+                          ViewChanged="svContent_ViewChanged">
+                <TextBox x:Name="txtContent"
+                     x:Uid="Main_Content"
+                     BorderThickness="0"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     Padding="12" 
+                     SelectionChanged="txtContent_SelectionChanged"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     InputScope="Default" 
+                     AcceptsReturn="True" 
+                     TextWrapping="{x:Bind SettingViewModel.TextWrapping, Mode=OneWay}"
+                     AllowDrop="True"
+                     CanDrag="True"
+                     Style="{StaticResource TextBoxStyleTransparent}"
+                     IsSpellCheckEnabled="{x:Bind SettingViewModel.IsSpellCheckerEnabled, Mode=OneWay}"
+                     Text="{x:Bind ViewModel.Data.Text, Mode=TwoWay}"
+                     FontFamily="{x:Bind SettingViewModel.SelectedFontFamily, Mode=OneWay}"
+                     FontSize="{x:Bind SettingViewModel.SelectedFontSize, Mode=OneWay}"
+                     PlaceholderText="Type something here..."
+                     ScrollViewer.ZoomMode="Enabled"
+                     Drop="txtContent_Drop"
+                     DragOver="txtContent_DragOver"
+                     TextChanging="TxtContent_TextChanging"
+                     KeyDown="txtContent_KeyDown"/>
+            </ScrollViewer>
+        </ctkc:DropShadowPanel>
+
 
         <!-- UX Messages -->
-        <controls:DropShadowPanel Grid.Row="3"
-                                  Canvas.ZIndex="30"
-                                  Margin="48,0,48,-5"
-                                  Padding="0,0,0,4"
-                                  ShadowOpacity="0.6"
+        <ctkc:DropShadowPanel Grid.Row="3"
+                                  Canvas.ZIndex="200"
+                                  Margin="12,0,12,12"
+                                  Padding="0,0,0,0"
+                                  BlurRadius="10.0"
+                                  ShadowOpacity="0.30"
+                                  Color="Black"
+                                  OffsetX="4"
+                                  OffsetY="4"
                                   HorizontalContentAlignment="Stretch"
                                   VerticalAlignment="Bottom">
             <Grid Grid.Row="3"
                   Canvas.ZIndex="30"
+                  CornerRadius="2"
                   VerticalAlignment="Bottom">
+                <Grid.Transitions>
+                    <TransitionCollection>
+                        <PopupThemeTransition />
+                    </TransitionCollection>
+                </Grid.Transitions>
+                <!--<Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <PopupThemeTransition />
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>-->
                 <!-- Save successful -->
                 <!--<StackPanel Style="{ThemeResource StackPanelUXMessageRegularStyle}"
                             Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -568,7 +665,7 @@
                             Visibility="{x:Bind ViewModel.UXNotificationSaveFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"
                                FontFamily="Segoe MDL2 Assets" 
-                               Margin="0,0,18,0"
+                               Margin="8,0,16,0"
                                VerticalAlignment="Center"
                                Style="{ThemeResource SubtitleTextBlockStyle}"/>
                     <TextBlock x:Uid="Main_NotificationSaveFailed"
@@ -601,7 +698,7 @@
                             Visibility="{x:Bind ViewModel.UXNotificationLoadFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"
                                FontFamily="Segoe MDL2 Assets" 
-                               Margin="0,0,18,0"
+                               Margin="8,0,16,0"
                                VerticalAlignment="Center"
                                Style="{ThemeResource SubtitleTextBlockStyle}"/>
                     <TextBlock Text="Couldn't open your file" 
@@ -610,7 +707,37 @@
                 </StackPanel>
             </Grid>
 
-        </controls:DropShadowPanel>
-                                  
+        </ctkc:DropShadowPanel>
+
+        <!-- Line and character count -->
+        <Grid x:Name="gridStatusBar"
+              Grid.Row="4"
+              Canvas.ZIndex="75"
+              CornerRadius="2">
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <RepositionThemeTransition />
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="8,4">
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Style="{ThemeResource FluentSubcaptionTextStyle}">
+                    <Run Text="Ln: "/><Run Text="{x:Bind ViewModel.Line, Mode=OneWay}"/><Run Text=","/>
+                    <Run Text="Col: "/><Run Text="{x:Bind ViewModel.Col, Mode=OneWay}"/>
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Visibility="{x:Bind ViewModel.UIZoomFactorVisibility, Mode=OneWay}"
+                           Style="{ThemeResource FluentSubcaptionTextStyle}"
+                           Padding="16,0,0,0">
+                    <Run Text="Zoom: "/><Run Text="{x:Bind ViewModel.ZoomFactorPercentage, Mode=OneWay}" /><Run Text="%"/>
+                </TextBlock>
+            </StackPanel>
+            
+
+        </Grid>
     </Grid>
 </Page>

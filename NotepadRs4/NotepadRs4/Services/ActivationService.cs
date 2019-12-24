@@ -81,6 +81,8 @@ namespace NotepadRs4.Services
                 // Set custom stuff
                 SetTitlebar();
                 SetMinimalWindowSize();
+                // Maximize UI on Xbox (Disabled, only here for testing)
+                //Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
 
                 // Ensure the current window is active
                 Window.Current.Activate();
@@ -172,8 +174,8 @@ namespace NotepadRs4.Services
             }
 
             // Extend the normal window to the Titlebar for the blur to reach there too
-            CoreApplicationViewTitleBar coreTitlebar = CoreApplication.GetCurrentView().TitleBar;
-            coreTitlebar.ExtendViewIntoTitleBar = true;
+            //CoreApplicationViewTitleBar coreTitlebar = CoreApplication.GetCurrentView().TitleBar;
+            //coreTitlebar.ExtendViewIntoTitleBar = true;
         }
 
         private void SetMinimalWindowSize()
