@@ -188,6 +188,17 @@
                                                                     IsEnabled="False"/>
                         </contract7Present:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
+                    <AppBarButton x:Name="cbtnSearch"
+                                    x:Uid="Main_Abb_Search"
+                                    Label="Search with Bing..."
+                                    Command="{x:Bind FindCommand}">
+                        <contract7Present:AppBarButton.KeyboardAccelerators>
+                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                                                                    Key="E"
+                                                                    IsEnabled="False"/>
+                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF6FA;"/>
+                    </AppBarButton>
                 </controls:OpenDownCommandBar.PrimaryCommands>
                 <controls:OpenDownCommandBar.SecondaryCommands>
                     <AppBarButton x:Name="cbtnSaveAsFile"

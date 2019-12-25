@@ -155,6 +155,13 @@ namespace NotepadRs4.Views
                 ViewModel.Initialize();
             }
 
+            //var font = new FontIcon
+            //{
+            //    FontFamily = new FontFamily("Segoe MDL2 Assets"),
+            //    Glyph = "\uF6FA;"
+            //};
+            //cbtnSearch.Icon = font;
+
 #if DEBUG
             // Show Find & Replace-button
             cbtnFind.Visibility = Visibility.Visible;
