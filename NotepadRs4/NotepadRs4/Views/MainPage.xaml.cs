@@ -264,11 +264,16 @@ namespace NotepadRs4.Views
         private void txtContent_SelectionChanged(object sender, RoutedEventArgs e)
         {
             //Getting current position
-            ViewModel.Col = txtContent.SelectionStart + 1;
+            //ViewModel.Col = txtContent.SelectionStart + 1;
 
             //Getting current line
             string sub = txtContent.Text.Substring(0, txtContent.SelectionStart);
             ViewModel.Line = sub.Count(i => i == '\r') + 1;
+
+            int retIndex = sub.LastIndexOf('\r');
+            retIndex = (retIndex < 0) ? 0 : retIndex;
+            string newsub = sub.Substring(retIndex);
+            ViewModel.Col = newsub.Count();
         }
 
         private void svContent_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
