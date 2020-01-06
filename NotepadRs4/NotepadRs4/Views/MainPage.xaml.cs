@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 using NotepadRs4.Helpers;
@@ -279,6 +280,8 @@ namespace NotepadRs4.Views
 
         private void txtContent_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
+            //Debug.WriteLine("Inputted Virtual Key: " + e.Key.ToString() + " + Original Virtual Key: " + e.OriginalKey.ToString());
+            // Text Tab
             if (e.Key == VirtualKey.Tab)
             {
                 txtContent.SelectedText = ("\t");
@@ -286,23 +289,68 @@ namespace NotepadRs4.Views
                 e.Handled = true;                
             }
 
-            if (IsCtrlPressed() & e.Key == (VirtualKey)187) //ctrl + +
+            // Zoom
+            if (IsCtrlPressed() & e.Key == VirtualKey.Add) //ctrl + + --> = (VirtualKey)187
             {
                 svContent.ChangeView(0.0, 0.0, svContent.ZoomFactor + 0.1f);
             }
-            if (IsCtrlPressed() & e.Key == (VirtualKey)189) //ctrl + -
+            // #TODO Find out why this doesn't register and instead inserts a invisible character
+            if (IsCtrlPressed() & e.Key == VirtualKey.Subtract) //ctrl + - --> = (VirtualKey)189
             {
                 svContent.ChangeView(0.0, 0.0, svContent.ZoomFactor - 0.1f);
             }
-            if (IsCtrlPressed() & e.Key == (VirtualKey)48) //ctrl + 0
+            if (IsCtrlPressed() & e.Key == VirtualKey.Number0) //ctrl + 0 --> = (VirtualKey)48
             {
                 svContent.ChangeView(0.0, 0.0, 0.0f);
             }
+
+            // Shortcut routines for CommandBar items PiP mode
+            // Save As
+            if ((IsCtrlPressed() & IsShiftPressed() & e.Key == VirtualKey.S) && ViewModel.UIAppBarDisplayMode != AppBarClosedDisplayMode.Compact)
+            {
+                ViewModel.SaveFileAsCommand.Execute(null);
+            }
+            // Save
+            else if ((IsCtrlPressed() & e.Key == VirtualKey.S) && ViewModel.UIAppBarDisplayMode != AppBarClosedDisplayMode.Compact)
+            {
+                ViewModel.SaveFileCommand.Execute(null);
+            }
+
+            // Open
+            if ((IsCtrlPressed() & e.Key == VirtualKey.O) && ViewModel.UIAppBarDisplayMode != AppBarClosedDisplayMode.Compact)
+            {
+                ViewModel.LoadFileCommand.Execute(null);
+            }
+            // New File
+            if ((IsCtrlPressed() & e.Key == VirtualKey.N) && ViewModel.UIAppBarDisplayMode != AppBarClosedDisplayMode.Compact)
+            {
+                ViewModel.NewFileCommand.Execute(null);
+            }
+            // Share
+            if ((IsCtrlPressed() & e.Key == VirtualKey.H) && ViewModel.UIAppBarDisplayMode != AppBarClosedDisplayMode.Compact)
+            {
+                ViewModel.ShareCommand.Execute(null);
+            }
+            // Find & Replace
+            /*if ((IsCtrlPressed() & e.Key == VirtualKey.F) && ViewModel.UIAppBarDisplayMode != AppBarClosedDisplayMode.Compact)
+            {
+                ViewModel.SaveFileCommand.Execute(null);
+            }*/
+            // Print
+            /*if ((IsCtrlPressed() & e.Key == VirtualKey.P) && ViewModel.UIAppBarDisplayMode != AppBarClosedDisplayMode.Compact)
+            {
+                ViewModel.PrintCommand.Execute(null);
+            }*/
         }
 
         private bool IsCtrlPressed()
         {
             var state = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Control);
+            return (state & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
+        }
+        private bool IsShiftPressed()
+        {
+            var state = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Shift);
             return (state & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
         }
     }
