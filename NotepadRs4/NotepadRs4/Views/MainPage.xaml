@@ -713,7 +713,8 @@
         <Grid x:Name="gridStatusBar"
               Grid.Row="4"
               Canvas.ZIndex="75"
-              CornerRadius="2">
+              CornerRadius="2"
+              Visibility="{x:Bind SettingViewModel.IsStatusBarEnabled, Mode=OneWay}">
             <Grid.ChildrenTransitions>
                 <TransitionCollection>
                     <RepositionThemeTransition />

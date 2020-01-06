@@ -78,6 +78,16 @@
                                       Margin="{StaticResource XSmallTopMargin}"/>
                     </StackPanel>
 
+                    <!-- Status bar -->
+                    <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
+                        <TextBlock x:Uid="Settings_StatusBar"
+                                   Text="Status bar"
+                                   FontWeight="SemiBold"
+                                   Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.IsStatusBarEnabled, Mode=TwoWay}"
+                                      Margin="{StaticResource XSmallTopMargin}"/>
+                    </StackPanel>
+
                     <!-- Theme -->
                     <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
                         <TextBlock Text="Theme"

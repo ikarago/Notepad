@@ -442,6 +442,10 @@ Happy editing!</value>
     <value>Spellingscontrole</value>
     <comment>Spell Checker title for Settings</comment>
   </data>
+  <data name="Settings_StatusBar.Text" xml:space="preserve">
+    <value>Status bar</value>
+    <comment>Status Bar title for Settings</comment>
+  </data>
   <data name="Settings_TextWrapping.Text" xml:space="preserve">
     <value>Tekst terugloop</value>
     <comment>Text Wrapping title for Settings</comment>

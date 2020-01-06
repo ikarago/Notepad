@@ -74,6 +74,24 @@ namespace NotepadRs4.ViewModels
         }
 
         /// <summary>
+        /// Status Bar
+        /// </summary>
+        private bool _isStatusBarEnabled;
+        public bool IsStatusBarEnabled
+        {
+            get { return _isStatusBarEnabled; }
+            set
+            {
+                if (value != _isStatusBarEnabled)
+                {
+                    Task.Run(async () => await Windows.Storage.ApplicationData.Current.LocalSettings.SaveAsync(nameof(IsStatusBarEnabled), value));
+                }
+
+                Set(ref _isStatusBarEnabled, value);
+            }
+        }
+
+        /// <summary>
         /// List of Fonts available on the system
         /// </summary>
         public ObservableCollection<string> Fonts
@@ -234,6 +252,10 @@ namespace NotepadRs4.ViewModels
             /// Spell Checkers
             try { IsSpellCheckerEnabled = await Windows.Storage.ApplicationData.Current.LocalSettings.ReadAsync<bool>(nameof(IsSpellCheckerEnabled)); }
             catch { IsSpellCheckerEnabled = false; }
+
+            /// Status bar
+            try { IsStatusBarEnabled = await Windows.Storage.ApplicationData.Current.LocalSettings.ReadAsync<bool>(nameof(IsStatusBarEnabled)); }
+            catch { IsStatusBarEnabled = true; }
         }
 
         private void AddCustomFontSize(int value)
