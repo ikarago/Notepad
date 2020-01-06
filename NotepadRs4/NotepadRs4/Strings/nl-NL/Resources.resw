@@ -434,6 +434,10 @@ Happy editing!</value>
     <value>Opgeslagen!</value>
     <comment>MainPage - Titlebar - File saved text</comment>
   </data>
+  <data name="Settings_EditorSettings.Text" xml:space="preserve">
+    <value>Editor instellingen</value>
+    <comment>Editor settings text for Settings</comment>
+  </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalisatie</value>
     <comment>Personalization text for Settings</comment>
@@ -443,7 +447,7 @@ Happy editing!</value>
     <comment>Spell Checker title for Settings</comment>
   </data>
   <data name="Settings_StatusBar.Text" xml:space="preserve">
-    <value>Status bar</value>
+    <value>Statusbalk</value>
     <comment>Status Bar title for Settings</comment>
   </data>
   <data name="Settings_TextWrapping.Text" xml:space="preserve">

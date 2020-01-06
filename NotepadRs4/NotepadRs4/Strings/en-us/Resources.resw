@@ -507,7 +507,11 @@ Dutch by Ikarago</value>
     <comment>About - Special Thanks - UWP Community Discord</comment>
   </data>
   <data name="Settings_StatusBar.Text" xml:space="preserve">
-    <value>Status bar</value>
+    <value>Status Bar</value>
     <comment>Status Bar title for Settings</comment>
+  </data>
+  <data name="Settings_EditorSettings.Text" xml:space="preserve">
+    <value>Editor Settings</value>
+    <comment>Editor settings text for Settings</comment>
   </data>
 </root>

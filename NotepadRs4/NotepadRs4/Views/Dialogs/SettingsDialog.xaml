@@ -50,13 +50,16 @@
         <!-- Content -->
         <ScrollViewer Grid.Row="1">
             <StackPanel Padding="0,12,0,0">
-                <!-- Personalization -->
+                <!-- General Settings -->
                 <StackPanel Margin="{StaticResource DialogCategoryMargin}">
-                    <TextBlock Text="Personalization"
-                               x:Uid="Settings_Personalization"
-                               FontWeight="Bold"
-                               Margin="{StaticResource DialogSubtitleMargin}"
-                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE104;"
+                                   Style="{ThemeResource FluentTitleIconStyle}" />
+                        <TextBlock x:Uid="Settings_EditorSettings"
+                                   Text="Editor Settings"                              
+                                   Style="{StaticResource FluentTitleTextStyle}" />
+                    </StackPanel>
 
                     <!-- Text wrapping -->
                     <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
@@ -67,7 +70,7 @@
                         <ToggleSwitch IsOn="{x:Bind ViewModel.TextWrapping, Mode=TwoWay, Converter={StaticResource BoolToTextWrappingConverter}, ConverterParameter=Reverse}"
                                       Margin="{StaticResource XSmallTopMargin}"/>
                     </StackPanel>
-                    
+
                     <!-- Spell checker -->
                     <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
                         <TextBlock x:Uid="Settings_SpellChecker"
@@ -88,12 +91,27 @@
                                       Margin="{StaticResource XSmallTopMargin}"/>
                     </StackPanel>
 
+
+                </StackPanel>
+                <!-- END OF - General Settings -->
+
+
+                <!-- Personalisation -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE790;"
+                                   Style="{ThemeResource FluentTitleIconStyle}" />
+                        <TextBlock x:Uid="Settings_Personalization"
+                                   Text="Personalisation"                              
+                                   Style="{StaticResource FluentTitleTextStyle}" />
+                    </StackPanel>
+
                     <!-- Theme -->
                     <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
                         <TextBlock Text="Theme"
                                    x:Uid="Settings_Theme"
-                                   FontWeight="SemiBold"
-                                   Style="{StaticResource BodyTextBlockStyle}" />
+                                   Style="{StaticResource FluentBaseTextStyle}" />
 
                         <StackPanel Margin="{StaticResource XSmallTopMargin}">
                             <RadioButton x:Uid="Settings_Theme_Light"
@@ -122,8 +140,8 @@
                             </RadioButton>
                         </StackPanel>
                     </StackPanel>
-
                 </StackPanel>
+                <!-- END OF - Personalisation -->
 
 
             </StackPanel>
