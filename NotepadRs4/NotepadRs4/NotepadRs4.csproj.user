@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Source>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</Source>
-    <SmallTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</SmallTileSource>
-    <MediumTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</MediumTileSource>
-    <WideTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</WideTileSource>
-    <LargeTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</LargeTileSource>
-    <AppIconSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</AppIconSource>
-    <SplashScreenSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</SplashScreenSource>
-    <PackageLogoSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</PackageLogoSource>
+    <Source>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\Logov4-aligned 2400x.png</Source>
+    <SmallTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\Logov4-aligned 2400x.png</SmallTileSource>
+    <MediumTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\Logov4-aligned 2400x.png</MediumTileSource>
+    <WideTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\Logov4-aligned 2400x.png</WideTileSource>
+    <LargeTileSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\Logov4-aligned 2400x.png</LargeTileSource>
+    <AppIconSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\Logov4-aligned 2400x.png</AppIconSource>
+    <SplashScreenSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\Logov4-aligned 2400x.png</SplashScreenSource>
+    <PackageLogoSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\Logov4-aligned 2400x.png</PackageLogoSource>
     <AppxPackageIsForStore>True</AppxPackageIsForStore>
     <AppxShowAllApps>True</AppxShowAllApps>
     <AppxBuildConfigurationSelection>arm64</AppxBuildConfigurationSelection>
