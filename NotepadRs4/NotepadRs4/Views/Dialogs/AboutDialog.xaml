@@ -119,6 +119,9 @@
                     <TextBlock Text="Yair"
                                Style="{ThemeResource FluentSubbodyTextStyle}"
                                Margin="0,0,0,2"/>
+                    <TextBlock Text="Prayaas-a"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>                    
                     <TextBlock Text="Filippo Fedeli"
                                Style="{ThemeResource FluentSubbodyTextStyle}"
                                Margin="0,0,0,2"/>
