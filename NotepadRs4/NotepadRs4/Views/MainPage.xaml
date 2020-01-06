@@ -70,7 +70,7 @@
                             Width="16"
                             Margin="16,0"
                            Visibility="{x:Bind ViewModel.UITitlebarDetailsVisibility, Mode=OneWay}"
-                            Source="ms-appx:///Assets/Logo/contrast-black/Square44x44Logo.altform-unplated_targetsize-256.png" />
+                            Source="/Assets/Logo/in-app/logo-fluent.png" />
                     <TextBlock x:Name="tblFileName"
                                 Style="{ThemeResource CaptionTextBlockStyle}"
                                 Text="{x:Bind ViewModel.Data.DocumentTitle, Mode=TwoWay, FallbackValue='Untitled'}"
