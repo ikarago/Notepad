@@ -178,19 +178,20 @@
     <comment>View disposed</comment>
   </data>
   <data name="AfterUpdate_Body.Text" xml:space="preserve">
-    <value>v1.9.2.x (2019-12-12):
+    <value>v1.9.4.x (2020-01-10):
 - NEW: Added the ability to zoom in and out on the text
-- NEW: Added a statusbar displaying the current position of the cursor and zoom (thanks Yair! :) )
+- NEW: Added a statusbar displaying the current position of the cursor and zoom. You can enable it in the Settings (thanks Yair! :) )
 - NEW: Added an overlay mode where you can keep the app always on top (You can activate it by pressing ALT+Up to start it and ATL+Down to close it)
+- NEW: Native ARM64 support (thanks Prayaas-a!)
 - IMPROVED: The Splash screen is now optional so the app boots more quickly
 - IMPROVED: Updated the UI a bit more to make everything looks more in line with Microsofts Fluent Design system
 - BUGFIX: Fixed a bug where ANSI encoded files wouldn't open at all
 - BUGFIX: Changed Tab-behaviour to actually enter a tabbed space instead of jumping to the next control. (Once more, thanks Yair!)
 - BUGFIX: Various other small bugfixes and improvements
 
-A big shout out to Yair who worked on quite a few fixes and features for this release. Check out his Quick Pad-app in the store if you're looking into an app for some rich text editing. :)
+A big shout out to Yair and Prayaas-a who worked on quite a few fixes and features for this release. Check out Yairs Quick Pad-app in the store if you're looking into an app for some rich text editing. :)
 
-Happy editing!</value>
+Happy Editing! :)</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="AfterUpdate_Title.Text" xml:space="preserve">

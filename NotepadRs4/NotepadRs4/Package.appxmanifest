@@ -8,7 +8,7 @@
          xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
          xmlns:iot2="http://schemas.microsoft.com/appx/manifest/iot/windows10/2"
          IgnorableNamespaces="uap uap5 mp rescap genTemplate desktop4 iot2">
-  <Identity Name="21834MacaroniSoft.Notepad" Publisher="CN=A709FCE2-98A6-4948-A3F2-B538AFE341F1" Version="1.9.3.0" />
+  <Identity Name="21834MacaroniSoft.Notepad" Publisher="CN=A709FCE2-98A6-4948-A3F2-B538AFE341F1" Version="1.9.4.0" />
   <mp:PhoneIdentity PhoneProductId="64af9df2-830b-4654-b33b-d660aadb4c62" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Notepad</DisplayName>
