@@ -148,8 +148,8 @@ namespace NotepadRs4.Services
             return model;
         }
 
-        // Load without prompt (for when loading from Explorer)
-        public static async Task<LoadDataModel> LoadWithoutPrompt(StorageFile file)
+        // Load --> Overload; Load without prompt (for when loading from Explorer)
+        public static async Task<LoadDataModel> Load(StorageFile file)
         {
             LoadDataModel model = null;
             TextDataModel data = null;

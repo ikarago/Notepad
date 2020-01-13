@@ -192,7 +192,7 @@ namespace NotepadRs4.ViewModels
         {
             if (file != null)
             {
-                LoadDataModel model = await FileDataService.LoadWithoutPrompt(file);
+                LoadDataModel model = await FileDataService.Load(file);
                 if (model.LoadSuccessful == true)
                 {
                     Data = model.TextModel;

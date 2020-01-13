@@ -11,7 +11,7 @@
     <PackageLogoSource>C:\Users\pants\OneDrive\Documents\Ontwikkelen\Notepad\Logo\logo-black.png</PackageLogoSource>
     <AppxPackageIsForStore>True</AppxPackageIsForStore>
     <AppxShowAllApps>True</AppxShowAllApps>
-    <AppxBuildConfigurationSelection>arm64</AppxBuildConfigurationSelection>
+    <AppxBuildConfigurationSelection>x86|x64|arm|arm64</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
     <UapAppxPackageBuildMode>StoreOnly</UapAppxPackageBuildMode>
   </PropertyGroup>
