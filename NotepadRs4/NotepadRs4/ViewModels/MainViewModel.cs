@@ -192,12 +192,12 @@ namespace NotepadRs4.ViewModels
         {
             if (file != null)
             {
-                LoadDataModel model = await FileDataService.Load(file);
-                if (model.LoadSuccessful == true)
+                TextDataModel model = await FileDataService.Load(file);
+                if (model != null)
                 {
-                    Data = model.TextModel;
-                    PreviousData = model.TextModel;
-                    File = model.File;
+                    Data = model;
+                    PreviousData = model;
+                    File = model.DataFile;
                     RefreshTitlebarTitle();
                 }
                 else // If loading fails fall back by preparing a new, empty document instead
@@ -608,13 +608,13 @@ namespace NotepadRs4.ViewModels
         private async void LoadDocument()
         {
             // Just load
-            LoadDataModel model = await FileDataService.Load();
+            TextDataModel model = await FileDataService.Load();
             //TextDataModel data = await FileDataService.Load();
-            if (model.LoadSuccessful == true)
+            if (model != null)
             {
-                Data = model.TextModel;
-                PreviousData = model.TextModel;
-                File = model.File;
+                Data = model;
+                PreviousData = model;
+                File = model.DataFile;
                 RefreshTitlebarTitle();
                 SetEditedFalse();
                 ShowUXMessage(3);

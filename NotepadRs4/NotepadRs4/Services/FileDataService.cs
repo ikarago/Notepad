@@ -91,110 +91,127 @@ namespace NotepadRs4.Services
         }
 
         // Load
-        public static async Task<LoadDataModel> Load()
+        public static async Task<TextDataModel> Load(StorageFile file = null)
         {
-            LoadDataModel model = null;
-            TextDataModel data = null;
+            Debug.WriteLine("FileDataService - Load - Loading File... START!");
 
-            model = new LoadDataModel();
-            model.LoadSuccessful = false;
+            // If no file has been entered, try to get one from the FilePicker
+            if (file == null)
+            {
+                Debug.WriteLine("FileDataService - Load - Opening File Picker...");
+                file = await GetStorageFileFromFilePickerAsync();
+            }
 
+            if (file != null)
+            {
+                try
+                {
+                    TextDataModel dataModel = await GetTextDataModel(file);
+                    Debug.WriteLine("FileDataService - Load - Loading File... SUCCESS!");
+                    return dataModel;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("FileDataService - Load - Loading File... FAILED! Error:");
+                    Debug.WriteLine(ex);
+                    return null;
+                }
+            }
+            else
+            {
+                Debug.WriteLine("FileDataService - Load - Loading File... FAILED! Error:");
+                Debug.WriteLine("No readable StorageFile entered :(");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Gets a StorageFile from the File Picker
+        /// </summary>
+        /// <returns>StorageFile with the data</returns>
+        private static async Task<StorageFile> GetStorageFileFromFilePickerAsync()
+        {
+            Debug.WriteLine("FileDataService - GetStorageFileFromFilePickerAsync - Picking File... START!");
             FileOpenPicker picker = new FileOpenPicker();
             picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             picker.ViewMode = PickerViewMode.List;
             picker.FileTypeFilter.Add("*");
 
-            StorageFile file = await picker.PickSingleFileAsync();
-
-            if (file != null)
+            try
             {
-                try
+                StorageFile file = await picker.PickSingleFileAsync();
+                if (file != null)
                 {
-                    data = new TextDataModel();
-
-                    // Get the buffer of the file so we can also read it when encoded in different encoding from UTF8
-                    // Fix with the help of Fred Bao's answer on https://social.msdn.microsoft.com/Forums/sqlserver/en-US/0f3cd056-a2e3-411b-8e8a-d2109255359a/uwpc-reading-ansi-text-file
-                    IBuffer buffer = await FileIO.ReadBufferAsync(file);
-                    DataReader dataReader = DataReader.FromBuffer(buffer);
-                    byte[] fileContent = new byte[dataReader.UnconsumedBufferLength];
-                    dataReader.ReadBytes(fileContent);
-                    string readText = Encoding.UTF8.GetString(fileContent, 0, fileContent.Length);
-                    // #TODO: Get the current encoding and display it in the TextDataModel
-
-
-                    // Textdata
-                    data.Text = readText;
-                    data.DocumentTitle = file.DisplayName + file.FileType;
-
-                    // Get Fast Access token
-                    GetFaToken(file);
-                    // #TODO: Store this token somewhere
-
-
-                    model.TextModel = data;
-                    model.File = file;
-                    model.LoadSuccessful = true;
-
-                    Debug.WriteLine("File " + file.Name + " has been loaded");
+                    Debug.WriteLine("FileDataService - GetStorageFileFromFilePickerAsync - Picking File... SUCCESS!");
+                    return file;
                 }
-                catch (Exception ex)
+                else 
                 {
-                    Debug.WriteLine("Loading failed");
-                    Debug.WriteLine(ex);
-                    throw;
+                    Debug.WriteLine("FilePicker cancelled by user");
+                    throw new Exception();
                 }
-            }         
 
-            return model;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("FileDataService - GetStorageFileFromFilePickerAsync - Picking File... FAILED! Error:");
+                Debug.WriteLine(ex);
+                return null;
+            }
         }
 
-        // Load --> Overload; Load without prompt (for when loading from Explorer)
-        public static async Task<LoadDataModel> Load(StorageFile file)
+        /// <summary>
+        /// Loads the data in the StorageFile
+        /// </summary>
+        /// <param name="file">StorageFile containing the info that needs to be loaded</param>
+        /// <returns>Returns loaded TextDataModel containing all info. Will return null if loading has failed</returns>
+        private static async Task<TextDataModel> GetTextDataModel(StorageFile file)
         {
-            LoadDataModel model = null;
+            Debug.WriteLine("FileDataService - GetTextDataModel - Loading File... START!");
+
             TextDataModel data = null;
 
-            model = new LoadDataModel();
-            model.LoadSuccessful = false;
-
-            if (file != null)
+            try
             {
-                try
-                {
-                    data = new TextDataModel();
+                data = new TextDataModel();
 
-                    // Get the buffer of the file so we can also read it when encoded in different encoding from UTF8
-                    // Fix with the help of Fred Bao's answer on https://social.msdn.microsoft.com/Forums/sqlserver/en-US/0f3cd056-a2e3-411b-8e8a-d2109255359a/uwpc-reading-ansi-text-file
-                    IBuffer buffer = await FileIO.ReadBufferAsync(file);
-                    DataReader dataReader = DataReader.FromBuffer(buffer);
-                    byte[] fileContent = new byte[dataReader.UnconsumedBufferLength];
-                    dataReader.ReadBytes(fileContent);
-                    string readText = Encoding.UTF8.GetString(fileContent, 0, fileContent.Length);
-                    // #TODO: Get the current encoding and display it in the TextDataModel
-
-
-                    // Textdata
-                    data.Text = readText;
-                    data.DocumentTitle = file.DisplayName + file.FileType;
-
-                    // Get Fast Access token
-                    GetFaToken(file);
-                    // #TODO: Store this token somewhere
+                // #TODO: Abstract this further with an seperate LoadingLogic method ---> How to set Exceptions for it?
+                // Get the buffer of the file so we can also read it when encoded in different encoding from UTF8
+                // Fix with the help of Fred Bao's answer on https://social.msdn.microsoft.com/Forums/sqlserver/en-US/0f3cd056-a2e3-411b-8e8a-d2109255359a/uwpc-reading-ansi-text-file
+                IBuffer buffer = await FileIO.ReadBufferAsync(file);
+                DataReader dataReader = DataReader.FromBuffer(buffer);
+                byte[] fileContent = new byte[dataReader.UnconsumedBufferLength];
+                dataReader.ReadBytes(fileContent);
+                string readText = Encoding.UTF8.GetString(fileContent, 0, fileContent.Length);
+                // #TODO: Get the current encoding and display it in the TextDataModel
 
 
-                    model.File = file;
-                    model.TextModel = data;
-                    model.LoadSuccessful = true;
+                // Textdata
+                data.Text = readText;
+                data.DocumentTitle = file.DisplayName + file.FileType;
+                data.DataFile = file;
 
-                    Debug.WriteLine("File " + file.Name + " has been loaded");
-                }
-                catch
-                {
-                    Debug.WriteLine("Loading failed");
-                }
+                // Set the Fast Access Token
+                SetFaToken(file);                 
+
+                Debug.WriteLine("FileDataService - GetTextDataModel - Loading File... SUCCESS!");
+                Debug.WriteLine("File " + file.Name + " has been loaded");
+            }
+            catch (Exception ex)
+            {
+                data = null;
+                Debug.WriteLine("FileDataService - GetTextDataModel - Loading File... FAILED! Error:");
+                Debug.WriteLine(ex);
             }
 
-            return model;
+            return data;
+        }
+
+        private static void SetFaToken(StorageFile file)
+        {
+            // Get Fast Access token
+            GetFaToken(file);
+            // #TODO: Store this token somewhere
         }
 
         private static string GetFaToken(StorageFile file)
