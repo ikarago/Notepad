@@ -394,6 +394,22 @@ namespace NotepadRs4.ViewModels
             }
         }
 
+        private ICommand _searchWithBingCommand;
+        public ICommand SearchWithBingCommand
+        {
+            get
+            {
+                if (_searchWithBingCommand == null)
+                {
+                    _searchWithBingCommand = new RelayCommand(
+                        () =>
+                        {
+                            SearchWithBing();
+                        });
+                }
+                return _searchWithBingCommand;
+            }
+        }
 
 
 
@@ -816,6 +832,14 @@ namespace NotepadRs4.ViewModels
         {
             var dialog = new AboutDialog();
             await dialog.ShowAsync();
+        }
+
+        /// <summary>
+        /// Launches a search with Bing
+        /// </summary>
+        private async void SearchWithBing()
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri($"https://www.bing.com/search?q={Uri.EscapeDataString(Data.SelectedText)}"));
         }
 
         /// <summary>

@@ -5,6 +5,7 @@ using System.Windows.Input;
 using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
 using Windows.ApplicationModel.Core;
+using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI;
@@ -46,6 +47,7 @@ namespace NotepadRs4.Views
             CheckThemeForLogo();
 
             this.Loaded += MainPage_Loaded;
+            this.Unloaded += MainPage_OnUnloaded;
             this.LayoutUpdated += MainPage_LayoutUpdated;
         }
 
@@ -184,7 +186,39 @@ namespace NotepadRs4.Views
         }
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
+            txtContent.SelectionFlyout.Opening += Menu_Opening;
+            txtContent.ContextFlyout.Opening += Menu_Opening;
+
             _isPageLoaded = true;
+        }
+
+        private void MainPage_OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            txtContent.SelectionFlyout.Opening -= Menu_Opening;
+            txtContent.ContextFlyout.Opening -= Menu_Opening;
+        }
+
+        private void Menu_Opening(object sender, object e)
+        {
+            if (!(sender is TextCommandBarFlyout myFlyout) || myFlyout.Target != txtContent) return;
+            AddSearchMenuItems(myFlyout.PrimaryCommands);
+        }
+
+        private void AddSearchMenuItems(IObservableVector<ICommandBarElement> primaryCommands)
+        {
+            if (!primaryCommands.Any(b => b is AppBarButton button && button.Name == "Bing"))
+            {
+                var iconBing = new BitmapIcon { UriSource = new Uri("ms-appx:///Assets/Icons/BingIcon.png") };
+
+                var searchCommandBarBing = new AppBarButton
+                {
+                    Name = "Bing",
+                    Icon = iconBing,
+                    Label = "Search with Bing",
+                    Command = ViewModel.SearchWithBingCommand
+                };
+                primaryCommands.Add(searchCommandBarBing);
+            }
         }
 
 

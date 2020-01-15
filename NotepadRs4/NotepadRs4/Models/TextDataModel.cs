@@ -10,6 +10,8 @@ namespace NotepadRs4.Models
     {
         public string Text { get; set; }
 
+        public string SelectedText { get; set; }
+
         public string DocumentTitle { get; set; }
     }
 }
