@@ -402,6 +402,23 @@ namespace NotepadRs4.ViewModels
             }
         }
 
+        private ICommand _searchOnlineCommand;
+        public ICommand SearchOnlineCommand
+        {
+            get
+            {
+                if (_searchOnlineCommand == null)
+                {
+                    _searchOnlineCommand = new RelayCommand(
+                        () =>
+                        {
+                            OnlineSearchService.SearchOnline(SelectedText);
+                        });
+                }
+                return _searchOnlineCommand;
+            }
+        }
+
         private ICommand _searchWithBingCommand;
         public ICommand SearchWithBingCommand
         {
@@ -412,7 +429,7 @@ namespace NotepadRs4.ViewModels
                     _searchWithBingCommand = new RelayCommand(
                         () =>
                         {
-                            SearchWithBing();
+                            OnlineSearchService.SearchOnline(SelectedText, OnlineSearchProvider.Bing);
                         });
                 }
                 return _searchWithBingCommand;
@@ -842,13 +859,6 @@ namespace NotepadRs4.ViewModels
             await dialog.ShowAsync();
         }
 
-        /// <summary>
-        /// Launches a search with Bing
-        /// </summary>
-        private async void SearchWithBing()
-        {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri($"https://www.bing.com/search?q={Uri.EscapeDataString(SelectedText)}"));
-        }
 
         /// <summary>
         /// Display a Save before Closing dialog

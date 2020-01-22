@@ -204,6 +204,7 @@ namespace NotepadRs4.Views
             if (ViewModel.SelectedText != "")
             {
                 AddSearchMenuItems(myFlyout.PrimaryCommands);
+                // #TODO Add Share Button
             }
         }
 
