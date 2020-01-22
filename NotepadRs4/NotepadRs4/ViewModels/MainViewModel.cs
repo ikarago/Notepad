@@ -70,6 +70,13 @@ namespace NotepadRs4.ViewModels
             }
         }
 
+        private string _selectedText;
+        public string SelectedText
+        {
+            get { return _selectedText; }
+            set { SetProperty(ref _selectedText, value); }
+        }
+
         private int _zoomFactorPercentage;
         public int ZoomFactorPercentage
         {
@@ -211,6 +218,7 @@ namespace NotepadRs4.ViewModels
             }
 
             // Set UI and UX stuff
+            _selectedText = "";
             ZoomFactor = 1;
             //UIZoomFactorVisibility = true;  // Shown on purpose. Gets hidden in 3 seconds after launch
             _isInAlwaysOnTopMode = false;
@@ -839,7 +847,7 @@ namespace NotepadRs4.ViewModels
         /// </summary>
         private async void SearchWithBing()
         {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri($"https://www.bing.com/search?q={Uri.EscapeDataString(Data.SelectedText)}"));
+            await Windows.System.Launcher.LaunchUriAsync(new Uri($"https://www.bing.com/search?q={Uri.EscapeDataString(SelectedText)}"));
         }
 
         /// <summary>

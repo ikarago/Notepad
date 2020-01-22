@@ -201,7 +201,10 @@ namespace NotepadRs4.Views
         private void Menu_Opening(object sender, object e)
         {
             if (!(sender is TextCommandBarFlyout myFlyout) || myFlyout.Target != txtContent) return;
-            AddSearchMenuItems(myFlyout.PrimaryCommands);
+            if (ViewModel.SelectedText != "")
+            {
+                AddSearchMenuItems(myFlyout.PrimaryCommands);
+            }
         }
 
         private void AddSearchMenuItems(IObservableVector<ICommandBarElement> primaryCommands)
@@ -307,6 +310,8 @@ namespace NotepadRs4.Views
             retIndex = (retIndex < 0) ? 0 : retIndex; //if no return, start counting from the beginning (for line 1)
             string newsub = sub.Substring(retIndex); //substring from this point on to the end
             ViewModel.Col = newsub.Count(); //the value we need is simply the count of this new substring
+
+            ViewModel.SelectedText = txtContent.SelectedText;
         }
 
         private void svContent_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
