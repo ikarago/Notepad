@@ -17,7 +17,7 @@ namespace NotepadRs4.Services
         // Save
         public static async Task<bool> Save(TextDataModel data, StorageFile file)
         {
-            // #TODO Build this method
+
             if (file != null)
             {
                 try
@@ -29,6 +29,16 @@ namespace NotepadRs4.Services
 
                     // Let Windows know stuff is done
                     FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                    if (status == FileUpdateStatus.Complete)
+                    {
+                        Debug.WriteLine("File " + file.Name + " has been saved");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("File " + file.Name + " has NOT been saved");
+                    }
+
+
                     return true;
                 }
                 catch { return false; }
@@ -40,23 +50,7 @@ namespace NotepadRs4.Services
         // Save As
         public static async Task<StorageFile> SaveAs(TextDataModel data)
         {
-            FileSavePicker picker = new FileSavePicker();
-            picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            picker.FileTypeChoices.Add("Text Documents", new List<string>() { ".txt" });
-            picker.FileTypeChoices.Add("All files", new List<string>() { "." });
-            picker.DefaultFileExtension = ".txt";
-            if (data.DocumentTitle != "")
-            {
-                picker.SuggestedFileName = data.DocumentTitle;
-                // TODO: Get original file here as well
-            }
-            else
-            {
-                picker.SuggestedFileName = "Untitled";
-            }
-            
-
-            StorageFile file = await picker.PickSaveFileAsync();
+            StorageFile file = await GetStorageFileFromSaveFilePickerAsync();
 
             if (file != null)
             {
@@ -66,9 +60,8 @@ namespace NotepadRs4.Services
                 // Write the stuff to the file
                 await FileIO.WriteTextAsync(file, data.Text);
 
-                // Get Fast Access token
-                GetFaToken(file);
-                // #TODO: Store this token somewhere
+                // Set Fast Access token
+                SetFaToken(file);
 
                 // Let Windows know stuff is done
                 FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
@@ -99,7 +92,7 @@ namespace NotepadRs4.Services
             if (file == null)
             {
                 Debug.WriteLine("FileDataService - Load - Opening File Picker...");
-                file = await GetStorageFileFromFilePickerAsync();
+                file = await GetStorageFileFromLoadFilePickerAsync();
             }
 
             if (file != null)
@@ -129,9 +122,9 @@ namespace NotepadRs4.Services
         /// Gets a StorageFile from the File Picker
         /// </summary>
         /// <returns>StorageFile with the data</returns>
-        private static async Task<StorageFile> GetStorageFileFromFilePickerAsync()
+        private static async Task<StorageFile> GetStorageFileFromLoadFilePickerAsync()
         {
-            Debug.WriteLine("FileDataService - GetStorageFileFromFilePickerAsync - Picking File... START!");
+            Debug.WriteLine("FileDataService - GetStorageFileFromLoadFilePickerAsync - Picking File... START!");
             FileOpenPicker picker = new FileOpenPicker();
             picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             picker.ViewMode = PickerViewMode.List;
@@ -142,7 +135,7 @@ namespace NotepadRs4.Services
                 StorageFile file = await picker.PickSingleFileAsync();
                 if (file != null)
                 {
-                    Debug.WriteLine("FileDataService - GetStorageFileFromFilePickerAsync - Picking File... SUCCESS!");
+                    Debug.WriteLine("FileDataService - GetStorageFileFromLoadFilePickerAsync - Picking File... SUCCESS!");
                     return file;
                 }
                 else 
@@ -154,7 +147,50 @@ namespace NotepadRs4.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("FileDataService - GetStorageFileFromFilePickerAsync - Picking File... FAILED! Error:");
+                Debug.WriteLine("FileDataService - GetStorageFileFromLoadFilePickerAsync - Picking File... FAILED! Error:");
+                Debug.WriteLine(ex);
+                return null;
+            }
+        }
+
+
+        private static async Task<StorageFile> GetStorageFileFromSaveFilePickerAsync()
+        {
+            Debug.WriteLine("FileDataService - GetStorageFileFromSaveFilePickerAsync - Picking File... START!");
+
+            FileSavePicker picker = new FileSavePicker();
+            picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            picker.FileTypeChoices.Add("Text Documents", new List<string>() { ".txt" });
+            picker.FileTypeChoices.Add("All files", new List<string>() { "." });
+            picker.DefaultFileExtension = ".txt";
+            /*if (data.DocumentTitle != "")
+            {
+                picker.SuggestedFileName = data.DocumentTitle;
+                // TODO: Get original file here as well
+            }
+            else
+            {*/
+                picker.SuggestedFileName = "Untitled";
+            //}
+
+            try
+            {
+                StorageFile file = await picker.PickSaveFileAsync();
+                if (file != null)
+                {
+                    Debug.WriteLine("FileDataService - GetStorageFileFromSaveFilePickerAsync - Picking File... SUCCESS!");
+                    return file;
+                }
+                else
+                {
+                    Debug.WriteLine("FilePicker cancelled by user");
+                    throw new Exception();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("FileDataService - GetStorageFileFromSaveFilePickerAsync - Picking File... FAILED! Error:");
                 Debug.WriteLine(ex);
                 return null;
             }
