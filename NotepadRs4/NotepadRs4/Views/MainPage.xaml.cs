@@ -210,6 +210,7 @@ namespace NotepadRs4.Views
 
         private void AddSearchMenuItems(IObservableVector<ICommandBarElement> primaryCommands)
         {
+            // Search Online Buttons
             if (!primaryCommands.Any(b => b is AppBarButton button && button.Name == "Bing"))
             {
                 var iconBing = new BitmapIcon { UriSource = new Uri("ms-appx:///Assets/Icons/BingIcon.png") };
@@ -222,6 +223,19 @@ namespace NotepadRs4.Views
                     Command = ViewModel.SearchWithBingCommand
                 };
                 primaryCommands.Add(searchCommandBarBing);
+            }
+            
+            // Share button
+            if (!primaryCommands.Any(b => b is AppBarButton button && button.Name == "Share"))
+            {
+                var shareCommandBar = new AppBarButton
+                {
+                    Name = "Share",
+                    Icon = new SymbolIcon(Symbol.Share),
+                    Label = "Share",
+                    Command = ViewModel.ShareCommand
+                };
+                primaryCommands.Add(shareCommandBar);
             }
         }
 

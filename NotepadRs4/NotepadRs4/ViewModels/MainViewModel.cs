@@ -327,7 +327,7 @@ namespace NotepadRs4.ViewModels
                     _shareCommand = new RelayCommand(
                         () =>
                         {
-                            ShareDocument();
+                            Share();
                         });
                 }
                 return _shareCommand;
@@ -668,70 +668,85 @@ namespace NotepadRs4.ViewModels
             }
         }
 
+        private void Share()
+        {
+            ShareService shareService = new ShareService();
+            if (SelectedText != "")
+            {
+                shareService.Share(SelectedText);
+            }
+            else { shareService.Share(Data); }
+        }
+
         /// <summary>
         /// Shares the current opened document via the Share capabilities in Windows
         /// </summary>
-        private async void ShareDocument()
-        {
-            // Get the data from the ReadOnlyList
-            await GetShareStorageFiles();
-            // #TODO Show/hide the Share button depending on whether the device supports sharing
-            DataTransferManager.GetForCurrentView().DataRequested += MainViewModel_ShareDataRequested;
-            DataTransferManager.ShowShareUI();
-        }
+        //private async void ShareDocument()
+        //{
+        //    // Get the data from the ReadOnlyList
+        //    await GetShareStorageFiles();
+        //    // #TODO Show/hide the Share button depending on whether the device supports sharing
+        //    DataTransferManager.GetForCurrentView().DataRequested += MainViewModel_ShareDataRequested;
+        //    DataTransferManager.ShowShareUI();
+        //}
 
-        private void MainViewModel_ShareDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
-        {
-            // Show the Share UI
-            DataRequest request = args.Request;
+        //private async void ShareSelectedText()
+        //{
 
-            // Set the metadata
-            request.Data.Properties.Title = Windows.ApplicationModel.Package.Current.DisplayName;
-            request.Data.Properties.Description = (ResourceExtensions.GetLocalized("ShareDescription") + " " + FilesToShare[0].Name);
+        //}
 
-            // Set the StorageItem
-            request.Data.SetStorageItems(FilesToShare);
-        }
+        //private void MainViewModel_ShareDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        //{
+        //    // Show the Share UI
+        //    DataRequest request = args.Request;
 
-        /// <summary>
-        /// Prepare the temp files to be shared in a ReadOnlyList
-        /// </summary>
-        private async Task<bool> GetShareStorageFiles()
-        {
-            // Save the current document to a temp folder
-            ApplicationData appData = ApplicationData.Current;
-            StorageFile tempFile;
+        //    // Set the metadata
+        //    request.Data.Properties.Title = Windows.ApplicationModel.Package.Current.DisplayName;
+        //    request.Data.Properties.Description = (ResourceExtensions.GetLocalized("ShareDescription") + " " + FilesToShare[0].Name);
 
-            // If the file being shared already has been saved use that name instead
-            // #TODO: Instead, save the current file as well?
-            if (File != null)
-            {
-                tempFile = await appData.TemporaryFolder.CreateFileAsync(File.Name, CreationCollisionOption.ReplaceExisting);
-            }
-            else
-            {
-                tempFile = await appData.TemporaryFolder.CreateFileAsync((ResourceExtensions.GetLocalized("UnititledLabel") + ".txt"), CreationCollisionOption.ReplaceExisting);
-            }
+        //    // Set the StorageItem
+        //    request.Data.SetStorageItems(FilesToShare);
+        //}
 
-            // Write the data to the temp file
-            // Prevent remote access to file until saving is done
-            CachedFileManager.DeferUpdates(tempFile);
-            //We need to make sure Data.Text isn't null.
-            Data.Text = Data.Text ?? ""; //coalescing operator '??' returns left-hand operand's value if it isn't null, else right-hand's
-            // Write the stuff to the file
-            await FileIO.WriteTextAsync(tempFile, Data.Text);
-            // Let Windows know stuff is done
-            FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(tempFile);
+        ///// <summary>
+        ///// Prepare the temp files to be shared in a ReadOnlyList
+        ///// </summary>
+        //private async Task<bool> GetShareStorageFiles()
+        //{
+        //    // Save the current document to a temp folder
+        //    ApplicationData appData = ApplicationData.Current;
+        //    StorageFile tempFile;
 
-            // Create a List and set add the files to it
-            List<StorageFile> filesToShare = new List<StorageFile>();
-            filesToShare.Add(tempFile);
-            // Set the ReadOnlyList with the new data
-            FilesToShare = filesToShare;
+        //    // If the file being shared already has been saved use that name instead
+        //    // #TODO: Instead, save the current file as well?
+        //    if (File != null)
+        //    {
+        //        tempFile = await appData.TemporaryFolder.CreateFileAsync(File.Name, CreationCollisionOption.ReplaceExisting);
+        //    }
+        //    else
+        //    {
+        //        tempFile = await appData.TemporaryFolder.CreateFileAsync((ResourceExtensions.GetLocalized("UnititledLabel") + ".txt"), CreationCollisionOption.ReplaceExisting);
+        //    }
 
-            // Preperation is done, continue with the other stuff
-            return true;
-        }
+        //    // Write the data to the temp file
+        //    // Prevent remote access to file until saving is done
+        //    CachedFileManager.DeferUpdates(tempFile);
+        //    //We need to make sure Data.Text isn't null.
+        //    Data.Text = Data.Text ?? ""; //coalescing operator '??' returns left-hand operand's value if it isn't null, else right-hand's
+        //    // Write the stuff to the file
+        //    await FileIO.WriteTextAsync(tempFile, Data.Text);
+        //    // Let Windows know stuff is done
+        //    FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(tempFile);
+
+        //    // Create a List and set add the files to it
+        //    List<StorageFile> filesToShare = new List<StorageFile>();
+        //    filesToShare.Add(tempFile);
+        //    // Set the ReadOnlyList with the new data
+        //    FilesToShare = filesToShare;
+
+        //    // Preperation is done, continue with the other stuff
+        //    return true;
+        //}
 
         /// <summary>
         /// Sets up the UX Toggles to their default state
