@@ -307,6 +307,7 @@
     <Compile Include="Helpers\Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\BingIcon.png" />
     <Content Include="Assets\Icons\WhatsNewDark.png" />
     <Content Include="Assets\Icons\WhatsNewLight.png" />
     <Content Include="Assets\Logo\contrast-black\LargeTile.scale-100.png" />

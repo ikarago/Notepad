@@ -610,7 +610,8 @@
                      Drop="txtContent_Drop"
                      DragOver="txtContent_DragOver"
                      TextChanging="TxtContent_TextChanging"
-                     KeyDown="txtContent_KeyDown"/>
+                     KeyDown="txtContent_KeyDown"
+                     SelectedText="{x:Bind ViewModel.Data.SelectedText, Mode=TwoWay}"/>
             </ScrollViewer>
         </ctkc:DropShadowPanel>
 
