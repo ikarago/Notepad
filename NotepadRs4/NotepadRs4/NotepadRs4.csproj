@@ -25,7 +25,7 @@
     <AppxBundlePlatforms>arm64</AppxBundlePlatforms>
     <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
-    <PackageCertificateThumbprint>0B49F515E53CDE3DB8A25FBFB62B9FBAC7044D72</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>10EF406F2BC44E3C8E8F85988D53990173626FC1</PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
@@ -307,6 +307,7 @@
     <Compile Include="Helpers\Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\BingIcon.png" />
     <Content Include="Assets\Icons\WhatsNewDark.png" />
     <Content Include="Assets\Icons\WhatsNewLight.png" />
     <Content Include="Assets\Logo\contrast-black\LargeTile.scale-100.png" />
