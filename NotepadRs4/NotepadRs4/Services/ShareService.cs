@@ -34,26 +34,38 @@ namespace NotepadRs4.Services
             return result;
         }
 
+        /// <summary>
+        /// Shares text with other apps
+        /// </summary>
+        /// <param name="textToShare">Text the user wants to share</param>
         public void Share(string textToShare)
         {
+            Debug.WriteLine("ShareService - Share - Share STRING");
             TextToShare = textToShare;
             ShowShareUI();
         }
 
-        // #TODO Fix this, as this is broken
-        public void Share(TextDataModel data)
+        /// <summary>
+        /// Shares a the complete file with other apps
+        /// </summary>
+        /// <param name="data">The TextDataModel containing all the data</param>
+        public async void Share(TextDataModel data)
         {
+            Debug.WriteLine("ShareService - Share - Share FILE");
             TextData = data;
             if (data != null)
             {
-                TempShareFiles = GetShareStorageFiles(data).Result;
+                TempShareFiles = await GetShareStorageFiles(data);
             }
             ShowShareUI();
         }
 
+        /// <summary>
+        /// Sets and shows the Share Contract UI
+        /// </summary>
         private void ShowShareUI()
         {
-            Debug.WriteLine("ShareService - ShowShareUI - START!");
+            Debug.WriteLine("ShareService - ShowShareUI - START");
             if (CheckIfShareIsSupported())
             {
                 DataTransferManager.GetForCurrentView().DataRequested += ShareService_DataRequested;
@@ -61,12 +73,17 @@ namespace NotepadRs4.Services
             }
             else
             {
-                Debug.WriteLine("ShareService - ShowShareUI - Share not supported");
+                Debug.WriteLine("ShareService - ShowShareUI - Share Contract is not supported");
             }
         }
 
+        /// <summary>
+        /// Gathers the data that is being requested for the Share Contract
+        /// </summary>
         private void ShareService_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
         {
+            Debug.WriteLine("ShareService - DataRequested - START");
+
             // Show the Share UI
             DataRequest request = args.Request;
 
@@ -79,21 +96,27 @@ namespace NotepadRs4.Services
                 request.Data.Properties.Description = (ResourceExtensions.GetLocalized("ShareDescription") + " " + TempShareFiles[0].Name);
                 // Set the StorageItem
                 request.Data.SetStorageItems(TempShareFiles);
+                Debug.WriteLine("ShareService - DataRequested - FILE set");
+
             }
             else // Share the selected text
             {
-                request.Data.Properties.Description = "Selected text";
+                request.Data.Properties.Description = "Selected text: '" + TextToShare + "'";
                 request.Data.SetText(TextToShare);
+                Debug.WriteLine("ShareService - DataRequested - TEXT set");
             }
-
+            Debug.WriteLine("ShareService - DataRequested - DONE");
         }
 
 
         /// <summary>
         /// Prepare the temp files to be shared in a ReadOnlyList
         /// </summary>
+        /// #TODO Migrate part of this to the FileDataService (the creating of the temp file
         private async Task<List<StorageFile>> GetShareStorageFiles(TextDataModel textDataModel)
         {
+            Debug.WriteLine("ShareService - GetShareStorageFiles - START");
+
             ApplicationData appData = ApplicationData.Current;
             List<StorageFile> filesToShare = new List<StorageFile>();
             StorageFile tempFile;
@@ -127,6 +150,7 @@ namespace NotepadRs4.Services
             filesToShare.Add(tempFile);
 
             // Preperation is done, continue with the other stuff
+            Debug.WriteLine("ShareService - GetShareStorageFiles - DONE");
             return filesToShare;
         }
 
