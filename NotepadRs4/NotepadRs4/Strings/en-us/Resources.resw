@@ -515,4 +515,16 @@ Dutch by Ikarago</value>
     <value>Editor Settings</value>
     <comment>Editor settings text for Settings</comment>
   </data>
+  <data name="Settings_DefaultOnlineSearchProvider.Text" xml:space="preserve">
+    <value>Default Search Provider</value>
+    <comment>Settings - Default Online Search Provider title</comment>
+  </data>
+  <data name="Settings_OnlineSearchSettings.Text" xml:space="preserve">
+    <value>Search</value>
+    <comment>Settings - Search Settings Catargory title</comment>
+  </data>
+  <data name="Settings_TransparentWindow.Text" xml:space="preserve">
+    <value>Transparent window</value>
+    <comment>Settings - Transparent Windows title</comment>
+  </data>
 </root>

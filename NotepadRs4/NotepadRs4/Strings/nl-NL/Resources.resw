@@ -435,9 +435,17 @@ Happy Editing! :)</value>
     <value>Opgeslagen!</value>
     <comment>MainPage - Titlebar - File saved text</comment>
   </data>
+  <data name="Settings_DefaultOnlineSearchProvider.Text" xml:space="preserve">
+    <value>Standaard zoekmachine</value>
+    <comment>Settings - Default Online Search Provider title</comment>
+  </data>
   <data name="Settings_EditorSettings.Text" xml:space="preserve">
     <value>Editor instellingen</value>
     <comment>Editor settings text for Settings</comment>
+  </data>
+  <data name="Settings_OnlineSearchSettings.Text" xml:space="preserve">
+    <value>Zoeken</value>
+    <comment>Settings - Search Settings Catargory title</comment>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalisatie</value>
@@ -474,6 +482,10 @@ Happy Editing! :)</value>
   <data name="Settings_Title.Text" xml:space="preserve">
     <value>Instellingen</value>
     <comment>Page title for SettingsPage</comment>
+  </data>
+  <data name="Settings_TransparentWindow.Text" xml:space="preserve">
+    <value>Doorzichtige achtergrond</value>
+    <comment>Settings - Transparent Windows title</comment>
   </data>
   <data name="ShareDescription" xml:space="preserve">
     <value>De huidige versie van bestand </value>

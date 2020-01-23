@@ -62,7 +62,7 @@
                     </StackPanel>
 
                     <!-- Text wrapping -->
-                    <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
+                    <StackPanel Margin="0,0,0,16">
                         <TextBlock x:Uid="Settings_TextWrapping"
                                    Text="Text Wrapping"
                                    FontWeight="SemiBold"
@@ -72,7 +72,7 @@
                     </StackPanel>
 
                     <!-- Spell checker -->
-                    <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
+                    <StackPanel Margin="0,0,0,16">
                         <TextBlock x:Uid="Settings_SpellChecker"
                                    Text="Spell checker"
                                    FontWeight="SemiBold"
@@ -82,7 +82,7 @@
                     </StackPanel>
 
                     <!-- Status bar -->
-                    <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
+                    <StackPanel>
                         <TextBlock x:Uid="Settings_StatusBar"
                                    Text="Status bar"
                                    FontWeight="SemiBold"
@@ -94,6 +94,36 @@
 
                 </StackPanel>
                 <!-- END OF - General Settings -->
+
+                <!-- Search Settings -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}"
+                            Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE094;"
+                                   Style="{ThemeResource FluentTitleIconStyle}" />
+                        <TextBlock x:Uid="Settings_OnlineSearchSettings"
+                                   Text="Search"                              
+                                   Style="{StaticResource FluentTitleTextStyle}" />
+                    </StackPanel>
+
+                    <!-- Search Engine -->
+                    <StackPanel>
+                        <TextBlock x:Uid="Settings_DefaultOnlineSearchProvider"
+                                   Text="Default Search Provider"
+                                   FontWeight="SemiBold"
+                                   Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <ComboBox SelectedIndex="0"
+                                  HorizontalAlignment="Stretch"
+                                  Margin="{StaticResource XSmallTopMargin}">
+                            <ComboBoxItem Content="DuckDuckGo" />
+                            <ComboBoxItem Content="Bing" />
+                            <ComboBoxItem Content="Google" />
+                        </ComboBox>
+                    </StackPanel>
+
+                </StackPanel>
+                <!-- END OF - Search Settings -->
 
 
                 <!-- Personalisation -->
@@ -107,8 +137,19 @@
                                    Style="{StaticResource FluentTitleTextStyle}" />
                     </StackPanel>
 
+                    <!-- Transparency -->
+                    <StackPanel Margin="0,0,0,16"
+                                Visibility="Collapsed">
+                        <TextBlock x:Uid="Settings_TransparentWindow"
+                                   Text="Transparent window"
+                                   FontWeight="SemiBold"
+                                   Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.IsStatusBarEnabled, Mode=TwoWay}"
+                                      Margin="{StaticResource XSmallTopMargin}"/>
+                    </StackPanel>
+
                     <!-- Theme -->
-                    <StackPanel Margin="{StaticResource DialogSubcategoryMargin}">
+                    <StackPanel>
                         <TextBlock Text="Theme"
                                    x:Uid="Settings_Theme"
                                    Style="{StaticResource FluentBaseTextStyle}" />

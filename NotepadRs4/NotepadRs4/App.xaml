@@ -9,7 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <flui:FluiFrameworkThemeResources />
+                <FluiFrameworkThemeResources xmlns="using:FluiFramework.UWP.Core" />
 
                 <ResourceDictionary Source="/Styles/_Colors.xaml"/>
                 <ResourceDictionary Source="/Styles/_FontSizes.xaml"/>

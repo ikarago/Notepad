@@ -17,6 +17,9 @@
     <Thickness x:Key="BlockSubcategoryMargin">0,0,0,24</Thickness>
     <Thickness x:Key="BlockTitleMargin">0,0,0,16</Thickness>-->
 
+    <!--<Thickness x:Key="DialogCategoryMargin">0,0,0,32</Thickness>
+    <Thickness x:Key="DialogSubcategoryMargin">0,0,0,16</Thickness>-->
+
 
     <!--Medium size margins-->
     <Thickness x:Key="MediumLeftMargin">24,0,0,0</Thickness>
