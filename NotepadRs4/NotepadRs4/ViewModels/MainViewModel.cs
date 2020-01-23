@@ -351,23 +351,6 @@ namespace NotepadRs4.ViewModels
             }
         }
 
-        private ICommand _playgroundCommand;
-        public ICommand PlaygroundCommand
-        {
-            get
-            {
-                if (_playgroundCommand == null)
-                {
-                    _playgroundCommand = new RelayCommand(
-                        () =>
-                        {
-                            GoToPlayground();
-                        });
-                }
-                return _playgroundCommand;
-            }
-        }
-
         private ICommand _settingsCommand;
         public ICommand SettingsCommand
         {
@@ -778,14 +761,6 @@ namespace NotepadRs4.ViewModels
         }
 
         // Navigation and dialogs
-        /// <summary>
-        /// Navigates to the Playground Page
-        /// </summary>
-        private void GoToPlayground()
-        {
-            NavigationService.Navigate(typeof(Views.XamlPlayground));
-        }
-
         /// <summary>
         /// Opens the Settings Dialog
         /// </summary>

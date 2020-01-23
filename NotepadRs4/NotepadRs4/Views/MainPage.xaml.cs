@@ -165,9 +165,6 @@ namespace NotepadRs4.Views
 
             // Show Font Options-button
             //cbtnFontOptions.Visibility = Visibility.Visible;
-
-            // Show XAML Playground-button
-            cbtnPlayground.Visibility = Visibility.Visible;
 #endif
         }
 
