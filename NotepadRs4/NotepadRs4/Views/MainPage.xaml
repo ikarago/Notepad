@@ -6,10 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ctkc="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:controls="using:NotepadRs4.Controls"
-    
-    xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 7)"
-    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
-    
+    xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     mc:Ignorable="d">
     <Page.Transitions>
         <TransitionCollection>
@@ -18,9 +15,9 @@
     </Page.Transitions>
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <contract7Present:Grid.BackgroundTransition>
-            <contract7Present:BrushTransition />
-        </contract7Present:Grid.BackgroundTransition>
+        <Windows10version1809:Grid.BackgroundTransition>
+            <Windows10version1809:BrushTransition />
+        </Windows10version1809:Grid.BackgroundTransition>
         
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -126,11 +123,11 @@
                         Style="{ThemeResource ButtonRevealStyle}"
                         Visibility="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility, Mode=OneWay}"
                         Command="{x:Bind ViewModel.ToggleAlwaysOnTopCommand}">
-                    <contract7Present:Button.KeyboardAccelerators>
-                        <contract7Present:KeyboardAccelerator Modifiers="Menu"
+                    <Windows10version1809:Button.KeyboardAccelerators>
+                        <Windows10version1809:KeyboardAccelerator Modifiers="Menu"
                                                               Key="Down"
                                                               IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
-                    </contract7Present:Button.KeyboardAccelerators>
+                    </Windows10version1809:Button.KeyboardAccelerators>
                 </Button>
             </Grid>
 
@@ -149,30 +146,30 @@
                                     Icon="Add"
                                     Label="New"
                                     Command="{x:Bind ViewModel.NewFileCommand}">
-                        <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Control"
                                                                     Key="N" />
-                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarButton x:Name="cbtnOpenFile"
                                     x:Uid="Main_Abb_OpenFile"
                                     Icon="OpenFile"
                                     Label="Open..."
                                     Command="{x:Bind ViewModel.LoadFileCommand}">
-                        <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Control"
                                                                     Key="O" />
-                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarButton x:Name="cbtnSaveFile"
                                     x:Uid="Main_Abb_SaveFile"
                                     Icon="Save"
                                     Label="Save"
                                     Command="{x:Bind ViewModel.SaveFileCommand}">
-                        <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Control"
                                                                     Key="S" />
-                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarSeparator x:Name="cbtnSeperator"
                                      Visibility="Collapsed"/>
@@ -182,11 +179,11 @@
                                     Label="Find and Replace"
                                     Visibility="Collapsed"
                                     Command="{x:Bind FindCommand}">
-                        <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Control"
                                                                     Key="F"
                                                                     IsEnabled="False"/>
-                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                 </controls:OpenDownCommandBar.PrimaryCommands>
                 <controls:OpenDownCommandBar.SecondaryCommands>
@@ -195,11 +192,11 @@
                                     Icon="SaveLocal"
                                     Label="Save As..."
                                     Command="{x:Bind ViewModel.SaveFileAsCommand}">
-                        <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control,Shift"
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Control,Shift"
                                                                   Key="S">
-                            </contract7Present:KeyboardAccelerator>
-                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                            </Windows10version1809:KeyboardAccelerator>
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarButton x:Name="cbtnPrint"
                                     x:Uid="Main_Abb_Print"
@@ -209,11 +206,11 @@
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE2F6;"/>
                         </AppBarButton.Icon>
-                        <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Control"
                                                                     Key="P" 
                                                                     IsEnabled="False"/>
-                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarButton x:Name="cbtnShare"
                                     x:Uid="Main_Abb_Share"
@@ -221,10 +218,10 @@
                                     Label="Share"
                                     Visibility="{x:Bind ViewModel.UIShareButtonVisibility, Mode=OneWay}"
                                     Command="{x:Bind ViewModel.ShareCommand}">
-                        <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Control"
                                                                     Key="H" />
-                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarSeparator />
                     <AppBarButton x:Name="ctbtnAlwaysOnTop"
@@ -235,11 +232,11 @@
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE2B4;" />
                         </AppBarButton.Icon>
-                        <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Menu"
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Menu"
                                                                   Key="Up"
                                                                   IsEnabled="{x:Bind ViewModel.UIAlwaysOnTopButtonVisibility}"/>
-                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarButton x:Uid="Main_Abb_CloseAlwaysOnTop"
                                   Label="Close compact overlay"
@@ -248,11 +245,11 @@
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE2B3;" />
                         </AppBarButton.Icon>
-                        <contract7Present:AppBarButton.KeyboardAccelerators>
-                            <contract7Present:KeyboardAccelerator Modifiers="Control"
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Control"
                                                                   Key="M"
                                                                   IsEnabled="{x:Bind ViewModel.UICloseAlwaysOnTopButtonVisibility}"/>
-                        </contract7Present:AppBarButton.KeyboardAccelerators>
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarButton x:Name="cbtnFontOptions"
                                     x:Uid="Main_Abb_FontOptions"
@@ -359,7 +356,7 @@
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Center"
                           BorderThickness="1"
-                          contract7Present:CornerRadius="2,0,0,2"
+                          Windows10version1809:CornerRadius="2,0,0,2"
                           Height="36"
                           Background="Transparent">
                     <ComboBox.ItemTemplate>
@@ -377,7 +374,7 @@
                           Margin="0,0,0,0"
                           VerticalAlignment="Center"
                           BorderThickness="1"
-                          contract7Present:CornerRadius="0,2,2,0"
+                          Windows10version1809:CornerRadius="0,2,2,0"
                           Height="36"
                           MinWidth="72"
                           Background="Transparent">
@@ -582,7 +579,7 @@
                               HorizontalContentAlignment="Stretch">
             <ScrollViewer x:Name="svContent"
                           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                          contract7Present:CornerRadius="2"
+                          Windows10version1809:CornerRadius="2"
                           MinZoomFactor="1"
                           MaxZoomFactor="10"
                           ZoomMode="Enabled"
@@ -610,7 +607,7 @@
                          Drop="txtContent_Drop"
                          DragOver="txtContent_DragOver"
                          TextChanging="TxtContent_TextChanging"
-                         KeyDown="txtContent_KeyDown"/>
+                         KeyDown="txtContent_KeyDown" />
             </ScrollViewer>
         </ctkc:DropShadowPanel>
 
@@ -660,7 +657,7 @@
                 <!-- Save Failed -->
                 <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
                             Background="Crimson"
-                            contract7Present:CornerRadius="2,2,0,0"
+                            Windows10version1809:CornerRadius="2,2,0,0"
                             BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                             Visibility="{x:Bind ViewModel.UXNotificationSaveFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"
@@ -693,7 +690,7 @@
                 <!-- Load Failed -->
                 <StackPanel Style="{ThemeResource StackPanelUXMessageErrorStyle}"
                             Background="Crimson"
-                            contract7Present:CornerRadius="2,2,0,0"
+                            Windows10version1809:CornerRadius="2,2,0,0"
                             BorderBrush="{ThemeResource SystemControlBackgroundBaseLowRevealBorderBrush}"
                             Visibility="{x:Bind ViewModel.UXNotificationLoadFailed, Mode=OneWay}">
                     <TextBlock Text="&#xE10A;"

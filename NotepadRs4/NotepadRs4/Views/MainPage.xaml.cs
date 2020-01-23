@@ -160,8 +160,8 @@ namespace NotepadRs4.Views
 
 #if DEBUG
             // Show Find & Replace-button
-            cbtnFind.Visibility = Visibility.Visible;
-            cbtnSeperator.Visibility = Visibility.Visible;
+            //cbtnFind.Visibility = Visibility.Visible;
+            //cbtnSeperator.Visibility = Visibility.Visible;
 
             // Show Font Options-button
             //cbtnFontOptions.Visibility = Visibility.Visible;
@@ -203,39 +203,80 @@ namespace NotepadRs4.Views
             if (!(sender is TextCommandBarFlyout myFlyout) || myFlyout.Target != txtContent) return;
             if (ViewModel.SelectedText != "")
             {
-                AddSearchMenuItems(myFlyout.PrimaryCommands);
-                // #TODO Add Share Button
+                AddMenuItems(myFlyout.PrimaryCommands);
             }
         }
 
-        private void AddSearchMenuItems(IObservableVector<ICommandBarElement> primaryCommands)
+        private void AddMenuItems(IObservableVector<ICommandBarElement> primaryCommands)
         {
+            // Search Local button
+            if (!primaryCommands.Any(b => b is AppBarButton button && button.Name == "Search"))
+            {
+                var appBarButton = new AppBarButton
+                {
+                    Name = "Search",
+                    Icon = new SymbolIcon(Symbol.Find),
+                    Label = "Search",
+                    Visibility = Visibility.Collapsed
+                };
+                primaryCommands.Add(appBarButton);
+            }
+
             // Search Online Buttons
+            if (!primaryCommands.Any(b => b is AppBarButton button && button.Name == "SearchOnline"))
+            {
+                var appBarButton = new AppBarButton
+                {
+                    Name = "SearchOnline",
+                    Icon = new SymbolIcon((Symbol)0xF6FA),
+                    Label = "Search Online",
+                    Visibility = Visibility.Collapsed,
+                    Command = ViewModel.SearchOnlineCommand
+                };
+                // Set the tooltip
+                var toolTip = new ToolTip();
+                toolTip.Content = "Search Online";
+                ToolTipService.SetToolTip(appBarButton, toolTip);
+                // Add the button
+                primaryCommands.Add(appBarButton);
+            }
+
+            // Search with Bing
             if (!primaryCommands.Any(b => b is AppBarButton button && button.Name == "Bing"))
             {
                 var iconBing = new BitmapIcon { UriSource = new Uri("ms-appx:///Assets/Icons/BingIcon.png") };
 
-                var searchCommandBarBing = new AppBarButton
+                var appBarButton = new AppBarButton
                 {
                     Name = "Bing",
                     Icon = iconBing,
                     Label = "Search with Bing",
                     Command = ViewModel.SearchWithBingCommand
                 };
-                primaryCommands.Add(searchCommandBarBing);
+                // Set the tooltip
+                var toolTip = new ToolTip();
+                toolTip.Content = "Search with Bing";
+                ToolTipService.SetToolTip(appBarButton, toolTip);
+                // Add the button
+                primaryCommands.Add(appBarButton);
             }
             
             // Share button
-            if (!primaryCommands.Any(b => b is AppBarButton button && button.Name == "Share"))
+            if (!primaryCommands.Any(b => b is AppBarButton button && button.Name == "Share") && ViewModel.UIShareButtonVisibility == true)
             {
-                var shareCommandBar = new AppBarButton
+                var appBarButton = new AppBarButton
                 {
                     Name = "Share",
                     Icon = new SymbolIcon(Symbol.Share),
                     Label = "Share",
-                    Command = ViewModel.ShareCommand
+                    Command = ViewModel.ShareCommand,
                 };
-                primaryCommands.Add(shareCommandBar);
+                // Set the tooltip
+                var toolTip = new ToolTip();
+                toolTip.Content = "Share";
+                ToolTipService.SetToolTip(appBarButton, toolTip);
+                // Add the button
+                primaryCommands.Add(appBarButton);
             }
         }
 
