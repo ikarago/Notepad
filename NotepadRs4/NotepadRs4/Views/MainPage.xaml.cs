@@ -448,5 +448,10 @@ namespace NotepadRs4.Views
             var state = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Shift);
             return (state & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
         }
+
+        private void cbtnRestoreTip_Click(object sender, RoutedEventArgs e)
+        {
+            tipRecovery.IsOpen = true;
+        }
     }
 }

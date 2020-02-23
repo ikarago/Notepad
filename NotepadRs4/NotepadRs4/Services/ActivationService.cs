@@ -180,7 +180,7 @@ namespace NotepadRs4.Services
 
         private void SetMinimalWindowSize()
         {
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Windows.Foundation.Size(320, 300));
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Windows.Foundation.Size(360, 300));
         }
     }
 }

@@ -13,6 +13,7 @@ namespace NotepadRs4
     {
         // Set a global variable for the App_CloseRequest so it can keep an eye on whether to show the confirm close-dialog.
         public static bool UnsavedChanges { get; set; }
+        public static bool IsNotClosedProperly { get; set; } //#TODO: Save to the Settings when done
 
         private Lazy<ActivationService> _activationService;
 
