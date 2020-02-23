@@ -141,7 +141,9 @@
                                      Subtitle="Notepad closed unexpectedley"
                                      ActionButtonContent="Restore"
                                      ActionButtonStyle="{ThemeResource FluentButtonAccentStyle}"
-                                     PreferredPlacement="TopRight">
+                                     PreferredPlacement="TopRight"
+                                     ActionButtonCommand="{x:Bind ViewModel.AutoRecoveryCommand}"
+                                     Closed="tipRecovery_Closed">
                 <wuiControls:TeachingTip.IconSource>
                     <wuiControls:FontIconSource Glyph="&#xE8FF;" />
                 </wuiControls:TeachingTip.IconSource>

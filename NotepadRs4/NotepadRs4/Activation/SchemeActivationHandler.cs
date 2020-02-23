@@ -12,13 +12,9 @@ namespace NotepadRs4.Activation
 {
     internal class SchemeActivationHandler : ActivationHandler<ProtocolActivatedEventArgs>
     {
-        // By default, this handler expects URIs of the format 'wtsapp:sample?paramName1=paramValue1&paramName2=paramValue2'
         protected override async Task HandleInternalAsync(ProtocolActivatedEventArgs args)
         {
-            // Create data from activation Uri in ProtocolActivatedEventArgs
-
             StorageFile dataFile = null;
-
             try
             {
                 string path = args.Uri.LocalPath;
@@ -30,8 +26,6 @@ namespace NotepadRs4.Activation
                 Debug.WriteLine(ex);
             }
 
-
-            //var data = new SchemeActivationData(args.Uri);
             if (dataFile != null)
             {
                 NavigationService.Navigate(typeof(Views.MainPage), dataFile);

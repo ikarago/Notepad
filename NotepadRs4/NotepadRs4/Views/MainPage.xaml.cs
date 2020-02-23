@@ -453,5 +453,10 @@ namespace NotepadRs4.Views
         {
             tipRecovery.IsOpen = true;
         }
+
+        private void tipRecovery_Closed(Microsoft.UI.Xaml.Controls.TeachingTip sender, Microsoft.UI.Xaml.Controls.TeachingTipClosedEventArgs args)
+        {
+            ViewModel.ClearAutoRecoveryFilesCommand.Execute(null);
+        }
     }
 }

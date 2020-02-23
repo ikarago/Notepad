@@ -202,10 +202,22 @@ namespace NotepadRs4.ViewModels
                 TextDataModel model = await FileDataService.Load(file);
                 if (model != null)
                 {
-                    Data = model;
-                    PreviousData = model;
-                    File = model.DataFile;
-                    RefreshTitlebarTitle();
+                    if (await AutoRecoveryService.CheckIfFileIsAutoRecoveryFile(file))
+                    {
+                        Debug.WriteLine("MainViewModel - Initialize - Loaded file is AutoRecovery file");
+                        Data = model;
+                        // Not setting the StorageFile here to prevent the user from accidentily save back to the apps Temp Folder
+                        RefreshTitlebarTitle();
+                        AutoRecoveryService.DeleteAutoRecoveryFile(file);
+                    }
+                    else
+                    {
+                        Debug.WriteLine("MainViewModel - Initialize - Loaded file is normal file");
+                        Data = model;
+                        PreviousData = model;
+                        File = model.DataFile;
+                        RefreshTitlebarTitle();
+                    }
                 }
                 else // If loading fails fall back by preparing a new, empty document instead
                 {
@@ -419,6 +431,58 @@ namespace NotepadRs4.ViewModels
             }
         }
 
+        private ICommand _autoRecoveryCommand;
+        public ICommand AutoRecoveryCommand
+        {
+            get
+            {
+                if (_autoRecoveryCommand == null)
+                {
+                    _autoRecoveryCommand = new RelayCommand(
+                        () =>
+                        {
+                            AutoRecoveryService.LoadAutoRecoveryFiles();
+                        });
+                }
+                return _autoRecoveryCommand;
+            }
+        }
+
+        // #TODO Temp Debug Command
+        private ICommand _saveAutoRecoveryFile;
+        public ICommand SaveAutoRecoveryFile
+        {
+            get
+            {
+                if (_saveAutoRecoveryFile == null)
+                {
+                    _saveAutoRecoveryFile = new RelayCommand(
+                        async () =>
+                        {
+                            await AutoRecoveryService.SaveAutoRecoveryFile(Data);
+                        });
+                }
+                return _saveAutoRecoveryFile;
+            }
+        }
+
+        private ICommand _clearAutoRecoveryFilesCommand;
+        public ICommand ClearAutoRecoveryFilesCommand
+        {
+            get
+            {
+                if (_clearAutoRecoveryFilesCommand == null)
+                {
+                    _clearAutoRecoveryFilesCommand = new RelayCommand(
+                        () =>
+                        {
+                            AutoRecoveryService.ClearAllAutoRecoveryFiles();
+                        });               
+                }
+                return _clearAutoRecoveryFilesCommand;
+            }
+        }
+
 
 
         // Methods
@@ -611,6 +675,11 @@ namespace NotepadRs4.ViewModels
             return success;
         }
 
+
+        private async void TestAutoRecoverySave()
+        {
+            await AutoRecoveryService.SaveAutoRecoveryFile(Data);
+        }
 
         // Preperation Methods
         /// <summary>

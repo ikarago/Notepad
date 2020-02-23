@@ -9,14 +9,10 @@ using Windows.Storage;
 
 namespace NotepadRs4.Services
 {
-    public class AutoRecoveryService
+    public static class AutoRecoveryService
     {
         // Properties
-        readonly StorageFolder tempFolder = ApplicationData.Current.TemporaryFolder;
-
-
-
-        // Check for temp files
+        static readonly StorageFolder tempFolder = ApplicationData.Current.TemporaryFolder;
 
 
 
@@ -28,7 +24,7 @@ namespace NotepadRs4.Services
         /// </summary>
         /// <param name="data">TextDataModel containing all the info</param>
         /// <returns>Returns the StorageFile with the location for later reference</returns>
-        public async Task<StorageFile> SaveAutoRecoveryFile(TextDataModel data)
+        public static async Task<StorageFile> SaveAutoRecoveryFile(TextDataModel data)
         {
             StorageFile file = await tempFolder.CreateFileAsync("AutoRecoveryFile.txt", CreationCollisionOption.GenerateUniqueName);
 
@@ -47,13 +43,13 @@ namespace NotepadRs4.Services
 
 
         // Load Temp file
-        public async void LoadAutoRecoveryFiles()
+        public static async void LoadAutoRecoveryFiles()
         {
-            // Get a list of AutoRecoveryFiles
+            // Get a list of AutoRecoveryFiles and open all of them via URI Activation
             var autoRecoveryFiles = await tempFolder.GetFilesAsync();
             foreach (var item in autoRecoveryFiles)
             {
-                var uri = new Uri("notepadarc:" + item.Path);
+                var uri = new Uri("notepad-uwp:" + item.Path);
                 var success = await Windows.System.Launcher.LaunchUriAsync(uri);
                 // Put a pause here?
             }
@@ -71,17 +67,43 @@ namespace NotepadRs4.Services
         // Set Crash bool to false
 
 
-        // Clear current temp file
-        public async void DeleteAutoRecoveryFile(StorageFile file)
+
+        public static async Task<bool> CheckIfFileIsAutoRecoveryFile(StorageFile file)
         {
-            await file.DeleteAsync();
+            var parentFolder = await file.GetParentAsync();
+            if (parentFolder != tempFolder)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
+
+        public static async void DeleteAutoRecoveryFile(StorageFile file)
+        {
+            if (await CheckIfFileIsAutoRecoveryFile(file))
+            {
+                Debug.WriteLine("AutoRecoveryService - AutoRecoveryCleanup - File is Auto Recovery File. Deleting Temp Storage File of it now");
+                await file.DeleteAsync();
+            }
+            else
+            {
+                Debug.WriteLine("FileDataService - AutoRecoveryCleanup - File is normal. Keep moving citizen :) ");
+            }
         }
 
         // Clear the Temporary Folder
-        public async void ClearTempFolder()
+        public static async void ClearAllAutoRecoveryFiles()
         {
-            await tempFolder.DeleteAsync();
-           
+            var autoRecoveryFiles = await tempFolder.GetFilesAsync();
+            foreach (var item in autoRecoveryFiles)
+            {
+                await item.DeleteAsync();
+            }
         }
     }
 }
