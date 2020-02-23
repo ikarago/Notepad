@@ -47,6 +47,21 @@ namespace NotepadRs4.Services
 
 
         // Load Temp file
+        public async void LoadAutoRecoveryFiles()
+        {
+            // Get a list of AutoRecoveryFiles
+            var autoRecoveryFiles = await tempFolder.GetFilesAsync();
+            foreach (var item in autoRecoveryFiles)
+            {
+                var uri = new Uri("notepadarc:" + item.Path);
+                var success = await Windows.System.Launcher.LaunchUriAsync(uri);
+                // Put a pause here?
+            }
+
+            // #TODO: Do something if there are more than 10 items in the list to prevent bufferoverflows
+
+        }
+        
         
 
 
@@ -57,12 +72,16 @@ namespace NotepadRs4.Services
 
 
         // Clear current temp file
-
+        public async void DeleteAutoRecoveryFile(StorageFile file)
+        {
+            await file.DeleteAsync();
+        }
 
         // Clear the Temporary Folder
         public async void ClearTempFolder()
         {
             await tempFolder.DeleteAsync();
+           
         }
     }
 }
