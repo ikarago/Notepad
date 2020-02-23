@@ -161,6 +161,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
+    <Compile Include="Activation\CommandLineActivationHandler.cs" />
+    <Compile Include="Activation\SchemeActivationConfig.cs" />
+    <Compile Include="Activation\SchemeActivationData.cs" />
+    <Compile Include="Activation\SchemeActivationHandler.cs" />
     <Compile Include="Controls\OpenDownCommandBar.cs" />
     <Compile Include="Helpers\BoolToTextWrappingConverter.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
@@ -198,7 +202,11 @@
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\NotificationBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SchemeActivationSampleViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="Views\CmdLineActivationSamplePage.xaml.cs">
+      <DependentUpon>CmdLineActivationSamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\AboutDialog.xaml.cs">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>
@@ -216,6 +224,9 @@
     </Compile>
     <Compile Include="Views\Dialogs\WhatsNewDialog.xaml.cs">
       <DependentUpon>WhatsNewDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SchemeActivationSamplePage.xaml.cs">
+      <DependentUpon>SchemeActivationSamplePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +280,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Views\CmdLineActivationSamplePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Dialogs\AboutDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -293,6 +308,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\SchemeActivationSamplePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -307,6 +326,7 @@
     <Content Include="Assets\Icons\BingIcon.png" />
     <Content Include="Assets\Icons\WhatsNewDark.png" />
     <Content Include="Assets\Icons\WhatsNewLight.png" />
+    <Content Include="Assets\Logo.png" />
     <Content Include="Assets\Logo\contrast-black\LargeTile.scale-100.png" />
     <Content Include="Assets\Logo\contrast-black\LargeTile.scale-125.png" />
     <Content Include="Assets\Logo\contrast-black\LargeTile.scale-150.png" />

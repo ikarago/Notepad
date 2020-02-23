@@ -39,6 +39,7 @@
         <uap:SplashScreen Image="Assets\Logo\SplashScreen.png" uap5:Optional="true"/>
       </uap:VisualElements>
       <Extensions>
+        <!-- File Activation -->
         <uap:Extension Category="windows.fileTypeAssociation">
           <uap:FileTypeAssociation Name="txt">
             <uap:DisplayName>Notepad</uap:DisplayName>
@@ -47,6 +48,21 @@
             </uap:SupportedFileTypes>
           </uap:FileTypeAssociation>
         </uap:Extension>
+        <!-- URI Scheme Activation -->
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="notepad-uwp">
+            <uap:Logo>Assets\in-app\Icon-white.png</uap:Logo>
+            <uap:DisplayName>Notepad</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+        <!-- CMD Activation -->
+        <uap5:Extension Category="windows.appExecutionAlias"
+                        Executable="NotepadRs4.exe"
+                        EntryPoint="NotepadRs4.App">
+          <uap5:AppExecutionAlias>
+            <uap5:ExecutionAlias Alias="Notepad-UWP.exe" />
+          </uap5:AppExecutionAlias>
+        </uap5:Extension>
       </Extensions>
     </Application>
   </Applications>

@@ -7,6 +7,7 @@ using NotepadRs4.Activation;
 using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
 using NotepadRs4.Views.Dialogs;
+
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
@@ -131,9 +132,10 @@ namespace NotepadRs4.Services
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()
         {
+            yield return Singleton<CommandLineActivationHandler>.Instance;
+            yield return Singleton<SchemeActivationHandler>.Instance;
             yield return Singleton<FileAssociationService>.Instance;
             yield return Singleton<SuspendAndResumeService>.Instance;
-            yield break;
         }
 
         private bool IsInteractive(object args)
