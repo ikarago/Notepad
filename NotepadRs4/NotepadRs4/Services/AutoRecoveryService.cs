@@ -9,13 +9,66 @@ using Windows.Storage;
 
 namespace NotepadRs4.Services
 {
-    public static class AutoRecoveryService
+    public class AutoRecoveryService
     {
         // Properties
         static readonly StorageFolder tempFolder = ApplicationData.Current.TemporaryFolder;
 
+        public StorageFile AutoRecoveryFile { get; set; }
+        public StorageFile CurrentFile { get; set; }
+        public TextDataModel Data { get; set; }
+        DateTimeOffset LastSavedTempFile { get; set; }
 
 
+        // Constructor
+        public AutoRecoveryService()
+        {
+            Initialize();
+        }
+
+        // Intitialize
+        private async void Initialize()
+        {
+            Data = new TextDataModel();
+            await InitializeForNewDocument();
+        }
+
+
+        /// <summary>
+        /// Sets the AutoRecoveryService with the loaded data
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="file"></param>
+        //public void PrepareAutoRecoveryServiceWithData(TextDataModel data, StorageFile file = null)
+        //{
+        //    Data = data;
+        //    CurrentFile = file;
+        //}
+
+        public async Task<bool> InitializeForNewDocument(TextDataModel data = null)
+        {
+            Debug.WriteLine("FileDataService - InitializeForNewDocument - START");
+            // Delete the previously loaded AutoRecoveryFile if nessesary
+            if (AutoRecoveryFile != null)
+            {
+                Debug.WriteLine("FileDataService - InitializeForNewDocument - Deleting old AutoRecovery File");
+                await DeleteAutoRecoveryFile();
+            }
+            // Create a new AutoRecoveryFile for the File
+            if (AutoRecoveryFile == null)
+            {
+                Debug.WriteLine("FileDataService - InitializeForNewDocument - Creating a new AutoRecovery File");
+                // #TODO: Catch this in case somethis is crazy wrong like no write access to the Temp Folder
+                AutoRecoveryFile = await tempFolder.CreateFileAsync("AutoRecoveryFile.txt", CreationCollisionOption.GenerateUniqueName);
+            }
+            // Set Data from the given parameter
+            if (data != null)
+            {
+                Debug.WriteLine("FileDataService - InitializeForNewDocument - Setting Data");
+                Data = data;
+            }
+            return true;
+        }
 
 
         // Save to Temp File
@@ -24,15 +77,13 @@ namespace NotepadRs4.Services
         /// </summary>
         /// <param name="data">TextDataModel containing all the info</param>
         /// <returns>Returns the StorageFile with the location for later reference</returns>
-        public static async Task<StorageFile> SaveAutoRecoveryFile(TextDataModel data)
+        public async Task<StorageFile> SaveAutoRecoveryFile()
         {
-            StorageFile file = await tempFolder.CreateFileAsync("AutoRecoveryFile.txt", CreationCollisionOption.GenerateUniqueName);
-
-            if (file != null)
+            if (AutoRecoveryFile != null)
             {
-                bool success = await FileDataService.Save(data, file);
+                bool success = await FileDataService.Save(Data, AutoRecoveryFile);
                 Debug.WriteLine("FileDataService - SaveAutoRecoveryFile - Success = " + success);
-                return file;
+                return AutoRecoveryFile;
             }
             else
             {
@@ -43,7 +94,7 @@ namespace NotepadRs4.Services
 
 
         // Load Temp file
-        public static async void LoadAutoRecoveryFiles()
+        public async void LoadAutoRecoveryFiles()
         {
             // Get a list of AutoRecoveryFiles and open all of them via URI Activation
             var autoRecoveryFiles = await tempFolder.GetFilesAsync();
@@ -52,6 +103,13 @@ namespace NotepadRs4.Services
                 var uri = new Uri("notepad-uwp:" + item.Path);
                 var success = await Windows.System.Launcher.LaunchUriAsync(uri);
                 // Put a pause here?
+            }
+
+            await Task.Delay(1000);
+
+            foreach (var item in autoRecoveryFiles)
+            {
+                await item.DeleteAsync();
             }
 
             // #TODO: Do something if there are more than 10 items in the list to prevent bufferoverflows
@@ -68,10 +126,10 @@ namespace NotepadRs4.Services
 
 
 
-        public static async Task<bool> CheckIfFileIsAutoRecoveryFile(StorageFile file)
+        public async Task<bool> CheckIfFileIsAutoRecoveryFile(StorageFile file)
         {
             var parentFolder = await file.GetParentAsync();
-            if (parentFolder != tempFolder)
+            if (parentFolder == tempFolder)
             {
                 return true;
             }
@@ -79,31 +137,51 @@ namespace NotepadRs4.Services
             {
                 return false;
             }
-
-
         }
 
-        public static async void DeleteAutoRecoveryFile(StorageFile file)
+
+        public async Task<bool> DeleteAutoRecoveryFile()
         {
-            if (await CheckIfFileIsAutoRecoveryFile(file))
+            if (AutoRecoveryFile != null)
             {
-                Debug.WriteLine("AutoRecoveryService - AutoRecoveryCleanup - File is Auto Recovery File. Deleting Temp Storage File of it now");
-                await file.DeleteAsync();
+                Debug.WriteLine("AutoRecoveryService - DeleteAutoRecoveryFile INTERNAL - Deleting Temp Storage File now");
+                await AutoRecoveryFile.DeleteAsync();
+                AutoRecoveryFile = null;
+                return true;
             }
             else
             {
-                Debug.WriteLine("FileDataService - AutoRecoveryCleanup - File is normal. Keep moving citizen :) ");
+                Debug.WriteLine("FileDataService - DeleteAutoRecoveryFile INTERNAL - File is normal. Keep moving citizen :) ");
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteAutoRecoveryFile(StorageFile file)
+        {
+            if (await CheckIfFileIsAutoRecoveryFile(file))
+            {
+                Debug.WriteLine("AutoRecoveryService - DeleteAutoRecoveryFile - File is Auto Recovery File. Deleting Temp Storage File of it now");
+                await file.DeleteAsync();
+                return true;
+            }
+            else
+            {
+                Debug.WriteLine("FileDataService - DeleteAutoRecoveryFile - File is normal. Keep moving citizen :) ");
+                return false;
             }
         }
 
         // Clear the Temporary Folder
-        public static async void ClearAllAutoRecoveryFiles()
+        // #TODO: Improve this
+        public async void ClearAllAutoRecoveryFiles()
         {
             var autoRecoveryFiles = await tempFolder.GetFilesAsync();
             foreach (var item in autoRecoveryFiles)
             {
                 await item.DeleteAsync();
             }
+            AutoRecoveryFile = null;
+            await InitializeForNewDocument();
         }
     }
 }

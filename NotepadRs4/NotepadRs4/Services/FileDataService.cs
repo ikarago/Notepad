@@ -44,7 +44,7 @@ namespace NotepadRs4.Services
                     }
 
                     // Set Fast Access token
-                    SetFaToken(file);
+                    //SetFaToken(file);
 
                     return true;
                 }
@@ -244,7 +244,7 @@ namespace NotepadRs4.Services
                 data.DataFile = file;
 
                 // Set the Fast Access Token
-                SetFaToken(file);                 
+                //SetFaToken(file);                 
 
                 Debug.WriteLine("FileDataService - GetTextDataModel - Loading File... SUCCESS!");
                 Debug.WriteLine("File " + file.Name + " has been loaded");

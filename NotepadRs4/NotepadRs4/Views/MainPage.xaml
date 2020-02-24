@@ -142,8 +142,8 @@
                                      ActionButtonContent="Restore"
                                      ActionButtonStyle="{ThemeResource FluentButtonAccentStyle}"
                                      PreferredPlacement="TopRight"
-                                     ActionButtonCommand="{x:Bind ViewModel.AutoRecoveryCommand}"
-                                     Closed="tipRecovery_Closed">
+                                     ActionButtonClick="tipRecovery_ActionButtonClick"
+                                     CloseButtonCommand="{x:Bind ViewModel.ClearAutoRecoveryFilesCommand}">
                 <wuiControls:TeachingTip.IconSource>
                     <wuiControls:FontIconSource Glyph="&#xE8FF;" />
                 </wuiControls:TeachingTip.IconSource>

@@ -51,6 +51,6 @@
     <RemoteDebugMachine>XBOXONE</RemoteDebugMachine>
     <AuthenticationMode>Universal</AuthenticationMode>
     <RemoteDebugEnabled>false</RemoteDebugEnabled>
-    <DoNotLaunchApp>true</DoNotLaunchApp>
+    <DoNotLaunchApp>false</DoNotLaunchApp>
   </PropertyGroup>
 </Project>

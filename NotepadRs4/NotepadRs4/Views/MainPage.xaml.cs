@@ -345,11 +345,13 @@ namespace NotepadRs4.Views
             }
         }
 
-        private void TxtContent_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        private async void TxtContent_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             // #TODO Fix this so it won't affect the Edited bool when loading from explorer (with the Initialize stuff) as this stupid trigger constantly finds a way to sneak before it and get triggered when it's not supposed to
             ViewModel.SetEditedTrue();
             ViewModel.Data.Text = txtContent.Text;
+            App.RecoveryService.Data = ViewModel.Data;
+            await App.RecoveryService.SaveAutoRecoveryFile();
         }
 
         private void txtContent_SelectionChanged(object sender, RoutedEventArgs e)
@@ -454,9 +456,12 @@ namespace NotepadRs4.Views
             tipRecovery.IsOpen = true;
         }
 
-        private void tipRecovery_Closed(Microsoft.UI.Xaml.Controls.TeachingTip sender, Microsoft.UI.Xaml.Controls.TeachingTipClosedEventArgs args)
+
+        private void tipRecovery_ActionButtonClick(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
         {
-            ViewModel.ClearAutoRecoveryFilesCommand.Execute(null);
+            ViewModel.AutoRecoveryCommand.Execute(null);
+            tipRecovery.IsOpen = false;
         }
+
     }
 }

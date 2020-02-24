@@ -102,6 +102,7 @@ namespace NotepadRs4.Services
             {
                 var deferral = e.GetDeferral();
                 var dialog = new ExitConfirmationDialog();
+                
 
                 // #TODO Catch the rare case when another dialog is already open by cancelling that dialog and prioritizing this dialog over it instead
                 await dialog.ShowAsync();
@@ -111,7 +112,48 @@ namespace NotepadRs4.Services
                     // Cancel the closure by setting the Handled-status to true
                     e.Handled = true;
                 }
+                else if (dialog.Result == ExitConfirmationDialogResult.Save)
+                {
+                    bool saveSuccess = false;
+                    if (App.RecoveryService.CurrentFile != null)
+                    {
+                        saveSuccess = await FileDataService.Save(App.RecoveryService.Data, App.RecoveryService.CurrentFile);
+                    }
+                    else
+                    {
+                        var file = await FileDataService.SaveAs(App.RecoveryService.Data);
+                        if (file != null)
+                        { saveSuccess = true; }
+                    }
+                    
+                    if (saveSuccess)
+                    {
+                        try
+                        {
+                            await App.RecoveryService.DeleteAutoRecoveryFile();
+                        }
+                        catch { }
+                    }
+
+                }
+                else if (dialog.Result == ExitConfirmationDialogResult.Discard)
+                {
+                    try
+                    {
+                        await App.RecoveryService.DeleteAutoRecoveryFile();
+                    }
+                    catch { }
+                }
                 deferral.Complete();
+            }
+            else
+            {
+                // Only occurs when the instance is not set as Edited; meaning the user has saved all changes so the AutoRecovery File can safely be deleted
+                try
+                {
+                    await App.RecoveryService.DeleteAutoRecoveryFile();
+                }
+                catch { }
             }
 
         }

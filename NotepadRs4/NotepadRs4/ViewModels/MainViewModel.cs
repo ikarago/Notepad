@@ -199,34 +199,15 @@ namespace NotepadRs4.ViewModels
         {
             if (file != null)
             {
-                TextDataModel model = await FileDataService.Load(file);
-                if (model != null)
+                bool success = await LoadDocument(file);
+                if (!success)
                 {
-                    if (await AutoRecoveryService.CheckIfFileIsAutoRecoveryFile(file))
-                    {
-                        Debug.WriteLine("MainViewModel - Initialize - Loaded file is AutoRecovery file");
-                        Data = model;
-                        // Not setting the StorageFile here to prevent the user from accidentily save back to the apps Temp Folder
-                        RefreshTitlebarTitle();
-                        AutoRecoveryService.DeleteAutoRecoveryFile(file);
-                    }
-                    else
-                    {
-                        Debug.WriteLine("MainViewModel - Initialize - Loaded file is normal file");
-                        Data = model;
-                        PreviousData = model;
-                        File = model.DataFile;
-                        RefreshTitlebarTitle();
-                    }
-                }
-                else // If loading fails fall back by preparing a new, empty document instead
-                {
-                    PrepareNewDocument();
+                    await PrepareNewDocument();
                 }
             }
             else if (_data == null)
             {
-                PrepareNewDocument();
+                await PrepareNewDocument();
             }
 
             // Set UI and UX stuff
@@ -441,28 +422,10 @@ namespace NotepadRs4.ViewModels
                     _autoRecoveryCommand = new RelayCommand(
                         () =>
                         {
-                            AutoRecoveryService.LoadAutoRecoveryFiles();
+                            App.RecoveryService.LoadAutoRecoveryFiles();
                         });
                 }
                 return _autoRecoveryCommand;
-            }
-        }
-
-        // #TODO Temp Debug Command
-        private ICommand _saveAutoRecoveryFile;
-        public ICommand SaveAutoRecoveryFile
-        {
-            get
-            {
-                if (_saveAutoRecoveryFile == null)
-                {
-                    _saveAutoRecoveryFile = new RelayCommand(
-                        async () =>
-                        {
-                            await AutoRecoveryService.SaveAutoRecoveryFile(Data);
-                        });
-                }
-                return _saveAutoRecoveryFile;
             }
         }
 
@@ -476,7 +439,7 @@ namespace NotepadRs4.ViewModels
                     _clearAutoRecoveryFilesCommand = new RelayCommand(
                         () =>
                         {
-                            AutoRecoveryService.ClearAllAutoRecoveryFiles();
+                            App.RecoveryService.ClearAllAutoRecoveryFiles();
                         });               
                 }
                 return _clearAutoRecoveryFilesCommand;
@@ -508,7 +471,7 @@ namespace NotepadRs4.ViewModels
                         Debug.WriteLine("New File: Saving Successful");
                         ShowUXMessage(1);
                         // Set up the new empty document
-                        PrepareNewDocument();
+                        await PrepareNewDocument();
                     }
                     else
                     {
@@ -522,7 +485,7 @@ namespace NotepadRs4.ViewModels
                 {
                     // Discard changes and open a new file
                     Debug.WriteLine("New File: Discard changes");
-                    PrepareNewDocument();
+                    await PrepareNewDocument();
                 }
                 // Result Cancelled
                 else
@@ -581,6 +544,7 @@ namespace NotepadRs4.ViewModels
                 // Write the changes back to the Data property since it doesn't register single changed items otherwise
                 Data = data;
                 PreviousData = data;
+                App.RecoveryService.CurrentFile = File;
                 RefreshTitlebarTitle();
 
                 // Show Save Successful Notification
@@ -599,7 +563,10 @@ namespace NotepadRs4.ViewModels
             }
         }
 
-        // Load
+
+
+
+
         private async Task<bool> LoadFile()
         {
             if (_data.Text != "" && FileEdited == true)
@@ -620,7 +587,7 @@ namespace NotepadRs4.ViewModels
                         Debug.WriteLine("Load File: Saving Successful");
                         ShowUXMessage(1);
                         // Load the other document
-                        LoadDocument();
+                        await LoadDocument();
                         return true;
                     }
                     else
@@ -636,7 +603,7 @@ namespace NotepadRs4.ViewModels
                 {
                     // Discard changes and open a new file
                     Debug.WriteLine("Load File: Discard changes");
-                    LoadDocument();
+                    await LoadDocument();
                     return true;
                 }
                 // Cancel result
@@ -650,7 +617,7 @@ namespace NotepadRs4.ViewModels
             // If no changes have been made in the first place, just load the document
             else
             {
-                LoadDocument();
+                await LoadDocument();
                 return true;
             }
         }
@@ -676,47 +643,88 @@ namespace NotepadRs4.ViewModels
         }
 
 
-        private async void TestAutoRecoverySave()
-        {
-            await AutoRecoveryService.SaveAutoRecoveryFile(Data);
-        }
-
         // Preperation Methods
         /// <summary>
         /// Sets up a new document for use in this ViewModel
         /// </summary>
-        private void PrepareNewDocument()
+        private async Task<bool> PrepareNewDocument()
         {
             TextDataModel emptyData = new TextDataModel();
             emptyData.DocumentTitle = ResourceExtensions.GetLocalized("UnititledLabel");
             Data = emptyData;
             File = null;
+            await App.RecoveryService.InitializeForNewDocument(Data);
             SetEditedFalse();
             RefreshTitlebarTitle();
+            return true;
         }
+
+
+        //private async void LoadDocument()
+        //{
+        //    // Just load
+        //    TextDataModel model = await FileDataService.Load();
+        //    //TextDataModel data = await FileDataService.Load();
+        //    if (model != null)
+        //    {
+        //        Data = model;
+        //        PreviousData = model;
+        //        File = model.DataFile;
+        //        App.RecoveryService.CurrentFile = File;
+        //        RefreshTitlebarTitle();
+        //        SetEditedFalse();
+        //        ShowUXMessage(3);
+        //        //return true;
+        //    }
+        //    else
+        //    {
+        //        Debug.WriteLine("Load File: Dialog cancelled");
+        //        //return false;
+        //    }
+        //}
 
         /// <summary>
         /// Loads a document for use in this ViewModel
         /// </summary>
-        private async void LoadDocument()
+        /// <param name="file">StorageFile that needs to be loaded (leave empty to invoke Open File Dialog)</param>
+        /// <returns>Bools indicating a successful load operation</returns>
+        private async Task<bool> LoadDocument(StorageFile file = null)
         {
-            // Just load
-            TextDataModel model = await FileDataService.Load();
-            //TextDataModel data = await FileDataService.Load();
+            TextDataModel model = await FileDataService.Load(file);
+
             if (model != null)
             {
                 Data = model;
                 PreviousData = model;
-                File = model.DataFile;
                 RefreshTitlebarTitle();
-                SetEditedFalse();
-                ShowUXMessage(3);
-                //return true;
+
+                if (file != null && await App.RecoveryService.CheckIfFileIsAutoRecoveryFile(file))
+                {
+                    Debug.WriteLine("MainViewModel - LoadDocument - Loaded file is AutoRecovery file");
+                    // Not setting the StorageFile here to prevent the user from accidentily save back to the apps Temp Folder
+                    RefreshTitlebarTitle();
+                    await App.RecoveryService.DeleteAutoRecoveryFile(model.DataFile);
+                    await App.RecoveryService.InitializeForNewDocument();
+
+                    SetEditedTrue();
+                }
+                else
+                {
+                    Debug.WriteLine("MainViewModel - LoadDocument - Loaded file is normal file");
+                    File = model.DataFile;
+                    await App.RecoveryService.InitializeForNewDocument(model);
+                    App.RecoveryService.CurrentFile = model.DataFile;
+
+                    ShowUXMessage(3);
+                    SetEditedFalse();
+                }
+
+                return true;
             }
             else
             {
                 Debug.WriteLine("Load File: Dialog cancelled");
-                //return false;
+                return false;
             }
         }
 
@@ -822,11 +830,14 @@ namespace NotepadRs4.ViewModels
         {
             FileEdited = false;
             App.UnsavedChanges = false;
+            //App.RecoveryService.DeleteAutoRecoveryFile();
         }
-        public void SetEditedTrue()
+        public async void SetEditedTrue()
         {
             FileEdited = true;
             App.UnsavedChanges = true;
+            App.RecoveryService.Data = Data;
+            //await App.RecoveryService.SaveAutoRecoveryFile();
         }
 
         // Navigation and dialogs
