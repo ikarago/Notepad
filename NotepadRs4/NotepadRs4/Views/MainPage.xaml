@@ -170,6 +170,8 @@
                         </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
 
+
+
                     <AppBarButton x:Name="cbtnRestoreTip"
                                   Icon="Refresh"
                                   Label="Restore"
@@ -221,6 +223,17 @@
                             </Windows10version1809:KeyboardAccelerator>
                         </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
+                    <AppBarButton x:Name="cbtnNewWindow"
+                                    Label="New window"
+                                    Command="{x:Bind ViewModel.NewWindowCommand}">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE78B;"/>
+                        </AppBarButton.Icon>
+                        <Windows10version1809:AppBarButton.KeyboardAccelerators>
+                            <Windows10version1809:KeyboardAccelerator Modifiers="Control,Shift"
+                                                                    Key="N" />
+                        </Windows10version1809:AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
                     <AppBarButton x:Name="cbtnPrint"
                                     x:Uid="Main_Abb_Print"
                                     Label="Print"
@@ -247,6 +260,7 @@
                         </Windows10version1809:AppBarButton.KeyboardAccelerators>
                     </AppBarButton>
                     <AppBarSeparator />
+
                     <AppBarButton x:Name="ctbtnAlwaysOnTop"
                                   x:Uid="Main_Abb_AlwaysOnTop"
                                   Label="Always on top"

@@ -242,6 +242,23 @@ namespace NotepadRs4.ViewModels
             }
         }
 
+        private ICommand _newWindowCommand;
+        public ICommand NewWindowCommand
+        {
+            get
+            {
+                if (_newWindowCommand == null)
+                {
+                    _newWindowCommand = new RelayCommand(
+                        () =>
+                        {
+                            NewWindow();
+                        });
+                }
+                return _newWindowCommand;
+            }
+        }
+
         private ICommand _saveFileCommand;
         public ICommand SaveFileCommand
         {
@@ -497,6 +514,12 @@ namespace NotepadRs4.ViewModels
                 // or
                 // #TODO: Create a new window with an empty file if a file is currently open
             }
+        }
+
+        private async void NewWindow()
+        {
+            var uri = new Uri("notepad-uwp:");
+            _ = await Windows.System.Launcher.LaunchUriAsync(uri);
         }
 
         // Save
