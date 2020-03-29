@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Notatnik</value>
+    <comment>Application display name</comment>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Notatnik</value>
+    <comment>Application description</comment>
+  </data>
+  <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
+    <value>Plik jest pusty. Podaj nazwę pliku.</value>
+    <comment>File name is null or empty to save file in settings storage extensions</comment>
+  </data>
+  <data name="Settings_Theme.Text" xml:space="preserve">
+    <value>Wybierz motyw</value>
+    <comment>Choose theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
+    <value>Ciemny</value>
+    <comment>Dark theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Default.Content" xml:space="preserve">
+    <value>Domyślny systemu</value>
+    <comment>Windows default theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve">
+    <value>Jasny</value>
+    <comment>Light theme text for Settings</comment>
+  </data>
+  <data name="About_About.Text" xml:space="preserve">
+    <value>O tej aplikacji</value>
+    <comment>About this application title for About</comment>
+  </data>
+  <data name="About_PrivacyTermsLink.Content" xml:space="preserve">
+    <value>Polityka prywatności</value>
+    <comment>Privacy Statement link content for About</comment>
+  </data>
+  <data name="About_PrivacyTermsLink.NavigateUri" xml:space="preserve">
+    <value>https://ikarago.com/privacy-policy</value>
+    <comment>Privacy Statement url for About</comment>
+  </data>
+  <data name="Settings_Personalization.Text" xml:space="preserve">
+    <value>Personalizacja</value>
+    <comment>Personalization text for Settings</comment>
+  </data>
+  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">
+    <value>wartość musi być Enum!</value>
+    <comment>Value must be an Enum in enum to boolean converter</comment>
+  </data>
+  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
+    <value>parametr musi być Enum!</value>
+    <comment>Parameter must be an Enum name in enum to boolean converter</comment>
+  </data>
+  <data name="Settings_Title.Text" xml:space="preserve">
+    <value>Ustawienia</value>
+    <comment>Page title for SettingsPage</comment>
+  </data>
+  <data name="ExceptionViewLifeTimeControlViewDisposal" xml:space="preserve">
+    <value>Ten widok jest usunięty</value>
+    <comment>View disposed</comment>
+  </data>
+  <data name="AfterUpdate_Body.Text" xml:space="preserve">
+    <value>v1.9.4.x (2020-01-10):
+- NOWE: Dodano możliwość powiększania tekstu
+- NOWE: Dodano pasek stanu pokazujący aktualną pozycję kursora i powiększenie. Możesz go włączyć w Ustawieniach (dzięki Yair! :) )
+- NOWE: Dodano tryb nakładki utrzymujący aplikację zawsze na wierzchu (Możesz go aktywować wciskając ALT+Strzałka w górę i wyłączyć ATL+Strzałka w dół)
+- NOWE: Natywne wsparcie ARM64 (dzięki Prayaas-a!)
+- POPRAWIONO: Ekran powitalny jest teraz opcjonalny, dzięki czemu aplikacja uruchamia się szybciej!
+- POPRAWIONO: Zaktualizowano nieco interfejs użytkownika, aby wszystko było bardziej zgodne z Microsoft Fluent Design
+- NAPRAWIONO: Naprawiono problem uniemożliwiający otwarcie plików zakodowanych w ANSI
+- NAPRAWIONO: Zmieniono zachowanie tabulatorów, aby faktycznie wstawiały tabulator, zamiast przeskakiwać do następnej kontrolki (Jeszcze raz, dzięki Yair!)
+- NAPRAWIONO: Naprawa innych małych błędów, oraz trochę ulepszeń
+
+Ogromne podziękowania dla Yaira i Prayaas-a'a, którzy pracowali nad wieloma poprawkami i funkcjami tego wydania. Sprawdź aplikację Quick Pad Yaira w sklepie, jeśli szukasz aplikacji do edycji bogatego tekstu. :)
+Wesołego Edytowania! :)</value>
+    <comment>What's new prompt message body</comment>
+  </data>
+  <data name="AfterUpdate_Title.Text" xml:space="preserve">
+    <value>Co nowego?</value>
+    <comment>What's new prompt message title</comment>
+  </data>
+  <data name="About_Title.Text" xml:space="preserve">
+    <value>O aplikacji</value>
+    <comment>Page title for AboutDialog</comment>
+  </data>
+  <data name="Settings_TextWrapping.Text" xml:space="preserve">
+    <value>Zawijanie wierszy</value>
+    <comment>Text Wrapping title for Settings</comment>
+  </data>
+  <data name="About_GitHubLink.Content" xml:space="preserve">
+    <value>Projekt GitHub</value>
+    <comment>GitHub project link content for About</comment>
+  </data>
+  <data name="About_GitHubLink.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ikarago/Notepad</value>
+    <comment>Link to the GitHub project for About</comment>
+  </data>
+  <data name="Main_Abb_About.Label" xml:space="preserve">
+    <value>O aplikacji</value>
+    <comment>MainPage - AppBarButton - About</comment>
+  </data>
+  <data name="Main_Abb_AlwaysOnTop.Label" xml:space="preserve">
+    <value>Zawsze na wierzchu</value>
+    <comment>MainPage - AppBarButton - Always on top</comment>
+  </data>
+  <data name="Main_Abb_FindAndReplace.Label" xml:space="preserve">
+    
+    <value>Znajdź i zamień</value><comment>MainPage - AppBarButton - Find and Replace</comment>
+  </data>
+  <data name="Main_Abb_FontOptions.Label" xml:space="preserve">
+    <value>Czcionka</value>
+    <comment>MainPage - AppBarButton - Font Options</comment>
+  </data>
+  <data name="Main_Abb_NewFile.Label" xml:space="preserve">
+    <value>Nowy</value>
+    <comment>MainPage - AppBarButton - New File</comment>
+  </data>
+  <data name="Main_Abb_OpenFile.Label" xml:space="preserve">
+    <value>Otwórz...</value>
+    <comment>MainPage - AppBarButton - Open File</comment>
+  </data>
+  <data name="Main_Abb_Print.Label" xml:space="preserve">
+    <value>Drukuj</value>
+    <comment>MainPage - AppBarButton - Print</comment>
+  </data>
+  <data name="Main_Abb_SaveAsFile.Label" xml:space="preserve">
+    <value>Zapisz jako</value>
+    <comment>MainPage - AppBarButton - Save As File</comment>
+  </data>
+  <data name="Main_Abb_SaveFile.Label" xml:space="preserve">
+    <value>Sapisz</value>
+    <comment>MainPage - AppBarButton - Save File</comment>
+  </data>
+  <data name="Main_Abb_Settings.Label" xml:space="preserve">
+    <value>Ustawienia</value>
+    <comment>MainPage - AppBarButton - Settings</comment>
+  </data>
+  <data name="Main_AppDisplayName.Text" xml:space="preserve">
+    <value>Notatnik</value>
+    <comment>MainPage - App name</comment>
+  </data>
+  <data name="Main_Content.PlaceholderText" xml:space="preserve">
+    <value>Napisz coś...</value>
+    <comment>MainPage - Main content placeholder Text</comment>
+  </data>
+  <data name="Main_Find_Close.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Zamknij</value>
+    <comment>ToolTip for closing the Findbar</comment>
+  </data>
+  <data name="Main_Find_FindBar.PlaceholderText" xml:space="preserve">
+    <value>Znajdź...</value>
+    <comment>MainPage - Find - Findbar placeholder text</comment>
+  </data>
+  <data name="Main_Find_Next.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Następny</value>
+    <comment>ToolTip for the next entry</comment>
+  </data>
+  <data name="Main_Find_Previous.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Poprzedni</value>
+    <comment>ToolTip for the previous entry</comment>
+  </data>
+  <data name="Main_Find_ReplaceBar.PlaceholderText" xml:space="preserve">
+    <value>Zamień...</value>
+    <comment>MainPage - Find - Replacebar placeholder text</comment>
+  </data>
+  <data name="Main_NotificationLoadFailed.Text" xml:space="preserve">
+    <value>Nie można otworzyć tego pliku</value>
+    <comment>MainPage - IAN - Load Failed</comment>
+  </data>
+  <data name="Main_NotificationLoadOk.Text" xml:space="preserve">
+    <value>Otwarto pomyślnie!</value>
+    <comment>MainPage - IAN - Load OK</comment>
+  </data>
+  <data name="Main_NotificationSaveFailed.Text" xml:space="preserve">
+    <value>Nie można zapisać tego pliku</value>
+    <comment>MainPage - IAN - Save Failed</comment>
+  </data>
+  <data name="Main_NotificationSaveOk.Text" xml:space="preserve">
+    <value>Zapisano pomyślnie!</value>
+    <comment>MainPage - IAN - Save OK</comment>
+  </data>
+  <data name="Main_Edited.Text" xml:space="preserve">
+    <value>(Edytowane)</value>
+    <comment>MainPage - Edited-status</comment>
+  </data>
+  <data name="About_Description.Text" xml:space="preserve">
+    <value>Stworzone przez Ikarago, 2018-2019</value>
+    <comment>About this application description for Settings</comment>
+  </data>
+  <data name="About_LinksTitle.Text" xml:space="preserve">
+    <value>Linki</value>
+    <comment>About - Title of the Links category</comment>
+  </data>
+  <data name="About_Translators.Text" xml:space="preserve">
+    <value>Angielski przez Ikarago
+Holenderski przez Ikarago
+Polski przez Wieśmin</value>
+    <comment>About - List of translators</comment>
+  </data>
+  <data name="About_TranslatorsTitle.Text" xml:space="preserve">
+    <value>Tłumaczenia</value>
+    <comment>About - Translators</comment>
+  </data>
+  <data name="Unsaved-GoBack.Text" xml:space="preserve">
+    <value>Wróć</value>
+    <comment>Unsaved dialog - Go back text</comment>
+  </data>
+  <data name="Unsaved-Content.Text" xml:space="preserve">
+    <value>Czy chcesz zapisać swoją pracę?</value>
+    <comment>Unsaved dialog - Content text</comment>
+  </data>
+  <data name="Unsaved-SaveChanges.Text" xml:space="preserve">
+    <value>Zapisz zmiany</value>
+    <comment>Unsaved dialog - Save option</comment>
+  </data>
+  <data name="Unsaved-DiscardChanges.Text" xml:space="preserve">
+    <value>Odrzuć zmiany</value>
+    <comment>Unsaved dialog - Discard option</comment>
+  </data>
+  <data name="Unsaved-Title.Text" xml:space="preserve">
+    <value>Niezapisane zmiany</value>
+    <comment>Unsaved dialog - Title</comment>
+  </data>
+  <data name="Main_Loaded.Text" xml:space="preserve">
+    <value>Załadowano plik</value>
+    <comment>MainPage - Titlebar - File loaded text</comment>
+  </data>
+  <data name="Main_Saved.Text" xml:space="preserve">
+    <value>Zapisano!</value>
+    <comment>MainPage - Titlebar - File saved text</comment>
+  </data>
+  <data name="About_AcknowledgementsFlui.Content" xml:space="preserve">
+    <value>FLUI Framework</value>
+    <comment>About - Acknowlegdements FLUI Framework Project title</comment>
+  </data>
+  <data name="About_AcknowledgementsFlui.NavigateUri" xml:space="preserve">
+    <value>https://github.com/Team-FLUI/FluiFramework</value>
+    <comment>About - Acknowlegdements  FLUI Framework Project URL</comment>
+  </data>
+  <data name="About_AcknowledgementsIntro.Text" xml:space="preserve">
+    <value>Ta aplikacja używa kodu z następujących projektów:</value>
+    <comment>About - Acknowlegdements Intro text</comment>
+  </data>
+  <data name="About_AcknowledgementsTitle.Text" xml:space="preserve">
+    <value>Podziękowania</value>
+    <comment>About - Acknowlegdements Title</comment>
+  </data>
+  <data name="About_AcknowledgementsWct.Content" xml:space="preserve">
+    <value>Windows Community Toolkit</value>
+    <comment>About - Acknowledgements Windows Community Toolkit title</comment>
+  </data>
+  <data name="About_AcknowledgementsWct.NavigateUri" xml:space="preserve">
+    <value>https://github.com/windows-toolkit/WindowsCommunityToolkit</value>
+    <comment>About - Acknowledgements Windows Community Toolkit Project URL</comment>
+  </data>
+  <data name="About_AcknowledgementsWts.Content" xml:space="preserve">
+    <value>Windows Template Studio</value>
+    <comment>About - Acknowlegdements Windows Template Studio title</comment>
+  </data>
+  <data name="About_AcknowledgementsWts.NavigateUri" xml:space="preserve">
+    <value>https://github.com/Microsoft/WindowsTemplateStudio</value>
+    <comment>About - Acknowlegdements Windows Template Studio Project URL</comment>
+  </data>
+  <data name="Main_Abb_Share.Label" xml:space="preserve">
+    <value>Udostępnij</value>
+    <comment>MainPage - AppBarButton - Share</comment>
+  </data>
+  <data name="UnititledLabel" xml:space="preserve">
+    <value>Bez tytułu</value>
+    <comment>Name for a new, empty document</comment>
+  </data>
+  <data name="ShareDescription" xml:space="preserve">
+    <value>Aktualna wersja pliku</value>
+    <comment>Text shown in the Share Description</comment>
+  </data>
+  <data name="ExitConfirmation-BodyText.Text" xml:space="preserve">
+    <value>Czy napewno chcesz wyjść i odrzucić niezapisane zmiany?</value>
+    <comment>ExitConfirmation dialog - Text in the body of the dialog</comment>
+  </data>
+  <data name="ExitConfirmation-Title.Text" xml:space="preserve">
+    <value>Masz niezapisane zmiany</value>
+    <comment>ExitConfirmation dialog - Title</comment>
+  </data>
+  <data name="Settings_SpellChecker.Text" xml:space="preserve">
+    <value>Sprawdzanie pisowni</value>
+    <comment>Spell Checker title for Settings</comment>
+  </data>
+  <data name="ExitConfirmation-DiscardAndExit-Acc.Text" xml:space="preserve">
+    <value>D</value>
+    <comment>ExitConfirmation dialog - Discard and exit - Keyboard accellerator hint</comment>
+  </data>
+  <data name="ExitConfirmation-DiscardAndExit.Text" xml:space="preserve">
+    <value>Porzuć zmiany i wyjdź</value>
+    <comment>ExitConfirmation dialog - Discard and exit</comment>
+  </data>
+  <data name="ExitConfirmation-GoBack-Acc.Text" xml:space="preserve">
+    <value>Esc</value>
+    <comment>ExitConfirmation dialog - Go back - Keyboard accellerator hint</comment>
+  </data>
+  <data name="ExitConfirmation-GoBack.Text" xml:space="preserve">
+    <value>Wróć</value>
+    <comment>ExitConfirmation dialog - Go back</comment>
+  </data>
+  <data name="ExitConfirmation-SaveAndExit-Acc.Text" xml:space="preserve">
+    <value>S</value>
+    <comment>ExitConfirmation dialog - Save and exit - Keyboard accellerator hint</comment>
+  </data>
+  <data name="ExitConfirmation-SaveAndExit.Text" xml:space="preserve">
+    <value>Zapisz i wyjdź</value>
+    <comment>ExitConfirmation dialog - Save and exit</comment>
+  </data>
+  <data name="Unsaved-DiscardChanges-Acc.Text" xml:space="preserve">
+    <value>D</value>
+    <comment>Unsaved dialog - Discard changes - Keyboard accellerator hint</comment>
+  </data>
+  <data name="Unsaved-GoBack-Acc.Text" xml:space="preserve">
+    <value>Esc</value>
+    <comment>Unsaved dialog - Go back - Keyboard accellerator hint</comment>
+  </data>
+  <data name="Unsaved-SaveChanges-Acc.Text" xml:space="preserve">
+    <value>S</value>
+    <comment>Unsaved dialog - Save changes - Keyboard accellerator hint</comment>
+  </data>
+  <data name="About_Contribute.Content" xml:space="preserve">
+    <value>Pomóż w projekcie</value>
+    <comment>About - Contribute content</comment>
+  </data>
+  <data name="About_Contribute.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ikarago/Notepad</value>
+    <comment>About - Contribute link</comment>
+  </data>
+  <data name="About_Kofi.Content" xml:space="preserve">
+    <value>Kup mi kawę</value>
+    <comment>About - Ko-Fi Content</comment>
+  </data>
+  <data name="About_Kofi.NavigateUri" xml:space="preserve">
+    <value>https://ko-fi.com/ikarago</value>
+    <comment>About - Ko-Fi link</comment>
+  </data>
+  <data name="About_Patreon.Content" xml:space="preserve">
+    <value>Wesprzyj mnie na Patreon</value>
+    <comment>About - Patreon - Content</comment>
+  </data>
+  <data name="About_Patreon.NavigateUri" xml:space="preserve">
+    <value>https://www.patreon.com/ikarago</value>
+    <comment>About - Patreon link</comment>
+  </data>
+  <data name="About_ProjectSupportTitle.Text" xml:space="preserve">
+    <value>Wesprzyj nas</value>
+    <comment>About - Support the project title</comment>
+  </data>
+  <data name="About_Translate.Content" xml:space="preserve">
+    <value>Przetłumacz aplikację</value>
+    <comment>About - Translate content</comment>
+  </data>
+  <data name="About_Translate.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ikarago/Notepad</value>
+    <comment>About - Translate link</comment>
+  </data>
+  <data name="About_AcknowledgementsWinUI.Content" xml:space="preserve">
+    <value>Windows UI Library</value>
+    <comment>About - Acknowlegdements Windows UI Library title</comment>
+  </data>
+  <data name="About_AcknowledgementsWinUI.NavigateUri" xml:space="preserve">
+    <value>https://github.com/Microsoft/microsoft-ui-xaml</value>
+    <comment>About - Acknowlegdements Windows UI Library Project URL</comment>
+  </data>
+  <data name="Main_Abb_CloseAlwaysOnTop.Label" xml:space="preserve">
+    <value>Pełny widok</value>
+    <comment>MainPage - AppBarButton - Always on top</comment>
+  </data>
+  <data name="Main_CloseAlwaysOnTop.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Pełny widok</value>
+    <comment>MainPage - Close overlay mode</comment>
+  </data>
+  <data name="About_SpecialThanksIntro.Text" xml:space="preserve">
+    <value>Ci niesamowici ludzie pomagali budować, projektować lub doradzali po drodze. Bez tych wspaniałych ludzi aplikacja nie byłaby tak niesamowita jak dzisiaj:</value>
+    <comment>About - Special Thanks - Description</comment>
+  </data>
+  <data name="About_SpecialThanksTitle.Text" xml:space="preserve">
+    <value>Specjalne podziękowania</value>
+    <comment>About - Special Thanks - Title </comment>
+  </data>
+  <data name="About_SpecialThanksToYou.Text" xml:space="preserve">
+    <value>... i oczywiście ty, za używanie aplikacji. :)</value>
+    <comment>About - Special Thanks - You</comment>
+  </data>
+  <data name="About_SpecialThanksUWPCommunity.Text" xml:space="preserve">
+    <value>Każdy na Discordzie UWP Community</value>
+    <comment>About - Special Thanks - UWP Community Discord</comment>
+  </data>
+  <data name="Settings_StatusBar.Text" xml:space="preserve">
+    <value>Pasek stanu</value>
+    <comment>Status Bar title for Settings</comment>
+  </data>
+  <data name="Settings_EditorSettings.Text" xml:space="preserve">
+    <value>Ustawienia Edytora</value>
+    <comment>Editor settings text for Settings</comment>
+  </data>
+</root>
