@@ -176,6 +176,9 @@
                                   Icon="Refresh"
                                   Label="Restore"
                                   Click="cbtnRestoreTip_Click" />
+                    <AppBarButton x:Name="btnAboutTest"
+                                  Icon="Accept"
+                                  Click="btnAboutTest_Click"/>
                     <AppBarButton x:Name="cbtnOpenFile"
                                     x:Uid="Main_Abb_OpenFile"
                                     Icon="OpenFile"

@@ -163,6 +163,9 @@
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="Activation\CommandLineActivationHandler.cs" />
     <Compile Include="Activation\SchemeActivationHandler.cs" />
+    <Compile Include="Controls\AboutDialogControl.xaml.cs">
+      <DependentUpon>AboutDialogControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OpenDownCommandBar.cs" />
     <Compile Include="Helpers\BoolToTextWrappingConverter.cs" />
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
@@ -227,6 +230,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\AboutDialogControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\ContentDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

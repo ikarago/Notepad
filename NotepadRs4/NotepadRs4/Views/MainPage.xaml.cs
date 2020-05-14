@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
+using NotepadRs4.Controls;
 using NotepadRs4.Helpers;
 using NotepadRs4.ViewModels;
 using Windows.ApplicationModel.Core;
@@ -463,5 +464,21 @@ namespace NotepadRs4.Views
             tipRecovery.IsOpen = false;
         }
 
+        private async void btnAboutTest_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new AboutDialogControl();
+            dialog.AboutDescription = "Lol nee";
+
+            dialog.TranslatorsTitle = "Hello everyone!";
+
+            dialog.Translators.Add("Bloody good afternoon");
+            dialog.Translators.Add("Bloody good afternoon lol wat is dit nou weer voor onzin ja echt wtf man");
+            dialog.Translators.Add("Bloody good afternoon");
+            dialog.Translators.Add("Bloody good afternoon");
+            dialog.Translators.Add("Bloody good afternoon");
+            dialog.Translators.Add("Bloody good afternoon");
+            dialog.Translators.Add("Bloody good afternoon");
+            await dialog.ShowAsync();
+        }
     }
 }

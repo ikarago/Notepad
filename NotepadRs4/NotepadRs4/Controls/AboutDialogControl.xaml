@@ -1,0 +1,273 @@
+﻿<ContentDialog
+    x:Class="NotepadRs4.Controls.AboutDialogControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NotepadRs4.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
+    
+    Background="{ThemeResource SystemControlAcrylicElementBrush}"
+    BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+    
+    mc:Ignorable="d">
+
+    <Grid MaxWidth="320">
+        <contract7Present:Grid.BackgroundTransition>
+            <contract7Present:BrushTransition />
+        </contract7Present:Grid.BackgroundTransition>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title with back button -->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Visibility="Visible"
+                    Padding="0,0,0,8"
+                    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}"
+                    BorderThickness="0,0,0,1">
+            <Button Style="{ThemeResource FluentDialogButtonBackStyle}"
+                    Command="{x:Bind CloseDialogCommand}"/>
+            <TextBlock x:Uid="About_Title"
+                       Text="About"
+                       Margin="12,0"
+                       VerticalAlignment="Center"
+                       Style="{ThemeResource FluentSubheaderTextStyle}"/>
+        </StackPanel>
+
+        <!-- Content -->
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Padding="0,12,0,0">
+                <!-- App info -->
+                <StackPanel Margin="{ThemeResource DialogCategoryMargin}">
+                    <Grid Margin="{ThemeResource DialogTitleMargin}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Text="&#xE946;"
+                                   Style="{ThemeResource FluentTitleIconStyle}"/>
+                        <!-- App Title -->
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="0"
+                                   Text="{x:Bind AboutAppName}"
+                                   Style="{ThemeResource FluentTitleTextStyle}"
+                                   FontWeight="SemiBold"/>
+                        <!-- Version number -->
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="1"
+                                   Text="{x:Bind AboutAppVersionNumber, Mode=OneWay}"
+                                   Style="{ThemeResource CaptionTextBlockStyle}"/>
+                    </Grid>
+
+                    <!-- About Description -->
+                    <TextBlock Text="{x:Bind AboutDescription}"
+                               Visibility="{x:Bind AboutDescriptionVisibility}"
+                               TextWrapping="Wrap"
+                               Margin="{StaticResource XSmallTopMargin}"/>
+                </StackPanel>
+
+
+                <!-- Translators -->
+                <StackPanel Margin="{ThemeResource DialogCategoryMargin}"
+                            Visibility="{x:Bind TranslatorsVisibility}">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE164;"
+                                   VerticalAlignment="Center"
+                                   Style="{ThemeResource FluentTitleIconStyle}"/>
+                        <TextBlock x:Uid="About_TranslatorsTitle"
+                                   Text="{x:Bind TranslatorsTitle}"
+                                   Style="{ThemeResource FluentTitleTextStyle}"/>
+                    </StackPanel>
+
+                    <TextBlock Text="{x:Bind TranslatorsDescription}"
+                               Visibility="{x:Bind TranslatorsDescriptionVisibility}"
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Left"
+                               Margin="{StaticResource DialogSubtitleMargin}"/>
+
+                    <ListView ItemsSource="{x:Bind Translators}"
+                              SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <TextBlock Text="{x:Bind}"
+                                           TextWrapping="Wrap"
+                                           Style="{ThemeResource FluentSubbodyTextStyle}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Padding" Value="0" />
+                                <Setter Property="Margin" Value="0" />
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+
+                    <!--<TextBlock x:Uid="About_Translators"
+                               Text="Sample text"
+                               TextWrapping="Wrap"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"/>-->
+                </StackPanel>
+
+                <!-- Special Thanks -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE006;"
+                                   Style="{ThemeResource FluentTitleIconStyle}" />
+                        <TextBlock x:Uid="About_SpecialThanksTitle"
+                                   Text="Special thanks"                              
+                                   Style="{StaticResource FluentTitleTextStyle}" />
+                    </StackPanel>
+
+                    <!-- Intro -->
+                    <TextBlock x:Uid="About_SpecialThanksIntro"
+                               Text="These amazing people helped build, design or gave advice along the way. Without these fine folks, the app wouldn't have been as awesome as it is today:"
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Left"
+                               Margin="{StaticResource DialogSubtitleMargin}"/>
+
+                    <TextBlock Text="Yair"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+                    <TextBlock Text="Prayaas-a"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+                    <TextBlock Text="Filippo Fedeli"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+                    <TextBlock Text="Michael West"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+                    <TextBlock Text="Rudy Huyn"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+
+                    <TextBlock x:Uid="About_SpecialThanksUWPCommunity"
+                               Text="Everyone in the UWP Community Discord"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+                    <TextBlock x:Uid="About_SpecialThanksToYou"
+                               Text="... and of course you for using the app. :)"
+                               Style="{ThemeResource FluentSubbodyTextStyle}"
+                               Margin="0,0,0,2"/>
+
+                </StackPanel>
+
+
+                <!-- Acknowledgements -->
+                <StackPanel Margin="{StaticResource DialogCategoryMargin}">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE134;"
+                                   Style="{ThemeResource FluentTitleIconStyle}" />
+                        <TextBlock x:Uid="About_AcknowledgementsTitle"
+                                   Text="Acknowledgements"                              
+                                   Style="{StaticResource FluentTitleTextStyle}" />
+                    </StackPanel>
+
+                    <!-- Intro -->
+                    <TextBlock x:Uid="About_AcknowledgementsIntro"
+                               Text="This app makes use of code from the following projects:"
+                               TextWrapping="Wrap"
+                               Margin="{StaticResource DialogSubtitleMargin}"/>
+
+                    <!-- Windows Template Studio -->
+                    <HyperlinkButton x:Uid="About_AcknowledgementsWts"
+                                     Content="Windows Template Studio"
+                                     NavigateUri="https://github.com/Microsoft/WindowsTemplateStudio"/>
+
+                    <!-- Windows Community Toolkit -->
+                    <HyperlinkButton x:Uid="About_AcknowledgementsWct"
+                                     Content="Windows Community Toolkit"
+                                     NavigateUri="https://github.com/windows-toolkit/WindowsCommunityToolkit"/>
+
+                    <!-- WinUI -->
+                    <HyperlinkButton x:Uid="About_AcknowledgementsWinUI"
+                                     Content="Windows UI Library"
+                                     NavigateUri="https://github.com/Microsoft/microsoft-ui-xaml"/>
+
+                    <!-- FLUI Framework -->
+                    <HyperlinkButton x:Uid="About_AcknowledgementsFlui"
+                                     Content="FLUI Framework"
+                                     NavigateUri="https://github.com/Team-FLUI/FluiFramework"/>
+                </StackPanel>
+
+
+                <!-- Links -->
+                <StackPanel Margin="{ThemeResource DialogCategoryMargin}">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xE71B;"
+                                   Style="{ThemeResource FluentTitleIconStyle}"/>
+                        <TextBlock x:Uid="About_LinksTitle"
+                                   Text="Links"
+                                   Style="{ThemeResource FluentTitleTextStyle}" />
+                    </StackPanel>
+
+
+                    <!-- Privacy Policy -->
+                    <HyperlinkButton x:Uid="About_PrivacyTermsLink"
+                                     Content="Privacy Policy"/>
+                    <!-- Feedback Hub link-->
+                    <!--<HyperlinkButton x:Uid="FeedbackHub_Link"
+                                     Content="Feedback"
+                                     Command="{x:Bind ViewModel.LaunchFeedbackHubCommand}"
+                                     Visibility="{x:Bind ViewModel.FeedbackLinkVisibility}"/>-->
+                    <!-- GitHub Project -->
+                    <HyperlinkButton x:Uid="About_GitHubLink"
+                                     Content="GitHub project"/>
+                </StackPanel>
+
+                <!-- Support us -->
+                <StackPanel Margin="{ThemeResource DialogCategoryMargin}">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="{ThemeResource DialogTitleMargin}">
+                        <TextBlock Text="&#xED59;"
+                                   Style="{ThemeResource FluentTitleIconStyle}"/>
+                        <TextBlock x:Uid="About_ProjectSupportTitle"
+                                   Text="Support us"
+                                   Style="{ThemeResource FluentTitleTextStyle}" />
+                    </StackPanel>
+
+
+                    <!-- Contribute -->
+                    <HyperlinkButton x:Uid="About_Contribute"
+                                     Content="Contibute to the project on GitHub"/>
+                    <!-- Translate -->
+                    <HyperlinkButton x:Uid="About_Translate"
+                                     Content="Translate the app"/>
+                    <!-- Patreon -->
+                    <HyperlinkButton x:Uid="About_Patreon"
+                                     Content="Support me on Patreon"/>
+                    <!-- Ko-Fi -->
+                    <HyperlinkButton x:Uid="About_Kofi"
+                                     Content="Buy me a Ko-Fi"/>
+                </StackPanel>
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <FontIcon Grid.Row="1"
+                  Canvas.ZIndex="5"
+                  Visibility="Visible"
+                  Glyph="&#xE946;"
+                  FontSize="72"
+                  Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Bottom"/>
+    </Grid>
+</ContentDialog>
